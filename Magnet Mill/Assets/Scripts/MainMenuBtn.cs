@@ -23,7 +23,7 @@ public class MainMenuBtn : MonoBehaviour
         if (ScenesLoader.instance.IsTransitioning()) return;
         if(whichButton == MenuBtn.play)
         {
-            ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0);
+            ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0, 1.5f);
         }
     }
 

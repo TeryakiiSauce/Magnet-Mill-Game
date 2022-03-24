@@ -10,6 +10,7 @@ public class ScenesLoader : MonoBehaviour
     public Image blackImage;
     public float transitionSpeed;
     public enum WhichScene { MainMenu, Level0, Level1, Level2, Level3};
+    private float copyTransSpeed;
     private string sceneName;
     private enum action { none, show, hide };
     private action currentAction;
@@ -25,6 +26,7 @@ public class ScenesLoader : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+        copyTransSpeed = transitionSpeed;
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class ScenesLoader : MonoBehaviour
             {
                 currentAction = action.none;
                 blackImage.gameObject.SetActive(false);
+                transitionSpeed = copyTransSpeed;
             }
         }
     }
@@ -78,6 +81,12 @@ public class ScenesLoader : MonoBehaviour
         {
             this.sceneName = "Level3";
         }
+    }
+
+    public void MoveToScene(WhichScene sceneName, float transitioningSpeed)
+    {
+        transitionSpeed = transitioningSpeed;
+        MoveToScene(sceneName);
     }
 
     public bool IsTransitioning()
