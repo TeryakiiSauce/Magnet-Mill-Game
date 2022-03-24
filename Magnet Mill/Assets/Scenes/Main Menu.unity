@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 177007993}
   - component: {fileID: 177007992}
   - component: {fileID: 177007991}
+  - component: {fileID: 177007994}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -734,7 +735,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 177007992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 177007994}
+        m_TargetAssemblyTypeName: MainMenuBtn, Assembly-CSharp
+        m_MethodName: ButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &177007992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,6 +786,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177007989}
   m_CullTransparentMesh: 1
+--- !u!114 &177007994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177007989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ff0a724aa68495da7cb6b955a1a1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whichButton: 0
 --- !u!1 &192216939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +1087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &313473535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3707,8 +3733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d0e50454a7e479dac7a00b9cab5f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackImage: {fileID: 0}
-  isTransitioning: 0
+  blackImage: {fileID: 313473536}
+  transitionSpeed: 1
 --- !u!4 &1790921754
 Transform:
   m_ObjectHideFlags: 0
