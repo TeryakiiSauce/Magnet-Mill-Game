@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class MainMenuBtn : MonoBehaviour
 {
-    
-    public Sprite selectedSP;
-    public enum MenuBtn { play};
+    public enum MenuBtn {play, tutorial, instruction, credits, exit};
     public MenuBtn whichButton;
-
-    private Sprite nrmlSP;
-    private SpriteRenderer thisSPR;
 
     void Start()
     {
-        thisSPR = GetComponent<SpriteRenderer>();
-        nrmlSP = thisSPR.sprite;
+
     }
 
     // Update is called once per frame
@@ -24,15 +18,13 @@ public class MainMenuBtn : MonoBehaviour
         
     }
 
-    public void setBlue()
+    public void ButtonClicked()
     {
-        if (thisSPR.sprite != selectedSP) thisSPR.sprite = selectedSP;
-        //print("setBlue Called :)");
+        if (ScenesLoader.instance.IsTransitioning()) return;
+        if(whichButton == MenuBtn.play)
+        {
+            ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0);
+        }
     }
 
-    public void setWhite()
-    {
-        if (thisSPR.sprite != nrmlSP) thisSPR.sprite = nrmlSP;
-        //print("setWhite Called :)");
-    }
 }
