@@ -11,7 +11,7 @@ public class ScenesLoader : MonoBehaviour
     public float transitionSpeed;
     public enum WhichScene { MainMenu, Level0, Level1, Level2, Level3};
     private float copyTransSpeed;
-    private string sceneName;
+    private string sceneName = "Main Menu";
     private enum action { none, show, hide };
     private action currentAction;
     void Awake()
@@ -87,6 +87,18 @@ public class ScenesLoader : MonoBehaviour
     {
         transitionSpeed = transitioningSpeed;
         MoveToScene(sceneName);
+    }
+
+    public void ReloadScene()
+    {
+        blackImage.gameObject.SetActive(true);
+        currentAction = action.show;
+    }
+
+    public void ReloadScene(float transitioningSpeed)
+    {
+        transitionSpeed = transitioningSpeed;
+        ReloadScene();
     }
 
     public bool IsTransitioning()
