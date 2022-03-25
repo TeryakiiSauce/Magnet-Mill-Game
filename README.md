@@ -3,12 +3,12 @@
 A game that is targeted for the *Windows* system. It's genre is: *Puzzle & Sci-Fi.*
 
 ## Instructions for Collaborators Regarding Custom Layouts
->`If you want to save your own layout, make sure to do the following:`
+`If you want to save your own layout, make sure to do the following:`
 1. Adjust your layout to however you want.
 2. Click on *"Window"* >> *"Layouts"* >> *"Save layout to file"*.
 3. Enter a name for your layout *(eg: "teryakii's layout")* & make sure to save it inside the "Custom Layouts" folder.
 
->`To load your saved layout from file:`
+`To load your saved layout from file:`
 1. Simply click on *"Window"* >> *"Layouts"* >> *"Load layout from file"* & select your layout.
 
 ## Game Description
