@@ -81,23 +81,23 @@ public class CubeController : MonoBehaviour
 
         if (onGround)
         {
-            print("g");
+            Debug.Log("g");
             Body.AddForce(0, -9.81f, 0);
         }
         else if (onRoof) 
         {
-            print("roof");
+            Debug.Log("roof");
             Body.AddForce(0, 9.81f, 0);
             
         }
         else if (onRightWall)
         {
-            print("r");
+            Debug.Log("r");
             Body.AddForce(9.81f, 0, 0);
         }
         else if (onLeftWall)
         {
-            print("l");
+            Debug.Log("l");
             Body.AddForce(-9.81f, 0, 0);
         }
     }
