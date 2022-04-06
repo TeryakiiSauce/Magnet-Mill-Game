@@ -151,15 +151,18 @@ public class AudioManager : MonoBehaviour {
     public void MuteAll()
     {
         Muted = true;
-        foreach(Sound s in sounds)
+        PlayerPrefs.SetInt("Muted", 1);
+        foreach (Sound s in sounds)
         {
             s.volume = 0f;
             s.source.volume = 0f;
         }
     }
+
     public void UnMuteAll()
     {
         Muted = false;
+        PlayerPrefs.SetInt("Muted", 0);
         int IND = 0;
         foreach (Sound s in sounds)
         {
@@ -168,5 +171,10 @@ public class AudioManager : MonoBehaviour {
             IND++;
         }
 
+    }
+
+    public bool IsMuted()
+    {
+        return Muted;
     }
 }
