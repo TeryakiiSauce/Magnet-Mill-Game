@@ -16,7 +16,7 @@ public class Instructions : MonoBehaviour
         
     }
 
-    public void HideInstructions()
+    public void HideInstructions()  //this function will be called when the player clicked the instructions to hide them
     {
         MainMenuBtn.BtnClicked = false;
         gameObject.SetActive(false);
