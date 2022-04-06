@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MuteButton : MonoBehaviour
 {
+    public Button fakeButton;
     public Sprite onHighlighted;
     public Sprite offHighlighted;
     public Sprite offSprite;
@@ -43,6 +44,7 @@ public class MuteButton : MonoBehaviour
             AudioManager.instance.MuteAll();
         }
         SetSprite();
+        fakeButton.Select();
     }
 
     private void SetSprite()

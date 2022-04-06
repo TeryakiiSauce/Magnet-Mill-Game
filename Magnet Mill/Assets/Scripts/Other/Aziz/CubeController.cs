@@ -25,10 +25,35 @@ public class CubeController : MonoBehaviour
         
         if (isMoving) return; // to prevent rolling when we are in the middle of a roll
 
-        if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
-        else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
-        else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
-        else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+        
+        if (onGround)
+        {
+            if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
+            else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
+            else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
+            else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+        }
+        else if (onRoof)
+        {
+            if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
+            else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
+            else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
+            else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+        }
+        else if (onRightWall)
+        {
+            if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.down)); // rotate to the left when A clicked
+            else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.up)); // rotate to the right when D clicked
+            else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
+            else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+        }
+        else if (onLeftWall)
+        {
+            if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.up)); // rotate to the left when A clicked
+            else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.down)); // rotate to the right when D clicked
+            else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
+            else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+        }
         if (Input.GetKey(KeyCode.Space)) 
         {
             if (onGround)
@@ -42,7 +67,18 @@ public class CubeController : MonoBehaviour
                 onRoof = false;
 
             }
+            else if (onRightWall)
+            {
+                onRightWall = false;
+                onLeftWall = true;
+            }
+            else if (onLeftWall)
+            {
+                onLeftWall = false;
+                onRightWall = true;
+            }
         }
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -81,23 +117,23 @@ public class CubeController : MonoBehaviour
 
         if (onGround)
         {
-            Debug.Log("g");
+            
             Body.AddForce(0, -9.81f, 0);
         }
         else if (onRoof) 
         {
-            Debug.Log("roof");
+           ;
             Body.AddForce(0, 9.81f, 0);
             
         }
         else if (onRightWall)
         {
-            Debug.Log("r");
+            
             Body.AddForce(9.81f, 0, 0);
         }
         else if (onLeftWall)
         {
-            Debug.Log("l");
+            
             Body.AddForce(-9.81f, 0, 0);
         }
     }
@@ -109,24 +145,28 @@ public class CubeController : MonoBehaviour
         float remainingAngle = 90;
 
         
-            Vector3 rotationCenter = transform.position + direction / 2 + Vector3.down / 2; // direction of the rotation
+            Vector3 rotationCenter = transform.localPosition + direction / 2 + Vector3.down / 2; // direction of the rotation
             Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
          if (onRoof)
         {
-             rotationCenter = transform.position + direction / 2 + Vector3.up / 2; // direction of the rotation
+             rotationCenter = transform.localPosition + direction / 2 + Vector3.up / 2; // direction of the rotation
              rotationAxis = Vector3.Cross(Vector3.down, direction); // compute the rotation access based on the direction and y axis
         }
         else if (onRightWall)
         {
-             rotationCenter = transform.position + direction / 2 + Vector3.down / 2; // direction of the rotation
-             rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
+             rotationCenter = transform.localPosition + direction / 2 + Vector3.right / 2; // direction of the rotation
+             rotationAxis = Vector3.Cross(Vector3.left, direction); // compute the rotation access based on the direction and y axis
         }
         else if (onLeftWall)
         {
-             rotationCenter = transform.position + direction / 2 + Vector3.up / 2; // direction of the rotation
-             rotationAxis = Vector3.Cross(Vector3.down, direction); // compute the rotation access based on the direction and y axis
+             rotationCenter = transform.localPosition + direction / 2 + Vector3.left / 2; // direction of the rotation
+             rotationAxis = Vector3.Cross(Vector3.right, direction); // compute the rotation access based on the direction and y axis
         }
-
+        else if(onGround)
+        {
+            rotationCenter = transform.localPosition + direction / 2 + Vector3.down / 2; // direction of the rotation
+            rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
+        }
 
         while (remainingAngle > 0)
         {

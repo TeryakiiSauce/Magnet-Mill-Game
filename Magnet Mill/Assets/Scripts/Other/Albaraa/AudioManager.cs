@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour {
 
     // Use this for initialization
 	void Awake () {
-        if(instance == null)
+        if(instance == null)    //checking if instance is null or not becuase we only need one instance of this class
         {
             instance = this;
         }
@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);  //this will make the gameobject to move to all scenes not only main menu
         volumes = new float[sounds.Length];
         int IND = 0;
         foreach (Sound s in sounds)
