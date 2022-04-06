@@ -16,7 +16,7 @@ public class Credits : MonoBehaviour
         
     }
 
-    public void CreditsClicked()
+    public void CreditsClicked()    //this function will be called when the credits clicked
     {
         MainMenuBtn.BtnClicked = false;
         transform.parent.gameObject.SetActive(false);

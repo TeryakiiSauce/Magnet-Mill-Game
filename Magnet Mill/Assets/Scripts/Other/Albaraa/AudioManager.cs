@@ -42,10 +42,10 @@ public class AudioManager : MonoBehaviour {
 
     void Start ()
     {
-        ///Play("THEME");
+        
     }
 
-    public void Play (string name)
+    public void Play (string name)  //this function will play any sound by its name, usage: AudioManager.instance.Play("soundName");
     {
         if(Muted)
         {
@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
 
     }
-    public void Stop(string name)
+    public void Stop(string name)   //this function will stop any sound by its name, usage: AudioManager.instance.Stop("soundName"); 
     {
         if (Muted)
         {
@@ -74,8 +74,8 @@ public class AudioManager : MonoBehaviour {
         }
         s.source.Stop();
     }
-    public void AddVolume(string name, float amount)
-    {
+    public void AddVolume(string name, float amount)    //this function will add volume to any sound by its name
+    {                                                       //usage: AudioManager.instance.AddVolume("soundName", 0.5f);
         if (Muted)
         {
             return;
@@ -102,7 +102,7 @@ public class AudioManager : MonoBehaviour {
             s.source.volume += amount;
         }
     }
-    public bool IsVolumeMax(string name)
+    public bool IsVolumeMax(string name)    //used to check the volume of a sound if it is max
     {
         if (Muted)
         {
@@ -120,7 +120,7 @@ public class AudioManager : MonoBehaviour {
         }
         return false;
     }
-    public bool IsPlaying(string name)
+    public bool IsPlaying(string name)  //used to check whether the sound is playing or not
     {
         if (Muted)
         {
@@ -134,7 +134,7 @@ public class AudioManager : MonoBehaviour {
         }
         return s.source.isPlaying;
     }
-    public float GetVolume(string name)
+    public float GetVolume(string name) //get volume of certain sound (between 0 and 1)
     {
         if (Muted)
         {
@@ -148,7 +148,7 @@ public class AudioManager : MonoBehaviour {
         }
         return s.source.volume;
     }
-    public void MuteAll()
+    public void MuteAll()   //used to mute the game
     {
         Muted = true;
         PlayerPrefs.SetInt("Muted", 1);
@@ -159,7 +159,7 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void UnMuteAll()
+    public void UnMuteAll() //used to unmute the game
     {
         Muted = false;
         PlayerPrefs.SetInt("Muted", 0);
