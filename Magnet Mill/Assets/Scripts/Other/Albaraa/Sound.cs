@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Sound {
+public class Sound {    //this class will be used to control sounds in the AudioManager class (each sound will have instance of this class)
 
     public string name;
 
