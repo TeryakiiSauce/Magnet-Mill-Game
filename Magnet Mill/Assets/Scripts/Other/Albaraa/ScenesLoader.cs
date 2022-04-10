@@ -9,14 +9,14 @@ public class ScenesLoader : MonoBehaviour
     public static ScenesLoader instance;
     public Image blackImage;
     public float transitionSpeed;
-    public enum WhichScene { MainMenu, Level0, Level1, Level2, Level3};
+    public enum WhichScene { MainMenu, Level0, Level1, Level2, Level3}; 
     private float copyTransSpeed;
     private string sceneName = "Main Menu";
-    private enum action { none, show, hide };
-    private action currentAction;
+    private enum Action { none, show, hide };
+    private Action currentAction;
     void Awake()
     {
-        if(instance == null)
+        if(instance == null)     //checking if instance is null or not becuase we only need one instance of this class
         {
             instance = this;
         }
@@ -25,42 +25,42 @@ public class ScenesLoader : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);  //this will make the gameobject to move to all scenes not only main menu
         copyTransSpeed = transitionSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentAction == action.show)
+        if(currentAction == Action.show)    //if the action on show, blackscreen background will start showing
         {
             Color tempClr = blackImage.color;
             tempClr.a += Time.deltaTime * transitionSpeed;
             blackImage.color = tempClr;
-            if(blackImage.color.a >= 1f)
+            if(blackImage.color.a >= 1f)    //check if blackscreen fully shown, then move to the next scene and start hiding it
             {
                 SceneManager.LoadScene(sceneName);
-                currentAction = action.hide;
+                currentAction = Action.hide;
             }
         }
-        else if(currentAction == action.hide)
+        else if(currentAction == Action.hide)   //if the action on hide, blackscreen background will start fading
         {
             Color tempClr = blackImage.color;
             tempClr.a -= Time.deltaTime * transitionSpeed;
             blackImage.color = tempClr;
-            if(blackImage.color.a <= 0f)
+            if(blackImage.color.a <= 0f) //checking if the blackscreen is fully hidden then change action to "none" which means finished
             {
-                currentAction = action.none;
+                currentAction = Action.none;
                 blackImage.gameObject.SetActive(false);
                 transitionSpeed = copyTransSpeed;
             }
         }
     }
 
-    public void MoveToScene(WhichScene sceneName)
-    {
+    public void MoveToScene(WhichScene sceneName)   //this function will be called from any script to move to any scene
+    {                                               //usage: ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0);
         blackImage.gameObject.SetActive(true);
-        currentAction = action.show;
+        currentAction = Action.show;
         if(sceneName == WhichScene.MainMenu)
         {
             this.sceneName = "Main Menu";
@@ -83,7 +83,7 @@ public class ScenesLoader : MonoBehaviour
         }
     }
 
-    public void MoveToScene(WhichScene sceneName, float transitioningSpeed)
+    public void MoveToScene(WhichScene sceneName, float transitioningSpeed) //same as the previous function but with this function you can specifiy the speed of transitioning
     {
         transitionSpeed = transitioningSpeed;
         MoveToScene(sceneName);
@@ -92,7 +92,7 @@ public class ScenesLoader : MonoBehaviour
     public void ReloadScene()
     {
         blackImage.gameObject.SetActive(true);
-        currentAction = action.show;
+        currentAction = Action.show;
     }
 
     public void ReloadScene(float transitioningSpeed)
@@ -101,8 +101,8 @@ public class ScenesLoader : MonoBehaviour
         ReloadScene();
     }
 
-    public bool IsTransitioning()
-    {
-        return currentAction != action.none;
+    public bool IsTransitioning()   //this function will be called to check wither the scene is transitioning or not,
+    {                               //can be used to ignore buttons click events when transitioning
+        return currentAction != Action.none;
     }
 }
