@@ -23,7 +23,7 @@ public class MuteButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ScenesLoader.instance.IsTransitioning() && thisBtn.IsInteractable())
+        if(ScenesLoader.instance.IsTransitioning() && thisBtn.IsInteractable()) //disable button while scene is transitioning
         {
             thisBtn.interactable = false;
         }
@@ -33,7 +33,7 @@ public class MuteButton : MonoBehaviour
         }
     }
 
-    public void MuteClicked()
+    public void MuteClicked() //this function will be called when the button clicked
     {
         if(AudioManager.instance.IsMuted())
         {
@@ -44,10 +44,10 @@ public class MuteButton : MonoBehaviour
             AudioManager.instance.MuteAll();
         }
         SetSprite();
-        fakeButton.Select();
+        fakeButton.Select();    //click on the fake button just to reset the click event of the mute button
     }
 
-    private void SetSprite()
+    private void SetSprite()    //this function will switch the sprites of the mute button depeding if the sounds are muted or not
     {
         SpriteState spState = thisBtn.spriteState;
         if (AudioManager.instance.IsMuted())
