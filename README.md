@@ -1,6 +1,6 @@
 # Magnet Mill
 
-A game that is targeted for the *Windows* system. It's genre is: *Puzzle & Sci-Fi.*
+An open-source game that is targeted for the *Windows* operating system. It's genre is: *Puzzle & Sci-Fi.*
 
 ## Instructions for Collaborators Regarding Custom Layouts
 `If you want to save your own layout, make sure to do the following:`
@@ -8,8 +8,22 @@ A game that is targeted for the *Windows* system. It's genre is: *Puzzle & Sci-F
 2. Click on *"Window"* >> *"Layouts"* >> *"Save layout to file"*.
 3. Enter a name for your layout *(eg: "teryakii's layout")* & make sure to save it inside the "Custom Layouts" folder.
 
+    <img src="./Magnet Mill/Assets/Custom Layouts/Instructions Screenshots/1.png" alt="Save Layout to File">
+    <!-- ![Save Layout to File](./Magnet%20Mill/Assets/Custom%20Layouts/Instructions%20Screenshots/1.png) -->
+    
+    ![Custom Layouts Folder Location](./Magnet%20Mill/Assets/Custom%20Layouts/Instructions%20Screenshots/0.png)
+
 `To load your saved layout from file:`
 1. Simply click on *"Window"* >> *"Layouts"* >> *"Load layout from file"* & select your layout.
+
+    ![Load Layout to File](./Magnet%20Mill/Assets/Custom%20Layouts/Instructions%20Screenshots/2.png)
+
+`[Recommended Step] - To save custom layout locally:`
+1. **After** *loading* your custom layout from a file, click on *"Window"* >> *"Layouts"* >> *"Save Layout"*.
+
+    ![Save Layout](./Magnet%20Mill/Assets/Custom%20Layouts/Instructions%20Screenshots/3.png)
+    
+    ![Load Local Layout](./Magnet%20Mill/Assets/Custom%20Layouts/Instructions%20Screenshots/4.png)
 
 #### Important Note: After importing assets from a ".unitypackage" file, make sure to zip the file once finished.
 
