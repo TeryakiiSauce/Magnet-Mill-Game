@@ -5,7 +5,7 @@ An open-source game that is targeted for the *Windows* operating system. It's ge
 <br>
 
 <p align="center">
-    <img src="https://robotmafia.com/wp-content/uploads/2019/05/motocross_saito_1.gif" alt="Animated Pixel Art - Night" width="100%">
+    <img src="./Resources/GIFs/pixel-art-night.gif" alt="Animated Pixel Art - Night" width="100%">
     <br>
     <em><figurecaption>Pixel art by <a href="https://www.artstation.com/artwork/3ooRyo">Motocross Saito</a> [ArtStation]</figurecaption></em>
 </p>
@@ -91,7 +91,7 @@ At the year 2179, scientists were finally able to create an object of a certain 
 <br>
 
 <p align="center">
-    <img src="https://cdna.artstation.com/p/assets/images/images/013/741/422/original/-plant400.gif?1540929121" alt="Animated Pixel Art - Day" width="100%">
+    <img src="./Resources/GIFs/pixel-art-day.gif" alt="Animated Pixel Art - Day" width="100%">
     <br>
     <em><figurecaption>Pixel art by <a href="https://www.artstation.com/artwork/9eeDDy">Motocross Saito</a> [ArtStation]</figurecaption></em>
 </p>
