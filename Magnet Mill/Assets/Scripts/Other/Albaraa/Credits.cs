@@ -18,7 +18,6 @@ public class Credits : MonoBehaviour
 
     public void CreditsClicked()    //this function will be called when the credits clicked
     {
-        print("credits clicked :)");
         MainMenuBtn.BtnClicked = false;
         gameObject.SetActive(false);
     }
