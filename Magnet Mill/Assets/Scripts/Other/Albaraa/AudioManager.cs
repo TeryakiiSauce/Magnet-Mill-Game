@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour {
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-        if (PlayerPrefs.GetInt("Muted") == 1)
+        if (UserData.GetBool("isMuted"))
         {
             MuteAll();
         }
@@ -151,7 +151,7 @@ public class AudioManager : MonoBehaviour {
     public void MuteAll()   //used to mute the game
     {
         Muted = true;
-        PlayerPrefs.SetInt("Muted", 1);
+        UserData.SetBool("isMuted", true);
         foreach (Sound s in sounds)
         {
             s.volume = 0f;
@@ -162,7 +162,7 @@ public class AudioManager : MonoBehaviour {
     public void UnMuteAll() //used to unmute the game
     {
         Muted = false;
-        PlayerPrefs.SetInt("Muted", 0);
+        UserData.SetBool("isMuted", false);
         int IND = 0;
         foreach (Sound s in sounds)
         {
