@@ -151,5 +151,27 @@ public static class UserData
         PlayerPrefs.SetFloat(key, newValue);
     }
 
+
+    //----------------------Other Functions-----------------------
+
+    public static void ResetValue(string key)       //Reset value from local storage.
+    {                                               //Usage: UserData.ResetValue(UserData.finishedTutorial);
+        PlayerPrefs.DeleteKey(key);
+    }
+
+    public static void ResetStatistics()           //Reset all statistics values.
+    {                                              //Usage: UserData.ResetStatistics();
+        PlayerPrefs.DeleteKey(numOfgamesPlayed);
+        PlayerPrefs.DeleteKey(numOfLevelsFinished);
+        PlayerPrefs.DeleteKey(numOfCubeRolled);
+        PlayerPrefs.DeleteKey(numOfTotalScore);
+        PlayerPrefs.DeleteKey(numOfAbilitiesCollected);
+        PlayerPrefs.DeleteKey(numOfAbilitiesUsed);
+        PlayerPrefs.DeleteKey(numOfDeaths);
+        PlayerPrefs.DeleteKey(leastDeaths);
+        PlayerPrefs.DeleteKey(leastCubeMoves);
+        PlayerPrefs.DeleteKey(fastestTime);
+        PlayerPrefs.DeleteKey(totalTimePlayed);
+    }
 }
 
