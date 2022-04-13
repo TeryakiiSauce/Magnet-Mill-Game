@@ -7,7 +7,11 @@ public static class UserData
     public const string userName = "userName"; //string
     private const string isMuted = "isMuted"; //boolean
     public const string finishedTutorial = "finishedTutorial"; //boolean
-    public const string currentLevelNum = "currentLevelNum"; //int
+    public const string finishedLevel1 = "finishedLevel1";    //boolean
+    public const string finishedLevel2 = "finishedLevel2";    //boolean
+    public const string finishedLevel3 = "finishedLevel3";    //boolean
+    public const string finishedLevel4 = "finishedLevel4";    //boolean
+    public const string currentLevel = "currentLevel"; //string
 
 
     //-------------------User statistics Keys-------------------
@@ -19,6 +23,7 @@ public static class UserData
     public const string numOfAbilitiesCollected = "numOfAbilitiesCollected"; //int
     public const string numOfAbilitiesUsed = "numOfAbilitiesUsed"; //int
     public const string numOfDeaths = "numOfDeaths"; //int
+    public const string leastDeaths = "leastDeaths";   //int
     public const string leastCubeMoves = "leastCubeMoves";    //int
     public const string fastestTime = "fastestTime";    //float
     public const string totalTimePlayed = "totalTimePlayed"; //float
