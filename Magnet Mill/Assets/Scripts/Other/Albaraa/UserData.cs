@@ -4,30 +4,32 @@ public static class UserData
 {
     //-------------------General Keys---------------------------
 
-    public static string userName = "userName"; //string
-    private static string isMuted = "isMuted"; //boolean
-    public static string finishedTutorial = "finishedTutorial"; //boolean
-    public static string currentLevelNum = "currentLevelNum"; //int
+    public const string userName = "userName"; //string
+    private const string isMuted = "isMuted"; //boolean
+    public const string finishedTutorial = "finishedTutorial"; //boolean
+    public const string currentLevelNum = "currentLevelNum"; //int
 
 
     //-------------------User statistics Keys-------------------
 
-    public static string numOfgamesPlayed = "numOfgamesPlayed"; //int
-    public static string numOfLevelsFinished = "numOfLevelsFinished"; //int
-    public static string numOfCubeRolled = "numOfCubeRolled"; //int
-    public static string numOfTotalScore = "numOfTotalScore"; //int
-    public static string numOfAbilitiesCollected = "numOfAbilitiesCollected"; //int
-    public static string numOfAbilitiesUsed = "numOfAbilitiesUsed"; //int
-    public static string numOfDeaths = "numOfDeaths"; //int
-    public static string totalTimePlayed = "totalTimePlayed"; //float
+    public const string numOfgamesPlayed = "numOfgamesPlayed"; //int
+    public const string numOfLevelsFinished = "numOfLevelsFinished"; //int
+    public const string numOfCubeRolled = "numOfCubeRolled"; //int
+    public const string numOfTotalScore = "numOfTotalScore"; //int
+    public const string numOfAbilitiesCollected = "numOfAbilitiesCollected"; //int
+    public const string numOfAbilitiesUsed = "numOfAbilitiesUsed"; //int
+    public const string numOfDeaths = "numOfDeaths"; //int
+    public const string leastCubeMoves = "leastCubeMoves";    //int
+    public const string fastestTime = "fastestTime";    //float
+    public const string totalTimePlayed = "totalTimePlayed"; //float
 
 
     //-------------------HighScores of levels keys--------------
 
-    public static string level1HighScore = "level1HighScore"; //int
-    public static string level2HighScore = "level2HighScore"; //int
-    public static string level3HighScore = "level3HighScore"; //int
-    public static string level4HighScore = "level4HighScore"; //int
+    public const string level1HighScore = "level1HighScore"; //int
+    public const string level2HighScore = "level2HighScore"; //int
+    public const string level3HighScore = "level3HighScore"; //int
+    public const string level4HighScore = "level4HighScore"; //int
 
 
     //-------------------------Getters--------------------------
