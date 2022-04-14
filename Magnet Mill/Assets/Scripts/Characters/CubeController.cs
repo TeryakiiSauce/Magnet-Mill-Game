@@ -5,9 +5,9 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
 
-    public int speed = 800;
+    public int speed = 300;
     bool isMoving = false;
-    private Rigidbody Body;
+    private Rigidbody cubeRigidBody;
     private bool onGround = true;
     private bool onRoof = false;
     private bool onRightWall = false;
@@ -16,7 +16,9 @@ public class CubeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       Body = GetComponent<Rigidbody>();
+        // Choose one depending on needs
+        //cubeRigidBody = GetComponent<Rigidbody>();
+        cubeRigidBody = GetComponentInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -118,23 +120,23 @@ public class CubeController : MonoBehaviour
         if (onGround)
         {
             
-            Body.AddForce(0, -9.81f, 0);
+            cubeRigidBody.AddForce(0, -9.81f, 0);
         }
         else if (onRoof) 
         {
            ;
-            Body.AddForce(0, 9.81f, 0);
+            cubeRigidBody.AddForce(0, 9.81f, 0);
             
         }
         else if (onRightWall)
         {
             
-            Body.AddForce(9.81f, 0, 0);
+            cubeRigidBody.AddForce(9.81f, 0, 0);
         }
         else if (onLeftWall)
         {
             
-            Body.AddForce(-9.81f, 0, 0);
+            cubeRigidBody.AddForce(-9.81f, 0, 0);
         }
     }
 

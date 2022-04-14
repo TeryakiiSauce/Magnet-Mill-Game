@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CubeFace
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Horizontal Grids
   - Water
   - UI
-  - 
+  - Vertical Grids
   - 
   - 
   - 
