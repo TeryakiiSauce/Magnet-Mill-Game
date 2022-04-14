@@ -1,16 +1,33 @@
 using System.Collections;
 using UnityEngine;
 
-public class NewPlayerController : MonoBehaviour
+public class UpdatedCubeController : MonoBehaviour
 {
     public float rollSpeed = 3;
     public float pivotPointOffset = 1f;
 
     public static bool isMoving;
+    private Rigidbody rb;
 
-    private void Update()
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    /*private void Update()
     {
         // So that it doesn't interrupt the rotation process
+        if (isMoving) return;
+
+        // On ground
+        if (Input.GetKey(KeyCode.W)) Rotate(Vector3.forward);
+        else if (Input.GetKey(KeyCode.A)) Rotate(Vector3.left);
+        else if (Input.GetKey(KeyCode.S)) Rotate(Vector3.back);
+        else if (Input.GetKey(KeyCode.D)) Rotate(Vector3.right);
+    }*/
+
+    private void FixedUpdate()
+    {
         if (isMoving) return;
 
         // On ground
@@ -36,7 +53,7 @@ public class NewPlayerController : MonoBehaviour
         for (var i = 0; i < 90 / rollSpeed; i++)
         {
             transform.RotateAround(pivotPoint, axis, rollSpeed);
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
 
         isMoving = false;
