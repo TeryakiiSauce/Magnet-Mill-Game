@@ -646,7 +646,6 @@ GameObject:
   - component: {fileID: 918175312999559078}
   - component: {fileID: 3124078521405660012}
   - component: {fileID: 3094805147991264481}
-  - component: {fileID: 4698288196753912537}
   - component: {fileID: 5682109383221752388}
   m_Layer: 0
   m_Name: Little Limos
@@ -733,18 +732,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4698288196753912537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3484106799779445433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08702fa6c3c50e24c82c82813b0c22a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5682109383221752388
 MonoBehaviour:
   m_ObjectHideFlags: 0
