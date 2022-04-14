@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class BasicPlayerController : MonoBehaviour
 {
     public int gridSteps = 2;
     public float movementSpeed = 0.2f;
 
-    private bool isMoving = false;
+    public static bool isMoving = false;
     private Vector3 originalPosition, finalPosition;
 
     // Start is called before the first frame update

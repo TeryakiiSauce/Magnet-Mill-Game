@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 729238435827243451}
   m_Layer: 0
   m_Name: Front Center
-  m_TagString: Untagged
+  m_TagString: CubeFace
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -648,6 +648,7 @@ GameObject:
   - component: {fileID: 3094805147991264481}
   - component: {fileID: 1319894970}
   - component: {fileID: 9005335339895597898}
+  - component: {fileID: 690164107}
   m_Layer: 0
   m_Name: Little Limos
   m_TagString: Untagged
@@ -740,7 +741,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484106799779445433}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdc441b7fe85200489d91b2c9820eb02, type: 3}
   m_Name: 
@@ -754,11 +755,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484106799779445433}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52fd5cdd11107c04f85de15eb943a625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rollSpeed: 5
+--- !u!114 &690164107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484106799779445433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d211d1a3766a9b24cbc9207bac4726f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollSpeed: 3
+  pivotPointOffset: 1
 --- !u!1 &3552381822871334328
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +816,7 @@ GameObject:
   - component: {fileID: 6279194333230778991}
   m_Layer: 0
   m_Name: Back Center
-  m_TagString: Untagged
+  m_TagString: CubeFace
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1095,7 +1111,7 @@ GameObject:
   - component: {fileID: 5314252702024197395}
   m_Layer: 0
   m_Name: Top Center
-  m_TagString: Untagged
+  m_TagString: CubeFace
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1219,7 +1235,7 @@ GameObject:
   - component: {fileID: 5260272744854593942}
   m_Layer: 0
   m_Name: Right Center
-  m_TagString: Untagged
+  m_TagString: CubeFace
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1373,7 +1389,7 @@ GameObject:
   - component: {fileID: 2814755574038251359}
   m_Layer: 0
   m_Name: Left Center
-  m_TagString: Untagged
+  m_TagString: CubeFace
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1527,7 +1543,7 @@ GameObject:
   - component: {fileID: 8012831739440258515}
   m_Layer: 0
   m_Name: Bottom Center
-  m_TagString: Untagged
+  m_TagString: CubeFace
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
