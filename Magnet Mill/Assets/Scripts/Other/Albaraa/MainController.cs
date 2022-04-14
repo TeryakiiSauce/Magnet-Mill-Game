@@ -13,7 +13,7 @@ public class MainController : MonoBehaviour
     private float[] yPositions = {270, 90, -90, -270};  //these variables will be used to place the buttons if the tutorial button is not active
     void Awake()
     {
-        if (instance == null)   //checking if instance is null or not becuase we only need one instance of this class
+        if (instance == null)   //checking if instance is null or not because we only need one instance of this class
         {
             instance = this;    
         }
@@ -30,7 +30,7 @@ public class MainController : MonoBehaviour
             tutorialBtn.SetActive(false);
 
             Vector3 tempPos = playRect.anchoredPosition;    //Repositioning every button by changing the y position to
-            tempPos.y = yPositions[0];                      //maintain the gape of tutorial button, since its deactivated
+            tempPos.y = yPositions[0];                      //maintain the gap of tutorial button, since its deactivated
             playRect.anchoredPosition = tempPos;
 
             tempPos = instructionsRect.anchoredPosition;
