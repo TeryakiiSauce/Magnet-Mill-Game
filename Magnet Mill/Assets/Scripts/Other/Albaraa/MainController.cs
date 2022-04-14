@@ -10,12 +10,12 @@ public class MainController : MonoBehaviour
     public RectTransform instructionsRect;
     public RectTransform creditsRect;
     public RectTransform exitRect;
-    private float[] yPositions = {270, 90, -90, -270};
+    private float[] yPositions = {270, 90, -90, -270};  //these variables will be used to place the buttons if the tutorial button is not active
     void Awake()
     {
-        if (instance == null)
+        if (instance == null)   //checking if instance is null or not becuase we only need one instance of this class
         {
-            instance = this;
+            instance = this;    
         }
         else if (instance != this)
         {
@@ -25,12 +25,12 @@ public class MainController : MonoBehaviour
     }
     void Start()
     {
-        if(!UserData.GetBool(UserData.finishedTutorial))
-        {
+        if(!UserData.GetBool(UserData.finishedTutorial))    //Checking if the user finished the tutorial, if not then deactivate the                                                       
+        {                                                   //tutorial button, because the play button will redirect him to the tutorial
             tutorialBtn.SetActive(false);
 
-            Vector3 tempPos = playRect.anchoredPosition;
-            tempPos.y = yPositions[0];
+            Vector3 tempPos = playRect.anchoredPosition;    //Repositioning every button by changing the y position to
+            tempPos.y = yPositions[0];                      //maintain the gape of tutorial button, since its deactivated
             playRect.anchoredPosition = tempPos;
 
             tempPos = instructionsRect.anchoredPosition;
