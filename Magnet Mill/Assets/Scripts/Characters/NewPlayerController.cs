@@ -3,27 +3,253 @@ using UnityEngine;
 
 public class NewPlayerController : MonoBehaviour
 {
+    public static bool hasHitWall = false;
+
     public float rollSpeed = 3;
     public float pivotPointOffset = 1f;
 
-    public static bool isMoving;
+    private bool isMoving;
 
     private void Update()
     {
-        // So that it doesn't interrupt the rotation process
-        if (isMoving) return;
+        GridSystem.CheckHitWall(); // Automatically does everything and stops the cube from moving if it hits a wall.
 
-        // On ground
-        if (Input.GetKey(KeyCode.W)) Rotate(Vector3.forward);
-        else if (Input.GetKey(KeyCode.A)) Rotate(Vector3.left);
-        else if (Input.GetKey(KeyCode.S)) Rotate(Vector3.back);
-        else if (Input.GetKey(KeyCode.D)) Rotate(Vector3.right);
+        // So that it doesn't interrupt the rotation process
+        if (isMoving || hasHitWall) return;
+
+        if (GridSystem.isHorizontal)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                GridSystem.currentCubePosition.z += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+                {
+                    Rotate(Vector3.forward);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.A))
+            {
+                GridSystem.currentCubePosition.x -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.x >= 0)
+                {
+                    Rotate(Vector3.left);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.x = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.S))
+            {
+                GridSystem.currentCubePosition.z -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z >= 0)
+                {
+                    Rotate(Vector3.back);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.D))
+            {
+                GridSystem.currentCubePosition.x += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.x <= GridSystem.gridsX.Length - 1)
+                {
+                    Rotate(Vector3.right);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.x = GridSystem.gridsX.Length - 1;
+                }
+            }
+        }
+
+        else if (GridSystem.isLeftSide)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                GridSystem.currentCubePosition.z += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+                {
+                    Rotate(Vector3.forward);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.A))
+            {
+                GridSystem.currentCubePosition.y += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.y <= GridSystem.gridsY.Length - 1)
+                {
+                    Rotate(Vector3.up);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.y = GridSystem.gridsY.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.S))
+            {
+                GridSystem.currentCubePosition.z -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z >= 0)
+                {
+                    Rotate(Vector3.back);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.D))
+            {
+                GridSystem.currentCubePosition.y -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.y >= 0)
+                {
+                    Rotate(Vector3.down);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.y = 0;
+                }
+            }
+        }
+
+        else if (!GridSystem.isLeftSide)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                GridSystem.currentCubePosition.z += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+                {
+                    Rotate(Vector3.forward);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.D))
+            {
+                GridSystem.currentCubePosition.y += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.y <= GridSystem.gridsY.Length - 1)
+                {
+                    Rotate(Vector3.up);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.y = GridSystem.gridsY.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.S))
+            {
+                GridSystem.currentCubePosition.z -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z >= 0)
+                {
+                    Rotate(Vector3.back);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.A))
+            {
+                GridSystem.currentCubePosition.y -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.y >= 0)
+                {
+                    Rotate(Vector3.down);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.y = 0;
+                }
+            }
+        }
     }
 
     private void Rotate(Vector3 direction)
     {
-        Vector3 pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
-        Vector3 axis = Vector3.Cross(Vector3.up, direction);
+        Vector3 pivotPoint = new Vector3();
+        Vector3 axis = new Vector3();
+
+        if (GridSystem.isHorizontal)
+        {
+            if (GridSystem.isOnGround)
+            {
+                pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.up, direction);
+            }
+            else
+            {
+                pivotPoint = transform.position + (Vector3.up + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.down, direction);
+            }
+        }
+        else
+        {
+            if (GridSystem.isLeftSide)
+            {
+                pivotPoint = transform.position + (Vector3.left + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.right, direction);
+            }
+            else
+            {
+                pivotPoint = transform.position + (Vector3.right + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.left, direction);
+            }
+        }
 
         StartCoroutine(Roll(pivotPoint, axis));
     }

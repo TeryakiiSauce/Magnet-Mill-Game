@@ -17,8 +17,8 @@ public class CubeController : MonoBehaviour
     void Start()
     {
         // Choose one depending on needs
-        //cubeRigidBody = GetComponent<Rigidbody>();
-        cubeRigidBody = GetComponentInChildren<Rigidbody>();
+        cubeRigidBody = GetComponent<Rigidbody>();
+        //cubeRigidBody = GetComponentInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
