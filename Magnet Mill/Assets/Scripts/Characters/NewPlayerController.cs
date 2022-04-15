@@ -12,32 +12,74 @@ public class NewPlayerController : MonoBehaviour
 
     private void Update()
     {
+        GridSystem.CheckHitWall(); // Automatically does everything and stops the cube from moving if it hits a wall.
+
         // So that it doesn't interrupt the rotation process
         if (isMoving || hasHitWall) return;
 
-        // On ground
+        // On Horizontal Axis
         if (Input.GetKey(KeyCode.W))
         {
             GridSystem.currentCubePosition.z += 1;
-            Rotate(Vector3.forward);
+            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+            // There was a bug that made the cube go beyond the walls
+            if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+            {
+                Rotate(Vector3.forward);
+            }
+            else
+            {
+                GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+            }
         }
 
         else if (Input.GetKey(KeyCode.A))
         {
             GridSystem.currentCubePosition.x -= 1;
-            Rotate(Vector3.left);
+            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+            // There was a bug that made the cube go beyond the walls
+            if (GridSystem.currentCubePosition.x >= 0)
+            {
+                Rotate(Vector3.left);
+            }
+            else
+            {
+                GridSystem.currentCubePosition.x = 0;
+            }
         }
 
         else if (Input.GetKey(KeyCode.S))
         {
             GridSystem.currentCubePosition.z -= 1;
-            Rotate(Vector3.back);
+            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+            // There was a bug that made the cube go beyond the walls
+            if (GridSystem.currentCubePosition.z >= 0)
+            {
+                Rotate(Vector3.back);
+            }
+            else
+            {
+                GridSystem.currentCubePosition.z = 0;
+            }
         }
 
         else if (Input.GetKey(KeyCode.D))
         {
             GridSystem.currentCubePosition.x += 1;
-            Rotate(Vector3.right);
+            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+            // There was a bug that made the cube go beyond the walls
+            if (GridSystem.currentCubePosition.x <= GridSystem.gridsX.Length - 1)
+            {
+                Rotate(Vector3.right);
+            }
+            else
+            {
+                GridSystem.currentCubePosition.x = GridSystem.gridsX.Length - 1;
+            }
         }
     }
 
@@ -46,10 +88,7 @@ public class NewPlayerController : MonoBehaviour
         Vector3 pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
-        GridSystem.CheckHitWall(); // Automatically does everything and stops the cube from moving if it hits a wall.
         StartCoroutine(Roll(pivotPoint, axis));
-
-        Debug.Log("Current position: " + GridSystem.currentCubePosition);
     }
 
     private IEnumerator Roll(Vector3 pivotPoint, Vector3 axis)

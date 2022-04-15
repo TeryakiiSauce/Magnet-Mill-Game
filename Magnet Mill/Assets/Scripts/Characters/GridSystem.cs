@@ -21,11 +21,12 @@ public class GridSystem : MonoBehaviour
     public int totalGridsX = 2, totalGridsY = 2, totalGridsZ = 2; // Default Values
 
     // To create the "invisible" grid.
-    private int[] gridsX = null, gridsY = null, gridsZ = null;
+    public static int[] gridsX = null, gridsY = null, gridsZ = null;
 
     // To store the corners of the level
     private static Dictionary<string, Vector3> cornersDict = new Dictionary<string, Vector3>();
 
+    private static bool isHorizontal = true; // Checks if player is on ground/ roof (horizontal) otherwise it means that the player is on left/right side (vertical)
 
 
     private void Awake()
@@ -33,7 +34,7 @@ public class GridSystem : MonoBehaviour
         currentCubePosition = cubeStartingPosition;
 
         // Return if any of the values are 0 or less since I think it will cause issues.
-        if (/*cubeStartingPosition.x <= 0 || cubeStartingPosition.y <= 0 || cubeStartingPosition.z <= 0 || */ totalGridsX <= 0 || totalGridsY <= 0 || totalGridsZ <= 0) return;
+        if (totalGridsX <= 0 || totalGridsY <= 0 || totalGridsZ <= 0) return;
 
         gridsX = new int[totalGridsX];
         gridsY = new int[totalGridsY];
@@ -58,7 +59,7 @@ public class GridSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("Current position: " + currentCubePosition);
     }
 
 
@@ -69,25 +70,81 @@ public class GridSystem : MonoBehaviour
     public static void CheckHitWall()
     {
         // The Z axis should not be read that's why I did it this way
+
+        // Bottom Left Corner
         if (currentCubePosition.x == cornersDict[Corners.BottomLeftCorner].x && currentCubePosition.y == cornersDict[Corners.BottomLeftCorner].y)
         {
             Debug.Log("Corner hit");
             NewPlayerController.hasHitWall = true;
+
+            // Checks if "Tab" is pressed otherwise let the cube move as it was.
+            if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
+            {
+                isHorizontal = false;
+            }
+
+            // Cube continues as it was before
+            else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                NewPlayerController.hasHitWall = false;
+            }
         }
+
+        // Bottom Right Corner
         else if (currentCubePosition.x == cornersDict[Corners.BottomRightCorner].x && currentCubePosition.y == cornersDict[Corners.BottomRightCorner].y)
         {
             Debug.Log("Corner hit");
             NewPlayerController.hasHitWall = true;
+
+            // Checks if "Tab" is pressed otherwise let the cube move as it was.
+            if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
+            {
+                isHorizontal = false;
+            }
+
+            // Cube continues as it was before
+            else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                NewPlayerController.hasHitWall = false;
+            }
         }
+
+        // Top Left Corner
         else if (currentCubePosition.x == cornersDict[Corners.TopLeftCorner].x && currentCubePosition.y == cornersDict[Corners.TopLeftCorner].y)
         {
             Debug.Log("Corner hit");
             NewPlayerController.hasHitWall = true;
+
+            // Checks if "Tab" is pressed otherwise let the cube move as it was.
+            if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
+            {
+                isHorizontal = false;
+            }
+
+            // Cube continues as it was before
+            else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                NewPlayerController.hasHitWall = false;
+            }
         }
+
+        // Top Right Corner
         else if (currentCubePosition.x == cornersDict[Corners.TopRightCorner].x && currentCubePosition.y == cornersDict[Corners.TopRightCorner].y)
         {
             Debug.Log("Corner hit");
             NewPlayerController.hasHitWall = true;
+
+            // Checks if "Tab" is pressed otherwise let the cube move as it was.
+            if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
+            {
+                isHorizontal = false;
+            }
+
+            // Cube continues as it was before
+            else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                NewPlayerController.hasHitWall = false;
+            }
         }
     }
 }
