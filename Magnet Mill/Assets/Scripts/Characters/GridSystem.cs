@@ -26,7 +26,7 @@ public class GridSystem : MonoBehaviour
     // To store the corners of the level
     private static Dictionary<string, Vector3> cornersDict = new Dictionary<string, Vector3>();
 
-    private static bool isHorizontal = true; // Checks if player is on ground/ roof (horizontal) otherwise it means that the player is on left/right side (vertical)
+    public static bool isHorizontal = true; // Checks if player is on ground/ roof (horizontal) otherwise it means that the player is on left/right side (vertical)
 
 
     private void Awake()
@@ -66,6 +66,7 @@ public class GridSystem : MonoBehaviour
 
     /// <summary>
     /// Checks whether it is possible for the cube to continue rolling or not.
+    /// <para>When wall is hit, the "TAB" key becomes available.</para>
     /// </summary>
     public static void CheckHitWall()
     {
@@ -80,7 +81,14 @@ public class GridSystem : MonoBehaviour
             // Checks if "Tab" is pressed otherwise let the cube move as it was.
             if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
             {
+                Debug.Log("Tab key has been pressed, switching to 'Vertical' mode.");
                 isHorizontal = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Tab) && !isHorizontal)
+            {
+                Debug.Log("Tab key has been pressed, switching to 'Horizontal' mode.");
+                isHorizontal = true;
             }
 
             // Cube continues as it was before
@@ -99,7 +107,14 @@ public class GridSystem : MonoBehaviour
             // Checks if "Tab" is pressed otherwise let the cube move as it was.
             if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
             {
+                Debug.Log("Tab key has been pressed, switching to 'Vertical' mode.");
                 isHorizontal = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Tab) && !isHorizontal)
+            {
+                Debug.Log("Tab key has been pressed, switching to 'Horizontal' mode.");
+                isHorizontal = true;
             }
 
             // Cube continues as it was before
@@ -118,7 +133,14 @@ public class GridSystem : MonoBehaviour
             // Checks if "Tab" is pressed otherwise let the cube move as it was.
             if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
             {
+                Debug.Log("Tab key has been pressed, switching to 'Vertical' mode.");
                 isHorizontal = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Tab) && !isHorizontal)
+            {
+                Debug.Log("Tab key has been pressed, switching to 'Horizontal' mode.");
+                isHorizontal = true;
             }
 
             // Cube continues as it was before
@@ -137,7 +159,14 @@ public class GridSystem : MonoBehaviour
             // Checks if "Tab" is pressed otherwise let the cube move as it was.
             if (Input.GetKeyDown(KeyCode.Tab) && isHorizontal)
             {
+                Debug.Log("Tab key has been pressed, switching to 'Vertical' mode.");
                 isHorizontal = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Tab) && !isHorizontal)
+            {
+                Debug.Log("Tab key has been pressed, switching to 'Horizontal' mode.");
+                isHorizontal = true;
             }
 
             // Cube continues as it was before

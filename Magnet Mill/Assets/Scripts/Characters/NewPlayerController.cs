@@ -18,67 +18,138 @@ public class NewPlayerController : MonoBehaviour
         if (isMoving || hasHitWall) return;
 
         // On Horizontal Axis
-        if (Input.GetKey(KeyCode.W))
+        if (GridSystem.isHorizontal)
         {
-            GridSystem.currentCubePosition.z += 1;
-            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+            if (Input.GetKey(KeyCode.W))
+            {
+                GridSystem.currentCubePosition.z += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
 
-            // There was a bug that made the cube go beyond the walls
-            if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
-            {
-                Rotate(Vector3.forward);
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+                {
+                    Rotate(Vector3.forward);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                }
             }
-            else
+
+            else if (Input.GetKey(KeyCode.A))
             {
-                GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                GridSystem.currentCubePosition.x -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.x >= 0)
+                {
+                    Rotate(Vector3.left);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.x = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.S))
+            {
+                GridSystem.currentCubePosition.z -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z >= 0)
+                {
+                    Rotate(Vector3.back);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.D))
+            {
+                GridSystem.currentCubePosition.x += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.x <= GridSystem.gridsX.Length - 1)
+                {
+                    Rotate(Vector3.right);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.x = GridSystem.gridsX.Length - 1;
+                }
             }
         }
 
-        else if (Input.GetKey(KeyCode.A))
+        // On Vertical Axis
+        else
         {
-            GridSystem.currentCubePosition.x -= 1;
-            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+            if (Input.GetKey(KeyCode.W))
+            {
+                GridSystem.currentCubePosition.z += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
 
-            // There was a bug that made the cube go beyond the walls
-            if (GridSystem.currentCubePosition.x >= 0)
-            {
-                Rotate(Vector3.left);
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+                {
+                    Rotate(Vector3.forward);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                }
             }
-            else
-            {
-                GridSystem.currentCubePosition.x = 0;
-            }
-        }
 
-        else if (Input.GetKey(KeyCode.S))
-        {
-            GridSystem.currentCubePosition.z -= 1;
-            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+            else if (Input.GetKey(KeyCode.A))
+            {
+                GridSystem.currentCubePosition.x -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
 
-            // There was a bug that made the cube go beyond the walls
-            if (GridSystem.currentCubePosition.z >= 0)
-            {
-                Rotate(Vector3.back);
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.x >= 0)
+                {
+                    Rotate(Vector3.left);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.x = 0;
+                }
             }
-            else
-            {
-                GridSystem.currentCubePosition.z = 0;
-            }
-        }
 
-        else if (Input.GetKey(KeyCode.D))
-        {
-            GridSystem.currentCubePosition.x += 1;
-            Debug.Log("Current position: " + GridSystem.currentCubePosition);
+            else if (Input.GetKey(KeyCode.S))
+            {
+                GridSystem.currentCubePosition.z -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
 
-            // There was a bug that made the cube go beyond the walls
-            if (GridSystem.currentCubePosition.x <= GridSystem.gridsX.Length - 1)
-            {
-                Rotate(Vector3.right);
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z >= 0)
+                {
+                    Rotate(Vector3.back);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = 0;
+                }
             }
-            else
+
+            else if (Input.GetKey(KeyCode.D))
             {
-                GridSystem.currentCubePosition.x = GridSystem.gridsX.Length - 1;
+                GridSystem.currentCubePosition.x += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.x <= GridSystem.gridsX.Length - 1)
+                {
+                    Rotate(Vector3.right);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.x = GridSystem.gridsX.Length - 1;
+                }
             }
         }
     }
