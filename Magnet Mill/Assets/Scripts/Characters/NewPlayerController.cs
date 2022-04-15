@@ -17,7 +17,6 @@ public class NewPlayerController : MonoBehaviour
         // So that it doesn't interrupt the rotation process
         if (isMoving || hasHitWall) return;
 
-        // On Horizontal Axis
         if (GridSystem.isHorizontal)
         {
             if (Input.GetKey(KeyCode.W))
@@ -85,7 +84,6 @@ public class NewPlayerController : MonoBehaviour
             }
         }
 
-        // On Vertical Axis
         else
         {
             if (Input.GetKey(KeyCode.W))
@@ -156,8 +154,19 @@ public class NewPlayerController : MonoBehaviour
 
     private void Rotate(Vector3 direction)
     {
-        Vector3 pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
-        Vector3 axis = Vector3.Cross(Vector3.up, direction);
+        Vector3 pivotPoint = new Vector3();
+        Vector3 axis = new Vector3();
+
+        if (GridSystem.isHorizontal)
+        {
+            pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
+            axis = Vector3.Cross(Vector3.up, direction);
+        }
+        else
+        {
+            pivotPoint = transform.position + (Vector3.left + direction) * pivotPointOffset;
+            axis = Vector3.Cross(Vector3.right, direction);
+        }
 
         StartCoroutine(Roll(pivotPoint, axis));
     }
