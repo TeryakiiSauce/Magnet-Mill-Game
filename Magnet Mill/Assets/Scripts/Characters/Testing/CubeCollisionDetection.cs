@@ -14,7 +14,7 @@ public class CubeCollisionDetection : MonoBehaviour
             Debug.Log("Move up!");
             //moveUp = true;
 
-            NewPlayerController.isMoving = true; // Interrupts the rotation of the cube
+            NewPlayerController.hasHitWall = true; // Interrupts the rotation of the cube
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {

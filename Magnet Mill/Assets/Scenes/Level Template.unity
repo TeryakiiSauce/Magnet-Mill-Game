@@ -8499,8 +8499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08702fa6c3c50e24c82c82813b0c22a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHorizontalGrids: 0
-  totalVerticalGrids: 0
+  cubeStartingPosition: {x: 3, y: 0, z: 0}
+  totalGridsX: 8
+  totalGridsY: 8
+  totalGridsZ: 8
 --- !u!4 &1030512063
 Transform:
   m_ObjectHideFlags: 0

@@ -3,21 +3,42 @@ using UnityEngine;
 
 public class NewPlayerController : MonoBehaviour
 {
+    public static bool hasHitWall = false;
+
     public float rollSpeed = 3;
     public float pivotPointOffset = 1f;
 
-    public static bool isMoving;
+    private bool isMoving;
 
     private void Update()
     {
         // So that it doesn't interrupt the rotation process
-        if (isMoving) return;
+        if (isMoving || hasHitWall) return;
 
         // On ground
-        if (Input.GetKey(KeyCode.W)) Rotate(Vector3.forward);
-        else if (Input.GetKey(KeyCode.A)) Rotate(Vector3.left);
-        else if (Input.GetKey(KeyCode.S)) Rotate(Vector3.back);
-        else if (Input.GetKey(KeyCode.D)) Rotate(Vector3.right);
+        if (Input.GetKey(KeyCode.W))
+        {
+            GridSystem.currentCubePosition.z += 1;
+            Rotate(Vector3.forward);
+        }
+
+        else if (Input.GetKey(KeyCode.A))
+        {
+            GridSystem.currentCubePosition.x -= 1;
+            Rotate(Vector3.left);
+        }
+
+        else if (Input.GetKey(KeyCode.S))
+        {
+            GridSystem.currentCubePosition.z -= 1;
+            Rotate(Vector3.back);
+        }
+
+        else if (Input.GetKey(KeyCode.D))
+        {
+            GridSystem.currentCubePosition.x += 1;
+            Rotate(Vector3.right);
+        }
     }
 
     private void Rotate(Vector3 direction)
@@ -25,7 +46,10 @@ public class NewPlayerController : MonoBehaviour
         Vector3 pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
         Vector3 axis = Vector3.Cross(Vector3.up, direction);
 
+        GridSystem.CheckHitWall(); // Automatically does everything and stops the cube from moving if it hits a wall.
         StartCoroutine(Roll(pivotPoint, axis));
+
+        Debug.Log("Current position: " + GridSystem.currentCubePosition);
     }
 
     private IEnumerator Roll(Vector3 pivotPoint, Vector3 axis)
