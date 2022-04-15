@@ -84,7 +84,7 @@ public class NewPlayerController : MonoBehaviour
             }
         }
 
-        else
+        else if (GridSystem.isLeftSide)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -150,6 +150,73 @@ public class NewPlayerController : MonoBehaviour
                 }
             }
         }
+
+        else if (!GridSystem.isLeftSide)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                GridSystem.currentCubePosition.z += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z <= GridSystem.gridsZ.Length - 1)
+                {
+                    Rotate(Vector3.forward);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = GridSystem.gridsZ.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.D))
+            {
+                GridSystem.currentCubePosition.y += 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.y <= GridSystem.gridsY.Length - 1)
+                {
+                    Rotate(Vector3.up);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.y = GridSystem.gridsY.Length - 1;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.S))
+            {
+                GridSystem.currentCubePosition.z -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.z >= 0)
+                {
+                    Rotate(Vector3.back);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.z = 0;
+                }
+            }
+
+            else if (Input.GetKey(KeyCode.A))
+            {
+                GridSystem.currentCubePosition.y -= 1;
+                Debug.Log("Current position: " + GridSystem.currentCubePosition);
+
+                // There was a bug that made the cube go beyond the walls
+                if (GridSystem.currentCubePosition.y >= 0)
+                {
+                    Rotate(Vector3.down);
+                }
+                else
+                {
+                    GridSystem.currentCubePosition.y = 0;
+                }
+            }
+        }
     }
 
     private void Rotate(Vector3 direction)
@@ -159,13 +226,29 @@ public class NewPlayerController : MonoBehaviour
 
         if (GridSystem.isHorizontal)
         {
-            pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
-            axis = Vector3.Cross(Vector3.up, direction);
+            if (GridSystem.isOnGround)
+            {
+                pivotPoint = transform.position + (Vector3.down + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.up, direction);
+            }
+            else
+            {
+                pivotPoint = transform.position + (Vector3.up + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.down, direction);
+            }
         }
         else
         {
-            pivotPoint = transform.position + (Vector3.left + direction) * pivotPointOffset;
-            axis = Vector3.Cross(Vector3.right, direction);
+            if (GridSystem.isLeftSide)
+            {
+                pivotPoint = transform.position + (Vector3.left + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.right, direction);
+            }
+            else
+            {
+                pivotPoint = transform.position + (Vector3.right + direction) * pivotPointOffset;
+                axis = Vector3.Cross(Vector3.left, direction);
+            }
         }
 
         StartCoroutine(Roll(pivotPoint, axis));
