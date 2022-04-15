@@ -994,12 +994,12 @@ GameObject:
   - component: {fileID: 125787209}
   - component: {fileID: 125787212}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera (Cinemachine)
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &125787209
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3454,7 +3454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &391603859
 AudioListener:
   m_ObjectHideFlags: 0
