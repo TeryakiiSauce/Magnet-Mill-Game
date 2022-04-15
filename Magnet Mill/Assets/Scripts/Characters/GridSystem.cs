@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 // This class is just used to get the string values instead of typing them each time & to reduce logical errors
 public static class Corners
@@ -28,6 +29,12 @@ public class GridSystem : MonoBehaviour
 
     public static bool isHorizontal = true; // Checks if player is on ground/ roof (horizontal) otherwise it means that the player is on left/right side (vertical)
 
+    public CinemachineVirtualCamera groundCam;
+    public CinemachineVirtualCamera leftCam;
+
+    public static CinemachineVirtualCamera gCam;
+    public static CinemachineVirtualCamera lCam;
+
 
     private void Awake()
     {
@@ -45,6 +52,9 @@ public class GridSystem : MonoBehaviour
         cornersDict.Add(Corners.BottomRightCorner, new Vector3(gridsX.Length - 1, 0, -1)); // gridsX.Length - 1 >>> Gets last index
         cornersDict.Add(Corners.TopLeftCorner, new Vector3(1, gridsY.Length - 1, -1));
         cornersDict.Add(Corners.TopRightCorner, new Vector3(gridsX.Length - 1, gridsY.Length - 1, -1));
+
+        gCam = groundCam;
+        lCam = leftCam;
     }
 
     // Start is called before the first frame update
@@ -83,12 +93,18 @@ public class GridSystem : MonoBehaviour
             {
                 Debug.Log("Tab key has been pressed, switching to 'Vertical' mode.");
                 isHorizontal = false;
+
+                gCam.Priority = 0;
+                lCam.Priority = 1;
             }
 
             else if (Input.GetKeyDown(KeyCode.Tab) && !isHorizontal)
             {
                 Debug.Log("Tab key has been pressed, switching to 'Horizontal' mode.");
                 isHorizontal = true;
+
+                gCam.Priority = 1;
+                lCam.Priority = 0;
             }
 
             // Cube continues as it was before

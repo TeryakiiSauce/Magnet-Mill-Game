@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d211d1a3766a9b24cbc9207bac4726f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 3
+  rollSpeed: 6
   pivotPointOffset: 1
 --- !u!1 &3552381822871334328
 GameObject:

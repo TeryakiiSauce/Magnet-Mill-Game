@@ -104,17 +104,17 @@ public class NewPlayerController : MonoBehaviour
 
             else if (Input.GetKey(KeyCode.A))
             {
-                GridSystem.currentCubePosition.x -= 1;
+                GridSystem.currentCubePosition.y += 1;
                 Debug.Log("Current position: " + GridSystem.currentCubePosition);
 
                 // There was a bug that made the cube go beyond the walls
-                if (GridSystem.currentCubePosition.x >= 0)
+                if (GridSystem.currentCubePosition.y <= GridSystem.gridsY.Length - 1)
                 {
-                    Rotate(Vector3.left);
+                    Rotate(Vector3.up);
                 }
                 else
                 {
-                    GridSystem.currentCubePosition.x = 0;
+                    GridSystem.currentCubePosition.y = GridSystem.gridsY.Length - 1;
                 }
             }
 
@@ -136,17 +136,17 @@ public class NewPlayerController : MonoBehaviour
 
             else if (Input.GetKey(KeyCode.D))
             {
-                GridSystem.currentCubePosition.x += 1;
+                GridSystem.currentCubePosition.y -= 1;
                 Debug.Log("Current position: " + GridSystem.currentCubePosition);
 
                 // There was a bug that made the cube go beyond the walls
-                if (GridSystem.currentCubePosition.x <= GridSystem.gridsX.Length - 1)
+                if (GridSystem.currentCubePosition.y >= 0)
                 {
-                    Rotate(Vector3.right);
+                    Rotate(Vector3.down);
                 }
                 else
                 {
-                    GridSystem.currentCubePosition.x = GridSystem.gridsX.Length - 1;
+                    GridSystem.currentCubePosition.y = 0;
                 }
             }
         }
