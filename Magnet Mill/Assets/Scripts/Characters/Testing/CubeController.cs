@@ -12,6 +12,7 @@ public class CubeController : MonoBehaviour
     private bool onRoof = false;
     private bool onRightWall = false;
     private bool onLeftWall = false;
+    private bool flipinggravity = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +26,9 @@ public class CubeController : MonoBehaviour
     void Update()
     {
         
-        if (isMoving) return; // to prevent rolling when we are in the middle of a roll
+        if (isMoving || flipinggravity) return; // to prevent rolling when we are in the middle of a roll or when clicking space
 
-        
+        //if statment to check which platform the cube is sitting on 
         if (onGround)
         {
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
@@ -56,34 +57,41 @@ public class CubeController : MonoBehaviour
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
         }
+
+        //if the user presses space 
         if (Input.GetKey(KeyCode.Space)) 
         {
+            flipinggravity = true;
+            //flip from ground to roof
             if (onGround)
             {
                 onGround = false;
                 onRoof = true;
             }
+            //flip from roof to ground 
             else if (onRoof)
             {
                 onGround = true;
                 onRoof = false;
-
             }
+            //flip from right to left
             else if (onRightWall)
             {
                 onRightWall = false;
                 onLeftWall = true;
             }
+            //flip from left to right 
             else if (onLeftWall)
             {
                 onLeftWall = false;
                 onRightWall = true;
             }
         }
-
     }
     private void OnTriggerEnter(Collider other)
     {
+        //disabling movment for the user 
+        flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
         {
@@ -116,39 +124,24 @@ public class CubeController : MonoBehaviour
     }
     void FixedUpdate()
     {
-
-        if (onGround)
-        {
-            
-            cubeRigidBody.AddForce(0, -9.81f, 0);
-        }
-        else if (onRoof) 
-        {
-           ;
-            cubeRigidBody.AddForce(0, 9.81f, 0);
-            
-        }
-        else if (onRightWall)
-        {
-            
-            cubeRigidBody.AddForce(9.81f, 0, 0);
-        }
-        else if (onLeftWall)
-        {
-            
-            cubeRigidBody.AddForce(-9.81f, 0, 0);
-        }
+        //if statment that changes the force(gravity) depending on where the cube is touching 
+        if (onGround) { cubeRigidBody.AddForce(0, -9.81f, 0); }
+        else if (onRoof) { cubeRigidBody.AddForce(0, 9.81f, 0); }
+        else if (onRightWall) { cubeRigidBody.AddForce(9.81f, 0, 0); }
+        else if (onLeftWall) { cubeRigidBody.AddForce(-9.81f, 0, 0); }
     }
 
     IEnumerator Roll(Vector3 direction)
     {
+        //disabling movment for the user 
         isMoving = true;
-
+        //seting the angle of rotation 
         float remainingAngle = 90;
-
-        
+        //default values for the user 
             Vector3 rotationCenter = transform.localPosition + direction / 2 + Vector3.down / 2; // direction of the rotation
             Vector3 rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
+
+        //if statment that changes the axes and the rotation depneing on which wall is the cube touching 
          if (onRoof)
         {
              rotationCenter = transform.localPosition + direction / 2 + Vector3.up / 2; // direction of the rotation
@@ -179,7 +172,7 @@ public class CubeController : MonoBehaviour
             remainingAngle -= rotatingAngle;
             yield return null;
         }
-
+        //ebnabling the use to move again 
         isMoving = false;
     }
 }
