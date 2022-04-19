@@ -770,8 +770,11 @@ GameObject:
   - component: {fileID: 4256420618877018115}
   - component: {fileID: 918175312999559078}
   - component: {fileID: 3124078521405660012}
+  - component: {fileID: 355910950}
   - component: {fileID: 3094805147991264481}
+  - component: {fileID: 355910952}
   - component: {fileID: 5682109383221752388}
+  - component: {fileID: 355910946}
   m_Layer: 0
   m_Name: Little Limos
   m_TagString: Untagged
@@ -788,7 +791,7 @@ Transform:
   m_GameObject: {fileID: 3484106799779445433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 642065688536474679}
   - {fileID: 7539771405358824509}
@@ -848,6 +851,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &355910950
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484106799779445433}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!65 &3094805147991264481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -857,6 +876,19 @@ BoxCollider:
   m_GameObject: {fileID: 3484106799779445433}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &355910952
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484106799779445433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
@@ -868,13 +900,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484106799779445433}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d211d1a3766a9b24cbc9207bac4726f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 3
-  pivotPointOffset: 1
+  rollSpeed: 6
+  pivotPointOffset: 0.5
+--- !u!114 &355910946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484106799779445433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf568106bb2a44d4a082eddfaa294ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 300
 --- !u!1 &3491010945075026865
 GameObject:
   m_ObjectHideFlags: 0
