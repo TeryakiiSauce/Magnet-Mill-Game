@@ -9,7 +9,7 @@ public class ScenesLoader : MonoBehaviour
     public static ScenesLoader instance;
     public Image blackImage;
     public float transitionSpeed;
-    public enum WhichScene { MainMenu, Level0, Level1, Level2, Level3}; 
+    public enum WhichScene {MainMenu, Level0, Level1, Level2, Level3, Level4}; 
     private float copyTransSpeed;
     private string sceneName = "Main Menu";
     private enum Action { none, show, hide };
@@ -80,6 +80,10 @@ public class ScenesLoader : MonoBehaviour
         else if (sceneName == WhichScene.Level3)
         {
             this.sceneName = "Level3";
+        }
+        else if (sceneName == WhichScene.Level4)
+        {
+            this.sceneName = "Level4";
         }
     }
 
