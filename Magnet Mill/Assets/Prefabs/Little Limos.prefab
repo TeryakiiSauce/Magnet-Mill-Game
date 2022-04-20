@@ -739,6 +739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6728333564460179018}
   - component: {fileID: 6803929629606581552}
+  - component: {fileID: 1386757778401932719}
   m_Layer: 0
   m_Name: FoodHolder
   m_TagString: Untagged
@@ -771,6 +772,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e7e27202aa55c948bef6579c9efa81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+--- !u!114 &1386757778401932719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458617318643349486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e98a50e457734179b73d4abf0ce8eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3459819046664217400
@@ -1360,6 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7e27202aa55c948bef6579c9efa81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
 --- !u!1 &4248758828260608723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8208869567098235664}
-  - component: {fileID: 2500538281492652797}
+  - component: {fileID: 3593744530839552286}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -1393,7 +1408,7 @@ Transform:
   m_Father: {fileID: 4256420618877018115}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2500538281492652797
+--- !u!114 &3593744530839552286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1402,7 +1417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4248758828260608723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e7e27202aa55c948bef6579c9efa81c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e98a50e457734179b73d4abf0ce8eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4361831602579754818

@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public int deathCount;
     [HideInInspector] public int abilitesUsedCount;
     public string currentLevel;
+    public GameObject Cube;
     void Awake()
     {
         if (instance == null)
