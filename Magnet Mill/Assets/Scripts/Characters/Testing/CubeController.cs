@@ -13,6 +13,7 @@ public class CubeController : MonoBehaviour
     private bool onRightWall = false;
     private bool onLeftWall = false;
     private bool flipinggravity = false;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +23,14 @@ public class CubeController : MonoBehaviour
         //cubeRigidBody = GetComponentInChildren<Rigidbody>();
     }
 
+   
     // Update is called once per frame
     void Update()
     {
         
-        if (isMoving || flipinggravity) return; // to prevent rolling when we are in the middle of a roll or when clicking space
 
+        if (isMoving || flipinggravity) return; // to prevent rolling when we are in the middle of a roll or when clicking space
+        
         //if statment to check which platform the cube is sitting on 
         if (onGround)
         {
@@ -86,11 +89,10 @@ public class CubeController : MonoBehaviour
                 onLeftWall = false;
                 onRightWall = true;
             }
-        }
+        }  
     }
     private void OnTriggerEnter(Collider other)
     {
-        //disabling movment for the user 
         flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
@@ -172,7 +174,37 @@ public class CubeController : MonoBehaviour
             remainingAngle -= rotatingAngle;
             yield return null;
         }
+
+        if (remainingAngle < 5) 
+        {
+            snapToGrid();
+        }
         //ebnabling the use to move again 
         isMoving = false;
+    }
+
+    //method to snap the cube to the grid
+    private void snapToGrid() 
+    {
+        //checks if the cube is on the y axis walls or the x axis walls and snaps accordingly 
+        if (onGround || onRoof) 
+        {
+            var position = new Vector3(
+            Mathf.RoundToInt(transform.position.x),
+            transform.position.y,
+            Mathf.RoundToInt(transform.position.z)
+            );
+            this.transform.position = position;
+        }
+
+        if (onRightWall || onLeftWall)
+        {
+            var position = new Vector3(
+            transform.position.x,
+            Mathf.RoundToInt(transform.position.y),
+            Mathf.RoundToInt(transform.position.z)
+            );
+            this.transform.position = position;
+        }
     }
 }
