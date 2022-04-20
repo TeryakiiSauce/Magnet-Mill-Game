@@ -89,7 +89,7 @@ public class GridSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current position: " + currentCubePosition);
+       // Debug.Log("Current position: " + currentCubePosition);
 
         if (isHorizontal && isOnGround)
         {
