@@ -93,6 +93,7 @@ public class CubeController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        
         flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
@@ -174,13 +175,13 @@ public class CubeController : MonoBehaviour
             remainingAngle -= rotatingAngle;
             yield return null;
         }
-
+        isMoving = false;
         if (remainingAngle < 5) 
         {
             snapToGrid();
         }
         //ebnabling the use to move again 
-        isMoving = false;
+        
     }
 
     //method to snap the cube to the grid
