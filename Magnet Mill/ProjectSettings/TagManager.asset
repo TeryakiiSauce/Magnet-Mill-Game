@@ -5,11 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - CubeFace
-  - Roof
-  - Right wall
-  - Ground
-  - Left wall
-  - outOfBound
   layers:
   - Default
   - TransparentFX
