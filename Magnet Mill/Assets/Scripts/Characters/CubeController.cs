@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CubeController : MonoBehaviour
 {
@@ -13,17 +14,13 @@ public class CubeController : MonoBehaviour
     private bool onRightWall = false;
     private bool onLeftWall = false;
     private bool flipinggravity = false;
-<<<<<<< Updated upstream
- 
-=======
     private bool outOfBounds = false;
+
     // For the camera transitions
     public CinemachineVirtualCamera groundCam;
     public CinemachineVirtualCamera rightCam;
     public CinemachineVirtualCamera topCam;
     public CinemachineVirtualCamera leftCam;
-
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
