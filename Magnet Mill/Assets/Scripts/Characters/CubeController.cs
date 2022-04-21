@@ -13,7 +13,17 @@ public class CubeController : MonoBehaviour
     private bool onRightWall = false;
     private bool onLeftWall = false;
     private bool flipinggravity = false;
+<<<<<<< Updated upstream
  
+=======
+    private bool outOfBounds = false;
+    // For the camera transitions
+    public CinemachineVirtualCamera groundCam;
+    public CinemachineVirtualCamera rightCam;
+    public CinemachineVirtualCamera topCam;
+    public CinemachineVirtualCamera leftCam;
+
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
@@ -103,7 +113,7 @@ public class CubeController : MonoBehaviour
             onRightWall = true;
             onLeftWall = false;
         }
-        else if(other.tag == "Left wall")
+        else if (other.tag == "Left wall")
         {
             onGround = false;
             onRoof = false;
@@ -123,6 +133,10 @@ public class CubeController : MonoBehaviour
             onRoof = false;
             onRightWall = false;
             onLeftWall = false;
+        }
+        else if (other.tag == "outOfBound") 
+        {
+            outOfBounds = true;
         }
     }
     void FixedUpdate()
