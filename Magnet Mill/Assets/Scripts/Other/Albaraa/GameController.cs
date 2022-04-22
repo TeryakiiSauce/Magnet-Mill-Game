@@ -14,8 +14,10 @@ public class GameController : MonoBehaviour
     [HideInInspector] public float levelTimer;
     [HideInInspector] public int deathCount;
     [HideInInspector] public int abilitesUsedCount;
+    //public bool isOutOffMap;
     public string currentLevel;
-    public GameObject Cube;
+    public GameObject cube;
+    [SerializeField] private Vector3 currentCheckPoint;
     void Awake()
     {
         if (instance == null)
@@ -37,5 +39,17 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void SetCheckPoint(GameObject gridObj)
+    {
+        currentCheckPoint = new Vector3(gridObj.transform.position.x,
+            gridObj.transform.localPosition.y + 0.5f, gridObj.transform.position.z);
+    }
+
+    public void OutOffMap()
+    {
+        cube.transform.position = currentCheckPoint;
+        CubeController.outOfBounds = false;
     }
 }
