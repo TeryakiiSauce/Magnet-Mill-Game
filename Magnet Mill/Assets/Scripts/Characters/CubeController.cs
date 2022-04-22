@@ -14,7 +14,8 @@ public class CubeController : MonoBehaviour
     private bool onRightWall = false;
     private bool onLeftWall = false;
     private bool flipinggravity = false;
-
+    private bool outOfBounds = false;
+    
     // For the camera transitions
     public CinemachineVirtualCamera groundCam;
     public CinemachineVirtualCamera rightCam;
@@ -36,7 +37,7 @@ public class CubeController : MonoBehaviour
     {
         
 
-        if (isMoving || flipinggravity) return; // to prevent rolling when we are in the middle of a roll or when clicking space
+        if (isMoving || flipinggravity || outOfBounds) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         
         //if statment to check which platform the cube is sitting on 
         if (onGround)
@@ -134,7 +135,7 @@ public class CubeController : MonoBehaviour
             onRightWall = true;
             onLeftWall = false;
         }
-        else if(other.tag == "Left wall")
+        else if (other.tag == "Left wall")
         {
             onGround = false;
             onRoof = false;
@@ -154,6 +155,10 @@ public class CubeController : MonoBehaviour
             onRoof = false;
             onRightWall = false;
             onLeftWall = false;
+        }
+        else if (other.tag == "outOfBound") 
+        {
+            outOfBounds = true;
         }
     }
     void FixedUpdate()
