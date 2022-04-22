@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CubeFace
+  - Roof
+  - Right wall
+  - Ground
+  - Left wall
+  - Quick Cam View
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class CubeController : MonoBehaviour
     private bool onLeftWall = false;
     private bool flipinggravity = false;
     private bool outOfBounds = false;
+    
     // For the camera transitions
     public CinemachineVirtualCamera groundCam;
     public CinemachineVirtualCamera rightCam;
