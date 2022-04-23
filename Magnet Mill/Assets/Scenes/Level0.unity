@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 8886751927032734161, guid: bc761e7e832b3244ab16a5e13f6ec12b, type: 3}
       propertyPath: pauseMenu
       value: 
-      objectReference: {fileID: 1940227531}
+      objectReference: {fileID: 5481040019476081671, guid: b444efac2c39ea24bad5893477f6c7ff, type: 3}
     - target: {fileID: 8886751927032734162, guid: bc761e7e832b3244ab16a5e13f6ec12b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -33890,11 +33890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 5.1799038e-15
+      value: 1.6271901e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 7.130392e-16
+      value: 2.6894993e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
