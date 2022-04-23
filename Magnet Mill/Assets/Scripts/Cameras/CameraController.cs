@@ -38,6 +38,9 @@ public class CameraController : MonoBehaviour
         // Maintain original camera offset
         originalOffsetTopCam = quickTopCam.GetComponent<CinemachineTransposer>();
         originalOffsetBottomCam = quickBottomCam.GetComponent<CinemachineTransposer>();
+
+        newOffsetTopCam = groundFocus.GetComponent<CinemachineTransposer>();
+        newOffsetBottomCam = quickBottomCam.GetComponent<CinemachineTransposer>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,8 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             //quickTopCam.Priority = 12;
+
+            print(newOffsetTopCam);
 
             quickBottomCam.LookAt = topFocus.transform;
             quickRightCam.LookAt = topFocus.transform;
