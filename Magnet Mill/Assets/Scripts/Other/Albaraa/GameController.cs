@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     public string currentLevel;
     public GameObject cube;
     [SerializeField] private Vector3 currentCheckPoint;
+    [SerializeField] private enum CheckPointDirection { Ground, Right, Left, Roof};
+    [SerializeField] private CheckPointDirection checkPointCurrentDirection;
     void Awake()
     {
         if (instance == null)
@@ -41,14 +43,33 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void SetCheckPoint(GameObject gridObj)
+    public void SetCheckPoint(string gridTag)
     {
-        currentCheckPoint = new Vector3(gridObj.transform.position.x,
-            gridObj.transform.localPosition.y + 0.5f, gridObj.transform.position.z);
+        if (gridTag == "Ground")
+        {
+            checkPointCurrentDirection = CheckPointDirection.Ground;
+            currentCheckPoint = new Vector3(cube.transform.position.x,
+                cube.transform.position.y + 0.5f, cube.transform.position.z);
+        }
+        else if(gridTag == "Right wall")
+        {
+            checkPointCurrentDirection = CheckPointDirection.Right;
+            currentCheckPoint = new Vector3(cube.transform.position.x - 1f,
+                cube.transform.position.y, cube.transform.position.z);
+        }
     }
 
     public void OutOffMap()
     {
+        CubeController cubeCont = cube.GetComponent<CubeController>();
+        if(checkPointCurrentDirection == CheckPointDirection.Ground)
+        {
+            cubeCont.SetGroundDirection();
+        }
+        else if(checkPointCurrentDirection == CheckPointDirection.Right)
+        {
+            cubeCont.SetRightDirection();
+        }
         cube.transform.position = currentCheckPoint;
         CubeController.outOfBounds = false;
     }

@@ -19,7 +19,6 @@ public class TeleporterCheckpoint : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag != "PlayerCube") return;
-        print("Player is out of map !!!");
         GameController.instance.OutOffMap();
     }
 }
