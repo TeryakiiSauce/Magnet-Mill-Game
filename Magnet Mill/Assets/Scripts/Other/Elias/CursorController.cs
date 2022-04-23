@@ -27,9 +27,17 @@ public class CursorController : MonoBehaviour
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Locked; // locks the cursor to the middle
-                Cursor.visible = false;
-                return;
+                if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftControl))
+                {
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.Locked; // locks the cursor to the middle
+                    Cursor.visible = false;
+                    return;
+                }
             }
         } 
         else

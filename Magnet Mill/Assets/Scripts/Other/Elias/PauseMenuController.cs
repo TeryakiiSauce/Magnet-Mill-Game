@@ -25,7 +25,8 @@ public class PauseMenuController : MonoBehaviour
             pauseMenu.gameObject.SetActive(true);
             isMenuOpened = true;
             Time.timeScale = 0;
-        } else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && pauseMenu.isActiveAndEnabled)
+        }
+        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && pauseMenu.isActiveAndEnabled)
         {
             //print("menu closed");
             pauseMenu.gameObject.SetActive(false);
