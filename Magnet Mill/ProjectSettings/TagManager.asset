@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Left wall
   - Quick Cam View
+  - outOfBound
+  - PlayerCube
   layers:
   - Default
   - TransparentFX
