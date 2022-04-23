@@ -244,4 +244,19 @@ public class CubeController : MonoBehaviour
             this.transform.position = position;
         }
     }
+    public void SetGroundDirection()
+    {
+        onGround = true;
+        onRoof = false;
+        onRightWall = false;
+        onLeftWall = false;
+    }
+
+    public void SetRightDirection()
+    {
+        onGround = false;
+        onRoof = false;
+        onRightWall = true;
+        onLeftWall = false;
+    }
 }
