@@ -19,7 +19,7 @@ public class CheckPointGrid : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (isChecked || other.tag != "PlayerCube") return;
-        GameController.instance.SetCheckPoint(gameObject);
+        GameController.instance.SetCheckPoint(gameObject.tag);
         isChecked = true;
     }
 }
