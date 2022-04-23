@@ -12,6 +12,7 @@ TagManager:
   - Quick Cam View
   - outOfBound
   - PlayerCube
+  - Menu
   layers:
   - Default
   - TransparentFX
