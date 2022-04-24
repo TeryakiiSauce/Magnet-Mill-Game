@@ -5,16 +5,31 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    private GameObject[] quickCameras;
+    /*
+     * private GameObject[] quickCameras;
     private CinemachineVirtualCamera quickTopCam, quickBottomCam, quickRightCam, quickLeftCam; // For the virtual cameras to be assigned from the array "quickCameras"
     private CinemachineTransposer originalOffsetTopCam, originalOffsetBottomCam, originalOffsetRightCam, originalOffsetLeftCam; // To maintain original cameras' offsets
     private CinemachineTransposer newOffsetTopCam, newOffsetBottomCam, newOffsetRightCam, newOffsetLeftCam; // To store new cameras' offsets
-    public GameObject mainFocus, groundFocus, topFocus, rightFocus, leftFocus; // For the quick virtual cameras aiming
+    */
+
+    public CinemachineVirtualCamera groundCam;
+    public CinemachineVirtualCamera rightCam;
+    public CinemachineVirtualCamera topCam;
+    public CinemachineVirtualCamera leftCam;
+
+    public CinemachineVirtualCamera lookUpCam;
+    public CinemachineVirtualCamera lookLeftCam;
+    public CinemachineVirtualCamera lookDownCam;
+    public CinemachineVirtualCamera lookRightCam;
+
+    //public GameObject mainFocusPoint, groundFocusPoint, topFocusPoint, rightFocusPoint, leftFocusPoint; // For the quick virtual cameras aiming
+
+    //public GameObject mainFocus, groundFocus, topFocus, rightFocus, leftFocus; // For the quick virtual cameras aiming
 
     // Start is called before the first frame update
     void Start()
     {
-        quickCameras = GameObject.FindGameObjectsWithTag("Quick Cam View");
+        /*quickCameras = GameObject.FindGameObjectsWithTag("Quick Cam View");
         
         // Assign the virtual cameras found from the array to their respective variables. The order is based on Unity's Hierarchy panel (left panel by default).
         quickBottomCam = quickCameras[0].GetComponent<CinemachineVirtualCamera>();
@@ -22,12 +37,11 @@ public class CameraController : MonoBehaviour
         quickTopCam = quickCameras[2].GetComponent<CinemachineVirtualCamera>();
         quickLeftCam = quickCameras[3].GetComponent<CinemachineVirtualCamera>();
 
-        /* Testing
+        Testing
         Debug.Log(quickBottomCam);
         Debug.Log(quickRightCam);
         Debug.Log(quickTopCam);
         Debug.Log(quickLeftCam);
-        */
 
         // Default LookAt value for the quick camera -> i.e. they should face the cube by default
         quickBottomCam.LookAt = mainFocus.transform;
@@ -40,7 +54,9 @@ public class CameraController : MonoBehaviour
         originalOffsetBottomCam = quickBottomCam.GetComponent<CinemachineTransposer>();
 
         newOffsetTopCam = groundFocus.GetComponent<CinemachineTransposer>();
-        newOffsetBottomCam = quickBottomCam.GetComponent<CinemachineTransposer>();
+        newOffsetBottomCam = quickBottomCam.GetComponent<CinemachineTransposer>();*/
+
+        //quickTopCam.LookAt = mainFocusPoint.transform;
     }
 
     // Update is called once per frame
@@ -48,23 +64,29 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            //quickTopCam.Priority = 12;
+            //quickTopCam.LookAt = topFocusPoint.transform;
 
-            print(newOffsetTopCam);
+            lookDownCam.Priority = 12;
+            groundCam.Priority = 11;
 
-            quickBottomCam.LookAt = topFocus.transform;
+            /*quickBottomCam.LookAt = topFocus.transform;
             quickRightCam.LookAt = topFocus.transform;
             quickLeftCam.LookAt = topFocus.transform;
-            quickTopCam.LookAt = topFocus.transform;
+            quickTopCam.LookAt = topFocus.transform;*/
         }
         else
         {
-            //quickTopCam.Priority = 10;
+            //quickTopCam.LookAt = mainFocusPoint.transform;
 
-            quickBottomCam.LookAt = mainFocus.transform;
+            groundCam.Priority = 11;
+            lookDownCam.Priority = 10;
+
+            /*quickBottomCam.LookAt = mainFocus.transform;
             quickRightCam.LookAt = mainFocus.transform;
             quickLeftCam.LookAt = mainFocus.transform;
-            quickTopCam.LookAt = mainFocus.transform;
+            quickTopCam.LookAt = mainFocus.transform;*/
         }
     }
+
+
 }
