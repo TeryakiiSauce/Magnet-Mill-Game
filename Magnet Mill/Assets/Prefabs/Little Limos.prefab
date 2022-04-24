@@ -898,6 +898,7 @@ GameObject:
   - component: {fileID: 355910952}
   - component: {fileID: 5682109383221752388}
   - component: {fileID: 355910946}
+  - component: {fileID: 3429717759446780474}
   m_Layer: 0
   m_Name: Little Limos
   m_TagString: Untagged
@@ -1048,6 +1049,18 @@ MonoBehaviour:
   rightCam: {fileID: 0}
   topCam: {fileID: 0}
   leftCam: {fileID: 0}
+--- !u!114 &3429717759446780474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484106799779445433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0667b4b2ca65a4543a2f5d09e1b67593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3491010945075026865
 GameObject:
   m_ObjectHideFlags: 0
