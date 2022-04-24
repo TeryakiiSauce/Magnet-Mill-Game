@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     //public bool isOutOffMap;
     public string currentLevel;
     public GameObject cube;
+    public Material checkPointOnMaterial;
     [SerializeField] private Vector3 currentCheckPoint;
     [SerializeField] private enum CheckPointDirection { Ground, Right, Left, Roof};
     [SerializeField] private CheckPointDirection checkPointCurrentDirection;
