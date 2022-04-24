@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 6965062620596796170}
     - target: {fileID: 1111123144532307874, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_Priority
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307874, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_Lens.FieldOfView
@@ -562,8 +562,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125014227956401947}
-  m_LocalRotation: {x: -0.70090926, y: -0, z: 0, w: 0.7132505}
-  m_LocalPosition: {x: -0.0039999485, y: -2.509912, z: 21.987001}
+  m_LocalRotation: {x: 0.12218327, y: -0.000000017077465, z: 0.0000000021023319, w: 0.9925076}
+  m_LocalPosition: {x: -0.0039999485, y: -1.509912, z: 13.987001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1125014228378412895}
@@ -594,7 +594,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 24
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

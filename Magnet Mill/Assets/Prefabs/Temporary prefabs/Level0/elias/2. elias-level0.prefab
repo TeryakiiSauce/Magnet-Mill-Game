@@ -2765,7 +2765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3931436512928526842}
   m_Layer: 0
-  m_Name: 2. elias-level0
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
