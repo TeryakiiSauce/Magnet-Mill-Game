@@ -29,7 +29,7 @@ public class CursorController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftControl))
                 {
-                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
                 else
