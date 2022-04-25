@@ -5,22 +5,50 @@ using Cinemachine;
 
 public class CubeController : MonoBehaviour
 {
-
     public int speed = 300;
-    bool isMoving = false;
+
+    private bool isMoving = false;
     private Rigidbody cubeRigidBody;
-    private bool onGround = true;
-    private bool onRoof = false;
-    private bool onRightWall = false;
-    private bool onLeftWall = false;
-    private bool flipinggravity = false;
+    
+    private static bool onGround = true;
+    private static bool onRoof = false;
+    private static bool onRightWall = false;
+    private static bool onLeftWall = false;
+    private static bool flipinggravity = false;
+
+    // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
+    public static bool IsOnGround()
+    {
+        return onGround;
+    }
+
+    public static bool IsOnRoof()
+    {
+        return onRoof;
+    }
+
+    public static bool IsOnRightWall()
+    {
+        return onRightWall;
+    }
+
+    public static bool IsOnLeftWall()
+    {
+        return onLeftWall;
+    }
+
+    public static bool IsGravityFlipping()
+    {
+        return flipinggravity;
+    }
+
     public static bool outOfBounds = false;
     
     // For the camera transitions
-    private CinemachineVirtualCamera groundCam;
-    private CinemachineVirtualCamera rightCam;
-    private CinemachineVirtualCamera topCam;
-    private CinemachineVirtualCamera leftCam;
+    //public CinemachineVirtualCamera groundCam;
+    //public CinemachineVirtualCamera rightCam;
+    //public CinemachineVirtualCamera topCam;
+    //public CinemachineVirtualCamera leftCam;
 
 
     // Start is called before the first frame update

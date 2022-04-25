@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera rightCam;
     public CinemachineVirtualCamera topCam;
     public CinemachineVirtualCamera leftCam;
+    public CinemachineVirtualCamera flippingCam;
 
     public CinemachineVirtualCamera lookUpCam;
     public CinemachineVirtualCamera lookLeftCam;
@@ -29,6 +30,19 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Main Cameras
+        groundCam.Priority = 1;
+        rightCam.Priority = 0;
+        topCam.Priority = 0;
+        leftCam.Priority = 0;
+        flippingCam.Priority = 0;
+
+        // Quick Cameras
+        lookUpCam.Priority = 0;
+        lookLeftCam.Priority = 0;
+        lookDownCam.Priority = 0;
+        lookRightCam.Priority = 0;
+
         /*quickCameras = GameObject.FindGameObjectsWithTag("Quick Cam View");
         
         // Assign the virtual cameras found from the array to their respective variables. The order is based on Unity's Hierarchy panel (left panel by default).
@@ -62,6 +76,74 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // For debugging only!
+        DebugCubePositionAndFlipStatus(false);
+
+        MainCameraTransition();
+    }
+
+    // Displays the Cube's current position (in terms of On Ground, On Roof, etc) and the "gravity" flip status
+    private void DebugCubePositionAndFlipStatus(bool isTurnedOn)
+    {
+        if (isTurnedOn)
+        {
+            if (CubeController.IsOnGround())
+            {
+                Debug.Log("on ground");
+                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+            }
+            else if (CubeController.IsOnLeftWall())
+            {
+                Debug.Log("on left wall");
+                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+            }
+            else if (CubeController.IsOnRightWall())
+            {
+                Debug.Log("on right wall");
+                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+            }
+            else if (CubeController.IsOnRoof())
+            {
+                Debug.Log("on roof");
+                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+            }
+        }
+    }
+
+    private void MainCameraTransition()
+    {
+        if (CubeController.IsOnGround())
+        {
+            groundCam.Priority = 1;
+            rightCam.Priority = 0;
+            leftCam.Priority = 0;
+            topCam.Priority = 0;
+        }
+        else if (CubeController.IsOnRightWall())
+        {
+            groundCam.Priority = 0;
+            rightCam.Priority = 1;
+            leftCam.Priority = 0;
+            topCam.Priority = 0;
+        }
+        else if (CubeController.IsOnLeftWall())
+        {
+            groundCam.Priority = 0;
+            rightCam.Priority = 0;
+            leftCam.Priority = 1;
+            topCam.Priority = 0;
+        }
+        else if (CubeController.IsOnRoof())
+        {
+            groundCam.Priority = 0;
+            rightCam.Priority = 0;
+            leftCam.Priority = 0;
+            topCam.Priority = 1;
+        }
+    }
+
+    private void QuickCameraTransitionCheck()
+    {
         if (Input.GetKey(KeyCode.UpArrow))
         {
             //quickTopCam.LookAt = topFocusPoint.transform;
@@ -87,6 +169,4 @@ public class CameraController : MonoBehaviour
             quickTopCam.LookAt = mainFocus.transform;*/
         }
     }
-
-
 }
