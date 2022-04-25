@@ -77,7 +77,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // For debugging only!
-        DebugCubePositionAndFlipStatus(true);
+        DebugCubePositionAndFlipStatus(false);
 
         MainCameraTransition();
     }
