@@ -77,7 +77,16 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // For debugging only!
-        DebugCubePositionAndFlipStatus(false);
+        DebugCubePositionAndFlipStatus(true);
+
+        // Idk why, but it felt more meaningful to check for the quick camera input before the main camera transition
+        QuickCameraTransitionCheck();
+
+        // TODO: Add something like a ray cast here. This is to show *where* the cube will be if the player hits the space bar (i.e. flips "gravity")
+        //
+        // ---- INSERT CODE HERE ----
+        //
+        // END TODO
 
         MainCameraTransition();
     }
@@ -144,29 +153,65 @@ public class CameraController : MonoBehaviour
 
     private void QuickCameraTransitionCheck()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+
+        // Check for [UP] arrow key when On Ground
+        if (CubeController.IsOnGround())
         {
-            //quickTopCam.LookAt = topFocusPoint.transform;
-
-            lookDownCam.Priority = 12;
-            groundCam.Priority = 11;
-
-            /*quickBottomCam.LookAt = topFocus.transform;
-            quickRightCam.LookAt = topFocus.transform;
-            quickLeftCam.LookAt = topFocus.transform;
-            quickTopCam.LookAt = topFocus.transform;*/
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                lookUpCam.Priority = 1;
+                groundCam.Priority = 0;
+            }
+            else
+            {
+                lookUpCam.Priority = 0;
+                groundCam.Priority = 1;
+            }
         }
-        else
+
+        // Check for [LEFT] arrow key when On Right Wall
+        else if (CubeController.IsOnRightWall())
         {
-            //quickTopCam.LookAt = mainFocusPoint.transform;
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                lookLeftCam.Priority = 1;
+                rightCam.Priority = 0;
+            }
+            else
+            {
+                lookLeftCam.Priority = 0;
+                rightCam.Priority = 1;
+            }
+        }
 
-            groundCam.Priority = 11;
-            lookDownCam.Priority = 10;
+        // Check for [DOWN] arrow key when On Roof
+        else if (CubeController.IsOnRoof())
+        {
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                lookDownCam.Priority = 1;
+                topCam.Priority = 0;
+            }
+            else
+            {
+                lookDownCam.Priority = 0;
+                topCam.Priority = 1;
+            }
+        }
 
-            /*quickBottomCam.LookAt = mainFocus.transform;
-            quickRightCam.LookAt = mainFocus.transform;
-            quickLeftCam.LookAt = mainFocus.transform;
-            quickTopCam.LookAt = mainFocus.transform;*/
+        // Check for [RIGHT] arrow key when On Left Wall
+        else if (CubeController.IsOnLeftWall())
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                lookRightCam.Priority = 1;
+                leftCam.Priority = 0;
+            }
+            else
+            {
+                lookRightCam.Priority = 0;
+                leftCam.Priority = 1;
+            }
         }
     }
 }
