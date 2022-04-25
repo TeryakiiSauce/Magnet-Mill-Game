@@ -16,7 +16,7 @@ public class CubeController : MonoBehaviour
     private static bool onLeftWall = false;
     private static bool flipinggravity = false;
 
-    // Added oublic static getters so that I can call them in the script "CameraController.cs"
+    // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
     public static bool IsOnGround()
     {
         return onGround;
