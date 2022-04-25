@@ -49,14 +49,14 @@ public class GameController : MonoBehaviour
         if (gridTag == "Ground")
         {
             checkPointCurrentDirection = CheckPointDirection.Ground;
-            currentCheckPoint = new Vector3(cube.transform.position.x,
-                cube.transform.position.y + 0.5f, cube.transform.position.z);
+            currentCheckPoint = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
+                cube.transform.position.y + 0.5f, Mathf.RoundToInt(cube.transform.position.z));
         }
         else if(gridTag == "Right wall")
         {
             checkPointCurrentDirection = CheckPointDirection.Right;
             currentCheckPoint = new Vector3(cube.transform.position.x - 1f,
-                cube.transform.position.y, cube.transform.position.z);
+                Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
         }
     }
 
