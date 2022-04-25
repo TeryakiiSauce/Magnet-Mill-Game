@@ -43,13 +43,6 @@ public class CubeController : MonoBehaviour
     }
 
     public static bool outOfBounds = false;
-    
-    // For the camera transitions
-    //public CinemachineVirtualCamera groundCam;
-    //public CinemachineVirtualCamera rightCam;
-    //public CinemachineVirtualCamera topCam;
-    //public CinemachineVirtualCamera leftCam;
-
 
     // Start is called before the first frame update
     void Start()
@@ -70,12 +63,6 @@ public class CubeController : MonoBehaviour
         //if statment to check which platform the cube is sitting on 
         if (onGround)
         {
-            // Camera Transition
-            /*groundCam.Priority  = 1;
-            rightCam.Priority   = 0;
-            topCam.Priority     = 0;
-            leftCam.Priority    = 0;*/
-
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
@@ -83,12 +70,6 @@ public class CubeController : MonoBehaviour
         }
         else if (onRoof)
         {
-            // Camera Transition
-            /*groundCam.Priority  = 0;
-            rightCam.Priority   = 0;
-            topCam.Priority     = 1;
-            leftCam.Priority    = 0;*/
-
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
@@ -96,12 +77,6 @@ public class CubeController : MonoBehaviour
         }
         else if (onRightWall)
         {
-            // Camera Transition
-            /*groundCam.Priority  = 0;
-            rightCam.Priority   = 1;
-            topCam.Priority     = 0;
-            leftCam.Priority    = 0;*/
-
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.down)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.up)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
@@ -109,12 +84,6 @@ public class CubeController : MonoBehaviour
         }
         else if (onLeftWall)
         {
-            // Camera Transition
-            /*groundCam.Priority  = 0;
-            rightCam.Priority   = 0;
-            topCam.Priority     = 0;
-            leftCam.Priority    = 1;*/
-
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.up)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.down)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
