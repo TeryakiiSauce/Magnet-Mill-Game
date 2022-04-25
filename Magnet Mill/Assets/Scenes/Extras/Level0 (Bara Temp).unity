@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44120824, g: 0.48998952, b: 0.5700546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44120803, g: 0.4899891, b: 0.5700541, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -32710,15 +32710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.14521313
+      value: -0.14521314
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032966824
+      value: 1.6271901e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004838501
+      value: 2.6894993e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32902,16 +32902,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3613313733687128683}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d82e352bc6399a4e9f38553691b7a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainFocus: {fileID: 6706163609748287044}
-  groundFocus: {fileID: 6706163609748287043}
-  topFocus: {fileID: 6706163609748287042}
-  rightFocus: {fileID: 6706163609748287041}
-  leftFocus: {fileID: 6706163609748287040}
+  groundCam: {fileID: 0}
+  rightCam: {fileID: 0}
+  topCam: {fileID: 0}
+  leftCam: {fileID: 0}
+  lookUpCam: {fileID: 0}
+  lookLeftCam: {fileID: 0}
+  lookDownCam: {fileID: 0}
+  lookRightCam: {fileID: 0}
 --- !u!1001 &3613313733807358721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34006,31 +34009,6 @@ Transform:
 --- !u!1 &6706163609748287039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4639014416483538736, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-  m_PrefabInstance: {fileID: 6706163609748287035}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6706163609748287040 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5270807336197613388, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-  m_PrefabInstance: {fileID: 6706163609748287035}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6706163609748287041 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1308334657564989670, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-  m_PrefabInstance: {fileID: 6706163609748287035}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6706163609748287042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5385027916169598068, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-  m_PrefabInstance: {fileID: 6706163609748287035}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6706163609748287043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7187368130577503389, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-  m_PrefabInstance: {fileID: 6706163609748287035}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6706163609748287044 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9158239988786082528, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
   m_PrefabInstance: {fileID: 6706163609748287035}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6706163609748287045 stripped
