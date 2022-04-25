@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
     public void OutOffMap()
     {
         CubeController cubeCont = cube.GetComponent<CubeController>();
+        Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
         if(checkPointCurrentDirection == CheckPointDirection.Ground)
         {
             cubeCont.SetGroundDirection();
@@ -71,6 +72,7 @@ public class GameController : MonoBehaviour
         {
             cubeCont.SetRightDirection();
         }
+        cubeBody.velocity = Vector3.zero;
         cube.transform.position = currentCheckPoint;
         CubeController.outOfBounds = false;
     }
