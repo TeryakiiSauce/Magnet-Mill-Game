@@ -42,12 +42,6 @@ public class CameraController : MonoBehaviour
         // Idk why, but it felt more meaningful to check for the quick camera input before the main camera transition
         QuickCameraTransitionCheck();
 
-        // TODO: Add something like a ray cast here. This is to show *where* the cube will be if the player hits the space bar (i.e. flips "gravity")
-        //
-        // ---- INSERT CODE HERE ----
-        //
-        // END TODO
-
         MainCameraTransition();
     }
 
@@ -117,7 +111,7 @@ public class CameraController : MonoBehaviour
         // Check for [UP] arrow key when On Ground
         if (CubeController.IsOnGround())
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Tab))
             {
                 lookUpCam.Priority = 1;
                 groundCam.Priority = 0;
@@ -132,7 +126,7 @@ public class CameraController : MonoBehaviour
         // Check for [LEFT] arrow key when On Right Wall
         else if (CubeController.IsOnRightWall())
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Tab))
             {
                 lookLeftCam.Priority = 1;
                 rightCam.Priority = 0;
@@ -147,7 +141,7 @@ public class CameraController : MonoBehaviour
         // Check for [DOWN] arrow key when On Roof
         else if (CubeController.IsOnRoof())
         {
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.Tab))
             {
                 lookDownCam.Priority = 1;
                 topCam.Priority = 0;
@@ -162,7 +156,7 @@ public class CameraController : MonoBehaviour
         // Check for [RIGHT] arrow key when On Left Wall
         else if (CubeController.IsOnLeftWall())
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.Tab))
             {
                 lookRightCam.Priority = 1;
                 leftCam.Priority = 0;
