@@ -7,9 +7,9 @@ public class CubeController : MonoBehaviour
 {
     public int speed = 300;
 
-    private bool isMoving = false;
     private Rigidbody cubeRigidBody;
-    
+
+    private static bool isMoving = false;
     private static bool onGround = true;
     private static bool onRoof = false;
     private static bool onRightWall = false;
@@ -17,6 +17,12 @@ public class CubeController : MonoBehaviour
     private static bool flipinggravity = false;
 
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
+
+    public static bool GetIsMoving()
+    {
+        return isMoving;
+    }
+
     public static bool IsOnGround()
     {
         return onGround;
