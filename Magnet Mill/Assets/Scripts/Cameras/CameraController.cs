@@ -50,53 +50,53 @@ public class CameraController : MonoBehaviour
     {
         if (isTurnedOn)
         {
-            if (CubeController.IsOnGround())
+            if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
             {
                 Debug.Log("on ground");
-                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+                Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
-            else if (CubeController.IsOnLeftWall())
+            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
             {
                 Debug.Log("on left wall");
-                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+                Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
-            else if (CubeController.IsOnRightWall())
+            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
             {
                 Debug.Log("on right wall");
-                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+                Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
-            else if (CubeController.IsOnRoof())
+            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
             {
                 Debug.Log("on roof");
-                Debug.Log($"Flipping status: {CubeController.IsGravityFlipping()}");
+                Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
         }
     }
 
     private void MainCameraTransition()
     {
-        if (CubeController.IsOnGround())
+        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
         {
             groundCam.Priority = 1;
             rightCam.Priority = 0;
             leftCam.Priority = 0;
             topCam.Priority = 0;
         }
-        else if (CubeController.IsOnRightWall())
+        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
         {
             groundCam.Priority = 0;
             rightCam.Priority = 1;
             leftCam.Priority = 0;
             topCam.Priority = 0;
         }
-        else if (CubeController.IsOnLeftWall())
+        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
         {
             groundCam.Priority = 0;
             rightCam.Priority = 0;
             leftCam.Priority = 1;
             topCam.Priority = 0;
         }
-        else if (CubeController.IsOnRoof())
+        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
         {
             groundCam.Priority = 0;
             rightCam.Priority = 0;
@@ -109,7 +109,7 @@ public class CameraController : MonoBehaviour
     {
 
         // Check for [UP] arrow key when On Ground
-        if (CubeController.IsOnGround())
+        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
         {
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Tab))
             {
@@ -124,7 +124,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Check for [LEFT] arrow key when On Right Wall
-        else if (CubeController.IsOnRightWall())
+        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Tab))
             {
@@ -139,7 +139,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Check for [DOWN] arrow key when On Roof
-        else if (CubeController.IsOnRoof())
+        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
         {
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.Tab))
             {
@@ -154,7 +154,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Check for [RIGHT] arrow key when On Left Wall
-        else if (CubeController.IsOnLeftWall())
+        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
         {
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.Tab))
             {

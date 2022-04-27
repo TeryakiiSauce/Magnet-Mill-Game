@@ -19,8 +19,9 @@ public class GameController : MonoBehaviour
     public GameObject cube;
     public Material checkPointOnMaterial;
     [SerializeField] private Vector3 currentCheckPoint;
-    [SerializeField] private enum CheckPointDirection { Ground, Right, Left, Roof};
-    [SerializeField] private CheckPointDirection checkPointCurrentDirection;
+    public enum CheckDirection { Ground, Right, Left, Roof};
+    [SerializeField] private CheckDirection checkPointCurrentDirection;
+    public CheckDirection currentMagnetPosition;
     void Awake()
     {
         if (instance == null)
@@ -48,13 +49,13 @@ public class GameController : MonoBehaviour
     {
         if (gridTag == "Ground")
         {
-            checkPointCurrentDirection = CheckPointDirection.Ground;
+            checkPointCurrentDirection = CheckDirection.Ground;
             currentCheckPoint = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
                 cube.transform.position.y + 0.5f, Mathf.RoundToInt(cube.transform.position.z));
         }
         else if(gridTag == "Right wall")
         {
-            checkPointCurrentDirection = CheckPointDirection.Right;
+            checkPointCurrentDirection = CheckDirection.Right;
             currentCheckPoint = new Vector3(cube.transform.position.x - 1f,
                 Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
         }
@@ -64,16 +65,36 @@ public class GameController : MonoBehaviour
     {
         CubeController cubeCont = cube.GetComponent<CubeController>();
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
-        if(checkPointCurrentDirection == CheckPointDirection.Ground)
+        if(checkPointCurrentDirection == CheckDirection.Ground)
         {
-            cubeCont.SetGroundDirection();
+            currentMagnetPosition = CheckDirection.Ground;
         }
-        else if(checkPointCurrentDirection == CheckPointDirection.Right)
+        else if(checkPointCurrentDirection == CheckDirection.Right)
         {
-            cubeCont.SetRightDirection();
+            currentMagnetPosition = CheckDirection.Right;
         }
         cubeBody.velocity = Vector3.zero;
         cube.transform.position = currentCheckPoint;
         CubeController.outOfBounds = false;
+    }
+
+    public void InGround()
+    {
+        currentMagnetPosition = CheckDirection.Ground;
+    }
+
+    public void InRight()
+    {
+        currentMagnetPosition = CheckDirection.Right;
+    }
+
+    public void InRoof()
+    {
+        currentMagnetPosition = CheckDirection.Roof;
+    }
+
+    public void InLeft()
+    {
+        currentMagnetPosition = CheckDirection.Left;
     }
 }

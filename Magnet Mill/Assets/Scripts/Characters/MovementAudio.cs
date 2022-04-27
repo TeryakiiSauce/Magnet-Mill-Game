@@ -17,7 +17,7 @@ public class MovementAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CubeController.GetIsMoving() || CubeController.IsGravityFlipping())
+        if (CubeController.isMoving || CubeController.flipinggravity)
         {
             return;
         }
