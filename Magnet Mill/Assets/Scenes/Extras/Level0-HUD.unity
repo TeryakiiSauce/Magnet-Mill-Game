@@ -9302,7 +9302,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826128891}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -24603,15 +24603,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.14521313
+      value: -0.14521314
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032966824
+      value: 5.1799038e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004838501
+      value: 7.130392e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -39561,6 +39561,7 @@ MonoBehaviour:
   checkPointOnMaterial: {fileID: 2100000, guid: c6138670480cd374494216e078b79f42, type: 2}
   currentCheckPoint: {x: 0, y: 0, z: 0}
   checkPointCurrentDirection: 0
+  currentMagnetPosition: 0
 --- !u!1 &3690666905873654059
 GameObject:
   m_ObjectHideFlags: 0
