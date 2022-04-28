@@ -7,9 +7,16 @@ public class abilitycooldown : MonoBehaviour
 
     private float coolDownTime;
     private float abilityTime;
-    private float activeTime;
-    private float coolDownEndTime;
-    private activeAblity ablityused;
+    private float freezeActiveTime;
+    private float jumpActiveTime;
+    private float speedActiveTime;
+    private float freezeCoolDownEndTime;
+    private float jumpCoolDownEndTime;
+    private float speedCoolDownEndTime;
+    public static activeAblity freezeAblityused;
+    public static activeAblity speedAblityused;
+    public static activeAblity jumpAblityused;
+
     //enum to check which ablity is active 
     public enum activeAblity
      {
@@ -25,71 +32,97 @@ public class abilitycooldown : MonoBehaviour
     void Update()
     {
         //checking if the cooldown end time is less than the current time 
-        if (Time.time > coolDownEndTime)
+        if (Time.time > jumpCoolDownEndTime)
         {
             // if the e button is clicked
             if (Input.GetKey(KeyCode.E))
             {
                 //setting the cooldown time and the active time  
-                coolDownTime = 7f;
+                coolDownTime = 10f;
                 abilityTime = 3f;
-                ablityused = activeAblity.Jump;
-                coolDownEndTime = Time.time + coolDownTime;
-                activeTime = Time.time + abilityTime;
+                jumpAblityused = activeAblity.Jump;
+                jumpCoolDownEndTime = Time.time + coolDownTime;
+                jumpActiveTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
 
             }
         }
 
-        if (Time.time > coolDownEndTime)
+        if (Time.time > freezeCoolDownEndTime)
         {
             // if the q button is clicked
              if (Input.GetKey(KeyCode.Q))
              {
                 //setting the cooldown time and the active time 
-                coolDownTime = 15f;
+                coolDownTime = 20f;
                 abilityTime = 5f;
-                ablityused = activeAblity.Freeze;
-                coolDownEndTime = Time.time + coolDownTime;
-                activeTime = Time.time + abilityTime;
+                freezeAblityused = activeAblity.Freeze;
+                freezeCoolDownEndTime = Time.time + coolDownTime;
+                freezeActiveTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
             }
         }
 
-        if (Time.time > coolDownEndTime)
+        if (Time.time > speedCoolDownEndTime)
         {
             // if the shift button is clicked
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 //setting the cooldown time and the active time 
-                coolDownTime = 10f;
+                coolDownTime = 14f;
                 abilityTime = 4f;
-                ablityused = activeAblity.Speed;
-                coolDownEndTime = Time.time + coolDownTime;
-                activeTime = Time.time + abilityTime;
+                speedAblityused = activeAblity.Speed;
+                speedCoolDownEndTime = Time.time + coolDownTime;
+                speedActiveTime = Time.time + abilityTime;
                 /* * change image to active image here * */
             }
         }
-            //setting the end time to the cooldown time + the current time  
-        
 
-        if (Time.time < activeTime)
-        {
-            //setting the image to active
-            activeAbility(ablityused);
-        }
-        else if(Time.time < coolDownEndTime)
-        {
-            //reseting the image
-            resetAbility(ablityused);
-
-        }
+        //setting the end time to the cooldown time + the current time  
+        changeAbilityState();
 
     }
-        
-            
+      
+    
 
+    private void changeAbilityState ()
+    {
+        if (Time.time < jumpActiveTime)
+        {
+            //setting the image to active
 
+            activeAbility(jumpAblityused);
+        }
+        else if (Time.time < jumpCoolDownEndTime)
+        {
+            //reseting the image
+            resetAbility(jumpAblityused);
+        }
+
+        if (Time.time < freezeActiveTime)
+        {
+            //setting the image to active
+            activeAbility(freezeAblityused);
+
+        }
+        else if (Time.time < freezeCoolDownEndTime)
+        {
+            //reseting the image
+            resetAbility(freezeAblityused);
+
+        }
+
+        if (Time.time < speedActiveTime)
+        {
+            //setting the image to active
+            activeAbility(speedAblityused);
+        }
+        else if (Time.time < speedCoolDownEndTime)
+        {
+            //reseting the image
+            resetAbility(speedAblityused);
+        }
+    }
     private void resetAbility(activeAblity AB)
     {
         //checking for the active ability 
@@ -97,32 +130,32 @@ public class abilitycooldown : MonoBehaviour
         {
             case activeAblity.Freeze:
                 {
-                    
+                    freezeAblityused = activeAblity.None;
+                   
                     /* * change image to ready to use image here * */
                     break;
                 }
             case activeAblity.Jump:
                 {
+                    jumpAblityused = activeAblity.None;
                     /* * change image to ready to use image here * */
                     break;
                 }
             case activeAblity.Speed:
                 {
+                    speedAblityused = activeAblity.None;
                     /* * change image to ready to use image here * */
                     break;
                 }
             default: break;
         }
-        //changing the enum to none
-        print("oncooldown");
-        ablityused = activeAblity.None;
+
     }
 
 
 
     private void activeAbility(activeAblity AB)
     {
-        print("active");
         //checking for the active ability 
         switch (AB)
         {
