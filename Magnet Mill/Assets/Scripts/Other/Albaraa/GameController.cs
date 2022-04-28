@@ -5,23 +5,23 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public enum CheckDirection { Ground, Right, Left, Roof };
+    public enum PowerAbilities { None, JumpAbility, FreezeAbility, BoostAbility };
+    public string currentLevel;
+    public GameObject cube;
+    public Material checkPointOnMaterial;
     [HideInInspector] public bool gameOver;
     [HideInInspector] public bool gamePaused;
-    public enum PowerAbilities {None ,JumpAbility, FreezeAbility, BoostAbility};
     [HideInInspector] public PowerAbilities currentAbility;
     [HideInInspector] public int score;
     [HideInInspector] public int rollsCount;
     [HideInInspector] public float levelTimer;
     [HideInInspector] public int deathCount;
     [HideInInspector] public int abilitesUsedCount;
-    //public bool isOutOffMap;
-    public string currentLevel;
-    public GameObject cube;
-    public Material checkPointOnMaterial;
-    [SerializeField] private Vector3 currentCheckPoint;
-    public enum CheckDirection { Ground, Right, Left, Roof};
-    [SerializeField] private CheckDirection checkPointCurrentDirection;
-    public CheckDirection currentMagnetPosition;
+    [HideInInspector] public CheckDirection currentMagnetPosition;
+    [HideInInspector] public CheckDirection previousMagnetPosition;
+    private Vector3 currentCheckPoint;
+    private CheckDirection checkPointCurrentDirection;
     void Awake()
     {
         if (instance == null)
@@ -63,9 +63,9 @@ public class GameController : MonoBehaviour
 
     public void OutOffMap()
     {
-        CubeController cubeCont = cube.GetComponent<CubeController>();
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
-        if(checkPointCurrentDirection == CheckDirection.Ground)
+        previousMagnetPosition = currentMagnetPosition;
+        if (checkPointCurrentDirection == CheckDirection.Ground)
         {
             currentMagnetPosition = CheckDirection.Ground;
         }
@@ -80,21 +80,29 @@ public class GameController : MonoBehaviour
 
     public void InGround()
     {
+        if (currentMagnetPosition == CheckDirection.Ground) return;
+        previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Ground;
     }
 
     public void InRight()
     {
+        if (currentMagnetPosition == CheckDirection.Right) return;
+        previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Right;
     }
 
     public void InRoof()
     {
+        if (currentMagnetPosition == CheckDirection.Roof) return;
+        previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Roof;
     }
 
     public void InLeft()
     {
+        if (currentMagnetPosition == CheckDirection.Left) return;
+        previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Left;
     }
 }
