@@ -10,7 +10,6 @@ public class CubeController : MonoBehaviour
 
     public static bool isMoving = false;
     public static bool flipinggravity = false;
-    private static bool isJumping = false;
     public static bool outOfBounds = false;
     private Vector3 rotationCenter;
     private Vector3 rotationAxis;
@@ -32,19 +31,21 @@ public class CubeController : MonoBehaviour
     {
         if (isMoving || flipinggravity || outOfBounds) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         userInput();
+        checkSpeedAbility();
     }
 
     //fixed update is used to controll the constant force of gravity   
     void FixedUpdate()
     { 
         changeGravity();
+
     }
 
 
     //a method that checks the tag of the touched wall and updates the code accordingly 
     private void OnTriggerEnter(Collider other)
     {
-        if (isJumping)
+        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump)
         {
             isMoving = false;
         }
@@ -106,10 +107,6 @@ public class CubeController : MonoBehaviour
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
         }
 
-        //input for ablities 
-        if (Input.GetKey(KeyCode.E)) isJumping = false;
-        if (Input.GetKey(KeyCode.Q)) isJumping = true;
-
         //if the user presses space 
         if (Input.GetKey(KeyCode.Space)) flipCube();
     }
@@ -140,7 +137,7 @@ public class CubeController : MonoBehaviour
         if (remainingAngle < 5)
         {
             snapToGrid();
-            if (!isJumping) 
+            if (abilitycooldown.jumpAblityused != abilitycooldown.activeAblity.Jump)
             {
                 isMoving = false;
             }
@@ -201,7 +198,7 @@ public class CubeController : MonoBehaviour
     private void setRotation(Vector3 direction) 
     {
         //checking if the jump ability is activited 
-        if (isJumping)
+        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump)
         {
             if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
             {
@@ -247,6 +244,18 @@ public class CubeController : MonoBehaviour
                 rotationCenter = transform.localPosition + direction / 2 + Vector3.down / 2; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
             }
+        }
+    }
+
+    private void checkSpeedAbility() 
+    {
+        if (abilitycooldown.speedAblityused == abilitycooldown.activeAblity.Speed)
+        {
+            speed = 500;
+        }
+        else 
+        {
+            speed = 300;
         }
     }
 
