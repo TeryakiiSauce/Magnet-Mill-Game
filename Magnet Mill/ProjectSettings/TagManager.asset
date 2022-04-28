@@ -13,6 +13,10 @@ TagManager:
   - outOfBound
   - PlayerCube
   - Menu
+  - GroundCorner
+  - RightWallCorner
+  - leftWallCorner
+  - RoofCorner
   layers:
   - Default
   - TransparentFX
