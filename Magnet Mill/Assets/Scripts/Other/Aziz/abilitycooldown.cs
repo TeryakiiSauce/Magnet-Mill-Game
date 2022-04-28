@@ -13,6 +13,7 @@ public class abilitycooldown : MonoBehaviour
     private float freezeCoolDownEndTime;
     private float jumpCoolDownEndTime;
     private float speedCoolDownEndTime;
+    private bool jumpActive = false;
     public static activeAblity freezeAblityused;
     public static activeAblity speedAblityused;
     public static activeAblity jumpAblityused;
@@ -43,6 +44,7 @@ public class abilitycooldown : MonoBehaviour
                 jumpAblityused = activeAblity.Jump;
                 jumpCoolDownEndTime = Time.time + coolDownTime;
                 jumpActiveTime = Time.time + abilityTime;
+                jumpActive = true;
                 /* * change image to cooldown image here * */
 
             }
@@ -126,29 +128,22 @@ public class abilitycooldown : MonoBehaviour
     private void resetAbility(activeAblity AB)
     {
         //checking for the active ability 
-        switch (AB)
-        {
-            case activeAblity.Freeze:
-                {
+        if (AB == activeAblity.Freeze)
+                {   
                     freezeAblityused = activeAblity.None;
-                   
                     /* * change image to ready to use image here * */
-                    break;
                 }
-            case activeAblity.Jump:
+        else if(AB == activeAblity.Jump && !CubeController.isMoving)
                 {
                     jumpAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */
-                    break;
+                    /* * change image to ready to use image here * */     
                 }
-            case activeAblity.Speed:
+        else if (AB == activeAblity.Speed)
                 {
                     speedAblityused = activeAblity.None;
                     /* * change image to ready to use image here * */
-                    break;
                 }
-            default: break;
-        }
+        
 
     }
 
