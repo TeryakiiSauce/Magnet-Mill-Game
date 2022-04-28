@@ -15,6 +15,7 @@ public class CubeController : MonoBehaviour
     private Vector3 rotationAxis;
     public float jumpHeight = 0.8f;
     public float jumpLenght = 1.2f;
+    private bool onCorner = false;
 
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
 
@@ -45,27 +46,49 @@ public class CubeController : MonoBehaviour
     //a method that checks the tag of the touched wall and updates the code accordingly 
     private void OnTriggerEnter(Collider other)
     {
-        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump)
-        {
-            isMoving = false;
-        }
+        
         flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
         {
             GameController.instance.InRight();
+            onCorner = false;
         }
         else if (other.tag == "Left wall")
         {
             GameController.instance.InLeft();
+            onCorner = false;
         }
         else if (other.tag == "Roof")
         {
             GameController.instance.InRoof();
+            onCorner = false;
         }
         else if (other.tag == "Ground")
         {
             GameController.instance.InGround();
+            onCorner = false;
+        }
+
+        else if (other.tag == "RightWallCorner")
+        {
+            GameController.instance.InRight();
+            onCorner = true;
+        }
+        else if (other.tag == "leftWallCorner")
+        {
+            GameController.instance.InLeft();
+            onCorner = true;
+        }
+        else if (other.tag == "RoofCorner")
+        {
+            GameController.instance.InRoof();
+            onCorner = true;
+        }
+        else if (other.tag == "GroundCorner")
+        {
+            GameController.instance.InGround();
+            onCorner = true;
         }
         else if (other.tag == "outOfBound")
         {
@@ -137,10 +160,14 @@ public class CubeController : MonoBehaviour
         if (remainingAngle < 5)
         {
             snapToGrid();
-            if (abilitycooldown.jumpAblityused != abilitycooldown.activeAblity.Jump)
-            {
+            //if ((abilitycooldown.jumpAblityused != abilitycooldown.activeAblity.Jump) || (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && onCorner))
+            //{
+            //    isMoving = false;
+            //}
+            //if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && !onCorner)
+            //{
                 isMoving = false;
-            }
+            //}
         }
     }
 
@@ -198,7 +225,7 @@ public class CubeController : MonoBehaviour
     private void setRotation(Vector3 direction) 
     {
         //checking if the jump ability is activited 
-        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump)
+        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && !onCorner)
         {
             if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
             {

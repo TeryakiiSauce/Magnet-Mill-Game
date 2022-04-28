@@ -33,14 +33,14 @@ public class abilitycooldown : MonoBehaviour
     void Update()
     {
         //checking if the cooldown end time is less than the current time 
-        if (Time.time > jumpCoolDownEndTime)
+        if (Time.time > jumpCoolDownEndTime) 
         {
             // if the e button is clicked
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) && !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time  
                 coolDownTime = 10f;
-                abilityTime = 3f;
+                abilityTime = 7f;
                 jumpAblityused = activeAblity.Jump;
                 jumpCoolDownEndTime = Time.time + coolDownTime;
                 jumpActiveTime = Time.time + abilityTime;
@@ -53,7 +53,7 @@ public class abilitycooldown : MonoBehaviour
         if (Time.time > freezeCoolDownEndTime)
         {
             // if the q button is clicked
-             if (Input.GetKey(KeyCode.Q))
+             if (Input.GetKey(KeyCode.Q) && !CubeController.isMoving)
              {
                 //setting the cooldown time and the active time 
                 coolDownTime = 20f;
@@ -68,7 +68,7 @@ public class abilitycooldown : MonoBehaviour
         if (Time.time > speedCoolDownEndTime)
         {
             // if the shift button is clicked
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time 
                 coolDownTime = 14f;
