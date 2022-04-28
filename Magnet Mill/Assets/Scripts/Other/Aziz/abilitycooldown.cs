@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class abilitycooldown : MonoBehaviour
 {
 
     private float coolDownTime;
@@ -11,7 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     private float coolDownEndTime;
     private activeAblity ablityused;
     //enum to check which ablity is active 
-    private enum activeAblity
+    public enum activeAblity
      {
         Freeze,
         Jump,
@@ -34,48 +34,61 @@ public class NewBehaviourScript : MonoBehaviour
                 coolDownTime = 7f;
                 abilityTime = 3f;
                 ablityused = activeAblity.Jump;
+                coolDownEndTime = Time.time + coolDownTime;
+                activeTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
-            }
 
+            }
+        }
+
+        if (Time.time > coolDownEndTime)
+        {
             // if the q button is clicked
-            else if (Input.GetKey(KeyCode.Q))
-            {
+             if (Input.GetKey(KeyCode.Q))
+             {
                 //setting the cooldown time and the active time 
                 coolDownTime = 15f;
                 abilityTime = 5f;
                 ablityused = activeAblity.Freeze;
+                coolDownEndTime = Time.time + coolDownTime;
+                activeTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
             }
+        }
 
+        if (Time.time > coolDownEndTime)
+        {
             // if the shift button is clicked
-            else if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 //setting the cooldown time and the active time 
                 coolDownTime = 10f;
                 abilityTime = 4f;
                 ablityused = activeAblity.Speed;
+                coolDownEndTime = Time.time + coolDownTime;
+                activeTime = Time.time + abilityTime;
                 /* * change image to active image here * */
             }
+        }
             //setting the end time to the cooldown time + the current time  
-            coolDownEndTime = Time.time + coolDownTime;
-            activeTime = Time.time + abilityTime;
-        }
-        else 
+        
+
+        if (Time.time < activeTime)
         {
-            if (Time.time < activeTime)
-            {
-                //setting the image to active
-                activeAbility(ablityused);
-            }
-            else 
-            {
-                //reseting the image
-                resetAbility(ablityused);
-                
-            }
-            
+            //setting the image to active
+            activeAbility(ablityused);
         }
+        else if(Time.time < coolDownEndTime)
+        {
+            //reseting the image
+            resetAbility(ablityused);
+
+        }
+
     }
+        
+            
+
 
     private void resetAbility(activeAblity AB)
     {
@@ -84,6 +97,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             case activeAblity.Freeze:
                 {
+                    
                     /* * change image to ready to use image here * */
                     break;
                 }
@@ -100,6 +114,7 @@ public class NewBehaviourScript : MonoBehaviour
             default: break;
         }
         //changing the enum to none
+        print("oncooldown");
         ablityused = activeAblity.None;
     }
 
@@ -107,6 +122,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void activeAbility(activeAblity AB)
     {
+        print("active");
         //checking for the active ability 
         switch (AB)
         {
