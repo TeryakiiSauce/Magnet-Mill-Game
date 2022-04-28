@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -312,6 +316,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -665,6 +673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -800,6 +812,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -1077,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1156,6 +1176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 71
@@ -1229,6 +1253,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -1502,6 +1530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (123)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 123
@@ -1532,31 +1564,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999919
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.0029810695
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.0027047961
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.00004146425
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.342
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
@@ -1637,6 +1669,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -1761,6 +1797,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -1898,6 +1938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1959,6 +2003,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -2190,6 +2238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &172418320 stripped
@@ -2406,6 +2458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2512,6 +2568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &214993251 stripped
@@ -2529,6 +2589,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -3009,6 +3073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &242386410 stripped
@@ -3026,6 +3094,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -3163,6 +3235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -3225,6 +3301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -3286,6 +3366,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -3767,6 +3851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (97)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 97
@@ -3884,6 +3972,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -4350,6 +4442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4497,6 +4593,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -4666,6 +4766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &437053285 stripped
@@ -4808,6 +4912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (98)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 98
@@ -4881,6 +4989,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -5108,6 +5220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -5306,6 +5422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5412,6 +5532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &477175280 stripped
@@ -5492,6 +5616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5565,6 +5693,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -6134,6 +6266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 47
@@ -6196,6 +6332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 52
@@ -6257,6 +6397,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -6456,6 +6600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 64
@@ -6518,6 +6666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -6579,6 +6731,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -6653,6 +6809,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -6802,6 +6962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -6876,6 +7040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (91)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 91
@@ -6949,6 +7117,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -7097,6 +7269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7220,6 +7396,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -7345,6 +7525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -7450,6 +7634,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -7593,6 +7781,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 51
@@ -7699,6 +7891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &695968944 stripped
@@ -7716,6 +7912,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -8012,6 +8212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 45
@@ -8198,6 +8402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 46
@@ -8345,6 +8553,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (138)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -8618,6 +8830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -8692,6 +8908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -8753,6 +8973,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -8946,6 +9170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &837853331 stripped
@@ -8963,6 +9191,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -9274,6 +9506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (99)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 99
@@ -9392,6 +9628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &893711037 stripped
@@ -9484,6 +9724,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -9557,6 +9801,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -9726,6 +9974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &934377282 stripped
@@ -9818,6 +10070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 79
@@ -9892,6 +10148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -9954,6 +10214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -10015,6 +10279,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -10088,6 +10356,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -10224,6 +10496,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -10422,6 +10698,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -10757,6 +11037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -10818,6 +11102,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -10999,6 +11287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1085918537 stripped
@@ -11079,6 +11371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (81)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 81
@@ -11152,6 +11448,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -11647,6 +11947,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -11877,6 +12181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1168768871 stripped
@@ -11894,6 +12202,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -11968,6 +12280,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (107)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -12196,6 +12512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 62
@@ -12274,6 +12594,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -12547,6 +12871,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 88
@@ -12664,6 +12992,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -12819,6 +13151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -12880,6 +13216,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (80)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -12955,6 +13295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -13016,6 +13360,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -13215,6 +13563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -13276,6 +13628,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -13532,6 +13888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 42
@@ -13668,6 +14028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -13729,6 +14093,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (55)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -14150,6 +14518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -14472,15 +14844,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09853762
+      value: 0.098537624
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042806607
+      value: -0.000000004280661
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.2386888e-10
+      value: 4.2386897e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14574,6 +14946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -14648,6 +15024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 54
@@ -14721,6 +15101,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -14975,6 +15359,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -15414,6 +15802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -15718,6 +16110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1504041901 stripped
@@ -15735,6 +16131,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -16132,6 +16532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -16250,6 +16654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1565129045 stripped
@@ -16311,6 +16719,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -16436,6 +16848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1573146225 stripped
@@ -16453,6 +16869,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (61)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -16589,6 +17009,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (73)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -16799,6 +17223,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -17270,6 +17698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 50
@@ -17406,6 +17838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 82
@@ -17479,6 +17915,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -17672,6 +18112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1676297367 stripped
@@ -17838,6 +18282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 61
@@ -17956,6 +18404,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1684860232 stripped
@@ -18035,6 +18487,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -18246,6 +18702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -18454,6 +18914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -18590,6 +19054,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 89
@@ -18663,6 +19131,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -18998,6 +19470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -19258,6 +19734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (100)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 100
@@ -19331,6 +19811,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (137)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -19598,6 +20082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1893608812 stripped
@@ -19826,6 +20314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -19961,6 +20453,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -20301,6 +20797,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -20760,6 +21260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1973887266 stripped
@@ -20821,6 +21325,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -21180,6 +21688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &1999550631 stripped
@@ -21197,6 +21709,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -21334,6 +21850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (106)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 106
@@ -21407,6 +21927,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (70)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -21526,6 +22050,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &2043382998 stripped
@@ -21543,6 +22071,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -21680,6 +22212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof Grid 1x1 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -21741,6 +22277,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (90)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -22058,6 +22598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &2094446658 stripped
@@ -22137,6 +22681,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -22608,6 +23156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground grid 1x1 (124)
       objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
       value: 124
@@ -22681,6 +23233,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -22874,6 +23430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: Left wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!4 &2142125395 stripped
@@ -22891,6 +23451,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1 (141)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -22965,6 +23529,10 @@ PrefabInstance:
     - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_Name
       value: Right Grid 1x1 (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: Right wall
       objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
@@ -23071,6 +23639,10 @@ PrefabInstance:
     - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
       propertyPath: m_Name
       value: Left Grid 1x1 (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
@@ -23362,15 +23934,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.14521313
+      value: -0.14521314
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032966824
+      value: 1.6271901e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004838501
+      value: 2.6894993e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -24947,6 +25519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Grid 1x1
       objectReference: {fileID: 0}
+    - target: {fileID: 4512348906748471799, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
+      propertyPath: m_TagString
+      value: leftWallCorner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46bf112ea60068e4fa01a4c4ff31b7c5, type: 3}
 --- !u!1001 &1859874832918578825
@@ -24959,6 +25535,10 @@ PrefabInstance:
     - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_Name
       value: ground grid 1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562797730986020870, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
+      propertyPath: m_TagString
+      value: GroundCorner
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 76de680f0f9e36f42a52a6db00d6d362, type: 3}
       propertyPath: m_RootOrder
@@ -51175,6 +51755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Grid 1x1
       objectReference: {fileID: 0}
+    - target: {fileID: 1536621884396410669, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
+      propertyPath: m_TagString
+      value: RightWallCorner
+      objectReference: {fileID: 0}
     - target: {fileID: 2168762337605602711, guid: 0c6fe40f45f6ece4b9753b10cefc14a1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -51231,6 +51815,10 @@ PrefabInstance:
     - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_Name
       value: Roof Grid 1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596889736854038027, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
+      propertyPath: m_TagString
+      value: RoofCorner
       objectReference: {fileID: 0}
     - target: {fileID: 2117424571452144817, guid: 75693faa079058f4086f9d58fb6a3bea, type: 3}
       propertyPath: m_RootOrder
@@ -52734,6 +53322,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3114895686099395851, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
   m_PrefabInstance: {fileID: 6965062620596796168}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6965062620596796177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965062620596796169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e870483a1ab0da40bc256504f4700e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6970412205894518963
 PrefabInstance:
   m_ObjectHideFlags: 0
