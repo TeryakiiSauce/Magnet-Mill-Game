@@ -5,16 +5,32 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
+    public static MapController instance;
+
     public GameObject mapBox;
     public GameObject mapKeys;
     public Vector3 tempQ;
     public float endZAngle = 10;
     public int rotationSpeed = 100;
-
+    [HideInInspector] public bool rotateSquare;
     public RectTransform rect;
-     
-    private void Update()
+
+    private void Awake()
     {
+        if (instance == null)    //checking if instance is null or not becuase we only need one instance of this class
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    void Update()
+    {
+        if (!rotateSquare) return;
         Rotate();
     }
 
@@ -35,6 +51,26 @@ public class MapController : MonoBehaviour
             rect.eulerAngles = tempQ;
 
         }
+    }
+
+    public void SetGroundKeysImg()
+    {
+        
+    }
+
+    public void SetRightKeysImg()
+    {
+        
+    }
+
+    public void SetRoofKeysImg()
+    {
+        
+    }
+
+    public void SetLeftKeysImg()
+    {
+        
     }
 
     private bool GroundToRight()
