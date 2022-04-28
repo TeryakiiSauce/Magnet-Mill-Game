@@ -46,7 +46,10 @@ public class CubeController : MonoBehaviour
     //a method that checks the tag of the touched wall and updates the code accordingly 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && !onCorner)
+        {
+            isMoving = false;
+        }
         flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
@@ -160,14 +163,10 @@ public class CubeController : MonoBehaviour
         if (remainingAngle < 5)
         {
             snapToGrid();
-            //if ((abilitycooldown.jumpAblityused != abilitycooldown.activeAblity.Jump) || (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && onCorner))
-            //{
-            //    isMoving = false;
-            //}
-            //if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && !onCorner)
-            //{
+            if ((abilitycooldown.jumpAblityused != abilitycooldown.activeAblity.Jump) || (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && onCorner))
+            {
                 isMoving = false;
-            //}
+            }
         }
     }
 
