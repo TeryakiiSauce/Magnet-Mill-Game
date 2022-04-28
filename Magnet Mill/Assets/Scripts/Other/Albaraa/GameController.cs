@@ -47,13 +47,13 @@ public class GameController : MonoBehaviour
 
     public void SetCheckPoint(string gridTag)
     {
-        if (gridTag == "Ground")
+        if (gridTag == "Ground" || gridTag == "GroundCorner")
         {
             checkPointCurrentDirection = CheckDirection.Ground;
             currentCheckPoint = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
                 cube.transform.position.y + 0.5f, Mathf.RoundToInt(cube.transform.position.z));
         }
-        else if(gridTag == "Right wall")
+        else if(gridTag == "Right wall" || gridTag == "RightWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Right;
             currentCheckPoint = new Vector3(cube.transform.position.x - 1f,
@@ -64,14 +64,13 @@ public class GameController : MonoBehaviour
     public void OutOffMap()
     {
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
-        previousMagnetPosition = currentMagnetPosition;
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
-            currentMagnetPosition = CheckDirection.Ground;
+            InGround();
         }
         else if(checkPointCurrentDirection == CheckDirection.Right)
         {
-            currentMagnetPosition = CheckDirection.Right;
+            InRight();
         }
         cubeBody.velocity = Vector3.zero;
         cube.transform.position = currentCheckPoint;
