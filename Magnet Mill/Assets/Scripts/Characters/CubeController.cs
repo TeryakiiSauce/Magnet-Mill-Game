@@ -15,7 +15,7 @@ public class CubeController : MonoBehaviour
     private Vector3 rotationCenter;
     private Vector3 rotationAxis;
     public float jumpHeight = 0.8f;
-    public float jumpLenght = 1f;
+    public float jumpLenght = 1.2f;
 
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
 
