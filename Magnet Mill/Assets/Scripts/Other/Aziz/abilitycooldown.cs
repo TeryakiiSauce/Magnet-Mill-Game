@@ -13,7 +13,6 @@ public class abilitycooldown : MonoBehaviour
     private float freezeCoolDownEndTime;
     private float jumpCoolDownEndTime;
     private float speedCoolDownEndTime;
-    private bool jumpActive = false;
     public static activeAblity freezeAblityused;
     public static activeAblity speedAblityused;
     public static activeAblity jumpAblityused;
@@ -40,11 +39,11 @@ public class abilitycooldown : MonoBehaviour
             {
                 //setting the cooldown time and the active time  
                 coolDownTime = 10f;
-                abilityTime = 7f;
+                abilityTime = 3f;
                 jumpAblityused = activeAblity.Jump;
                 jumpCoolDownEndTime = Time.time + coolDownTime;
                 jumpActiveTime = Time.time + abilityTime;
-                jumpActive = true;
+
                 /* * change image to cooldown image here * */
 
             }
@@ -68,7 +67,7 @@ public class abilitycooldown : MonoBehaviour
         if (Time.time > speedCoolDownEndTime)
         {
             // if the shift button is clicked
-            if (Input.GetKey(KeyCode.LeftShift) && !CubeController.isMoving)
+            if (Input.GetKey(KeyCode.LeftShift)&& !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time 
                 coolDownTime = 14f;
@@ -129,13 +128,13 @@ public class abilitycooldown : MonoBehaviour
     {
         //checking for the active ability 
         if (AB == activeAblity.Freeze)
-                {   
+                {
                     freezeAblityused = activeAblity.None;
                     /* * change image to ready to use image here * */
                 }
-        else if(AB == activeAblity.Jump && !CubeController.isMoving)
+        else if(AB == activeAblity.Jump)
                 {
-                    jumpAblityused = activeAblity.None;
+                     jumpAblityused = activeAblity.None;
                     /* * change image to ready to use image here * */     
                 }
         else if (AB == activeAblity.Speed)

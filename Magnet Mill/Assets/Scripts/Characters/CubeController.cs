@@ -7,7 +7,7 @@ public class CubeController : MonoBehaviour
 {
     public int speed = 300;
     private Rigidbody cubeRigidBody;
-
+    public bool normalMovement = true;
     public static bool isMoving = false;
     public static bool flipinggravity = false;
     public static bool outOfBounds = false;
@@ -46,10 +46,11 @@ public class CubeController : MonoBehaviour
     //a method that checks the tag of the touched wall and updates the code accordingly 
     private void OnTriggerEnter(Collider other)
     {
-        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && !onCorner)
+        if (!normalMovement && !onCorner)
         {
             isMoving = false;
         }
+
         flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
@@ -97,6 +98,8 @@ public class CubeController : MonoBehaviour
         {
             outOfBounds = true;
         }
+        
+
     }
 
 
@@ -158,16 +161,18 @@ public class CubeController : MonoBehaviour
             remainingAngle -= rotatingAngle;
             yield return null;
         }
-
+        
         //snaping the angle to the grid and enabling it to move when the remaining angle of thew rotation is less then 5
         if (remainingAngle < 5)
         {
             snapToGrid();
-            if ((abilitycooldown.jumpAblityused != abilitycooldown.activeAblity.Jump) || (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && onCorner))
+            if (normalMovement || (!normalMovement && onCorner))
             {
                 isMoving = false;
             }
+           
         }
+       
     }
 
 
@@ -226,6 +231,7 @@ public class CubeController : MonoBehaviour
         //checking if the jump ability is activited 
         if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && !onCorner)
         {
+            normalMovement = false;
             if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
             {
                 rotationCenter = transform.localPosition + direction / jumpHeight + Vector3.up / jumpLenght; // direction of the rotation
@@ -249,6 +255,7 @@ public class CubeController : MonoBehaviour
         }
         else
         {
+            normalMovement = true;
             //if statment that changes the axes and the rotation depneing on which wall is the cube touching 
             if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
             {
