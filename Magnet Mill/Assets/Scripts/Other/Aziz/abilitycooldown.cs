@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class abilitycooldown : MonoBehaviour
+public class AbilityCooldown : MonoBehaviour
 {
     private float freezeActiveTime;
     private float jumpActiveTime;
