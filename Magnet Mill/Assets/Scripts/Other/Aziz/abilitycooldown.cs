@@ -16,20 +16,20 @@ public class AbilityCooldown : MonoBehaviour
 
     //enum to check which ablity is active 
     public enum activeAblity
-     {
+    {
         Freeze,
         Jump,
         Speed,
         None
     }
- 
- 
+
+
 
     // Update is called once per frame
     void Update()
     {
         //checking if the cooldown end time is less than the current time 
-        if (Time.time > jumpCoolDownEndTime) 
+        if (Time.time > jumpCoolDownEndTime)
         {
             // if the e button is clicked
             if (Input.GetKey(KeyCode.E) && !CubeController.isMoving)
@@ -49,8 +49,8 @@ public class AbilityCooldown : MonoBehaviour
         if (Time.time > freezeCoolDownEndTime)
         {
             // if the q button is clicked
-             if (Input.GetKey(KeyCode.Q) && !CubeController.isMoving)
-             {
+            if (Input.GetKey(KeyCode.Q) && !CubeController.isMoving)
+            {
                 //setting the cooldown time and the active time 
                 float coolDownTime = 20f;
                 float abilityTime = 5f;
@@ -64,7 +64,7 @@ public class AbilityCooldown : MonoBehaviour
         if (Time.time > speedCoolDownEndTime)
         {
             // if the shift button is clicked
-            if (Input.GetKey(KeyCode.LeftShift)&& !CubeController.isMoving)
+            if (Input.GetKey(KeyCode.LeftShift) && !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time 
                 float coolDownTime = 14f;
@@ -80,12 +80,12 @@ public class AbilityCooldown : MonoBehaviour
         changeAbilityState();
 
 
-        
-    }
-      
-    
 
-    private void changeAbilityState ()
+    }
+
+
+
+    private void changeAbilityState()
     {
         if (Time.time < jumpActiveTime)
         {
@@ -127,21 +127,21 @@ public class AbilityCooldown : MonoBehaviour
     {
         //checking for the active ability 
         if (AB == activeAblity.Freeze)
-                {
-                    freezeAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */
-                }
-        else if(AB == activeAblity.Jump)
-                {
-                     jumpAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */     
-                }
+        {
+            freezeAblityused = activeAblity.None;
+            /* * change image to ready to use image here * */
+        }
+        else if (AB == activeAblity.Jump)
+        {
+            jumpAblityused = activeAblity.None;
+            /* * change image to ready to use image here * */
+        }
         else if (AB == activeAblity.Speed)
-                {
-                    speedAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */
-                }
-        
+        {
+            speedAblityused = activeAblity.None;
+            /* * change image to ready to use image here * */
+        }
+
 
     }
 

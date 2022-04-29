@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 5682109383221752388}
   - component: {fileID: 355910946}
   - component: {fileID: 3429717759446780474}
-  - component: {fileID: 393490609377856213}
+  - component: {fileID: 7353668758076748045}
   m_Layer: 0
   m_Name: Little Limos
   m_TagString: PlayerCube
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0667b4b2ca65a4543a2f5d09e1b67593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &393490609377856213
+--- !u!114 &7353668758076748045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3484106799779445433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e870483a1ab0da40bc256504f4700e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 77bac7952fb2ca44d9590d5d09123099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3491010945075026865
