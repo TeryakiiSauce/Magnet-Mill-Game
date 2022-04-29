@@ -9,6 +9,7 @@ public class CubeController : MonoBehaviour
     private Rigidbody cubeRigidBody;
     public bool normalMovement = true;
     public static bool isMoving = false;
+    public static bool checkmovement = false;
     public static bool flipinggravity = false;
     public static bool outOfBounds = false;
     private Vector3 rotationCenter;
@@ -16,6 +17,7 @@ public class CubeController : MonoBehaviour
     public float jumpHeight = 0.8f;
     public float jumpLenght = 1.2f;
     private bool onCorner = false;
+    float remainingAngle;
 
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
 
@@ -33,24 +35,26 @@ public class CubeController : MonoBehaviour
         if (isMoving || flipinggravity || outOfBounds) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         userInput();
         checkSpeedAbility();
+
     }
 
     //fixed update is used to controll the constant force of gravity   
     void FixedUpdate()
     { 
         changeGravity();
-
+        checkMovement();
     }
 
 
     //a method that checks the tag of the touched wall and updates the code accordingly 
     private void OnTriggerEnter(Collider other)
     {
-        if (!normalMovement && !onCorner)
-        {
-            isMoving = false;
-        }
 
+       
+
+        cubeRigidBody.velocity = Vector3.zero;
+        cubeRigidBody.angularVelocity = Vector3.zero;
+        
         flipinggravity = false;
         //Check to see if the tag on the collider is equal to Enemy
         if (other.tag == "Right wall")
@@ -96,16 +100,22 @@ public class CubeController : MonoBehaviour
         }
         else if (other.tag == "outOfBound")
         {
-            outOfBounds = true;
-        }
-        
+            if (checkmovement)
+            {
 
+            }
+            else 
+            {
+                outOfBounds = true;
+            }
+        }
     }
 
 
     //method that calls different methods depending on what the user inputs on his keyboard
     private void userInput() 
     {
+        
         //if statment to check which platform the cube is sitting on 
         if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)//onGround
         {
@@ -146,12 +156,11 @@ public class CubeController : MonoBehaviour
     {
         //disabling movment for the user 
         isMoving = true;
-        float remainingAngle = 90;
-
+        remainingAngle = 90;
         //setting the roatation center and angle depending on what wall the cube is on 
         setRotation(direction);
-
         //moving the cube
+
         while (remainingAngle > 0)
         {
             // make sure rotation angle will not be greater than remaining angle
@@ -159,20 +168,17 @@ public class CubeController : MonoBehaviour
             // rotate the cube around its edge
             transform.RotateAround(rotationCenter, rotationAxis, rotatingAngle);
             remainingAngle -= rotatingAngle;
-            yield return null;
+            yield return null; 
         }
         
         //snaping the angle to the grid and enabling it to move when the remaining angle of thew rotation is less then 5
         if (remainingAngle < 5)
         {
             snapToGrid();
-            if (normalMovement || (!normalMovement && onCorner))
-            {
-                isMoving = false;
-            }
-           
+            isMoving = false;        
+            cubeRigidBody.velocity = Vector3.zero;
+            cubeRigidBody.angularVelocity = Vector3.zero;
         }
-       
     }
 
 
@@ -234,23 +240,23 @@ public class CubeController : MonoBehaviour
             normalMovement = false;
             if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
             {
-                rotationCenter = transform.localPosition + direction / jumpHeight + Vector3.up / jumpLenght; // direction of the rotation
-                rotationAxis = Vector3.Cross(Vector3.down, direction); // compute the rotation access based on the direction and y axis
+                rotationCenter = transform.localPosition + direction + Vector3.up; // direction of the rotation
+                rotationAxis = Vector3.Cross(Vector3.down, direction * 2 + Vector3.up); // compute the rotation access based on the direction and y axis
             }
             else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
-            { 
-                rotationCenter = transform.localPosition + direction / jumpHeight + Vector3.right / jumpLenght; // direction of the rotation
-                rotationAxis = Vector3.Cross(Vector3.left, direction); // compute the rotation access based on the direction and y axis
+            {
+                rotationCenter = transform.localPosition + direction + Vector3.right; // direction of the rotation
+                rotationAxis = Vector3.Cross(Vector3.left, direction * 2 + Vector3.right); // compute the rotation access based on the direction and y axis
             }
             else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
             {
-                rotationCenter = transform.localPosition + direction / jumpHeight + Vector3.left / jumpLenght; // direction of the rotation
-                rotationAxis = Vector3.Cross(Vector3.right, direction); // compute the rotation access based on the direction and y axis
+                rotationCenter = transform.localPosition + direction + Vector3.left; // direction of the rotation
+                rotationAxis = Vector3.Cross(Vector3.right, direction * 2 + Vector3.left); // compute the rotation access based on the direction and y axis
             }
             else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
             {
-                rotationCenter = transform.localPosition + direction / jumpHeight + Vector3.down / jumpLenght; // direction of the rotation
-                rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
+                rotationCenter = transform.localPosition + direction + Vector3.down; // direction of the rotation
+                rotationAxis = Vector3.Cross(Vector3.up, direction * 2 + Vector3.down); // compute the rotation access based on the direction and y axis
             }
         }
         else
@@ -278,6 +284,8 @@ public class CubeController : MonoBehaviour
                 rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
             }
         }
+        print("axis"+rotationAxis);
+        print("center "+rotationCenter);
     }
 
     private void checkSpeedAbility() 
@@ -285,6 +293,10 @@ public class CubeController : MonoBehaviour
         if (abilitycooldown.speedAblityused == abilitycooldown.activeAblity.Speed)
         {
             speed = 500;
+        }
+        else if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump)
+        {
+            speed = 350;
         }
         else 
         {
@@ -325,6 +337,18 @@ public class CubeController : MonoBehaviour
 
             //settting the postion to a new rounded postion
             this.transform.position = position;
+        }
+    }
+
+    private void  checkMovement() 
+    {
+        if (abilitycooldown.jumpAblityused == abilitycooldown.activeAblity.Jump && remainingAngle>10)
+        {
+            checkmovement = true;
+        }
+        else
+        {
+            checkmovement = false;
         }
     }
 }

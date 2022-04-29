@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class abilitycooldown : MonoBehaviour
 {
-
-    private float coolDownTime;
-    private float abilityTime;
     private float freezeActiveTime;
     private float jumpActiveTime;
     private float speedActiveTime;
@@ -38,8 +35,8 @@ public class abilitycooldown : MonoBehaviour
             if (Input.GetKey(KeyCode.E) && !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time  
-                coolDownTime = 10f;
-                abilityTime = 3f;
+                float coolDownTime = 10f;
+                float abilityTime = 3f;
                 jumpAblityused = activeAblity.Jump;
                 jumpCoolDownEndTime = Time.time + coolDownTime;
                 jumpActiveTime = Time.time + abilityTime;
@@ -55,8 +52,8 @@ public class abilitycooldown : MonoBehaviour
              if (Input.GetKey(KeyCode.Q) && !CubeController.isMoving)
              {
                 //setting the cooldown time and the active time 
-                coolDownTime = 20f;
-                abilityTime = 5f;
+                float coolDownTime = 20f;
+                float abilityTime = 5f;
                 freezeAblityused = activeAblity.Freeze;
                 freezeCoolDownEndTime = Time.time + coolDownTime;
                 freezeActiveTime = Time.time + abilityTime;
@@ -70,8 +67,8 @@ public class abilitycooldown : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift)&& !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time 
-                coolDownTime = 14f;
-                abilityTime = 4f;
+                float coolDownTime = 14f;
+                float abilityTime = 4f;
                 speedAblityused = activeAblity.Speed;
                 speedCoolDownEndTime = Time.time + coolDownTime;
                 speedActiveTime = Time.time + abilityTime;
@@ -82,6 +79,8 @@ public class abilitycooldown : MonoBehaviour
         //setting the end time to the cooldown time + the current time  
         changeAbilityState();
 
+
+        
     }
       
     
