@@ -1116,7 +1116,7 @@ GameObject:
   - component: {fileID: 393490609377856213}
   m_Layer: 0
   m_Name: Little Limos
-  m_TagString: Untagged
+  m_TagString: PlayerCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 300
+  normalMovement: 1
   jumpHeight: 0.8
   jumpLenght: 1.2
 --- !u!114 &3429717759446780474

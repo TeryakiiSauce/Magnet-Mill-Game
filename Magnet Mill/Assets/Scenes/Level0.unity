@@ -53174,10 +53174,6 @@ PrefabInstance:
       propertyPath: groundCam
       value: 
       objectReference: {fileID: 2760037543101447124, guid: 5c82f6bae13e4154cbc8e7ed9ff01e6a, type: 3}
-    - target: {fileID: 355910946, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1308334657564989670, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -53193,10 +53189,6 @@ PrefabInstance:
     - target: {fileID: 3484106799779445433, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
       propertyPath: m_Name
       value: Little Limos
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484106799779445433, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
-      propertyPath: m_TagString
-      value: PlayerCube
       objectReference: {fileID: 0}
     - target: {fileID: 4256420618877018115, guid: f7a891fa7c55b5e48b5c45246e7cc3df, type: 3}
       propertyPath: m_RootOrder
