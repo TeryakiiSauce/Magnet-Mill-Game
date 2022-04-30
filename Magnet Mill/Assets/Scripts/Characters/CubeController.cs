@@ -344,7 +344,14 @@ public class CubeController : MonoBehaviour
     {
         if (AbilityCooldown.jumpAblityused == AbilityCooldown.activeAblity.Jump && remainingAngle>10)
         {
-            checkmovement = true;
+            if (onCorner)
+            {
+                checkmovement = false;
+            }
+            else
+            {
+                checkmovement = true;
+            }
         }
         else
         {

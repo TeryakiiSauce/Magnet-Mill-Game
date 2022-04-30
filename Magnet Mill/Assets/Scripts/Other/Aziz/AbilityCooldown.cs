@@ -23,7 +23,12 @@ public class AbilityCooldown : MonoBehaviour
         None
     }
 
-
+    private void Start()
+    {
+        HUDController.instance.SetFreezeAbilityAvailable();
+        HUDController.instance.SetJumpAbilityAvailable();
+        HUDController.instance.SetBoostAbilityAvailable();
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,7 +47,7 @@ public class AbilityCooldown : MonoBehaviour
                 jumpActiveTime = Time.time + abilityTime;
 
                 /* * change image to cooldown image here * */
-                HUDController.instance.SetJumpAbilityCooldown();
+                
             }
         }
 
@@ -58,7 +63,7 @@ public class AbilityCooldown : MonoBehaviour
                 freezeCoolDownEndTime = Time.time + coolDownTime;
                 freezeActiveTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
-                HUDController.instance.SetFreezeAbilityCooldown();
+               
             }
         }
 
@@ -74,7 +79,7 @@ public class AbilityCooldown : MonoBehaviour
                 speedCoolDownEndTime = Time.time + coolDownTime;
                 speedActiveTime = Time.time + abilityTime;
                 /* * change image to active image here * */
-                HUDController.instance.SetBoostAbilityDisabled();
+                
             }
         }
 
@@ -100,6 +105,11 @@ public class AbilityCooldown : MonoBehaviour
             //reseting the image
             resetAbility(jumpAblityused);
         }
+        else 
+        {
+            HUDController.instance.SetJumpAbilityCooldown();
+        }
+
 
         if (Time.time < freezeActiveTime)
         {
@@ -113,6 +123,10 @@ public class AbilityCooldown : MonoBehaviour
             resetAbility(freezeAblityused);
 
         }
+        else 
+        {
+            HUDController.instance.SetFreezeAbilityCooldown();
+        }
 
         if (Time.time < speedActiveTime)
         {
@@ -124,6 +138,10 @@ public class AbilityCooldown : MonoBehaviour
             //reseting the image
             resetAbility(speedAblityused);
         }
+        else 
+        {
+            HUDController.instance.SetBoostAbilityCooldown();
+        }
     }
     private void resetAbility(activeAblity AB)
     {
@@ -132,19 +150,21 @@ public class AbilityCooldown : MonoBehaviour
         {
             freezeAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
-            HUDController.instance.SetFreezeAbilityAvailable();
+            
+            HUDController.instance.SetFreezeAbilityDisabled();
         }
         else if (AB == activeAblity.Jump)
         {
             jumpAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
-            HUDController.instance.SetJumpAbilityAvailable();
+            HUDController.instance.SetJumpAbilityDisabled();
+            print("available");
         }
         else if (AB == activeAblity.Speed)
         {
             speedAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
-            HUDController.instance.SetBoostAbilityAvailable();
+            HUDController.instance.SetBoostAbilityDisabled();
         }
 
 
@@ -160,19 +180,22 @@ public class AbilityCooldown : MonoBehaviour
             case activeAblity.Freeze:
                 {
                     /* * change image to active to use image here * */
-                    HUDController.instance.SetFreezeAbilityDisabled();
+                    HUDController.instance.SetFreezeAbilityAvailable();
                     break;
                 }
             case activeAblity.Jump:
                 {
                     /* * change image to active to use image here * */
-                    HUDController.instance.SetJumpAbilityDisabled();
+                    
+                    HUDController.instance.SetJumpAbilityAvailable();
+                    print("disabling");
                     break;
                 }
             case activeAblity.Speed:
                 {
                     /* * change image to active to use image here * */
-                    HUDController.instance.SetBoostAbilityDisabled();
+                    
+                    HUDController.instance.SetBoostAbilityAvailable();
                     break;
                 }
             default: break;
