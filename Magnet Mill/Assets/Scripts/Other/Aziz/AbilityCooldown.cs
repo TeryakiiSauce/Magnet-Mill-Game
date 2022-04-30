@@ -42,7 +42,7 @@ public class AbilityCooldown : MonoBehaviour
                 jumpActiveTime = Time.time + abilityTime;
 
                 /* * change image to cooldown image here * */
-
+                HUDController.instance.SetJumpAbilityCooldown();
             }
         }
 
@@ -58,6 +58,7 @@ public class AbilityCooldown : MonoBehaviour
                 freezeCoolDownEndTime = Time.time + coolDownTime;
                 freezeActiveTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
+                HUDController.instance.SetFreezeAbilityCooldown();
             }
         }
 
@@ -73,6 +74,7 @@ public class AbilityCooldown : MonoBehaviour
                 speedCoolDownEndTime = Time.time + coolDownTime;
                 speedActiveTime = Time.time + abilityTime;
                 /* * change image to active image here * */
+                HUDController.instance.SetBoostAbilityDisabled();
             }
         }
 
@@ -130,16 +132,19 @@ public class AbilityCooldown : MonoBehaviour
         {
             freezeAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
+            HUDController.instance.SetFreezeAbilityAvailable();
         }
         else if (AB == activeAblity.Jump)
         {
             jumpAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
+            HUDController.instance.SetJumpAbilityAvailable();
         }
         else if (AB == activeAblity.Speed)
         {
             speedAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
+            HUDController.instance.SetBoostAbilityAvailable();
         }
 
 
@@ -155,16 +160,19 @@ public class AbilityCooldown : MonoBehaviour
             case activeAblity.Freeze:
                 {
                     /* * change image to active to use image here * */
+                    HUDController.instance.SetFreezeAbilityDisabled();
                     break;
                 }
             case activeAblity.Jump:
                 {
                     /* * change image to active to use image here * */
+                    HUDController.instance.SetJumpAbilityDisabled();
                     break;
                 }
             case activeAblity.Speed:
                 {
                     /* * change image to active to use image here * */
+                    HUDController.instance.SetBoostAbilityDisabled();
                     break;
                 }
             default: break;

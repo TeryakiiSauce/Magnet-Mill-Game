@@ -82,8 +82,9 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Ground) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Ground;
-        MapController.instance.SetGroundKeysImg();
-        MapController.instance.rotateSquare = true;
+        HUDController.instance.SetGroundKeysImg();
+        HUDController.instance.rotateSquare = true;
+        HUDController.instance.angleSet = false;
     }
 
     public void InRight()
@@ -91,8 +92,9 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Right) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Right;
-        MapController.instance.SetRightKeysImg();
-        MapController.instance.rotateSquare = true;
+        HUDController.instance.SetRightKeysImg();
+        HUDController.instance.rotateSquare = true;
+        HUDController.instance.angleSet = false;
     }
 
     public void InRoof()
@@ -100,8 +102,9 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Roof) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Roof;
-        MapController.instance.SetRoofKeysImg();
-        MapController.instance.rotateSquare = true;
+        HUDController.instance.SetRoofKeysImg();
+        HUDController.instance.rotateSquare = true;
+        HUDController.instance.angleSet = false;
     }
 
     public void InLeft()
@@ -109,7 +112,8 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Left) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Left;
-        MapController.instance.SetLeftKeysImg();
-        MapController.instance.rotateSquare = true;
+        HUDController.instance.SetLeftKeysImg();
+        HUDController.instance.rotateSquare = true;
+        HUDController.instance.angleSet = false;
     }
 }
