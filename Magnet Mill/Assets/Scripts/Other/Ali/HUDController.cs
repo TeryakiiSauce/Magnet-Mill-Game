@@ -29,9 +29,10 @@ public class HUDController : MonoBehaviour
     [HideInInspector] public bool rotateSquare;
     [HideInInspector] public bool angleSet = false;
     private Vector3 tempQ;
+    private Vector3 fakeRotation;
     private float rotationEndAngle = 0;
-    private int rotationSpeed = 140;
-
+    private int rotationSpeed = 150;
+    private bool increaseAngel;
     private void Awake()
     {
         if (instance == null)    //checking if instance is null or not becuase we only need one instance of this class
@@ -44,79 +45,164 @@ public class HUDController : MonoBehaviour
             return;
         }
     }
-
+    void Start()
+    {
+        fakeRotation = rect.eulerAngles;
+    }
     void Update()
     {
         if (!rotateSquare) return;
-        Rotate();
+        //Rotate();
+        if(!angleSet)
+        {
+            if(GroundToRight() || RightToRoof() || RoofToLeft() || LeftToGround())
+            {
+                rotationEndAngle = fakeRotation.z + 90;
+            }
+            else if(GroundToLeft() || LeftToRoof() || RoofToRight() || RightToGround())
+            {
+                rotationEndAngle = fakeRotation.z - 90;
+            }
+            else if(GroundToRoof() || RightToLeft())
+            {
+                rotationEndAngle = fakeRotation.z + 180;
+            }
+            else if(RoofToGround() || LeftToRight())
+            {
+                rotationEndAngle = fakeRotation.z - 180;
+            }
+            if(rotationEndAngle > fakeRotation.z)
+            {
+                increaseAngel = true;
+            }
+            else
+            {
+                increaseAngel = false;
+            }
+            angleSet = true;
+        }
+
+        if(increaseAngel)
+        {
+            RotateIncreasingly();
+        }
+        else
+        {
+            RotateDecreasingly();
+        }
+
     }
 
-
-    private void Rotate()
+    private void RotateIncreasingly()
     {
-
-        SetRotationEndAngle();
-        tempQ = rect.eulerAngles;
+        tempQ = fakeRotation;
 
         if (tempQ.z < rotationEndAngle)
         {
             tempQ.z += rotationSpeed * Time.deltaTime;
             rect.eulerAngles = tempQ;
-
-            if (Mathf.Approximately(tempQ.z, rotationEndAngle) || tempQ.z >= rotationEndAngle)
+            fakeRotation = tempQ;
+            if (tempQ.z >= rotationEndAngle)
             {
-                rotateSquare = false;
-                tempQ.z = rotationEndAngle; // set the exact angle without any fractions
+                tempQ.z = rotationEndAngle;
                 rect.eulerAngles = tempQ;
+                fakeRotation = tempQ;
+                rotateSquare = false;
             }
-
         }
-        else if (tempQ.z > rotationEndAngle)
+    }
+
+    private void RotateDecreasingly()
+    {
+        tempQ = fakeRotation;
+
+        if (tempQ.z > rotationEndAngle)
         {
             tempQ.z -= rotationSpeed * Time.deltaTime;
             rect.eulerAngles = tempQ;
-
-            if (Mathf.Approximately(tempQ.z, rotationEndAngle) || tempQ.z <= rotationEndAngle)
+            fakeRotation = tempQ;
+            if (tempQ.z <= rotationEndAngle)
             {
-                rotateSquare = false;
-                tempQ.z = rotationEndAngle; // set the exact angle without any fractions
+                tempQ.z = rotationEndAngle;
                 rect.eulerAngles = tempQ;
+                fakeRotation = tempQ;
+                rotateSquare = false;
             }
         }
-        else
-        {
-            rotateSquare = false;
-        }
-
-
     }
+
+    public void SetMapAngle()
+    {
+        fakeRotation.z = rotationEndAngle;
+        tempQ = fakeRotation;
+        rect.eulerAngles = tempQ;
+    }
+
+    //private void Rotate()
+    //{
+
+    //    SetRotationEndAngle();
+    //    tempQ = rect.eulerAngles;
+
+    //    if (tempQ.z < rotationEndAngle)
+    //    {
+    //        tempQ.z += rotationSpeed * Time.deltaTime;
+    //        rect.eulerAngles = tempQ;
+
+    //        if (Mathf.Approximately(tempQ.z, rotationEndAngle) || tempQ.z >= rotationEndAngle)
+    //        {
+    //            rotateSquare = false;
+    //            tempQ.z = rotationEndAngle; // set the exact angle without any fractions
+    //            rect.eulerAngles = tempQ;
+    //        }
+
+    //    }
+    //    else if (tempQ.z > rotationEndAngle)
+    //    {
+    //        tempQ.z -= rotationSpeed * Time.deltaTime;
+    //        rect.eulerAngles = tempQ;
+
+    //        if (Mathf.Approximately(tempQ.z, rotationEndAngle) || tempQ.z <= rotationEndAngle)
+    //        {
+    //            rotateSquare = false;
+    //            tempQ.z = rotationEndAngle; // set the exact angle without any fractions
+    //            rect.eulerAngles = tempQ;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        rotateSquare = false;
+    //    }
+
+
+    //}
     
 
-    private void SetRotationEndAngle()
-    {
-        if (!angleSet)
-        {
-            if (RightToGround() || LeftToGround() || RoofToGround())
-            {
-                rotationEndAngle = 0;
-            }
-            else if (GroundToRight() || RoofToRight() || LeftToRight())
-            {
-                rotationEndAngle = 90;
-            }
-            else if (RightToRoof() || LeftToRoof() || GroundToRoof())
-            {
-                rotationEndAngle = 180;
-            }
-            else if (GroundToLeft() || RoofToLeft() || RightToLeft())
-            {
-                rotationEndAngle = 270;
-            }
+    //private void SetRotationEndAngle()
+    //{
+    //    if (!angleSet)
+    //    {
+    //        if (RightToGround() || LeftToGround() || RoofToGround())
+    //        {
+    //            rotationEndAngle = 0;
+    //        }
+    //        else if (GroundToRight() || RoofToRight() || LeftToRight())
+    //        {
+    //            rotationEndAngle = 90;
+    //        }
+    //        else if (RightToRoof() || LeftToRoof() || GroundToRoof())
+    //        {
+    //            rotationEndAngle = 180;
+    //        }
+    //        else if (GroundToLeft() || RoofToLeft() || RightToLeft())
+    //        {
+    //            rotationEndAngle = 270;
+    //        }
 
-            angleSet = true;
+    //        angleSet = true;
 
-        }
-    }
+    //    }
+    //}
 
     private bool GroundToRight()
     {

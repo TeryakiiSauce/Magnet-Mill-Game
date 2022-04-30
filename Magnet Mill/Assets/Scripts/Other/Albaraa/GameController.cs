@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Ground) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Ground;
+        HUDController.instance.SetMapAngle();
         HUDController.instance.SetGroundKeysImg();
         HUDController.instance.rotateSquare = true;
         HUDController.instance.angleSet = false;
@@ -92,6 +93,7 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Right) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Right;
+        HUDController.instance.SetMapAngle();
         HUDController.instance.SetRightKeysImg();
         HUDController.instance.rotateSquare = true;
         HUDController.instance.angleSet = false;
@@ -102,6 +104,7 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Roof) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Roof;
+        HUDController.instance.SetMapAngle();
         HUDController.instance.SetRoofKeysImg();
         HUDController.instance.rotateSquare = true;
         HUDController.instance.angleSet = false;
@@ -112,8 +115,14 @@ public class GameController : MonoBehaviour
         if (currentMagnetPosition == CheckDirection.Left) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Left;
+        HUDController.instance.SetMapAngle();
         HUDController.instance.SetLeftKeysImg();
         HUDController.instance.rotateSquare = true;
         HUDController.instance.angleSet = false;
+    }
+
+    public bool isDead()
+    {
+        return CubeController.outOfBounds;
     }
 }
