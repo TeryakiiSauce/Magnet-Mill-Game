@@ -9,11 +9,11 @@ public class MapController : MonoBehaviour
 
     public GameObject mapBox;
     public GameObject mapKeys;
-    public Vector3 tempQ;
-    public float endZAngle = 10;
-    public int rotationSpeed = 100;
-    [HideInInspector] public bool rotateSquare;
     public RectTransform rect;
+    [HideInInspector] public bool rotateSquare;
+    private Vector3 tempQ;
+    private float rotationEndAngle = 90;
+    private int rotationSpeed = 140;
 
     private void Awake()
     {
@@ -37,41 +37,54 @@ public class MapController : MonoBehaviour
 
     private void Rotate()
     {
+        if (RightToGround() || LeftToGround()||RoofToGround()) {
+            rotationEndAngle = 0;
+        }
+        else if (GroundToRight() || RoofToRight() || LeftToRight())
+        {
+            rotationEndAngle = 90;
+        }
+        else if (RightToRoof() || LeftToRoof() || GroundToRoof())
+        {
+            rotationEndAngle = 180;
+        }
+        else if (GroundToLeft() || RoofToLeft() || RightToLeft())
+        {
+            rotationEndAngle = 270;
+        }
+       
+
         tempQ = rect.eulerAngles;
 
-        if (tempQ.z < endZAngle && !Mathf.Approximately(tempQ.z,endZAngle))
+        if (tempQ.z <= rotationEndAngle)
         {
             tempQ.z += rotationSpeed * Time.deltaTime;
             rect.eulerAngles = tempQ;
 
+            if (Mathf.Approximately(tempQ.z, rotationEndAngle) || tempQ.z == rotationEndAngle || tempQ.z >= rotationEndAngle)
+            {
+                rotateSquare = false;
+                tempQ.z = rotationEndAngle; // set the exact angle without any fractions
+            }
+
         }
-        else if(tempQ.z > endZAngle) 
+        else if (tempQ.z > rotationEndAngle)
         {
-            tempQ.z = endZAngle;
+            tempQ.z -= rotationSpeed * Time.deltaTime;
             rect.eulerAngles = tempQ;
 
+            if (Mathf.Approximately(tempQ.z, rotationEndAngle) || tempQ.z == rotationEndAngle || tempQ.z <= rotationEndAngle)
+            {
+                rotateSquare = false;
+                tempQ.z = rotationEndAngle; // set the exact angle without any fractions
+            }
+        }
+        else
+        {
+            rotateSquare = false;
         }
     }
 
-    public void SetGroundKeysImg()
-    {
-        
-    }
-
-    public void SetRightKeysImg()
-    {
-        
-    }
-
-    public void SetRoofKeysImg()
-    {
-        
-    }
-
-    public void SetLeftKeysImg()
-    {
-        
-    }
 
     private bool GroundToRight()
     {
@@ -146,4 +159,23 @@ public class MapController : MonoBehaviour
             && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right;
     }
 
+    public void SetGroundKeysImg()
+    {
+
+    }
+
+    public void SetRightKeysImg()
+    {
+
+    }
+
+    public void SetRoofKeysImg()
+    {
+
+    }
+
+    public void SetLeftKeysImg()
+    {
+
+    }
 }

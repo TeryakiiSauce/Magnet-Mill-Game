@@ -2,49 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class abilitycooldown : MonoBehaviour
+public class AbilityCooldown : MonoBehaviour
 {
-
-    private float coolDownTime;
-    private float abilityTime;
     private float freezeActiveTime;
     private float jumpActiveTime;
     private float speedActiveTime;
     private float freezeCoolDownEndTime;
     private float jumpCoolDownEndTime;
     private float speedCoolDownEndTime;
-    private bool jumpActive = false;
     public static activeAblity freezeAblityused;
     public static activeAblity speedAblityused;
     public static activeAblity jumpAblityused;
 
     //enum to check which ablity is active 
     public enum activeAblity
-     {
+    {
         Freeze,
         Jump,
         Speed,
         None
     }
- 
- 
+
+
 
     // Update is called once per frame
     void Update()
     {
         //checking if the cooldown end time is less than the current time 
-        if (Time.time > jumpCoolDownEndTime) 
+        if (Time.time > jumpCoolDownEndTime)
         {
             // if the e button is clicked
             if (Input.GetKey(KeyCode.E) && !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time  
-                coolDownTime = 10f;
-                abilityTime = 7f;
+                float coolDownTime = 10f;
+                float abilityTime = 3f;
                 jumpAblityused = activeAblity.Jump;
                 jumpCoolDownEndTime = Time.time + coolDownTime;
                 jumpActiveTime = Time.time + abilityTime;
-                jumpActive = true;
+
                 /* * change image to cooldown image here * */
 
             }
@@ -53,11 +49,11 @@ public class abilitycooldown : MonoBehaviour
         if (Time.time > freezeCoolDownEndTime)
         {
             // if the q button is clicked
-             if (Input.GetKey(KeyCode.Q) && !CubeController.isMoving)
-             {
+            if (Input.GetKey(KeyCode.Q) && !CubeController.isMoving)
+            {
                 //setting the cooldown time and the active time 
-                coolDownTime = 20f;
-                abilityTime = 5f;
+                float coolDownTime = 20f;
+                float abilityTime = 5f;
                 freezeAblityused = activeAblity.Freeze;
                 freezeCoolDownEndTime = Time.time + coolDownTime;
                 freezeActiveTime = Time.time + abilityTime;
@@ -71,8 +67,8 @@ public class abilitycooldown : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) && !CubeController.isMoving)
             {
                 //setting the cooldown time and the active time 
-                coolDownTime = 14f;
-                abilityTime = 4f;
+                float coolDownTime = 14f;
+                float abilityTime = 4f;
                 speedAblityused = activeAblity.Speed;
                 speedCoolDownEndTime = Time.time + coolDownTime;
                 speedActiveTime = Time.time + abilityTime;
@@ -83,11 +79,13 @@ public class abilitycooldown : MonoBehaviour
         //setting the end time to the cooldown time + the current time  
         changeAbilityState();
 
-    }
-      
-    
 
-    private void changeAbilityState ()
+
+    }
+
+
+
+    private void changeAbilityState()
     {
         if (Time.time < jumpActiveTime)
         {
@@ -129,21 +127,21 @@ public class abilitycooldown : MonoBehaviour
     {
         //checking for the active ability 
         if (AB == activeAblity.Freeze)
-                {   
-                    freezeAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */
-                }
-        else if(AB == activeAblity.Jump && !CubeController.isMoving)
-                {
-                    jumpAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */     
-                }
+        {
+            freezeAblityused = activeAblity.None;
+            /* * change image to ready to use image here * */
+        }
+        else if (AB == activeAblity.Jump)
+        {
+            jumpAblityused = activeAblity.None;
+            /* * change image to ready to use image here * */
+        }
         else if (AB == activeAblity.Speed)
-                {
-                    speedAblityused = activeAblity.None;
-                    /* * change image to ready to use image here * */
-                }
-        
+        {
+            speedAblityused = activeAblity.None;
+            /* * change image to ready to use image here * */
+        }
+
 
     }
 
