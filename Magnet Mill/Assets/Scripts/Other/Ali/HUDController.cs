@@ -246,7 +246,7 @@ public class HUDController : MonoBehaviour
 
     public void SetFreezeAbilityAvailable()
     {
-        ChangeImage(freezeAbility, freezeAvailable);
+       // ChangeImage(freezeAbility, freezeAvailable);
     }
 
     public void SetFreezeAbilityDisabled()
@@ -255,7 +255,7 @@ public class HUDController : MonoBehaviour
     }
     public void SetFreezeAbilityCooldown()
     {
-        ChangeImage(freezeAbility, freezeCooldown);
+        //ChangeImage(freezeAbility, freezeCooldown);
     }
 
 
