@@ -249,7 +249,7 @@ public class HUDController : MonoBehaviour
         ChangeImage(freezeAbility, freezeAvailable);
     }
 
-    public void SetFeezeAbilityDisabled()
+    public void SetFreezeAbilityDisabled()
     {
         ChangeImage(freezeAbility, freezeDisabled);
     }
