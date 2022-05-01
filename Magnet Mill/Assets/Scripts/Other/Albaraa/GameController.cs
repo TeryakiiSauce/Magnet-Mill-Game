@@ -37,8 +37,11 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-        AudioManager.instance.Play("BackGroundMusic");
-        UserData.SetString(UserData.currentLevel, currentLevel);
+        if (currentLevel == null /* So that it only runs during when starting from main menu scene */)
+        {
+            AudioManager.instance.Play("BackGroundMusic");
+            UserData.SetString(UserData.currentLevel, currentLevel);
+        }
     }
 
     // Update is called once per frame
