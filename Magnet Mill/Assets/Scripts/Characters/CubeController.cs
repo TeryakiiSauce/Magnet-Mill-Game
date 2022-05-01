@@ -11,7 +11,7 @@ public class CubeController : MonoBehaviour
     public static bool isMoving = false;
     public static bool checkmovement = false;
     public static bool flipinggravity = false;
-    public static bool outOfBounds = false;
+    //public static bool outOfBounds = false;
     private Vector3 rotationCenter;
     private Vector3 rotationAxis;
     public float jumpHeight = 0.8f;
@@ -32,7 +32,7 @@ public class CubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isMoving || flipinggravity || outOfBounds) return; // to prevent rolling when we are in the middle of a roll or when clicking space
+        if (isMoving || flipinggravity || GameController.instance.IsDead()) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         userInput();
         checkSpeedAbility();
 
@@ -106,7 +106,7 @@ public class CubeController : MonoBehaviour
             }
             else 
             {
-                outOfBounds = true;
+                GameController.instance.PlayerDead();
             }
         }
     }
@@ -117,28 +117,28 @@ public class CubeController : MonoBehaviour
     {
         
         //if statment to check which platform the cube is sitting on 
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)//onGround
+        if (GameController.instance.IsInGround())//onGround
         {
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)//on roof
+        else if (GameController.instance.IsInRoof())//on roof
         {
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.left)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)//on right wall
+        else if (GameController.instance.IsInRight())//on right wall
         {
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.down)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.up)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)//on left wall
+        else if (GameController.instance.IsInLeft())//on left wall
         {
             if (Input.GetKey(KeyCode.A)) StartCoroutine(Roll(Vector3.up)); // rotate to the left when A clicked
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.down)); // rotate to the right when D clicked
@@ -187,22 +187,22 @@ public class CubeController : MonoBehaviour
     {
         flipinggravity = true;
         //flip from ground to roof
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+        if (GameController.instance.IsInGround())
         {
             GameController.instance.InRoof();
         }
         //flip from roof to ground 
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+        else if (GameController.instance.IsInRoof())
         {
             GameController.instance.InGround();
         }
         //flip from right to left
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+        else if (GameController.instance.IsInRight())
         {
             GameController.instance.InLeft();
         }
         //flip from left to right 
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+        else if (GameController.instance.IsInLeft())
         {
             GameController.instance.InRight();
         }
@@ -213,19 +213,19 @@ public class CubeController : MonoBehaviour
     private void changeGravity() 
     {
         //if statment that changes the force(gravity) depending on where the cube is touching 
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+        if (GameController.instance.IsInGround())
         {
             cubeRigidBody.AddForce(0, -9.81f, 0);
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+        else if (GameController.instance.IsInRoof())
         {
             cubeRigidBody.AddForce(0, 9.81f, 0);
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+        else if (GameController.instance.IsInRight())
         {
             cubeRigidBody.AddForce(9.81f, 0, 0);
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+        else if (GameController.instance.IsInLeft())
         {
             cubeRigidBody.AddForce(-9.81f, 0, 0);
         }
@@ -238,22 +238,22 @@ public class CubeController : MonoBehaviour
         if (AbilityCooldown.jumpAblityused == AbilityCooldown.activeAblity.Jump && !onCorner)
         {
             normalMovement = false;
-            if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+            if (GameController.instance.IsInRoof())
             {
                 rotationCenter = transform.localPosition + direction + Vector3.up; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.down, direction * 2 + Vector3.up); // compute the rotation access based on the direction and y axis
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+            else if (GameController.instance.IsInRight())
             {
                 rotationCenter = transform.localPosition + direction + Vector3.right; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.left, direction * 2 + Vector3.right); // compute the rotation access based on the direction and y axis
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+            else if (GameController.instance.IsInLeft())
             {
                 rotationCenter = transform.localPosition + direction + Vector3.left; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.right, direction * 2 + Vector3.left); // compute the rotation access based on the direction and y axis
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+            else if (GameController.instance.IsInGround())
             {
                 rotationCenter = transform.localPosition + direction + Vector3.down; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.up, direction * 2 + Vector3.down); // compute the rotation access based on the direction and y axis
@@ -263,22 +263,22 @@ public class CubeController : MonoBehaviour
         {
             normalMovement = true;
             //if statment that changes the axes and the rotation depneing on which wall is the cube touching 
-            if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+            if (GameController.instance.IsInRoof())
             {
                 rotationCenter = transform.localPosition + direction / 2 + Vector3.up / 2; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.down, direction); // compute the rotation access based on the direction and y axis
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+            else if (GameController.instance.IsInRight())
             {
                 rotationCenter = transform.localPosition + direction / 2 + Vector3.right / 2; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.left, direction); // compute the rotation access based on the direction and y axis
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+            else if (GameController.instance.IsInLeft())
             {
                 rotationCenter = transform.localPosition + direction / 2 + Vector3.left / 2; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.right, direction); // compute the rotation access based on the direction and y axis
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+            else if (GameController.instance.IsInGround())
             {
                 rotationCenter = transform.localPosition + direction / 2 + Vector3.down / 2; // direction of the rotation
                 rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
@@ -309,8 +309,8 @@ public class CubeController : MonoBehaviour
     private void snapToGrid()
     {
         //checks if the cube is on the gound or roof
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground
-           || GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+        if (GameController.instance.IsInGround()
+           || GameController.instance.IsInRoof())
         {
             //creating the new location with round function and setting it in a vector
             var position = new Vector3(
@@ -324,8 +324,8 @@ public class CubeController : MonoBehaviour
         }
 
         //checks if the cube is on the left or right wall
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right
-           || GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+        if (GameController.instance.IsInRight()
+           || GameController.instance.IsInLeft())
         {
 
             //creating the new location with round function and setting it in a vector
@@ -344,7 +344,14 @@ public class CubeController : MonoBehaviour
     {
         if (AbilityCooldown.jumpAblityused == AbilityCooldown.activeAblity.Jump && remainingAngle>10)
         {
-            checkmovement = true;
+            if (onCorner)
+            {
+                checkmovement = false;
+            }
+            else
+            {
+                checkmovement = true;
+            }
         }
         else
         {

@@ -7,7 +7,7 @@ public class OutOffBoundHandler : MonoBehaviour
     private float timer;
     void Update()
     {
-        if(CubeController.outOfBounds)
+        if(GameController.instance.IsDead())
         {
             if(timer <1.5f)
             {
