@@ -10,22 +10,25 @@ public class GameController : MonoBehaviour
     public string currentLevel;
     public GameObject cube;
     public Material checkPointOnMaterial;
+
     [HideInInspector] public bool gameOver;
     [HideInInspector] public bool gamePaused;
-    [HideInInspector] public PowerAbilities currentAbility;
+    [HideInInspector] public float levelTimer;
     [HideInInspector] public int score;
     [HideInInspector] public int rollsCount;
-    [HideInInspector] public float levelTimer;
     [HideInInspector] public int deathCount;
     [HideInInspector] public int abilitesUsedCount;
+    [HideInInspector] public PowerAbilities currentAbility;
     [HideInInspector] public CheckDirection previousMagnetPosition;
+
     private bool isDead;
     private CheckDirection currentMagnetPosition;
-    private Vector3 currentCheckPoint;
     private CheckDirection checkPointCurrentDirection;
+    private Vector3 currentCheckPoint;
+
     void Awake()
     {
-        if (instance == null)
+        if (instance == null)       //checking if instance is null or not becuase we only need one instance of this class
         {
             instance = this;
         }
@@ -35,54 +38,49 @@ public class GameController : MonoBehaviour
             return;
         }
     }
+
     void Start()
     {
-        if (currentLevel == null /* So that it only runs during when starting from main menu scene */)
-        {
-            AudioManager.instance.Play("BackGroundMusic");
-            UserData.SetString(UserData.currentLevel, currentLevel);
+        if (AudioManager.instance != null)        //Checking if audiomanager is null, if yes it means that the scene not started from
+        {                                       //main menu, then the audio will not play since its object is null
+            AudioManager.instance.Play("BackGroundMusic");  //play sound by its name that given in the main menu in audio manager
+            UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void SetCheckPoint(string gridTag)
     {
-        if (gridTag == "Ground" || gridTag == "GroundCorner")
+        if (gridTag == "Ground" || gridTag == "GroundCorner")   //check the checkpoint tag
         {
             checkPointCurrentDirection = CheckDirection.Ground;
             currentCheckPoint = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
-                cube.transform.position.y + 0.5f, Mathf.RoundToInt(cube.transform.position.z));
+                cube.transform.position.y + 0.5f, Mathf.RoundToInt(cube.transform.position.z));     //save spawning position
         }
         else if(gridTag == "Right wall" || gridTag == "RightWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Right;
-            currentCheckPoint = new Vector3(cube.transform.position.x - 1f,
+            currentCheckPoint = new Vector3(cube.transform.position.x - 0.75f,
                 Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
         }
     }
 
-    public void OutOffMap()
+    public void OutOfMap()     //this function will be called if the user is out of map (dead)
     {
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
-            InGround();
+            InGround();     //change magnet direction to ground if the checkpoint is in the ground
         }
         else if(checkPointCurrentDirection == CheckDirection.Right)
         {
-            InRight();
+            InRight();        
         }
-        cubeBody.velocity = Vector3.zero;
-        cube.transform.position = currentCheckPoint;
-        isDead = false;
+        cubeBody.velocity = Vector3.zero;       //stop cube velocity to handle constant changing of magnet direction
+        cube.transform.position = currentCheckPoint;    //change cube position to checkpoint position
+        isDead = false;     // switch isDead back to false since the player respawned
     }
 
-    public void InGround()
+    public void InGround()  //change magnet direction to ground
     {
         if (IsInGround()) return;
         previousMagnetPosition = currentMagnetPosition;
@@ -93,7 +91,7 @@ public class GameController : MonoBehaviour
         HUDController.instance.angleSet = false;
     }
 
-    public void InRight()
+    public void InRight()   //change magnet direction to right
     {
         if (IsInRight()) return;
         previousMagnetPosition = currentMagnetPosition;
@@ -104,7 +102,7 @@ public class GameController : MonoBehaviour
         HUDController.instance.angleSet = false;
     }
 
-    public void InRoof()
+    public void InRoof()    //change magnet direction to roof
     {
         if (IsInRoof()) return;
         previousMagnetPosition = currentMagnetPosition;
@@ -115,7 +113,7 @@ public class GameController : MonoBehaviour
         HUDController.instance.angleSet = false;
     }
 
-    public void InLeft()
+    public void InLeft()    //change magnet direction to left
     {
         if (IsInLeft()) return;
         previousMagnetPosition = currentMagnetPosition;
