@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     private bool isDead;
     private CheckDirection currentMagnetPosition;
     private CheckDirection checkPointCurrentDirection;
-    private Vector3 currentCheckPoint;
+    private Vector3 currentCheckPointPos;
 
     void Awake()
     {
@@ -53,13 +53,25 @@ public class GameController : MonoBehaviour
         if (gridTag == "Ground" || gridTag == "GroundCorner")   //check the checkpoint tag
         {
             checkPointCurrentDirection = CheckDirection.Ground;
-            currentCheckPoint = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
-                cube.transform.position.y + 0.5f, Mathf.RoundToInt(cube.transform.position.z));     //save spawning position
+            currentCheckPointPos = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
+                cube.transform.position.y + 0.4f, Mathf.RoundToInt(cube.transform.position.z));     //save spawning position
         }
         else if(gridTag == "Right wall" || gridTag == "RightWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Right;
-            currentCheckPoint = new Vector3(cube.transform.position.x - 0.75f,
+            currentCheckPointPos = new Vector3(cube.transform.position.x - 0.4f,
+                Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
+        }
+        else if(gridTag == "Roof" || gridTag == "RoofCorner")
+        {
+            checkPointCurrentDirection = CheckDirection.Roof;
+            currentCheckPointPos = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
+                cube.transform.position.y - 0.4f, Mathf.RoundToInt(cube.transform.position.z));
+        }
+        else if(gridTag == "Left wall" || gridTag == "leftWallCorner")
+        {
+            checkPointCurrentDirection = CheckDirection.Left;
+            currentCheckPointPos = new Vector3(cube.transform.position.x + 0.4f,
                 Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
         }
     }
@@ -75,8 +87,16 @@ public class GameController : MonoBehaviour
         {
             InRight();        
         }
+        else if(checkPointCurrentDirection == CheckDirection.Roof)
+        {
+            InRoof();
+        }
+        else if(checkPointCurrentDirection == CheckDirection.Left)
+        {
+            InLeft();
+        }
         cubeBody.velocity = Vector3.zero;       //stop cube velocity to handle constant changing of magnet direction
-        cube.transform.position = currentCheckPoint;    //change cube position to checkpoint position
+        cube.transform.position = currentCheckPointPos;    //change cube position to checkpoint position
         isDead = false;     // switch isDead back to false since the player respawned
     }
 
