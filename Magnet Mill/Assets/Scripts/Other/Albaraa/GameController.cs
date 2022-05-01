@@ -37,7 +37,11 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
-        UserData.SetString(UserData.currentLevel, currentLevel);
+        if (currentLevel == null /* So that it only runs during when starting from main menu scene */)
+        {
+            AudioManager.instance.Play("BackGroundMusic");
+            UserData.SetString(UserData.currentLevel, currentLevel);
+        }
     }
 
     // Update is called once per frame
@@ -140,6 +144,11 @@ public class GameController : MonoBehaviour
     public bool IsInLeft()
     {
         return currentMagnetPosition == CheckDirection.Left;
+    }
+
+    public CheckDirection GetCurrentDirection()
+    {
+        return currentMagnetPosition;
     }
 
     public bool IsDead()
