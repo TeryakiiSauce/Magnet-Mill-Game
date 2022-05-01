@@ -7,15 +7,15 @@ public class OutOffBoundHandler : MonoBehaviour
     private float timer;
     void Update()
     {
-        if(GameController.instance.IsDead())
+        if(GameController.instance.IsDead())    //check if player is dead
         {
-            if(timer <1.5f)
+            if(timer <1.5f)     //wait for 1.5 seconds then execute OutOfMap function from gamecontroller
             {
                 timer += Time.deltaTime;
             }
             else
             {
-                GameController.instance.OutOffMap();
+                GameController.instance.OutOfMap();
                 timer = 0;
             }
         }
