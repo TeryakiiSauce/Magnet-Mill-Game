@@ -2745,7 +2745,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56643bb24aab14d719edd3b987fdf5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: BackGroundMusic
+    clip: {fileID: 8300000, guid: 6e1c9b58dbb5d914daea5462180ced62, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
 --- !u!4 &1894539398
 Transform:
   m_ObjectHideFlags: 0

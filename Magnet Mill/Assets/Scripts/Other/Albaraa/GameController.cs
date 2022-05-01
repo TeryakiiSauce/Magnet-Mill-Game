@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     }
     void Start()
     {
+        AudioManager.instance.Play("BackGroundMusic");
         UserData.SetString(UserData.currentLevel, currentLevel);
     }
 
@@ -140,6 +141,11 @@ public class GameController : MonoBehaviour
     public bool IsInLeft()
     {
         return currentMagnetPosition == CheckDirection.Left;
+    }
+
+    public CheckDirection GetCurrentDirection()
+    {
+        return currentMagnetPosition;
     }
 
     public bool IsDead()

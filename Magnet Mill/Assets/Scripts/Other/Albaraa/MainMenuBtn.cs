@@ -26,6 +26,7 @@ public class MainMenuBtn : MonoBehaviour
         if(whichButton == MenuBtn.play)
         {
             ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0); //moving to scene "Level0"
+            //ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0BaraaTemp);
         }
         else if(whichButton == MenuBtn.tutorial)
         {
