@@ -18,8 +18,9 @@ public class GameController : MonoBehaviour
     [HideInInspector] public float levelTimer;
     [HideInInspector] public int deathCount;
     [HideInInspector] public int abilitesUsedCount;
-    [HideInInspector] public CheckDirection currentMagnetPosition;
     [HideInInspector] public CheckDirection previousMagnetPosition;
+    private bool isDead;
+    private CheckDirection currentMagnetPosition;
     private Vector3 currentCheckPoint;
     private CheckDirection checkPointCurrentDirection;
     void Awake()
@@ -74,12 +75,12 @@ public class GameController : MonoBehaviour
         }
         cubeBody.velocity = Vector3.zero;
         cube.transform.position = currentCheckPoint;
-        CubeController.outOfBounds = false;
+        isDead = false;
     }
 
     public void InGround()
     {
-        if (currentMagnetPosition == CheckDirection.Ground) return;
+        if (IsInGround()) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Ground;
         HUDController.instance.SetMapAngle();
@@ -90,7 +91,7 @@ public class GameController : MonoBehaviour
 
     public void InRight()
     {
-        if (currentMagnetPosition == CheckDirection.Right) return;
+        if (IsInRight()) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Right;
         HUDController.instance.SetMapAngle();
@@ -101,7 +102,7 @@ public class GameController : MonoBehaviour
 
     public void InRoof()
     {
-        if (currentMagnetPosition == CheckDirection.Roof) return;
+        if (IsInRoof()) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Roof;
         HUDController.instance.SetMapAngle();
@@ -112,7 +113,7 @@ public class GameController : MonoBehaviour
 
     public void InLeft()
     {
-        if (currentMagnetPosition == CheckDirection.Left) return;
+        if (IsInLeft()) return;
         previousMagnetPosition = currentMagnetPosition;
         currentMagnetPosition = CheckDirection.Left;
         HUDController.instance.SetMapAngle();
@@ -121,8 +122,33 @@ public class GameController : MonoBehaviour
         HUDController.instance.angleSet = false;
     }
 
-    public bool isDead()
+    public bool IsInRoof()
     {
-        return CubeController.outOfBounds;
+        return currentMagnetPosition == CheckDirection.Roof;
+    }
+
+    public bool IsInGround()
+    {
+        return currentMagnetPosition == CheckDirection.Ground;
+    }
+
+    public bool IsInRight()
+    {
+        return currentMagnetPosition == CheckDirection.Right;
+    }
+
+    public bool IsInLeft()
+    {
+        return currentMagnetPosition == CheckDirection.Left;
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
+    public void PlayerDead()
+    {
+        isDead = true;
     }
 }
