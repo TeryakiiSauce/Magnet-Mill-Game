@@ -50,22 +50,22 @@ public class CameraController : MonoBehaviour
     {
         if (isTurnedOn)
         {
-            if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+            if (GameController.instance.IsInGround())
             {
                 Debug.Log("on ground");
                 Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+            else if (GameController.instance.IsInLeft())
             {
                 Debug.Log("on left wall");
                 Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+            else if (GameController.instance.IsInRight())
             {
                 Debug.Log("on right wall");
                 Debug.Log($"Flipping status: {CubeController.flipinggravity}");
             }
-            else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+            else if (GameController.instance.IsInRoof())
             {
                 Debug.Log("on roof");
                 Debug.Log($"Flipping status: {CubeController.flipinggravity}");
@@ -75,28 +75,28 @@ public class CameraController : MonoBehaviour
 
     private void MainCameraTransition()
     {
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+        if (GameController.instance.IsInGround())
         {
             groundCam.Priority = 1;
             rightCam.Priority = 0;
             leftCam.Priority = 0;
             topCam.Priority = 0;
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+        else if (GameController.instance.IsInRight())
         {
             groundCam.Priority = 0;
             rightCam.Priority = 1;
             leftCam.Priority = 0;
             topCam.Priority = 0;
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+        else if (GameController.instance.IsInLeft())
         {
             groundCam.Priority = 0;
             rightCam.Priority = 0;
             leftCam.Priority = 1;
             topCam.Priority = 0;
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+        else if (GameController.instance.IsInRoof())
         {
             groundCam.Priority = 0;
             rightCam.Priority = 0;
@@ -109,7 +109,7 @@ public class CameraController : MonoBehaviour
     {
 
         // Check for [UP] arrow key when On Ground
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)
+        if (GameController.instance.IsInGround())
         {
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Tab))
             {
@@ -124,7 +124,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Check for [LEFT] arrow key when On Right Wall
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)
+        else if (GameController.instance.IsInRight())
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Tab))
             {
@@ -139,7 +139,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Check for [DOWN] arrow key when On Roof
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)
+        else if (GameController.instance.IsInRoof())
         {
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.Tab))
             {
@@ -154,7 +154,7 @@ public class CameraController : MonoBehaviour
         }
 
         // Check for [RIGHT] arrow key when On Left Wall
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)
+        else if (GameController.instance.IsInLeft())
         {
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.Tab))
             {

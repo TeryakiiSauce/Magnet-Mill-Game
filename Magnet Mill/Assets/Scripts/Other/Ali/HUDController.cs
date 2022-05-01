@@ -207,74 +207,74 @@ public class HUDController : MonoBehaviour
     private bool GroundToRight()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Ground
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right;
+            && GameController.instance.IsInRight();
     }
 
     private bool GroundToRoof()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Ground
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof;
+            && GameController.instance.IsInRoof();
     }
 
 
     private bool GroundToLeft()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Ground
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left;
+            && GameController.instance.IsInLeft();
     }
 
     private bool RightToRoof()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Right
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof;
+            && GameController.instance.IsInRoof();
     }
 
     private bool RightToLeft()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Right
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left;
+            && GameController.instance.IsInLeft();
     }
 
     private bool RightToGround()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Right
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground;
+            && GameController.instance.IsInGround();
     }
 
     private bool RoofToLeft()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Roof
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left;
+            && GameController.instance.IsInLeft();
     }
 
     private bool RoofToRight()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Roof
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right;
+            && GameController.instance.IsInRight();
     }
 
     private bool RoofToGround()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Roof
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground;
+            && GameController.instance.IsInGround();
     }
 
     private bool LeftToGround()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Left
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground;
+            && GameController.instance.IsInGround();
     }
 
     private bool LeftToRoof()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Left
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof;
+            && GameController.instance.IsInRoof();
     }
 
     private bool LeftToRight()
     {
         return GameController.instance.previousMagnetPosition == GameController.CheckDirection.Left
-            && GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right;
+            && GameController.instance.IsInRight();
     }
 
     private void ChangeImage(GameObject obj, Sprite sprite)
