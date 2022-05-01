@@ -42,7 +42,7 @@ public class CursorController : MonoBehaviour
         } 
         else
         {
-            Cursor.lockState = CursorLockMode.Confined; // keeps the cursor within game window
+            Cursor.lockState = CursorLockMode.None; // [IGNORE] ~~keeps the cursor within game window~~
             Cursor.visible = true;
         }
 
