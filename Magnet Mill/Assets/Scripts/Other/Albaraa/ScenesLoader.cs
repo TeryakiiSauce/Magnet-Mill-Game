@@ -113,4 +113,11 @@ public class ScenesLoader : MonoBehaviour
     {                               //can be used to ignore buttons click events when transitioning
         return currentAction != Action.none;
     }
+
+    public void TestingScene(string sceneName)
+    {
+        blackImage.gameObject.SetActive(true);
+        currentAction = Action.show;
+        this.sceneName = sceneName;
+    }
 }

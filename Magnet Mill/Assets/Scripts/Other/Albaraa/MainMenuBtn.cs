@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEditor;
+
+#if UNITY_EDITOR
+    using UnityEngine;
+#endif
 
 public class MainMenuBtn : MonoBehaviour
 {
@@ -8,6 +12,8 @@ public class MainMenuBtn : MonoBehaviour
     public MenuBtn whichButton;
     public GameObject activateGameobject;
     public static bool BtnClicked;
+    [HideInInspector][SerializeField] bool forTesting;
+    [HideInInspector][SerializeField] string testSceneName;
     void Start()
     {
         BtnClicked = false;
@@ -25,7 +31,14 @@ public class MainMenuBtn : MonoBehaviour
 
         if(whichButton == MenuBtn.play)
         {
-            ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0); //moving to scene "Level0"
+            if (!forTesting)
+            {
+                ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0); //moving to scene "Level0"
+            }
+            else if (testSceneName != null && testSceneName != "")
+            {
+                ScenesLoader.instance.TestingScene(testSceneName);
+            }
             //ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0BaraaTemp);
         }
         else if(whichButton == MenuBtn.tutorial)
@@ -46,5 +59,54 @@ public class MainMenuBtn : MonoBehaviour
         }
         BtnClicked = true;  //this will switched to true to make sure that other main buttons unclickable
     }
+
+#if UNITY_EDITOR
+
+    [CustomEditor(typeof(MainMenuBtn))]
+    public class MainMenuBtnEditor: Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            MainMenuBtn btnSC = (MainMenuBtn)target;
+            
+
+            base.OnInspectorGUI();
+
+            DrawDetails(btnSC);
+
+            //EditorUtility.SetDirty(target);
+            
+        }
+
+        static void DrawDetails(MainMenuBtn btnSC)
+        {
+            if (btnSC.whichButton != MenuBtn.play) return;
+            EditorGUILayout.Space();
+
+            EditorGUILayout.BeginHorizontal();
+            //{
+            EditorGUILayout.LabelField("Is for testing", GUILayout.MaxWidth(85));
+            btnSC.forTesting = EditorGUILayout.Toggle(btnSC.forTesting);
+            //}
+            EditorGUILayout.EndHorizontal();
+
+            if(btnSC.forTesting)
+            {
+                EditorGUILayout.BeginHorizontal();
+                //{
+                EditorGUILayout.LabelField("Scene name (copy it then past)");
+                btnSC.testSceneName = EditorGUILayout.TextField(btnSC.testSceneName);
+                //}
+                EditorGUILayout.EndHorizontal();
+            }
+            else
+            {
+                btnSC.testSceneName = null;
+            }
+            
+        }
+    }
+
+#endif
 
 }
