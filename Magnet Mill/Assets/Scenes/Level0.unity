@@ -747,15 +747,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.098537624
+      value: 0.09853762
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000004280661
+      value: 0.0000000042806607
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.2386897e-10
+      value: -4.2386888e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   mapKeys: {fileID: 52117920979276594}
   boostAbility: {fileID: 52117921551802324}
   jumpAbility: {fileID: 52117922300523672}
-  freezeAbility: {fileID: 52117921459520307}
+  freezeAbility: {fileID: 52117921349016745}
   groundKeys: {fileID: 21300000, guid: 4321ad780eed24842a4b916c0d3238b6, type: 3}
   roofKeys: {fileID: 21300000, guid: 5c905ca6ac916432da22f2abeb774389, type: 3}
   rightKeys: {fileID: 21300000, guid: d5b5ad2a3965a4105bf09c12e04457f0, type: 3}
@@ -25082,15 +25082,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.14521313
+      value: -0.14521314
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032966827
+      value: 8.619646e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000048385016
+      value: 9.284736e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26651,12 +26651,12 @@ MonoBehaviour:
   checkPointOnMaterial: {fileID: 2100000, guid: c6138670480cd374494216e078b79f42, type: 2}
   gameOver: 0
   gamePaused: 0
-  currentAbility: 0
+  levelTimer: 0
   score: 0
   rollsCount: 0
-  levelTimer: 0
   deathCount: 0
   abilitesUsedCount: 0
+  currentAbility: 0
   previousMagnetPosition: 0
 --- !u!4 &1429003043890925362
 Transform:
