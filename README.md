@@ -1,6 +1,6 @@
 # Magnet Mill
 
-An open-source game that is targeted for the *Windows* operating system. It's genre is: *Puzzle & Sci-Fi.
+An open-source game that is targeted for the *Windows* operating system. It's genre is: *Puzzle & Sci-Fi.*
 
 <br>
 
