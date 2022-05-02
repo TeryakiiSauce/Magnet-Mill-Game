@@ -6,7 +6,8 @@ public class MovementAudio : MonoBehaviour
 {
     //private AudioSource audioSource;
     //public List<AudioClip> soundEffects;
-    private Sound[] soundEffects;
+    //private int[] CNumber = { 3, 4, 5 }; // C3, C4, C5
+    //private int[] index = { 1, 2, 3, 4, 5, 6}; // Eg: C1.1, C1.2, C1.3, C1.4, C1.5, C1.6, etc.
     //public float volume = 0.2f;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class MovementAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CubeController.isMoving || CubeController.flipinggravity)
+        if (GameController.instance.IsDead() || CubeController.isMoving || CubeController.flipinggravity)
         {
             return;
         }
@@ -30,7 +31,10 @@ public class MovementAudio : MonoBehaviour
 
             if (AudioManager.instance != null)
             {
-                AudioManager.instance.Play("C3.1");
+                int tempCRange = Random.Range(3, 4); // Edit the range whenever needed
+                int tempCounter = Random.Range(1, 6); // Edit the range whenever needed
+
+                AudioManager.instance.Play($"C{tempCRange}.{tempCounter}");
             }
         }
 
