@@ -47,7 +47,7 @@ public class AbilityCooldown : MonoBehaviour
                 jumpActiveTime = Time.time + abilityTime;
 
                 /* * change image to cooldown image here * */
-                
+
             }
         }
 
@@ -63,7 +63,7 @@ public class AbilityCooldown : MonoBehaviour
                 freezeCoolDownEndTime = Time.time + coolDownTime;
                 freezeActiveTime = Time.time + abilityTime;
                 /* * change image to cooldown image here * */
-               
+
             }
         }
 
@@ -79,7 +79,7 @@ public class AbilityCooldown : MonoBehaviour
                 speedCoolDownEndTime = Time.time + coolDownTime;
                 speedActiveTime = Time.time + abilityTime;
                 /* * change image to active image here * */
-                
+
             }
         }
 
@@ -105,9 +105,9 @@ public class AbilityCooldown : MonoBehaviour
             //reseting the image
             resetAbility(jumpAblityused);
         }
-        else 
+        else
         {
-            HUDController.instance.SetJumpAbilityCooldown();
+            HUDController.instance.SetJumpAbilityAvailable();
         }
 
 
@@ -123,9 +123,9 @@ public class AbilityCooldown : MonoBehaviour
             resetAbility(freezeAblityused);
 
         }
-        else 
+        else
         {
-            HUDController.instance.SetFreezeAbilityCooldown();
+            HUDController.instance.SetFreezeAbilityAvailable();
         }
 
         if (Time.time < speedActiveTime)
@@ -138,9 +138,9 @@ public class AbilityCooldown : MonoBehaviour
             //reseting the image
             resetAbility(speedAblityused);
         }
-        else 
+        else
         {
-            HUDController.instance.SetBoostAbilityCooldown();
+            HUDController.instance.SetBoostAbilityAvailable();
         }
     }
     private void resetAbility(activeAblity AB)
@@ -150,21 +150,21 @@ public class AbilityCooldown : MonoBehaviour
         {
             freezeAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
-            
-            HUDController.instance.SetFreezeAbilityDisabled();
+
+            HUDController.instance.SetFreezeAbilityCooldown();
         }
         else if (AB == activeAblity.Jump)
         {
             jumpAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
-            HUDController.instance.SetJumpAbilityDisabled();
+            HUDController.instance.SetJumpAbilityCooldown();
             print("available");
         }
         else if (AB == activeAblity.Speed)
         {
             speedAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
-            HUDController.instance.SetBoostAbilityDisabled();
+            HUDController.instance.SetBoostAbilityCooldown();
         }
 
 
@@ -180,22 +180,22 @@ public class AbilityCooldown : MonoBehaviour
             case activeAblity.Freeze:
                 {
                     /* * change image to active to use image here * */
-                    HUDController.instance.SetFreezeAbilityAvailable();
+                    HUDController.instance.SetFreezeAbilityActive();
                     break;
                 }
             case activeAblity.Jump:
                 {
                     /* * change image to active to use image here * */
-                    
-                    HUDController.instance.SetJumpAbilityAvailable();
+
+                    HUDController.instance.SetJumpAbilityActive();
                     print("disabling");
                     break;
                 }
             case activeAblity.Speed:
                 {
                     /* * change image to active to use image here * */
-                    
-                    HUDController.instance.SetBoostAbilityAvailable();
+
+                    HUDController.instance.SetBoostAbilityActive();
                     break;
                 }
             default: break;

@@ -17,13 +17,13 @@ public class HUDController : MonoBehaviour
     public Sprite rightKeys;
     public Sprite leftKeys;
     public Sprite boostAvailable;
-    public Sprite boostDisabled;
+    public Sprite boostActive;
     public Sprite boostCooldown;
     public Sprite jumpAvailable;
-    public Sprite jumpDisabled;
+    public Sprite jumpActive;
     public Sprite jumpCooldown;
     public Sprite freezeAvailable;
-    public Sprite freezeDisabled;
+    public Sprite freezeActive;
     public Sprite freezeCooldown;
     public RectTransform rect;
     [HideInInspector] public bool rotateSquare;
@@ -307,9 +307,9 @@ public class HUDController : MonoBehaviour
         ChangeImage(boostAbility, boostAvailable);
     }
     
-    public void SetBoostAbilityDisabled()
+    public void SetBoostAbilityActive()
     {
-        ChangeImage(boostAbility, boostDisabled);
+        ChangeImage(boostAbility, boostActive);
     }
     public void SetBoostAbilityCooldown()
     {
@@ -321,9 +321,9 @@ public class HUDController : MonoBehaviour
         ChangeImage(jumpAbility, jumpAvailable);
     }
 
-    public void SetJumpAbilityDisabled()
+    public void SetJumpAbilityActive()
     {
-        ChangeImage(jumpAbility, jumpDisabled);
+        ChangeImage(jumpAbility, jumpActive);
     }
     public void SetJumpAbilityCooldown()
     {
@@ -332,16 +332,16 @@ public class HUDController : MonoBehaviour
 
     public void SetFreezeAbilityAvailable()
     {
-       // ChangeImage(freezeAbility, freezeAvailable);
+        ChangeImage(freezeAbility, freezeAvailable);
     }
 
-    public void SetFreezeAbilityDisabled()
+    public void SetFreezeAbilityActive()
     {
-        ChangeImage(freezeAbility, freezeDisabled);
+        ChangeImage(freezeAbility, freezeActive);
     }
     public void SetFreezeAbilityCooldown()
     {
-        //ChangeImage(freezeAbility, freezeCooldown);
+        ChangeImage(freezeAbility, freezeCooldown);
     }
 
 
