@@ -3234,7 +3234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100208491873284677}
   - component: {fileID: 349706651402229843}
-  - component: {fileID: 2104879164132001291}
+  - component: {fileID: 2060230666634798360}
   m_Layer: 0
   m_Name: Movement Audio
   m_TagString: Untagged
@@ -3263,7 +3263,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8938023492482298153}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -3352,7 +3352,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2104879164132001291
+--- !u!114 &2060230666634798360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3364,26 +3364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782f75615e45e004d8fb1716e6d9c38c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 8300000, guid: a862aca58000c39449fb2543db9e83dd, type: 3}
-  - {fileID: 8300000, guid: 2f3e9897c55367843b0ff2efee033c79, type: 3}
-  - {fileID: 8300000, guid: 0501ae11de7d0ea44ada6483d61c2520, type: 3}
-  - {fileID: 8300000, guid: 423d12c9444452a429eb56e9f4f56a00, type: 3}
-  - {fileID: 8300000, guid: 92f04ea7c44d67746826a10af079df36, type: 3}
-  - {fileID: 8300000, guid: b995edaf0e084ae4b8cb62f3c0b41ae0, type: 3}
-  - {fileID: 8300000, guid: 4618a4885e93cc04cbf0aed46c4ce2f9, type: 3}
-  - {fileID: 8300000, guid: 4d4a5f42e3fbe9441a71aafa4642a048, type: 3}
-  - {fileID: 8300000, guid: 122095e1523dc4f4eb4066000c600c67, type: 3}
-  - {fileID: 8300000, guid: 1e889d27979982a4796052f3df51092e, type: 3}
-  - {fileID: 8300000, guid: 97a23a80506d84147b66957a1d757f1f, type: 3}
-  - {fileID: 8300000, guid: fbbad1597ad705843a027c81b05231d2, type: 3}
-  - {fileID: 8300000, guid: 856ddbb00884d0b4591cdc8a20eb0900, type: 3}
-  - {fileID: 8300000, guid: 157eb92f45ff5464598823baa340e968, type: 3}
-  - {fileID: 8300000, guid: 58d9daf5fbe133c438c594a855152cc5, type: 3}
-  - {fileID: 8300000, guid: b4c88b5df3e328c459ae5a3b6978b546, type: 3}
-  - {fileID: 8300000, guid: 260e447929ead914c9087bf5ff79d945, type: 3}
-  - {fileID: 8300000, guid: 7bbf79f00546ee94bb041e5f0b3366e8, type: 3}
-  volume: 0.2
 --- !u!1 &9024545707525190620
 GameObject:
   m_ObjectHideFlags: 0
