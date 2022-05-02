@@ -94,7 +94,7 @@ public class MainMenuBtn : MonoBehaviour
             {
                 EditorGUILayout.BeginHorizontal();
                 //{
-                EditorGUILayout.LabelField("Scene name (copy it then past)");
+                EditorGUILayout.LabelField("Scene name (Exact!)");
                 btnSC.testSceneName = EditorGUILayout.TextField(btnSC.testSceneName);
                 //}
                 EditorGUILayout.EndHorizontal();

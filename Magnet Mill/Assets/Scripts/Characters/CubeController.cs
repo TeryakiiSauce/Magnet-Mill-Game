@@ -284,8 +284,8 @@ public class CubeController : MonoBehaviour
                 rotationAxis = Vector3.Cross(Vector3.up, direction); // compute the rotation access based on the direction and y axis
             }
         }
-        print("axis"+rotationAxis);
-        print("center "+rotationCenter);
+        //print("axis"+rotationAxis);
+        //print("center "+rotationCenter);
     }
 
     private void checkSpeedAbility() 

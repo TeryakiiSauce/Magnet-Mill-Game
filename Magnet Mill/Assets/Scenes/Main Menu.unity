@@ -270,6 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whichButton: 0
   activateGameobject: {fileID: 0}
+  forTesting: 0
+  testSceneName: 
 --- !u!1 &192216939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whichButton: 4
   activateGameobject: {fileID: 0}
+  forTesting: 0
+  testSceneName: 
 --- !u!1 &930427850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whichButton: 1
   activateGameobject: {fileID: 0}
+  forTesting: 0
+  testSceneName: 
 --- !u!1 &1012931516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +1953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whichButton: 3
   activateGameobject: {fileID: 1783573021}
+  forTesting: 0
+  testSceneName: 
 --- !u!1 &1224292993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,6 +2652,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whichButton: 2
   activateGameobject: {fileID: 1486702066}
+  forTesting: 0
+  testSceneName: 
 --- !u!1 &1869114196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2762,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: C3.1
+    clip: {fileID: 8300000, guid: a862aca58000c39449fb2543db9e83dd, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
 --- !u!4 &1894539398
 Transform:
   m_ObjectHideFlags: 0
