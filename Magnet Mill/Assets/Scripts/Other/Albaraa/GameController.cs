@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     {
         if (AudioManager.instance != null)        //Checking if audiomanager is null, if yes it means that the scene not started from
         {                                       //main menu, then the audio will not play since its object is null
-            AudioManager.instance.Play("BackGroundMusic");  //play sound by its name that given in the main menu in audio manager
+            if(!AudioManager.instance.IsPlaying("BackGroundMusic")) AudioManager.instance.Play("BackGroundMusic");  //play sound by its name that given in the main menu in audio manager
         }
         UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }
