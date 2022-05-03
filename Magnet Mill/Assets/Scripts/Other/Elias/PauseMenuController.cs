@@ -25,6 +25,9 @@ public class PauseMenuController : MonoBehaviour
             pauseMenu.gameObject.SetActive(true);
             isMenuOpened = true;
             Time.timeScale = 0;
+
+            //pause timer
+            TimerController.instance.PauseTimer();
         }
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && pauseMenu.isActiveAndEnabled)
         {
@@ -32,6 +35,9 @@ public class PauseMenuController : MonoBehaviour
             pauseMenu.gameObject.SetActive(false);
             isMenuOpened = false;
             Time.timeScale = 1;
+
+            //start timer
+            TimerController.instance.PlayTimer();
         }
     }
 
