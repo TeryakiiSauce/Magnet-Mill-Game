@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject cube;
     public Material checkPointOnMaterial;
 
-    [HideInInspector] public bool gameOver;
+    //[HideInInspector] public bool gameOver;
     [HideInInspector] public bool gamePaused;
     [HideInInspector] public float levelTimer;
     [HideInInspector] public int score;
@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public CheckDirection previousMagnetPosition;
 
     private bool isDead;
+    private bool isLevelFinished;
     private CheckDirection currentMagnetPosition;
     private CheckDirection checkPointCurrentDirection;
     private Vector3 currentCheckPointPos;
@@ -174,8 +175,20 @@ public class GameController : MonoBehaviour
         return isDead;
     }
 
+    public bool IsLevelFinshed()
+    {
+        return isLevelFinished;
+    }
+
     public void PlayerDead()
     {
         isDead = true;
+    }
+
+    public void LevelFinished()
+    {
+        isLevelFinished = true;
+        TimerController.instance.PauseTimer();
+        HUDController.instance.DeactivateElements();
     }
 }

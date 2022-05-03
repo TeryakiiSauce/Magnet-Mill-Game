@@ -12,6 +12,9 @@ public class HUDController : MonoBehaviour
     public GameObject boostAbility;
     public GameObject jumpAbility;
     public GameObject freezeAbility;
+    public GameObject freezeTxt;
+    public GameObject jumpTxt;
+    public GameObject boostTxt;
     public Sprite groundKeys;
     public Sprite roofKeys;
     public Sprite rightKeys;
@@ -344,5 +347,16 @@ public class HUDController : MonoBehaviour
         ChangeImage(freezeAbility, freezeCooldown);
     }
 
+    public void DeactivateElements()
+    {
+        mapBox.SetActive(false);
+        mapKeys.SetActive(false);
+        boostAbility.SetActive(false);
+        jumpAbility.SetActive(false);
+        freezeAbility.SetActive(false);
+        freezeTxt.SetActive(false);
+        jumpTxt.SetActive(false);
+        boostTxt.SetActive(false);
+    }
 
 }
