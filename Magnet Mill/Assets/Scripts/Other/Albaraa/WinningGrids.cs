@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WinningGrids : MonoBehaviour
 {
-    public GameObject levelFinishedCanvas;
+    public GameObject stageFinishedCanvas;
     void Start()
     {
         
@@ -20,7 +20,7 @@ public class WinningGrids : MonoBehaviour
 
         if (GameController.instance.IsLevelFinshed() || other.tag != "PlayerCube") return; //Check if collided object is not cube
                                                                                            //and level not finished, then return
-        levelFinishedCanvas.SetActive(true);
+        stageFinishedCanvas.SetActive(true);
         GameController.instance.LevelFinished();
     }
 }
