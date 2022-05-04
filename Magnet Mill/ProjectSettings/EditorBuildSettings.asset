@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: b4e409f9fc6e1fa48ad50fde85946fd1
-  - enabled: 1
-    path: Assets/Scenes/Level0 (baraa temp).unity
-    guid: 06d4b8bb9247044fb9523342fa27a4b5
   m_configObjects: {}
