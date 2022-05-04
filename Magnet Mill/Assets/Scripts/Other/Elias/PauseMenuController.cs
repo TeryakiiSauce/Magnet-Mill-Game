@@ -19,7 +19,8 @@ public class PauseMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !pauseMenu.isActiveAndEnabled)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            && !pauseMenu.isActiveAndEnabled && !GameController.instance.IsLevelFinshed())
         {
             //print("menu opened");
             pauseMenu.gameObject.SetActive(true);
