@@ -110,6 +110,33 @@ public class ScenesLoader : MonoBehaviour
         return currentAction != Action.none;
     }
 
+    public void MoveToLastUnlockedScene()
+    {
+        if(UserData.GetBool(UserData.finishedLevel3))
+        {
+            MoveToScene(WhichScene.Level4);
+        }
+        else if(UserData.GetBool(UserData.finishedLevel2))
+        {
+            MoveToScene(WhichScene.Level3);
+        }
+        else if (UserData.GetBool(UserData.finishedLevel1))
+        {
+            MoveToScene(WhichScene.Level2);
+        }
+        else if (UserData.GetBool(UserData.finishedTutorial))
+        {
+            MoveToScene(WhichScene.Level1);
+        }
+    }
+
+    public void MoveToLastPlayedScene()
+    {
+        blackImage.gameObject.SetActive(true);
+        currentAction = Action.show;
+        sceneName = UserData.GetString(UserData.currentLevel);
+    }
+
     public void TestingScene(string sceneName)
     {
         blackImage.gameObject.SetActive(true);
