@@ -33,13 +33,12 @@ public class MainMenuBtn : MonoBehaviour
         {
             if (!forTesting)
             {
-                ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0); //moving to scene "Level0"
+                ScenesLoader.instance.MoveToLastUnlockedScene();
             }
             else if (testSceneName != null && testSceneName != "")
             {
                 ScenesLoader.instance.TestingScene(testSceneName);
             }
-            //ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0BaraaTemp);
         }
         else if(whichButton == MenuBtn.tutorial)
         {
