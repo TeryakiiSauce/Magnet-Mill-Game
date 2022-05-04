@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject cube;
     public Material checkPointOnMaterial;
 
-    [HideInInspector] public bool gameOver;
+    //[HideInInspector] public bool gameOver;
     [HideInInspector] public bool gamePaused;
     [HideInInspector] public float levelTimer;
     [HideInInspector] public int score;
@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public CheckDirection previousMagnetPosition;
 
     private bool isDead;
+    private bool isLevelFinished;
     private CheckDirection currentMagnetPosition;
     private CheckDirection checkPointCurrentDirection;
     private Vector3 currentCheckPointPos;
@@ -43,7 +44,7 @@ public class GameController : MonoBehaviour
     {
         if (AudioManager.instance != null)        //Checking if audiomanager is null, if yes it means that the scene not started from
         {                                       //main menu, then the audio will not play since its object is null
-            AudioManager.instance.Play("BackGroundMusic");  //play sound by its name that given in the main menu in audio manager
+            if(!AudioManager.instance.IsPlaying("BackGroundMusic")) AudioManager.instance.Play("BackGroundMusic");  //play sound by its name that given in the main menu in audio manager
         }
         UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }
@@ -174,8 +175,20 @@ public class GameController : MonoBehaviour
         return isDead;
     }
 
+    public bool IsLevelFinshed()
+    {
+        return isLevelFinished;
+    }
+
     public void PlayerDead()
     {
         isDead = true;
+    }
+
+    public void LevelFinished()
+    {
+        isLevelFinished = true;
+        TimerController.instance.PauseTimer();
+        HUDController.instance.DeactivateElements();
     }
 }

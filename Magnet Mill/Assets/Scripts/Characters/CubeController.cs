@@ -32,7 +32,7 @@ public class CubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isMoving || flipinggravity || GameController.instance.IsDead()) return; // to prevent rolling when we are in the middle of a roll or when clicking space
+        if (isMoving || flipinggravity || GameController.instance.IsDead() || GameController.instance.IsLevelFinshed()) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         userInput();
         checkSpeedAbility();
 

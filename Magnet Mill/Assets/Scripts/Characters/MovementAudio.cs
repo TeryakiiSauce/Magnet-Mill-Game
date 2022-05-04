@@ -19,7 +19,8 @@ public class MovementAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.instance.IsDead() || CubeController.isMoving || CubeController.flipinggravity)
+        if (GameController.instance.IsDead() || GameController.instance.IsLevelFinshed()
+            || CubeController.isMoving || CubeController.flipinggravity)
         {
             return;
         }
