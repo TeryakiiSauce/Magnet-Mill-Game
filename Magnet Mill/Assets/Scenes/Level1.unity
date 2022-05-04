@@ -15804,15 +15804,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09853762
+      value: 0.098537624
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042806607
+      value: -0.000000004280661
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.2386888e-10
+      value: 4.2386897e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -24298,6 +24298,9 @@ MonoBehaviour:
   boostAbility: {fileID: 52117921551802324}
   jumpAbility: {fileID: 52117922300523672}
   freezeAbility: {fileID: 52117921349016745}
+  freezeTxt: {fileID: 0}
+  jumpTxt: {fileID: 0}
+  boostTxt: {fileID: 0}
   groundKeys: {fileID: 21300000, guid: 4321ad780eed24842a4b916c0d3238b6, type: 3}
   roofKeys: {fileID: 21300000, guid: 5c905ca6ac916432da22f2abeb774389, type: 3}
   rightKeys: {fileID: 21300000, guid: d5b5ad2a3965a4105bf09c12e04457f0, type: 3}
@@ -25946,11 +25949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003296683
+      value: -0.000000032966824
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004838502
+      value: -0.000000004838501
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26641,10 +26644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0d6568359b94f2fb473b7db155ce43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: Level0
+  currentLevel: Level1
   cube: {fileID: 6965062620596796169}
   checkPointOnMaterial: {fileID: 2100000, guid: c6138670480cd374494216e078b79f42, type: 2}
-  gameOver: 0
   gamePaused: 0
   levelTimer: 0
   score: 0

@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using UnityEngine;
 
 #if UNITY_EDITOR
-    using UnityEngine;
+using UnityEditor;
 #endif
 
 public class MainMenuBtn : MonoBehaviour
@@ -63,45 +63,49 @@ public class MainMenuBtn : MonoBehaviour
 #if UNITY_EDITOR
 
     [CustomEditor(typeof(MainMenuBtn))]
-    public class MainMenuBtnEditor: Editor
+    public class MainMenuBtnEditor: Editor  //Editor class to hide and display fields based on conditions in the inspector
     {
-        public override void OnInspectorGUI()
+        public override void OnInspectorGUI()   //override OnInspectorGUI function from the base
         {
-            MainMenuBtn btnSC = (MainMenuBtn)target;
-            
+            MainMenuBtn btnSC = (MainMenuBtn)target;    //create instance on the targeted class
 
-            base.OnInspectorGUI();
+            base.OnInspectorGUI();      //call the base function to draw MainMenuBtn script variables in the inspector
 
             DrawDetails(btnSC);
 
-            //EditorUtility.SetDirty(target);
-            
+            EditorUtility.SetDirty(btnSC);      //This will turn on saving for the added variables values on the
+                                                //inspector when switching scenes
         }
 
         static void DrawDetails(MainMenuBtn btnSC)
         {
-            if (btnSC.whichButton != MenuBtn.play) return;
-            EditorGUILayout.Space();
+            if (btnSC.whichButton != MenuBtn.play)  //if the button is not the play button clear the boolean and return,
+            {                                       //because we need to add variables dynamically only for the play button
+                btnSC.forTesting = false;
+                return;
+            }    
+                                                                
+            EditorGUILayout.Space();            ///Adding space in the inspector
 
-            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.BeginHorizontal();      //start horizontal gui elements drawing
             //{
-            EditorGUILayout.LabelField("Is for testing", GUILayout.MaxWidth(85));
-            btnSC.forTesting = EditorGUILayout.Toggle(btnSC.forTesting);
+            EditorGUILayout.LabelField("Is for testing", GUILayout.MaxWidth(85));   //Add label with max width 85
+            btnSC.forTesting = EditorGUILayout.Toggle(btnSC.forTesting);    //Added check box to assign fortesting variable
             //}
-            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();    //end horizontal gui elements drawing
 
-            if(btnSC.forTesting)
+            if (btnSC.forTesting)   //if checkbox is checked
             {
                 EditorGUILayout.BeginHorizontal();
                 //{
                 EditorGUILayout.LabelField("Scene name (Exact!)");
-                btnSC.testSceneName = EditorGUILayout.TextField(btnSC.testSceneName);
+                btnSC.testSceneName = EditorGUILayout.TextField(btnSC.testSceneName); //Add text field to assign testSceneName
                 //}
                 EditorGUILayout.EndHorizontal();
             }
             else
             {
-                btnSC.testSceneName = null;
+                btnSC.testSceneName = null;     //if forTesting checkbox is off clear testSceneName variable
             }
             
         }
