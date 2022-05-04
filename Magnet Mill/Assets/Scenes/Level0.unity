@@ -143,7 +143,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4919788557552656290, guid: 9c0b5f794bf893a4abc3dd83ec26759b, type: 3}
       propertyPath: m_Name
-      value: Roof Checkpoint.003
+      value: Checkpoint2
       objectReference: {fileID: 0}
     - target: {fileID: 5696289423411725592, guid: 9c0b5f794bf893a4abc3dd83ec26759b, type: 3}
       propertyPath: m_RootOrder
@@ -408,7 +408,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4919788557552656290, guid: 001ae55ae5645f94ca04c10935de79dd, type: 3}
       propertyPath: m_Name
-      value: Left Wall Checkpoint.004
+      value: Checkpoint3
       objectReference: {fileID: 0}
     - target: {fileID: 5696289423411725592, guid: 001ae55ae5645f94ca04c10935de79dd, type: 3}
       propertyPath: m_RootOrder
@@ -747,15 +747,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.098537624
+      value: 0.09853762
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000004280661
+      value: 0.0000000042806607
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.2386897e-10
+      value: -4.2386888e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -785,7 +785,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4919788557552656290, guid: c89ced8de87e4ff42964f2d4767a216a, type: 3}
       propertyPath: m_Name
-      value: Ground Checkpoint.001
+      value: Checkpoint0
       objectReference: {fileID: 0}
     - target: {fileID: 5696289423411725592, guid: c89ced8de87e4ff42964f2d4767a216a, type: 3}
       propertyPath: m_RootOrder
@@ -1364,11 +1364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032966827
+      value: -0.000000032966824
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000048385016
+      value: -0.000000004838501
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -53192,7 +53192,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4919788557552656290, guid: bb04b4c73e9cf3c4aa99709b3f618cfb, type: 3}
       propertyPath: m_Name
-      value: Right Wall Checkpoint.002
+      value: Checkpoint1
       objectReference: {fileID: 0}
     - target: {fileID: 5696289423411725592, guid: bb04b4c73e9cf3c4aa99709b3f618cfb, type: 3}
       propertyPath: m_RootOrder

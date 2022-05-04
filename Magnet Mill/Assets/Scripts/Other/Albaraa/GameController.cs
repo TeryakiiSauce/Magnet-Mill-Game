@@ -190,5 +190,26 @@ public class GameController : MonoBehaviour
         isLevelFinished = true;
         TimerController.instance.PauseTimer();
         HUDController.instance.DeactivateElements();
+        if (currentLevel == "Level0")
+        {
+            UserData.SetBool(UserData.finishedTutorial, true);
+        }
+        else if(currentLevel == "Level1")
+        {
+            UserData.SetBool(UserData.finishedLevel1, true);
+        }
+        else if (currentLevel == "Level2")
+        {
+            UserData.SetBool(UserData.finishedLevel2, true);
+        }
+        else if (currentLevel == "Level3")
+        {
+            UserData.SetBool(UserData.finishedLevel3, true);
+        }
+        else if (currentLevel == "Level4")
+        {
+            UserData.SetBool(UserData.finishedLevel4, true);
+        }
+
     }
 }
