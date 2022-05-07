@@ -274,13 +274,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388509490}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 7.24, y: 1.47, z: 10.6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1419017849}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &388509492
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 1419017849}
   - component: {fileID: 1419017848}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: ObstacleHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -901,17 +901,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f3948045e524218a25d1b0c4d2fd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingMethod: 1
-  movingSpeed: 10
-  waitBetweenPoints: 1
+  movingMethod: 0
+  AfterReachedLast: 0
+  movingSpeed: 8
+  RotateWithDirection: 1
+  waitBetweenPoints: 0
   points:
-  - {x: 0, y: 0, z: 0}
-  - {x: -6, y: 0, z: 0}
-  - {x: 0, y: 0, z: 6}
-  - {x: 6, y: 0, z: 0}
-  - {x: 0, y: 0, z: -6}
-  seconds: 0.5
-  calculatedPoints: []
+  - {x: 7, y: 1.6, z: 11.32}
+  - {x: 1, y: 1.6, z: 11.32}
+  - {x: 1, y: 1.6, z: 15}
+  - {x: 7, y: 1.6, z: 15}
+  - {x: 7, y: 5, z: 13}
+  - {x: 5.01, y: 11.83, z: 13}
+  - {x: 3.65, y: 8.53, z: 13}
+  - {x: 0.9, y: 11.7, z: 13}
+  - {x: 6.54, y: 10.15, z: 13}
+  - {x: 6.9, y: 4.33, z: 13}
+  seconds: 0
 --- !u!4 &1419017849
 Transform:
   m_ObjectHideFlags: 0
@@ -1515,11 +1521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 8.619646e-15
+      value: 1.6271901e-15
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 9.284736e-16
+      value: 2.6894993e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

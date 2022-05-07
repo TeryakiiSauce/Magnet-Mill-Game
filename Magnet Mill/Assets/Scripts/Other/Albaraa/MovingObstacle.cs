@@ -9,12 +9,15 @@ using UnityEditor;
 public class MovingObstacle : MonoBehaviour
 {
     public enum MovingType {MoveToPosition, MoveBy}
+    public enum AfterAction { MoveBackward, MoveToFirstPoint, InstantlyTransformToFirstPoint };
     public MovingType movingMethod;
+    public AfterAction AfterReachedLast;
     public float movingSpeed;
+    public bool RotateWithDirection;
     public bool waitBetweenPoints;
-    public Vector3[] points;
+    [HideInInspector] [SerializeField] Vector3[] points;
     [HideInInspector] [SerializeField] float seconds;
-    [SerializeField]private Vector3[] calculatedPoints;
+    private Vector3[] calculatedPoints;
     private int IND;
     private bool increasing;
     private bool positionReached;
@@ -58,29 +61,17 @@ public class MovingObstacle : MonoBehaviour
             timer += Time.deltaTime;
             return;
         }
-        if(increasing)
+        if(AfterReachedLast == AfterAction.MoveBackward)
         {
-            if(IND != calculatedPoints.Length - 1)
-            {
-                IND++;
-            }
-            else
-            {
-                IND--;
-                increasing = false;
-            }
+            MoveBackwardAfterFinish();
         }
-        else
+        else if(AfterReachedLast == AfterAction.MoveToFirstPoint)
         {
-            if(IND != 0)
-            {
-                IND--;
-            }
-            else
-            {
-                IND++;
-                increasing = true;
-            }
+            MoveToFirstPointAfterFinish();
+        }
+        else if(AfterReachedLast == AfterAction.InstantlyTransformToFirstPoint)
+        {
+            TransformToFirstPointAfterFinsh();
         }
         timer = 0f;
         positionReached = false;
@@ -93,6 +84,60 @@ public class MovingObstacle : MonoBehaviour
         {
             transform.position = calculatedPoints[IND];
             positionReached = true;
+        }
+        else if(RotateWithDirection)
+        {
+            transform.LookAt(calculatedPoints[IND]);
+        }
+    }
+    private void MoveBackwardAfterFinish()
+    {
+        if (increasing)
+        {
+            if (IND != calculatedPoints.Length - 1)
+            {
+                IND++;
+            }
+            else
+            {
+                IND--;
+                increasing = false;
+            }
+        }
+        else
+        {
+            if (IND != 0)
+            {
+                IND--;
+            }
+            else
+            {
+                IND++;
+                increasing = true;
+            }
+        }
+    }
+    private void MoveToFirstPointAfterFinish()
+    {
+        if(IND < calculatedPoints.Length - 1)
+        {
+            IND++;
+        }
+        else
+        {
+            IND = 0;
+        }
+    }
+    private void TransformToFirstPointAfterFinsh()
+    {
+        if (IND < calculatedPoints.Length - 1)
+        {
+            IND++;
+        }
+        else
+        {
+            IND = 0;
+            transform.position = calculatedPoints[0];
         }
     }
 #if UNITY_EDITOR
@@ -108,6 +153,8 @@ public class MovingObstacle : MonoBehaviour
 
             DrawDetails(MovingSC);
 
+            DrawPointsArray(MovingSC);
+
             EditorUtility.SetDirty(MovingSC);      //This will turn on saving for the added variables values on the
                                                 //inspector when switching scenes
         }
@@ -115,7 +162,8 @@ public class MovingObstacle : MonoBehaviour
         static void DrawDetails(MovingObstacle MovingSC)
         {
             if (!MovingSC.waitBetweenPoints)  
-            {                                       
+            {
+                MovingSC.seconds = 0;
                 return;
             }
 
@@ -123,11 +171,21 @@ public class MovingObstacle : MonoBehaviour
 
             EditorGUILayout.BeginHorizontal();      //start horizontal gui elements drawing
             //{
-            EditorGUILayout.LabelField("Seconds to wait", GUILayout.MaxWidth(95));   //Add label with max width 85
-            MovingSC.seconds = EditorGUILayout.Slider(MovingSC.seconds, 0f, 10f);//EditorGUILayout.Toggle(MovingSC.forTesting);    //Added check box to assign fortesting variable
+            EditorGUILayout.LabelField("Seconds to wait", GUILayout.MaxWidth(95));   //Add label with max width 95
+            MovingSC.seconds = EditorGUILayout.Slider(MovingSC.seconds, 0f, 10f); //Added slider to assign seconds variable
             //}
             EditorGUILayout.EndHorizontal();    //end horizontal gui elements drawing
 
+        }
+
+        void DrawPointsArray(MovingObstacle MovingSC)
+        {
+
+            SerializedProperty tps = serializedObject.FindProperty("points");
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(tps, true);
+            if (EditorGUI.EndChangeCheck())
+                serializedObject.ApplyModifiedProperties();
         }
     }
 
