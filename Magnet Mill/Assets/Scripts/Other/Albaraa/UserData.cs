@@ -5,7 +5,7 @@ public static class UserData
     //-------------------General Keys---------------------------
 
     public const string userName = "userName"; //string
-    private const string isMuted = "isMuted"; //boolean
+    public const string isMuted = "isMuted"; //boolean
     public const string finishedTutorial = "finishedTutorial"; //boolean
     public const string finishedLevel1 = "finishedLevel1";    //boolean
     public const string finishedLevel2 = "finishedLevel2";    //boolean
@@ -41,21 +41,41 @@ public static class UserData
 
     public static int GetInt(string key)   //Retrieving Integer value from local storage.
     {                                      //Usage: UserData.GetInt(UserData.numOfDeaths);
+        if(!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " +key);
+            return 0;
+        }
         return PlayerPrefs.GetInt(key);
     }
 
     public static bool GetBool(string key)  //Retrieving Boolean value from local storage.
     {                                       //Usage: if (UserData.GetBool(UserData.finishedTutorial)) {....};
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return false;
+        }
         return PlayerPrefs.GetInt(key) == 1;
     }
 
     public static string GetString(string key)  //Retrieving String value from local storage.
     {                                           //Usage: UserData.GetString(UserData.userName);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return null;
+        }
         return PlayerPrefs.GetString(key);
     }
 
     public static float GetFloat(string key)    //Retrieving Float value from local storage.
     {                                           //Usage: UserData.GetFloat(UserData.totalTimePlayed);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return 0;
+        }
         return PlayerPrefs.GetFloat(key);
     }
 
@@ -64,11 +84,21 @@ public static class UserData
 
     public static void SetInt(string key, int value)    //Setting Integer value in the local storage.
     {                                                   //Usage: UserData.SetInt(UserData.level1HighScore, 1000);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         PlayerPrefs.SetInt(key, value);
     }
 
     public static void SetBool(string key, bool value)  //Setting Boolean value in the local storage. 
     {                                                   //Usage: UserData.SetBool(UserData.finishedTutorial, true);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         if (value)
         {
             PlayerPrefs.SetInt(key, 1);
@@ -81,6 +111,11 @@ public static class UserData
 
     public static void SwitchBool (string key)      //Switching Boolean value in the local storage.
     {                                               //Usage: UserData.SwitchBool(UserData.finishedTutorial);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         if (PlayerPrefs.GetInt(key) == 1)
         {
             PlayerPrefs.SetInt(key, 0);
@@ -92,11 +127,21 @@ public static class UserData
     }
     public static void SetString(string key, string value)  //Setting String value in the local storage.
     {                                                       //Usage: UserData.SetString(UserData.userName, "Albaraa");
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         PlayerPrefs.SetString(key, value);
     }
 
     public static void SetFloat(string key, float value)    //Setting Float value in the local storage.
     {                                                       //Usage: UserData.SetFloat(UserData.totalTimesPlayed, 932283.22);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         PlayerPrefs.SetFloat(key, value);
     }
 
@@ -105,48 +150,88 @@ public static class UserData
 
     public static void IncrementInt(string key)     //Increment Integer value from local storage by one.
     {                                               //Usage: UserData.IncrementInt(UserData.numOfGamesPlayed);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         int newValue = PlayerPrefs.GetInt(key) + 1;
         PlayerPrefs.SetInt(key, newValue);
     }
 
     public static void IncrementInt(string key, int value)  //Increment Integer value from local storage by given value.
     {                                                       //Usage: UserData.IncrementInt(UserData.numOfTotalScore, 1200);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         int newValue = PlayerPrefs.GetInt(key) + value;
         PlayerPrefs.SetInt(key, newValue);
     }
 
     public static void DecrementInt(string key)         //Decrement Integer value from local storage by one.
     {                                                   //Usage: UserData.DecrementInt(UserData.numOfGamesPlayed);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         int newValue = PlayerPrefs.GetInt(key) - 1;
         PlayerPrefs.SetInt(key, newValue);
     }
 
     public static void DecrementInt(string key, int value)  //Decrement Integer value from local storage by given value.
     {                                                       //Usage: UserData.DecrementInt(UserData.numOfTotalScore, 100);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         int newValue = PlayerPrefs.GetInt(key) - value;
         PlayerPrefs.SetInt(key, newValue);
     }
 
     public static void IncrementFloat(string key)     //Increment Float value from local storage by 0.1
     {                                               //Usage: UserData.IncrementFloat(UserData.totalTimePlayed);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         float newValue = PlayerPrefs.GetFloat(key) + 0.1f;
         PlayerPrefs.SetFloat(key, newValue);
     }
 
     public static void IncrementFloat(string key, float value)  //Increment Float value from local storage by given value.
     {                                                           //Usage: UserData.IncrementFloat(UserData.totalTimePlayed, 86.8);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         float newValue = PlayerPrefs.GetFloat(key) + value;
         PlayerPrefs.SetFloat(key, newValue);
     }
 
     public static void DecrementFloat(string key)         //Decrement Float value from local storage by 0.1
     {                                                     //Usage: UserData.DecrementFloat(UserData.totalTimePlayed);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         float newValue = PlayerPrefs.GetFloat(key) - 0.1f;
         PlayerPrefs.SetFloat(key, newValue);
     }
 
     public static void DecrementFloat(string key, float value)  //Decrement float value from local storage by given value.
     {                                                           //Usage: UserData.DecrementFloat(UserData.totalTimePlayed, 77.3);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         float newValue = PlayerPrefs.GetFloat(key) - value;
         PlayerPrefs.SetFloat(key, newValue);
     }
@@ -156,6 +241,11 @@ public static class UserData
 
     public static void ResetValue(string key)       //Reset value from local storage.
     {                                               //Usage: UserData.ResetValue(UserData.finishedTutorial);
+        if (!IsValidKey(key))
+        {
+            Debug.LogWarning("You are passing invalid key to the UserData class, the passed key: " + key);
+            return;
+        }
         PlayerPrefs.DeleteKey(key);
     }
 
@@ -172,6 +262,45 @@ public static class UserData
         PlayerPrefs.DeleteKey(leastCubeMoves);
         PlayerPrefs.DeleteKey(fastestTime);
         PlayerPrefs.DeleteKey(totalTimePlayed);
+    }
+
+    public static void ResetAllData()   //Reset all data
+    {                                   //Usage: UserData.ResetAllData();
+        PlayerPrefs.DeleteKey(userName);
+        PlayerPrefs.DeleteKey(isMuted);
+        PlayerPrefs.DeleteKey(finishedTutorial);
+        PlayerPrefs.DeleteKey(finishedLevel1);
+        PlayerPrefs.DeleteKey(finishedLevel2);
+        PlayerPrefs.DeleteKey(finishedLevel3);
+        PlayerPrefs.DeleteKey(finishedLevel4);
+        PlayerPrefs.DeleteKey(currentLevel);
+
+        PlayerPrefs.DeleteKey(numOfgamesPlayed);
+        PlayerPrefs.DeleteKey(numOfLevelsFinished);
+        PlayerPrefs.DeleteKey(numOfCubeRolled);
+        PlayerPrefs.DeleteKey(numOfTotalScore);
+        PlayerPrefs.DeleteKey(numOfAbilitiesCollected);
+        PlayerPrefs.DeleteKey(numOfAbilitiesUsed);
+        PlayerPrefs.DeleteKey(numOfDeaths);
+        PlayerPrefs.DeleteKey(leastDeaths);
+        PlayerPrefs.DeleteKey(leastCubeMoves);
+        PlayerPrefs.DeleteKey(fastestTime);
+        PlayerPrefs.DeleteKey(totalTimePlayed);
+
+        PlayerPrefs.DeleteKey(level1HighScore);
+        PlayerPrefs.DeleteKey(level2HighScore);
+        PlayerPrefs.DeleteKey(level3HighScore);
+        PlayerPrefs.DeleteKey(level4HighScore);
+    }
+
+    private static bool IsValidKey(string key)      //To check whether the passed key is valid or not
+    {
+        System.Type t = typeof(UserData);
+        if (t.GetField(key) != null)
+        {
+            return true;
+        }
+        return false;
     }
 }
 
