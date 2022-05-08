@@ -128,17 +128,16 @@ public class ScenesLoader : MonoBehaviour
         {
             MoveToScene(WhichScene.Level1);
         }
+        else
+        {
+            MoveToScene(WhichScene.Level0);
+        }
     }
 
     public void MoveToLastPlayedScene()
     {
         blackImage.gameObject.SetActive(true);
         currentAction = Action.show;
-        /*if(UserData.GetString(UserData.currentLevel) == null || UserData.GetString(UserData.currentLevel) == "")
-        {
-            MoveToScene(WhichScene.Level0);
-            return;
-        }*/
         sceneName = UserData.GetString(UserData.currentLevel);
     }
 
