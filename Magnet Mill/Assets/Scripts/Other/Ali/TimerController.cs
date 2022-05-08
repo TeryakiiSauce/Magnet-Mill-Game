@@ -12,10 +12,11 @@ public class TimerController : MonoBehaviour
 
     public TextMeshProUGUI timeCounterText;
 
-    
+
     private TimeSpan timePlaying; // used to format the time
     private bool isGoing;
     private float elapsedTime;
+    private bool hasStarted = false;
 
     private void Awake()
     {
@@ -35,24 +36,33 @@ public class TimerController : MonoBehaviour
         timeCounterText.text = "00:00"; //initial time
         isGoing = false;
 
-        BeginTimer();
+        
     }
 
     private void Update()
     {
-        UpdateTimer();
+        BeginTimer(); //start time only if the user started cube movement
+        UpdateTimer(); //update timer only if isGoing = true
     }
 
 
     public void BeginTimer()
     {
-        isGoing = true;
-        elapsedTime = 0f;
+        if (!hasStarted && !PauseMenuController.IsPauseMenuOpened() && (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.Space)))
+        {
+            isGoing = true;
+            elapsedTime = 0f;
+            hasStarted = true;
+        }
     }
 
     public void PauseTimer()
     {
         isGoing = false;
+    }
+    public void PlayTimer()
+    {
+        isGoing = true;
     }
 
     public void ResetTimer()

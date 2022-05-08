@@ -134,6 +134,11 @@ public class ScenesLoader : MonoBehaviour
     {
         blackImage.gameObject.SetActive(true);
         currentAction = Action.show;
+        /*if(UserData.GetString(UserData.currentLevel) == null || UserData.GetString(UserData.currentLevel) == "")
+        {
+            MoveToScene(WhichScene.Level0);
+            return;
+        }*/
         sceneName = UserData.GetString(UserData.currentLevel);
     }
 
