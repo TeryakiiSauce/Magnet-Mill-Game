@@ -4,21 +4,57 @@ using UnityEngine;
 
 public class OutOffBoundHandler : MonoBehaviour
 {
-    private float timer;
+    public float timer;
+    public bool isOnObject;
     void Update()
     {
-        if(GameController.instance.IsDead())    //check if player is dead
+        if (!isOnObject)
         {
-            if(timer <1.5f)     //wait for 1.5 seconds then execute OutOfMap function from gamecontroller
-            {
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                GameController.instance.OutOfMap();
-                timer = 0;
-            }
+            outOfBounds();
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (!CubeController.flipinggravity && IsGridTag(other.tag))
+        {
+            isOnObject = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+    }
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (IsGridTag(other.tag))
+        {
+            isOnObject = true;
+            timer = 0;
+            CubeController.isTouchingGround = true;
+        }
+    }
+
+    private void outOfBounds()
+    {
+         if (timer < 0.3)
+        {
+            
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            CubeController.isTouchingGround = false;
+            GameController.instance.OutOfMap();
+            timer = 0;
+        }
+    }
+
+    private bool IsGridTag(string tag)
+    {
+        return tag == "GroundCorner" || tag == "Ground" || tag == "RightWallCorner"
+            || tag == "Right wall" || tag == "RoofCorner" || tag == "Roof" || tag == "leftWallCorner"
+            || tag == "Left wall";
     }
 
 }
