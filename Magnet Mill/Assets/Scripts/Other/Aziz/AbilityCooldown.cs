@@ -158,7 +158,6 @@ public class AbilityCooldown : MonoBehaviour
             jumpAblityused = activeAblity.None;
             /* * change image to ready to use image here * */
             HUDController.instance.SetJumpAbilityCooldown();
-            print("available");
         }
         else if (AB == activeAblity.Speed)
         {
@@ -188,7 +187,6 @@ public class AbilityCooldown : MonoBehaviour
                     /* * change image to active to use image here * */
 
                     HUDController.instance.SetJumpAbilityActive();
-                    print("disabling");
                     break;
                 }
             case activeAblity.Speed:
