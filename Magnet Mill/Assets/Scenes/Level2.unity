@@ -2641,7 +2641,7 @@ PrefabInstance:
     - target: {fileID: 3710354588478030309, guid: 03f95bb7db64ce34699438cd829cd706, type: 3}
       propertyPath: stageFinishedCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5525813434337724694}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03f95bb7db64ce34699438cd829cd706, type: 3}
 --- !u!1001 &93117657
@@ -46761,15 +46761,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.14521314
+      value: -0.14521313
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 8.619646e-15
+      value: -0.000000032966827
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 9.284736e-16
+      value: -0.0000000048385016
       objectReference: {fileID: 0}
     - target: {fileID: 1111123144532307875, guid: e24602776da412b44b0b68f4ff31775e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -50726,6 +50726,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
+--- !u!1 &5525813434337724694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 407776158132382672, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
+  m_PrefabInstance: {fileID: 5525813434337724693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6965062620596796168
 PrefabInstance:
   m_ObjectHideFlags: 0
