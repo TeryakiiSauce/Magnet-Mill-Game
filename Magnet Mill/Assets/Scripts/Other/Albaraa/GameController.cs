@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     private bool isDead;
     private bool isLevelFinished;
-    public CheckDirection currentMagnetPosition;
+    private CheckDirection currentMagnetPosition;
     private CheckDirection checkPointCurrentDirection;
     private Vector3 currentCheckPointPos;
 

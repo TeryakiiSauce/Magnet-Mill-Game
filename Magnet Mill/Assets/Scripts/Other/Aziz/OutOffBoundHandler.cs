@@ -18,19 +18,19 @@ public class OutOffBoundHandler : MonoBehaviour
     public bool checkOutOfBounds(Vector3 postion) 
     {
         Vector3 direction = Vector3.zero; ;
-        if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Ground)//onGround
+        if (GameController.instance.GetCurrentDirection() == GameController.CheckDirection.Ground)//onGround
         {
             direction = Vector3.down;
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Roof)//on roof
+        else if (GameController.instance.GetCurrentDirection() == GameController.CheckDirection.Roof)//on roof
         {
             direction = Vector3.up;
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Right)//on right wall
+        else if (GameController.instance.GetCurrentDirection() == GameController.CheckDirection.Right)//on right wall
         {
             direction = Vector3.right;
         }
-        else if (GameController.instance.currentMagnetPosition == GameController.CheckDirection.Left)//on left wall
+        else if (GameController.instance.GetCurrentDirection() == GameController.CheckDirection.Left)//on left wall
         {
             direction = Vector3.left;
         }
