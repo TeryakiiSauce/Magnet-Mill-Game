@@ -48,7 +48,8 @@ public class TimerController : MonoBehaviour
 
     public void BeginTimer()
     {
-        if (!hasStarted && !PauseMenuController.IsPauseMenuOpened() && (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.Space)))
+        if (!hasStarted && !PauseMenuController.IsPauseMenuOpened() &&
+            (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.Space)))
         {
             isGoing = true;
             elapsedTime = 0f;
@@ -74,7 +75,7 @@ public class TimerController : MonoBehaviour
 
     private void UpdateTimer()
     {
-        if (isGoing)
+        if (isGoing && !AbilityController.instance.IsFreezeActive())
         {
             elapsedTime += Time.deltaTime; //add time between two frames
             timePlaying = TimeSpan.FromSeconds(elapsedTime);

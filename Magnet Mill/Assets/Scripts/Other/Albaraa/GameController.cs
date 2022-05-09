@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public enum CheckDirection { Ground, Right, Left, Roof };
-    public enum PowerAbilities { None, JumpAbility, FreezeAbility, BoostAbility };
     public string currentLevel;
     public GameObject cube;
     public Material checkPointOnMaterial;
@@ -18,7 +17,6 @@ public class GameController : MonoBehaviour
     [HideInInspector] public int rollsCount;
     [HideInInspector] public int deathCount;
     [HideInInspector] public int abilitesUsedCount;
-    [HideInInspector] public PowerAbilities currentAbility;
     [HideInInspector] public CheckDirection previousMagnetPosition;
 
     private bool isDead;
@@ -35,7 +33,7 @@ public class GameController : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this);
             return;
         }
     }

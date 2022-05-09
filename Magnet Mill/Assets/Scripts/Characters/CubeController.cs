@@ -246,7 +246,7 @@ public class CubeController : MonoBehaviour
     private void setRotation(Vector3 direction) 
     {
         //checking if the jump ability is activited 
-        if (AbilityCooldown.jumpAblityused == AbilityCooldown.activeAblity.Jump && !onCorner)
+        if (AbilityController.instance.IsJumpActive() && !onCorner)
         {
             normalMovement = false;
             if (GameController.instance.IsInRoof())
@@ -301,11 +301,11 @@ public class CubeController : MonoBehaviour
 
     private void checkSpeedAbility() 
     {
-        if (AbilityCooldown.speedAblityused == AbilityCooldown.activeAblity.Speed)
+        if (AbilityController.instance.IsSpeedActive())
         {
             speed = 500;
         }
-        else if (AbilityCooldown.jumpAblityused == AbilityCooldown.activeAblity.Jump)
+        else if (AbilityController.instance.IsJumpActive())
         {
             speed = 350;
         }
@@ -353,7 +353,7 @@ public class CubeController : MonoBehaviour
 
     private void  checkMovement() 
     {
-        if (AbilityCooldown.jumpAblityused == AbilityCooldown.activeAblity.Jump && remainingAngle>10)
+        if (AbilityController.instance.IsJumpActive() && remainingAngle>10)
         {
             if (onCorner)
             {

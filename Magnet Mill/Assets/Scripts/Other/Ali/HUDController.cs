@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -280,7 +281,48 @@ public class HUDController : MonoBehaviour
     {
         ChangeImage(freezeAbility, freezeCooldown);
     }
-
+    public void SetBoostAbilityNotCollected()
+    {
+        Color clr = boostAbility.GetComponent<Image>().color;
+        clr.a = 0.25f;
+        boostAbility.GetComponent<Image>().color = clr;
+        boostTxt.GetComponent<TMP_Text>().color = clr;
+    }
+    public void SetJumpAbilityNotCollected()
+    {
+        Color clr = jumpAbility.GetComponent<Image>().color;
+        clr.a = 0.25f;
+        jumpAbility.GetComponent<Image>().color = clr;
+        jumpTxt.GetComponent<TMP_Text>().color = clr;
+    }
+    public void SetFreezeAbilityNotCollected()
+    {
+        Color clr = freezeAbility.GetComponent<Image>().color;
+        clr.a = 0.25f;
+        freezeAbility.GetComponent<Image>().color = clr;
+        freezeTxt.GetComponent<TMP_Text>().color = clr;
+    }
+    public void SetBoostAbilityCollected()
+    {
+        Color clr = boostAbility.GetComponent<Image>().color;
+        clr.a = 1f;
+        boostAbility.GetComponent<Image>().color = clr;
+        boostTxt.GetComponent<TMP_Text>().color = clr;
+    }
+    public void SetJumpAbilityCollected()
+    {
+        Color clr = jumpAbility.GetComponent<Image>().color;
+        clr.a = 1f;
+        jumpAbility.GetComponent<Image>().color = clr;
+        jumpTxt.GetComponent<TMP_Text>().color = clr;
+    }
+    public void SetFreezeAbilityCollected()
+    {
+        Color clr = freezeAbility.GetComponent<Image>().color;
+        clr.a = 1f;
+        freezeAbility.GetComponent<Image>().color = clr;
+        freezeTxt.GetComponent<TMP_Text>().color = clr;
+    }
     public void DeactivateElements()
     {
         mapBox.SetActive(false);
