@@ -212,4 +212,9 @@ public class GameController : MonoBehaviour
         }
 
     }
+
+    public Vector3 CubePosition()
+    {
+        return cube.transform.position;
+    }
 }
