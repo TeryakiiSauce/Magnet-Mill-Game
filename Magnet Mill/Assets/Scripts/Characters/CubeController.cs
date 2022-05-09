@@ -19,7 +19,8 @@ public class CubeController : MonoBehaviour
     public float jumpLenght = 1.2f;
     private bool onCorner = false;
     float remainingAngle;
-
+    private Time timer;
+    OutOffBoundHandler OTBhandler = new OutOffBoundHandler();
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
 
     // Start is called before the first frame update
@@ -33,6 +34,8 @@ public class CubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OTBhandler.setTimer();
+
         if (isMoving || flipinggravity || !isTouchingGround ||GameController.instance.IsDead() || GameController.instance.IsLevelFinshed()) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         userInput();
         checkSpeedAbility();
@@ -176,9 +179,16 @@ public class CubeController : MonoBehaviour
         if (remainingAngle < 5)
         {
             snapToGrid();
-            isMoving = false;        
-            cubeRigidBody.velocity = Vector3.zero;
-            cubeRigidBody.angularVelocity = Vector3.zero;
+            if (OTBhandler.checkOutOfBounds(this.transform.position))
+            {
+                isMoving = false;
+            }
+            else 
+            {
+                OTBhandler.isoutOfBounds = true;
+                isMoving = false;
+            }
+            
         }
     }
 
