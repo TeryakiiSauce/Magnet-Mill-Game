@@ -780,6 +780,7 @@ MonoBehaviour:
   instructionsRect: {fileID: 1862590095}
   creditsRect: {fileID: 1098762837}
   exitRect: {fileID: 772517021}
+  resetAbilities: 0
 --- !u!4 &385623184
 Transform:
   m_ObjectHideFlags: 0

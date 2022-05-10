@@ -6,10 +6,10 @@ public class AbilityController : MonoBehaviour
 {
     public static AbilityController instance;
     public enum Ability { None, Speed, Jump, Freeze};
-    [SerializeField] private bool isSpeedCollected;
-    [SerializeField] private bool isJumpCollected;
-    [SerializeField] private bool isFreezeCollected;
 
+    private bool isSpeedCollected;
+    private bool isJumpCollected;
+    private bool isFreezeCollected;
     private Ability currentActiveAbility = Ability.None;
     private bool isSpeedAvailable;
     private bool isJumpAvailable;
@@ -46,6 +46,10 @@ public class AbilityController : MonoBehaviour
 
     void Start()
     {
+        if (UserData.GetBool(UserData.speedCollected)) isSpeedCollected = true;
+        if (UserData.GetBool(UserData.jumpCollected)) isJumpCollected = true;
+        if (UserData.GetBool(UserData.freezeCollected)) isFreezeCollected = true;
+
         if(isSpeedCollected)
         {
             HUDController.instance.SetBoostAbilityAvailable();
@@ -136,6 +140,7 @@ public class AbilityController : MonoBehaviour
     {
         isSpeedCollected = true;
         isSpeedAvailable = true;
+        UserData.SetBool(UserData.speedCollected, true);
         HUDController.instance.SetBoostAbilityCollected();
         HUDController.instance.SetBoostAbilityAvailable();
     }
@@ -144,6 +149,7 @@ public class AbilityController : MonoBehaviour
     {
         isJumpCollected = true;
         isJumpAvailable = true;
+        UserData.SetBool(UserData.jumpCollected, true);
         HUDController.instance.SetJumpAbilityCollected();
         HUDController.instance.SetJumpAbilityAvailable();
     }
@@ -152,6 +158,7 @@ public class AbilityController : MonoBehaviour
     {
         isFreezeCollected = true;
         isFreezeAvailable = true;
+        UserData.SetBool(UserData.freezeCollected, true);
         HUDController.instance.SetFreezeAbilityCollected();
         HUDController.instance.SetFreezeAbilityAvailable();
     }
