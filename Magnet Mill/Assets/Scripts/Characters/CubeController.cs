@@ -218,6 +218,15 @@ public class CubeController : MonoBehaviour
         {
             GameController.instance.InRight();
         }
+        if (OTBhandler.checkOutOfBounds(this.transform.position))
+        {
+            
+        }
+        else
+        {
+            OTBhandler.isoutOfBounds = true;
+            
+        }
     }
 
 
