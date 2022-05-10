@@ -51,6 +51,10 @@ public class MovingObstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(AbilityController.instance.IsFreezeActive())
+        {
+            return;
+        }
         if(!positionReached)
         {
             MoveObj();
