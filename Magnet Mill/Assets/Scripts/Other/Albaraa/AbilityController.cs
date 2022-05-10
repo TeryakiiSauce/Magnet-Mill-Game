@@ -135,6 +135,7 @@ public class AbilityController : MonoBehaviour
     public void SpeedCollected()
     {
         isSpeedCollected = true;
+        isSpeedAvailable = true;
         HUDController.instance.SetBoostAbilityCollected();
         HUDController.instance.SetBoostAbilityAvailable();
     }
@@ -142,6 +143,7 @@ public class AbilityController : MonoBehaviour
     public void JumpCollected()
     {
         isJumpCollected = true;
+        isJumpAvailable = true;
         HUDController.instance.SetJumpAbilityCollected();
         HUDController.instance.SetJumpAbilityAvailable();
     }
@@ -149,6 +151,7 @@ public class AbilityController : MonoBehaviour
     public void FreezeCollected()
     {
         isFreezeCollected = true;
+        isFreezeAvailable = true;
         HUDController.instance.SetFreezeAbilityCollected();
         HUDController.instance.SetFreezeAbilityAvailable();
     }

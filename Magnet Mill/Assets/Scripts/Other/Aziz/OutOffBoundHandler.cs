@@ -7,7 +7,6 @@ public class OutOffBoundHandler : MonoBehaviour
     private RaycastHit groundHit;
     private float timer;
     public bool isoutOfBounds = false;
-    public static OutOffBoundHandler instance;
     private bool IsGridTag(string tag)
     {
         return tag == "GroundCorner" || tag == "Ground" || tag == "RightWallCorner"
@@ -17,7 +16,7 @@ public class OutOffBoundHandler : MonoBehaviour
 
     public bool checkOutOfBounds(Vector3 postion) 
     {
-        Vector3 direction = Vector3.zero; ;
+        Vector3 direction = Vector3.zero;
         if (GameController.instance.IsInGround())//onGround
         {
             direction = Vector3.down;
