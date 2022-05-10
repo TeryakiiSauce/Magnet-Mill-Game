@@ -11,6 +11,9 @@ public static class UserData
     public const string finishedLevel2 = "finishedLevel2";    //boolean
     public const string finishedLevel3 = "finishedLevel3";    //boolean
     public const string finishedLevel4 = "finishedLevel4";    //boolean
+    public const string jumpCollected = "jumpCollected"; //boolean
+    public const string speedCollected = "speedCollected"; //boolean
+    public const string freezeCollected = "freezeCollected"; //boolean
     public const string currentLevel = "currentLevel"; //string
 
 
@@ -20,7 +23,6 @@ public static class UserData
     public const string numOfLevelsFinished = "numOfLevelsFinished"; //int
     public const string numOfCubeRolled = "numOfCubeRolled"; //int
     public const string numOfTotalScore = "numOfTotalScore"; //int
-    public const string numOfAbilitiesCollected = "numOfAbilitiesCollected"; //int
     public const string numOfAbilitiesUsed = "numOfAbilitiesUsed"; //int
     public const string numOfDeaths = "numOfDeaths"; //int
     public const string leastDeaths = "leastDeaths";   //int
@@ -255,7 +257,6 @@ public static class UserData
         PlayerPrefs.DeleteKey(numOfLevelsFinished);
         PlayerPrefs.DeleteKey(numOfCubeRolled);
         PlayerPrefs.DeleteKey(numOfTotalScore);
-        PlayerPrefs.DeleteKey(numOfAbilitiesCollected);
         PlayerPrefs.DeleteKey(numOfAbilitiesUsed);
         PlayerPrefs.DeleteKey(numOfDeaths);
         PlayerPrefs.DeleteKey(leastDeaths);
@@ -266,31 +267,7 @@ public static class UserData
 
     public static void ResetAllData()   //Reset all data
     {                                   //Usage: UserData.ResetAllData();
-        PlayerPrefs.DeleteKey(userName);
-        PlayerPrefs.DeleteKey(isMuted);
-        PlayerPrefs.DeleteKey(finishedTutorial);
-        PlayerPrefs.DeleteKey(finishedLevel1);
-        PlayerPrefs.DeleteKey(finishedLevel2);
-        PlayerPrefs.DeleteKey(finishedLevel3);
-        PlayerPrefs.DeleteKey(finishedLevel4);
-        PlayerPrefs.DeleteKey(currentLevel);
-
-        PlayerPrefs.DeleteKey(numOfgamesPlayed);
-        PlayerPrefs.DeleteKey(numOfLevelsFinished);
-        PlayerPrefs.DeleteKey(numOfCubeRolled);
-        PlayerPrefs.DeleteKey(numOfTotalScore);
-        PlayerPrefs.DeleteKey(numOfAbilitiesCollected);
-        PlayerPrefs.DeleteKey(numOfAbilitiesUsed);
-        PlayerPrefs.DeleteKey(numOfDeaths);
-        PlayerPrefs.DeleteKey(leastDeaths);
-        PlayerPrefs.DeleteKey(leastCubeMoves);
-        PlayerPrefs.DeleteKey(fastestTime);
-        PlayerPrefs.DeleteKey(totalTimePlayed);
-
-        PlayerPrefs.DeleteKey(level1HighScore);
-        PlayerPrefs.DeleteKey(level2HighScore);
-        PlayerPrefs.DeleteKey(level3HighScore);
-        PlayerPrefs.DeleteKey(level4HighScore);
+        PlayerPrefs.DeleteAll();
     }
 
     private static bool IsValidKey(string key)      //To check whether the passed key is valid or not

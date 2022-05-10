@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ccb94f4dd28cf498c8aa778a8802bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAbility: 0
+  currentAbility: 1
 --- !u!95 &2092796262218957169
 Animator:
   serializedVersion: 3
@@ -4340,6 +4340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6618730651041652071}
+  - component: {fileID: 8550678999541681984}
   m_Layer: 0
   m_Name: boost collectible
   m_TagString: Untagged
@@ -4362,6 +4363,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8550678999541681984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618730651041652072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3cee72ac09d47349ef271c85ce2e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilitySC: {fileID: 0}
 --- !u!1 &6648405713827982787
 GameObject:
   m_ObjectHideFlags: 0
