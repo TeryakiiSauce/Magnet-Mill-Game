@@ -20,12 +20,13 @@ public class CubeController : MonoBehaviour
     private bool onCorner = false;
     float remainingAngle;
     private Time timer;
-    OutOffBoundHandler OTBhandler = new OutOffBoundHandler();
+    OutOffBoundHandler OTBhandler;
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
 
     // Start is called before the first frame update
     void Start()
     {
+        OTBhandler = GetComponent<OutOffBoundHandler>();
         // Choose one depending on needs
         cubeRigidBody = GetComponent<Rigidbody>();
     }
