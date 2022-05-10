@@ -34,7 +34,7 @@ public class OutOffBoundHandler : MonoBehaviour
             direction = Vector3.left;
         }
         Ray surfaceOnRay = new Ray(postion, direction);
-        if (Physics.Raycast(surfaceOnRay, out groundHit, 1.5f))
+        if (Physics.Raycast(surfaceOnRay, out groundHit))
         {
             if (IsGridTag(groundHit.transform.tag))
             {
@@ -60,6 +60,11 @@ public class OutOffBoundHandler : MonoBehaviour
             { 
                 timer += Time.deltaTime;
             }
+            else if (CubeController.flipinggravity && timer < 3.5f && timer >= 1)
+            {
+                timer += Time.deltaTime;
+            }
+
             else
             {
                 GameController.instance.OutOfMap();
