@@ -1157,12 +1157,12 @@ VideoPlayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668662146}
-  m_Enabled: 0
-  m_VideoClip: {fileID: 32900000, guid: e2118832769a43d43812b5e4ff1e5b58, type: 3}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 01071c44267f1ca458635bd1b6290c1d, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 3353dd076fdbdaf49be5477aaccf6018, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 2a1d9a48cb402d140b610c8875998da2, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b645caa7718154fbc10fe9de76a38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 2.5
+  strength: 5
 --- !u!1 &772517020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1465597776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2748,7 +2748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1869114197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2781,14 +2781,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 3353dd076fdbdaf49be5477aaccf6018, type: 2}
+  m_Texture: {fileID: 8400000, guid: 2a1d9a48cb402d140b610c8875998da2, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
