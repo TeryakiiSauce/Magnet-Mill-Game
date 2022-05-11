@@ -22,6 +22,9 @@ public class AbilityController : MonoBehaviour
     private float speedCoolDownTimer;
     private float jumpCoolDownTimer;
     private float freezeCoolDownTimer;
+    private float terrainDefaultWindSpeed;
+    private float terrianDefaultBending;
+    private Terrain levelTerrain;
 
     const float speedTimeLimit = 4f;
     const float speedCoolDownTimeLimit = 14f;
@@ -46,6 +49,12 @@ public class AbilityController : MonoBehaviour
 
     void Start()
     {
+        levelTerrain = FindObjectOfType<Terrain>();
+        if (levelTerrain != null)
+        {
+            terrainDefaultWindSpeed = levelTerrain.terrainData.wavingGrassSpeed;
+            terrianDefaultBending = levelTerrain.terrainData.wavingGrassStrength;
+        }
         if (UserData.GetBool(UserData.speedCollected)) isSpeedCollected = true;
         if (UserData.GetBool(UserData.jumpCollected)) isJumpCollected = true;
         if (UserData.GetBool(UserData.freezeCollected)) isFreezeCollected = true;
@@ -200,6 +209,11 @@ public class AbilityController : MonoBehaviour
         currentAbilityTimeLimit = freezeTimeLimit;
         HUDController.instance.SetFreezeAbilityActive();
         isFreezeAvailable = false;
+        if (levelTerrain != null)
+        {
+            levelTerrain.terrainData.wavingGrassSpeed = 0f;
+            levelTerrain.terrainData.wavingGrassStrength = 0f;
+        }
     }
 
     private void ResetAbility()
@@ -222,6 +236,11 @@ public class AbilityController : MonoBehaviour
                 {
                     isFreezeCoolingDown = true;
                     HUDController.instance.SetFreezeAbilityCooldown();
+                    if (levelTerrain != null)
+                    {
+                        levelTerrain.terrainData.wavingGrassSpeed = terrainDefaultWindSpeed;
+                        levelTerrain.terrainData.wavingGrassStrength = terrianDefaultBending;
+                    }
                     break;
                 }
             default: break;
