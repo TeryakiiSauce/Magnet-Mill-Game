@@ -1,0 +1,28 @@
+This is a guide on how to setup a stage with zero problems.
+    
+Step #1: Drag the prefabs: "Game Controller", "Cursor", "Cameras", "Little Limos", "HUD", "Pause Menu" & "Stage Finished Canvas" to your level
+
+Step #2:
+    a. Select "Game Controller" from the hierarchy & change the current level based on your level.
+    
+    b. Select "Game Controller" from the hierarchy & drag "Little Limos" to the cube property.
+
+Step #3:
+    a. Select "Cursor" from the hierarchy & drag "Stage Finished Canvas" to the menu property.
+    
+    b. Select "Cursor" from the hierarchy & drag "Pause Menu" to the pause menu property.
+    
+Step #4:
+    a. Expand "Cameras" and select "Ground View", "Right View", "Top View", "Left View", "Flipping View" -> drag "Little Limos" to the follow & look at properties.
+    
+    b. Expand "Cameras" -> Expand "Quick Cameras" -> select all cameras -> drag "Little Limos" to the follow property.
+    
+    c. Expand "Little Limos" -> Expand "Focus Points" -> return to the "Quick Cameras" -> drag each focus point to their respective properties to the look at property.
+
+    
+The following step is to add random objects to the cube's storage sphere
+
+Step #5:
+    a. Expand "Little Limos" -> Expand "Animated Objects" -> Expand "FoodHolder" -> Expand "food_protection" -> add and unpack your models under here.
+    
+    b. Click on "FoodHolder" & edit the list (in the Food Holder script) depending on your needs.
