@@ -34,7 +34,14 @@ public class MainMenuBtn : MonoBehaviour
             if (!forTesting)
             {
                 //ScenesLoader.instance.MoveToLastUnlockedScene();
-                activateGameobject.SetActive(true);
+                if (UserData.GetBool(UserData.finishedTutorial))
+                {
+                    activateGameobject.SetActive(true);
+                }
+                else
+                {
+                    ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0);
+                }
             }
             else if (testSceneName != null && testSceneName != "")
             {
