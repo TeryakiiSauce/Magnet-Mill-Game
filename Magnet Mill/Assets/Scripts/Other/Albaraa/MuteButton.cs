@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class MuteButton : MonoBehaviour
 {
     public Button fakeButton;
-    public Sprite onHighlighted;
-    public Sprite offHighlighted;
     public Sprite offSprite;
     private Sprite onSprite;
     private Image thisImg;
@@ -49,20 +47,13 @@ public class MuteButton : MonoBehaviour
 
     private void SetSprite()    //this function will switch the sprites of the mute button depeding if the sounds are muted or not
     {
-        SpriteState spState = thisBtn.spriteState;
         if (AudioManager.instance.IsMuted())
         {
-            spState.highlightedSprite = offHighlighted;
-            spState.pressedSprite = offHighlighted;
             thisImg.sprite = offSprite;
-            thisBtn.spriteState = spState;
         }
         else
         {
-            spState.highlightedSprite = onHighlighted;
-            spState.pressedSprite = onHighlighted;
             thisImg.sprite = onSprite;
-            thisBtn.spriteState = spState;
         }
     }
 }
