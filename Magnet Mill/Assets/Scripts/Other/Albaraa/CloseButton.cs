@@ -11,9 +11,13 @@ public class CloseButton : MonoBehaviour
         if (whichMenu == TargetMenu.LevelSelection)
         {
             if (LevelButton.btnClicked) return;
-            MainMenuBtn.BtnClicked = false;
-            transform.parent.parent.gameObject.SetActive(false);
         }
+        else
+        {
+            StatisticsButton.isClicked = false;
+        }
+        MainMenuBtn.BtnClicked = false;
+        transform.parent.parent.gameObject.SetActive(false);
     }
 
 }

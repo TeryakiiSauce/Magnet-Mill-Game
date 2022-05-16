@@ -193,6 +193,7 @@ public class AbilityController : MonoBehaviour
         currentAbilityTimeLimit = speedTimeLimit;
         HUDController.instance.SetBoostAbilityActive();
         isSpeedAvailable = false;
+        UserData.IncrementInt(UserData.numOfAbilitiesUsed);
     }
 
     private void SetJump()
@@ -201,6 +202,7 @@ public class AbilityController : MonoBehaviour
         currentAbilityTimeLimit = jumpTimeLimit;
         HUDController.instance.SetJumpAbilityActive();
         isJumpAvailable = false;
+        UserData.IncrementInt(UserData.numOfAbilitiesUsed);
     }
 
     private void SetFreeze()
@@ -215,6 +217,7 @@ public class AbilityController : MonoBehaviour
             levelTerrain.terrainData.wavingGrassSpeed = 0f;
             levelTerrain.terrainData.wavingGrassStrength = 0f;
         }
+        UserData.IncrementInt(UserData.numOfAbilitiesUsed);
     }
 
     private void ResetAbility()
