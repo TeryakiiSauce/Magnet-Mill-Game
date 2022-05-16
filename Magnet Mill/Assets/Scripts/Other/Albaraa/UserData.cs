@@ -252,6 +252,8 @@ public static class UserData
     {                                              //Usage: UserData.ResetStatistics();
         PlayerPrefs.DeleteKey(numOfLevelsFinished);
         PlayerPrefs.DeleteKey(numOfCubeRolled);
+        PlayerPrefs.DeleteKey(numOfGravitySwitched);
+        PlayerPrefs.DeleteKey(numOfCheckpointsActivated);
         PlayerPrefs.DeleteKey(numOfTotalScore);
         PlayerPrefs.DeleteKey(numOfAbilitiesUsed);
         PlayerPrefs.DeleteKey(numOfDeaths);

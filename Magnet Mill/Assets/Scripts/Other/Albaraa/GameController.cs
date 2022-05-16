@@ -187,8 +187,11 @@ public class GameController : MonoBehaviour
     public void LevelFinished()
     {
         isLevelFinished = true;
-        UserData.IncrementInt(UserData.numOfLevelsFinished);
-        UserData.IncrementInt(UserData.numOfTotalScore, score);
+        if (currentLevel != "Level0")
+        {
+            UserData.IncrementInt(UserData.numOfLevelsFinished);
+            UserData.IncrementInt(UserData.numOfTotalScore, score);
+        }
         UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetTimeInFloat());
         TimerController.instance.PauseTimer();
         HUDController.instance.DeactivateElements();

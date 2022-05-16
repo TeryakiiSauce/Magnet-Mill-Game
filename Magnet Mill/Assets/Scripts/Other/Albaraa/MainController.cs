@@ -12,6 +12,7 @@ public class MainController : MonoBehaviour
     public RectTransform exitRect;
     public bool resetAbilities;
     public bool resetLevels;
+    public bool resetStatistics;
     private float[] yPositions = {270, 90, -90, -270};  //these variables will be used to place the buttons if the tutorial button is not active
     void Awake()
     {
@@ -40,6 +41,10 @@ public class MainController : MonoBehaviour
             UserData.SetBool(UserData.finishedLevel2, false);
             UserData.SetBool(UserData.finishedLevel3, false);
             UserData.SetBool(UserData.finishedLevel4, false);
+        }
+        if(resetStatistics)
+        {
+            UserData.ResetStatistics();
         }
         if(!UserData.GetBool(UserData.finishedTutorial))    //Checking if the user finished the tutorial, if not then deactivate the                                                       
         {                                                   //tutorial button, because the play button will redirect him to the tutorial
