@@ -83,6 +83,16 @@ public class TimerController : MonoBehaviour
         timeCounterText.color = new Color(1, 1, 1, 1);
     }
 
+    public float GetTimeInFloat()
+    {
+        return elapsedTime;
+    }
+
+    public string GetTimeInString()
+    {
+        return timePlaying.ToString("mm':'ss");
+    }
+
     private void UpdateTimer()
     {
         if (isGoing && !AbilityController.instance.IsFreezeActive())

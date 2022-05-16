@@ -9,6 +9,11 @@ public class CursorController : MonoBehaviour
 
     private void Awake()
     {
+        //if(Application.platform == RuntimePlatform.OSXEditor)
+        //{
+        //    gameObject.SetActive(false);
+        //    return;
+        //}
         SwitchCursor(mainCursor);
 
         Cursor.lockState = CursorLockMode.Confined; // keeps the cursor within game window
