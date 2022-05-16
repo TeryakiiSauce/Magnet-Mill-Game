@@ -4,7 +4,6 @@ public static class UserData
 {
     //-------------------General Keys---------------------------
 
-    public const string userName = "userName"; //string
     public const string isMuted = "isMuted"; //boolean
     public const string finishedTutorial = "finishedTutorial"; //boolean
     public const string finishedLevel1 = "finishedLevel1";    //boolean
@@ -19,15 +18,13 @@ public static class UserData
 
     //-------------------User statistics Keys-------------------
 
-    public const string numOfgamesPlayed = "numOfgamesPlayed"; //int
     public const string numOfLevelsFinished = "numOfLevelsFinished"; //int
     public const string numOfCubeRolled = "numOfCubeRolled"; //int
+    public const string numOfGravitySwitched = "numOfGravitySwitched"; //int
+    public const string numOfCheckpointsActivated = "numOfCheckpointsActivated";  //int
     public const string numOfTotalScore = "numOfTotalScore"; //int
     public const string numOfAbilitiesUsed = "numOfAbilitiesUsed"; //int
     public const string numOfDeaths = "numOfDeaths"; //int
-    public const string leastDeaths = "leastDeaths";   //int
-    public const string leastCubeMoves = "leastCubeMoves";    //int
-    public const string fastestTime = "fastestTime";    //float
     public const string totalTimePlayed = "totalTimePlayed"; //float
 
 
@@ -253,15 +250,11 @@ public static class UserData
 
     public static void ResetStatistics()           //Reset all statistics values.
     {                                              //Usage: UserData.ResetStatistics();
-        PlayerPrefs.DeleteKey(numOfgamesPlayed);
         PlayerPrefs.DeleteKey(numOfLevelsFinished);
         PlayerPrefs.DeleteKey(numOfCubeRolled);
         PlayerPrefs.DeleteKey(numOfTotalScore);
         PlayerPrefs.DeleteKey(numOfAbilitiesUsed);
         PlayerPrefs.DeleteKey(numOfDeaths);
-        PlayerPrefs.DeleteKey(leastDeaths);
-        PlayerPrefs.DeleteKey(leastCubeMoves);
-        PlayerPrefs.DeleteKey(fastestTime);
         PlayerPrefs.DeleteKey(totalTimePlayed);
     }
 
@@ -280,4 +273,3 @@ public static class UserData
         return false;
     }
 }
-

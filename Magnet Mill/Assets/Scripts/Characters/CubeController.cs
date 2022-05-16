@@ -128,6 +128,7 @@ public class CubeController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+            UserData.IncrementInt(UserData.numOfCubeRolled);
         }
         else if (GameController.instance.IsInRoof())//on roof
         {
@@ -135,6 +136,7 @@ public class CubeController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.right)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+            UserData.IncrementInt(UserData.numOfCubeRolled);
         }
         else if (GameController.instance.IsInRight())//on right wall
         {
@@ -142,6 +144,7 @@ public class CubeController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.up)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+            UserData.IncrementInt(UserData.numOfCubeRolled);
         }
         else if (GameController.instance.IsInLeft())//on left wall
         {
@@ -149,6 +152,7 @@ public class CubeController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D)) StartCoroutine(Roll(Vector3.down)); // rotate to the right when D clicked
             else if (Input.GetKey(KeyCode.W)) StartCoroutine(Roll(Vector3.forward)); // rotate forward when W clicked
             else if (Input.GetKey(KeyCode.S)) StartCoroutine(Roll(Vector3.back)); // rotate back when S clicked
+            UserData.IncrementInt(UserData.numOfCubeRolled);
         }
 
         //if the user presses space 
@@ -198,6 +202,7 @@ public class CubeController : MonoBehaviour
     private void flipCube() 
     {
         flipinggravity = true;
+        UserData.IncrementInt(UserData.numOfGravitySwitched);
         //flip from ground to roof
         if (GameController.instance.IsInGround())
         {
