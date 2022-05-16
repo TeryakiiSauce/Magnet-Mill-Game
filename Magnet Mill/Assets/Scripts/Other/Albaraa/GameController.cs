@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
 
     public void OutOfMap()     //this function will be called if the user is out of map (dead)
     {
+        UserData.IncrementInt(UserData.numOfDeaths);
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
@@ -186,6 +187,12 @@ public class GameController : MonoBehaviour
     public void LevelFinished()
     {
         isLevelFinished = true;
+        if (currentLevel != "Level0")
+        {
+            UserData.IncrementInt(UserData.numOfLevelsFinished);
+            UserData.IncrementInt(UserData.numOfTotalScore, score);
+        }
+        UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetTimeInFloat());
         TimerController.instance.PauseTimer();
         HUDController.instance.DeactivateElements();
         if (currentLevel == "Level0")

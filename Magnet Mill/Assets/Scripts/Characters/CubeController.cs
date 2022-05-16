@@ -198,6 +198,7 @@ public class CubeController : MonoBehaviour
     private void flipCube() 
     {
         flipinggravity = true;
+        UserData.IncrementInt(UserData.numOfGravitySwitched);
         //flip from ground to roof
         if (GameController.instance.IsInGround())
         {
@@ -329,6 +330,7 @@ public class CubeController : MonoBehaviour
     //method to snap the cube to the grid
     private void snapToGrid()
     {
+        UserData.IncrementInt(UserData.numOfCubeRolled);
         //checks if the cube is on the gound or roof
         if (GameController.instance.IsInGround()
            || GameController.instance.IsInRoof())
