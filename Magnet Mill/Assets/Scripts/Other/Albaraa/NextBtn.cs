@@ -33,5 +33,9 @@ public class NextBtn : MonoBehaviour
         {
             ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level4);
         }
+        else
+        {
+            print("In else block!");
+        }
     }
 }

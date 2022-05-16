@@ -208,6 +208,7 @@ public class AbilityController : MonoBehaviour
         currentActiveAbility = Ability.Freeze;
         currentAbilityTimeLimit = freezeTimeLimit;
         HUDController.instance.SetFreezeAbilityActive();
+        TimerController.instance.SetFreezeColor();
         isFreezeAvailable = false;
         if (levelTerrain != null)
         {
@@ -236,6 +237,7 @@ public class AbilityController : MonoBehaviour
                 {
                     isFreezeCoolingDown = true;
                     HUDController.instance.SetFreezeAbilityCooldown();
+                    TimerController.instance.SetNormalColor();
                     if (levelTerrain != null)
                     {
                         levelTerrain.terrainData.wavingGrassSpeed = terrainDefaultWindSpeed;

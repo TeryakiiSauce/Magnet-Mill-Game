@@ -73,6 +73,16 @@ public class TimerController : MonoBehaviour
         elapsedTime = 0f;
     }
 
+    public void SetFreezeColor()
+    {
+        timeCounterText.color = new Color(0, 0.75f, 0.84f, 1);
+    }
+
+    public void SetNormalColor()
+    {
+        timeCounterText.color = new Color(1, 1, 1, 1);
+    }
+
     private void UpdateTimer()
     {
         if (isGoing && !AbilityController.instance.IsFreezeActive())
