@@ -21,21 +21,39 @@ public class StatisticsDisplayer : MonoBehaviour
 
     void Start()
     {
-        TimeSpan timePlayed = TimeSpan.FromSeconds(UserData.GetFloat(UserData.totalTimePlayed));
+        SetValue(UserData.numOfLevelsFinished, levelsFinishedValue);
+        SetValue(UserData.numOfCubeRolled, cubeRolledValue);
+        SetValue(UserData.numOfGravitySwitched, gravitySwitValue);
+        SetValue(UserData.numOfCheckpointsActivated, checkpointActValue);
+        SetValue(UserData.numOfAbilitiesUsed, abilitiesValue);
+        SetValue(UserData.numOfDeaths, deathsValue);
+        SetValue(UserData.level1HighScore, level1HighScoreValue);
+        SetValue(UserData.level2HighScore, level2HighScoreValue);
+        SetValue(UserData.level3HighScore, level3HighScoreValue);
+        SetValue(UserData.level4HighScore, level4HighScoreValue);
 
-        levelsFinishedValue.text = UserData.GetInt(UserData.numOfLevelsFinished).ToString();
-        cubeRolledValue.text = UserData.GetInt(UserData.numOfCubeRolled).ToString();
-        gravitySwitValue.text = UserData.GetInt(UserData.numOfGravitySwitched).ToString();
-        checkpointActValue.text = UserData.GetInt(UserData.numOfCheckpointsActivated).ToString();
-        abilitiesValue.text = UserData.GetInt(UserData.numOfAbilitiesUsed).ToString();
-        deathsValue.text = UserData.GetInt(UserData.numOfDeaths).ToString();
-        totalScoreValue.text = UserData.GetInt(UserData.numOfTotalScore).ToString();
+        if (UserData.GetInt(UserData.numOfTotalScore) < 1000000)
+        {
+            totalScoreValue.text = UserData.GetInt(UserData.numOfTotalScore).ToString();
+        }
+        else
+        {
+            totalScoreValue.text = "999999+";
+        }
+
+        TimeSpan timePlayed = TimeSpan.FromSeconds(UserData.GetFloat(UserData.totalTimePlayed));
         timePlayedValue.text = timePlayed.ToString("hh':'mm':'ss");
-        level1HighScoreValue.text = UserData.GetInt(UserData.level1HighScore).ToString();
-        level2HighScoreValue.text = UserData.GetInt(UserData.level2HighScore).ToString();
-        level3HighScoreValue.text = UserData.GetInt(UserData.level3HighScore).ToString();
-        level4HighScoreValue.text = UserData.GetInt(UserData.level4HighScore).ToString();
     }
 
-
+    private void SetValue(string key, TextMeshProUGUI txtObj)
+    {
+        if(UserData.GetInt(key) < 10000)
+        {
+            txtObj.text = UserData.GetInt(key).ToString();
+        }
+        else
+        {
+            txtObj.text = "9999+";
+        }
+    }
 }
