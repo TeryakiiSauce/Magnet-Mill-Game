@@ -6,11 +6,14 @@ public class MouseParallax : MonoBehaviour
 {
     private Vector3 StartPos, contentPosition;
 
-    public float strength = 20;
+    //public float strength = 20;
+    private float strength;
 
     // Start is called before the first frame update
     void Start()
     {
+        strength = PlayerPrefs.GetInt("mouseParallax") / 5f;
+        //print("strength: " + strength * 5);
         StartPos = transform.position;
     }
 
