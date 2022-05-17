@@ -7,12 +7,12 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public enum CheckDirection { Ground, Right, Left, Roof };
     public string currentLevel;
+    public int levelMaxScore;
     public GameObject cube;
     public Material checkPointOnMaterial;
 
     //[HideInInspector] public bool gameOver;
-    [HideInInspector] public bool gamePaused;
-    [HideInInspector] public float levelTimer;
+    //[HideInInspector] public bool gamePaused;
     [HideInInspector] public int score;
     [HideInInspector] public int rollsCount;
     [HideInInspector] public int deathCount;
@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
     public void OutOfMap()     //this function will be called if the user is out of map (dead)
     {
         UserData.IncrementInt(UserData.numOfDeaths);
+        deathCount++;
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
@@ -192,30 +193,13 @@ public class GameController : MonoBehaviour
             UserData.IncrementInt(UserData.numOfLevelsFinished);
             UserData.IncrementInt(UserData.numOfTotalScore, score);
         }
-        UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetTimeInFloat());
-        TimerController.instance.PauseTimer();
-        HUDController.instance.DeactivateElements();
-        if (currentLevel == "Level0")
+        else
         {
             UserData.SetBool(UserData.finishedTutorial, true);
         }
-        else if(currentLevel == "Level1")
-        {
-            UserData.SetBool(UserData.finishedLevel1, true);
-        }
-        else if (currentLevel == "Level2")
-        {
-            UserData.SetBool(UserData.finishedLevel2, true);
-        }
-        else if (currentLevel == "Level3")
-        {
-            UserData.SetBool(UserData.finishedLevel3, true);
-        }
-        else if (currentLevel == "Level4")
-        {
-            UserData.SetBool(UserData.finishedLevel4, true);
-        }
-
+        UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetSceneTimer());
+        TimerController.instance.PauseTimer();
+        HUDController.instance.DeactivateElements();
     }
 
     public Vector3 CubePosition()
