@@ -331,6 +331,7 @@ public class CubeController : MonoBehaviour
     private void snapToGrid()
     {
         UserData.IncrementInt(UserData.numOfCubeRolled);
+        GameController.instance.rollsCount++;
         //checks if the cube is on the gound or roof
         if (GameController.instance.IsInGround()
            || GameController.instance.IsInRoof())

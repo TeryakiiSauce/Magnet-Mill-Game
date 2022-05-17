@@ -7,12 +7,12 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public enum CheckDirection { Ground, Right, Left, Roof };
     public string currentLevel;
+    public int levelMaxScore;
     public GameObject cube;
     public Material checkPointOnMaterial;
 
     //[HideInInspector] public bool gameOver;
-    [HideInInspector] public bool gamePaused;
-    [HideInInspector] public float levelTimer;
+    //[HideInInspector] public bool gamePaused;
     [HideInInspector] public int score;
     [HideInInspector] public int rollsCount;
     [HideInInspector] public int deathCount;
@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
     public void OutOfMap()     //this function will be called if the user is out of map (dead)
     {
         UserData.IncrementInt(UserData.numOfDeaths);
+        deathCount++;
         Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
