@@ -17,6 +17,9 @@ TagManager:
   - RightWallCorner
   - leftWallCorner
   - RoofCorner
+  - QualitySettingSlider
+  - MaxRenderDistanceSetting
+  - Virtual Camera
   layers:
   - Default
   - TransparentFX

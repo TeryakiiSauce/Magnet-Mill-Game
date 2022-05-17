@@ -8,7 +8,7 @@ using UnityEditor;
 
 public class MainMenuBtn : MonoBehaviour
 {
-    public enum MenuBtn {play, tutorial, instruction, credits, exit};   //we will use this enum in the editor to choose which button is this
+    public enum MenuBtn { play, tutorial, instruction, /*settings,*/ credits, exit };   //we will use this enum in the editor to choose which button is this
     public MenuBtn whichButton;
     public GameObject activateGameobject;
     public static bool BtnClicked;
@@ -22,14 +22,14 @@ public class MainMenuBtn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ButtonClicked() //will be called when the button clicked
     {
         if (ScenesLoader.instance.IsTransitioning() || BtnClicked) return;  //checking first if any button is clicked
 
-        if(whichButton == MenuBtn.play)
+        if (whichButton == MenuBtn.play)
         {
             if (!forTesting)
             {
@@ -48,18 +48,22 @@ public class MainMenuBtn : MonoBehaviour
                 ScenesLoader.instance.TestingScene(testSceneName);
             }
         }
-        else if(whichButton == MenuBtn.tutorial)
+        else if (whichButton == MenuBtn.tutorial)
         {
             ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0); //moving to scene "Level0"
         }
-        else if(whichButton == MenuBtn.instruction)
+        else if (whichButton == MenuBtn.instruction)
         {
             activateGameobject.SetActive(true);     //enable instructions
         }
-        else if(whichButton == MenuBtn.credits)
+        else if (whichButton == MenuBtn.credits)
         {
             activateGameobject.SetActive(true);     //enable credits         
         }
+        /*else if (whichButton == MenuBtn.settings)
+        {
+            activateGameobject.SetActive(true);     // settings
+        }*/
         else
         {
             Application.Quit();     //quit game
@@ -70,7 +74,7 @@ public class MainMenuBtn : MonoBehaviour
 #if UNITY_EDITOR
 
     [CustomEditor(typeof(MainMenuBtn))]
-    public class MainMenuBtnEditor: Editor  //Editor class to hide and display fields based on conditions in the inspector
+    public class MainMenuBtnEditor : Editor  //Editor class to hide and display fields based on conditions in the inspector
     {
         public override void OnInspectorGUI()   //override OnInspectorGUI function from the base
         {
@@ -90,8 +94,8 @@ public class MainMenuBtn : MonoBehaviour
             {                                       //because we need to add variables dynamically only for the play button
                 btnSC.forTesting = false;
                 return;
-            }    
-                                                                
+            }
+
             EditorGUILayout.Space();            ///Adding space in the inspector
 
             EditorGUILayout.BeginHorizontal();      //start horizontal gui elements drawing
@@ -114,7 +118,7 @@ public class MainMenuBtn : MonoBehaviour
             {
                 btnSC.testSceneName = null;     //if forTesting checkbox is off clear testSceneName variable
             }
-            
+
         }
     }
 
