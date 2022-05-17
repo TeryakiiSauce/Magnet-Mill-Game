@@ -1,6 +1,6 @@
 This is a guide on how to setup a stage with zero problems.
     
-Step #1: Drag the prefabs: "Game Controller", "Cursor", "Cameras", "Little Limos", "HUD", "Pause Menu" & "Stage Finished Canvas" to your level
+Step #1: Drag the prefabs: "Game Controller", "Cursor", "Cameras", "Little Limos", "HUD", "Settings script", "Pause Menu" & "Stage Finished Canvas" to your level
 
 Step #2:
     a. Select "Game Controller" from the hierarchy & change the current level based on your level.
