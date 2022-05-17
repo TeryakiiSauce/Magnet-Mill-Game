@@ -20,6 +20,7 @@ TagManager:
   - QualitySettingSlider
   - MaxRenderDistanceSetting
   - Virtual Camera
+  - MouseParallaxSetting
   layers:
   - Default
   - TransparentFX
