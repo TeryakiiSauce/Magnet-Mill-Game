@@ -193,30 +193,13 @@ public class GameController : MonoBehaviour
             UserData.IncrementInt(UserData.numOfLevelsFinished);
             UserData.IncrementInt(UserData.numOfTotalScore, score);
         }
-        UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetTimeInFloat());
-        TimerController.instance.PauseTimer();
-        HUDController.instance.DeactivateElements();
-        if (currentLevel == "Level0")
+        else
         {
             UserData.SetBool(UserData.finishedTutorial, true);
         }
-        else if(currentLevel == "Level1")
-        {
-            UserData.SetBool(UserData.finishedLevel1, true);
-        }
-        else if (currentLevel == "Level2")
-        {
-            UserData.SetBool(UserData.finishedLevel2, true);
-        }
-        else if (currentLevel == "Level3")
-        {
-            UserData.SetBool(UserData.finishedLevel3, true);
-        }
-        else if (currentLevel == "Level4")
-        {
-            UserData.SetBool(UserData.finishedLevel4, true);
-        }
-
+        UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetSceneTimer());
+        TimerController.instance.PauseTimer();
+        HUDController.instance.DeactivateElements();
     }
 
     public Vector3 CubePosition()

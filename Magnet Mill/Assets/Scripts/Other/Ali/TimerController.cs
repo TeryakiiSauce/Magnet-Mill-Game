@@ -16,6 +16,7 @@ public class TimerController : MonoBehaviour
     private TimeSpan timePlaying; // used to format the time
     private bool isGoing;
     private float elapsedTime;
+    private float sceneTimer;
     private bool hasStarted = false;
 
     private void Awake()
@@ -87,7 +88,10 @@ public class TimerController : MonoBehaviour
     {
         return elapsedTime;
     }
-
+    public float GetSceneTimer()
+    {
+        return sceneTimer;
+    }
     public string GetTimeInString()
     {
         return timePlaying.ToString("mm':'ss");
@@ -95,12 +99,16 @@ public class TimerController : MonoBehaviour
 
     private void UpdateTimer()
     {
-        if (isGoing && !AbilityController.instance.IsFreezeActive())
+        if (isGoing)
         {
-            elapsedTime += Time.deltaTime; //add time between two frames
-            timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            string timePlayingStr = timePlaying.ToString("mm':'ss");
-            timeCounterText.text = timePlayingStr;
+            sceneTimer += Time.deltaTime;
+            if (!AbilityController.instance.IsFreezeActive())
+            {
+                elapsedTime += Time.deltaTime; //add time between two frames
+                timePlaying = TimeSpan.FromSeconds(elapsedTime);
+                string timePlayingStr = timePlaying.ToString("mm':'ss");
+                timeCounterText.text = timePlayingStr;
+            }
         }
     }
 

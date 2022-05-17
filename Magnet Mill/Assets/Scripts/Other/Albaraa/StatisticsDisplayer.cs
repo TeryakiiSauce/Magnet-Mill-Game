@@ -27,11 +27,19 @@ public class StatisticsDisplayer : MonoBehaviour
         SetValue(UserData.numOfCheckpointsActivated, checkpointActValue);
         SetValue(UserData.numOfAbilitiesUsed, abilitiesValue);
         SetValue(UserData.numOfDeaths, deathsValue);
-        SetValue(UserData.numOfTotalScore, totalScoreValue);
         SetValue(UserData.level1HighScore, level1HighScoreValue);
         SetValue(UserData.level2HighScore, level2HighScoreValue);
         SetValue(UserData.level3HighScore, level3HighScoreValue);
         SetValue(UserData.level4HighScore, level4HighScoreValue);
+
+        if (UserData.GetInt(UserData.numOfTotalScore) < 1000000)
+        {
+            totalScoreValue.text = UserData.GetInt(UserData.numOfTotalScore).ToString();
+        }
+        else
+        {
+            totalScoreValue.text = "999999+";
+        }
 
         TimeSpan timePlayed = TimeSpan.FromSeconds(UserData.GetFloat(UserData.totalTimePlayed));
         timePlayedValue.text = timePlayed.ToString("hh':'mm':'ss");

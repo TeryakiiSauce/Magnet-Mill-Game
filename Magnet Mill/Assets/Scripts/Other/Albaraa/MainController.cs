@@ -28,7 +28,8 @@ public class MainController : MonoBehaviour
     }
     void Start()
     {
-        if(resetAbilities)
+        AudioManager.instance.Stop("BackGroundMusic");
+        if (resetAbilities)
         {
             UserData.SetBool(UserData.speedCollected, false);
             UserData.SetBool(UserData.jumpCollected, false);
