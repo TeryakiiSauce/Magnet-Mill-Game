@@ -34,9 +34,9 @@ public class CheckPointGrid : MonoBehaviour
         thisMRenderer.material = GameController.instance.checkPointOnMaterial;  //Taking "ON" material from game controller object
         GameController.instance.SetCheckPoint(gameObject.tag);  //Set checkpoint as a current checkpoint
         isChecked = true;       //Set to true, so the cube when moved aver this grid again will ignore this function by "return"
-        UserData.IncrementInt(UserData.numOfCheckpointsActivated);
         if(previousCheckPointScript != null)    //if the previous grid script is null it means that this grid is the spawning point
         {
+            UserData.IncrementInt(UserData.numOfCheckpointsActivated);
             previousCheckPointScript.Deactivate();
         }
     }
