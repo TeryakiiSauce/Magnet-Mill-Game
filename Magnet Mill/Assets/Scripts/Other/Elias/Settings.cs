@@ -10,11 +10,12 @@ using UnityEngine.Rendering.PostProcessing;
 public class Settings : MonoBehaviour
 {
     public GameObject settingsCanvas;
-    public TextMeshProUGUI qualitySelectedLabel, renderDistSelectedLabel, mouseParallaxSelectedLabel;
-    public Toggle aOToggle, bloomToggle, cGToggle, chrAToggle, dOFToggle, grainToggle, lensDistToggle, motBlurToggle, sSRTogle, vinToggle;
+    public TextMeshProUGUI qualitySelectedLabel, renderDistSelectedLabel, mouseParallaxSelectedLabel, volumeSelectedLabel;
+    public TMP_InputField refreshRateEnteredLabel;
+    public Toggle aOToggle, bloomToggle, cGToggle, chrAToggle, dOFToggle, grainToggle, lensDistToggle, motBlurToggle, sSRTogle, vinToggle, fPSToggle;
 
     // Default values
-    private int defaultQuality, defaultRenderDistance = 110, defaultMouseParallax = 4; private bool defaultToggles = true;
+    private int defaultQuality, defaultRenderDistance = 110, defaultMouseParallax = 4; private bool defaultToggles = true; private float defaultAudioVol = 100.0f, defaultFPSRefreshRate = 2.0f;
 
     // --- --- --- ---
 
@@ -22,9 +23,11 @@ public class Settings : MonoBehaviour
     private GameObject qualitySliderGO; private Slider qualitySlider;
     private GameObject maxRenderDistSliderGO; private Slider maxRenderDistSlider;
     private GameObject mouseParallaxSliderGO; private Slider mouseParallaxSlider;
+    private float refreshRateSec;
 
 
     // Game objects for current level [used to get required current level game objects] 
+    public TextMeshProUGUI fPSCounterLabel;
     private GameObject[] virtualCamerasGO;
     private GameObject postProcessingGO; private PostProcessVolume ppVolume;
 
@@ -56,7 +59,7 @@ public class Settings : MonoBehaviour
     {
         settingsCanvas = new GameObject();
 
-        Debugging(false);
+        Debugging(true);
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
@@ -140,6 +143,37 @@ public class Settings : MonoBehaviour
         vinToggle.isOn = false;
     }
 
+    public void RefreshRateValueChanged()
+    {
+        //print("(unfiltered) entered: " + refreshRateEnteredLabel.text);
+
+        if (refreshRateEnteredLabel.text.Contains("-"))
+        {
+            refreshRateEnteredLabel.text = "Negative values not allowed!";
+        }
+        else if (refreshRateEnteredLabel.text == "" || refreshRateEnteredLabel.text == null)
+        {
+            refreshRateEnteredLabel.text = defaultFPSRefreshRate.ToString();
+        }
+
+        float tempRefreshRateEntered = float.Parse(refreshRateEnteredLabel.text);
+
+        if (tempRefreshRateEntered < 0.1f)
+        {
+            refreshRateEnteredLabel.text = "0.1";
+        }
+        else if (tempRefreshRateEntered > 10f)
+        {
+            refreshRateEnteredLabel.text = "10";
+        }
+        else
+        {
+            refreshRateSec = float.Parse(refreshRateEnteredLabel.text);
+        }
+
+        //print("(filtered) entered: " + refreshRateSec);
+    }
+
     // --------------------------\\
     // --- END BUTTON EVENTS --- \\
     // --------------------------\\
@@ -153,6 +187,11 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetInt("qualitySetting", defaultQuality);
         PlayerPrefs.SetInt("maxRenderDistance", defaultRenderDistance);
         PlayerPrefs.SetInt("mouseParallax", defaultMouseParallax * 5);
+        PlayerPrefs.SetFloat("audioVolume", defaultAudioVol);
+
+        PlayerPrefs.SetInt("fpsToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetFloat("fpsRefreshRate", defaultFPSRefreshRate);
+        refreshRateSec = defaultFPSRefreshRate;
 
         PlayerPrefs.SetInt("aoToggle", (defaultToggles ? 1 : 0));
         PlayerPrefs.SetInt("bloomToggle", (defaultToggles ? 1 : 0));
@@ -245,106 +284,132 @@ public class Settings : MonoBehaviour
         }
         RefreshLabel("mouse parallax");
 
-        // POST PROCESSING SECTION
 
-        if (PlayerPrefs.HasKey("aoToggle"))
+        if (PlayerPrefs.HasKey("fpsToggle"))
         {
-            aOToggle.isOn = PlayerPrefs.GetInt("aoToggle") != 0;
+            fPSToggle.isOn = PlayerPrefs.GetInt("fpsToggle") != 0;
         }
         else
         {
-            aOToggle.isOn = true;
-            PlayerPrefs.SetInt("aoToggle", (true ? 1 : 0));
+            fPSToggle.isOn = defaultToggles;
+            PlayerPrefs.SetInt("fpsToggle", (defaultToggles ? 1 : 0));
         }
 
-        if (PlayerPrefs.HasKey("bloomToggle"))
+
+        if (PlayerPrefs.HasKey("fpsRefreshRate"))
         {
-            bloomToggle.isOn = PlayerPrefs.GetInt("bloomToggle") != 0;
+            refreshRateEnteredLabel.text = PlayerPrefs.GetFloat("fpsRefreshRate").ToString();
         }
         else
         {
-            bloomToggle.isOn = true;
-            PlayerPrefs.SetInt("bloomToggle", (true ? 1 : 0));
+            refreshRateEnteredLabel.text = defaultFPSRefreshRate.ToString();
+            PlayerPrefs.SetFloat("fpsRefreshRate", defaultFPSRefreshRate);
         }
+        refreshRateSec = PlayerPrefs.GetFloat("fpsRefreshRate");
 
-        if (PlayerPrefs.HasKey("cgToggle"))
-        {
-            cGToggle.isOn = PlayerPrefs.GetInt("cgToggle") != 0;
-        }
-        else
-        {
-            cGToggle.isOn = true;
-            PlayerPrefs.SetInt("cgToggle", (true ? 1 : 0));
-        }
+        // POST PROCESSING SECTION - using "IF TRUE" only for organization purposes; to collapse code.
 
-        if (PlayerPrefs.HasKey("chrAToggle"))
+        if (true)
         {
-            chrAToggle.isOn = PlayerPrefs.GetInt("chrAToggle") != 0;
-        }
-        else
-        {
-            chrAToggle.isOn = true;
-            PlayerPrefs.SetInt("chrAToggle", (true ? 1 : 0));
-        }
+            if (PlayerPrefs.HasKey("aoToggle"))
+            {
+                aOToggle.isOn = PlayerPrefs.GetInt("aoToggle") != 0;
+            }
+            else
+            {
+                aOToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("aoToggle", (defaultToggles ? 1 : 0));
+            }
 
-        if (PlayerPrefs.HasKey("dofToggle"))
-        {
-            dOFToggle.isOn = PlayerPrefs.GetInt("dofToggle") != 0;
-        }
-        else
-        {
-            dOFToggle.isOn = true;
-            PlayerPrefs.SetInt("dofToggle", (true ? 1 : 0));
-        }
+            if (PlayerPrefs.HasKey("bloomToggle"))
+            {
+                bloomToggle.isOn = PlayerPrefs.GetInt("bloomToggle") != 0;
+            }
+            else
+            {
+                bloomToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("bloomToggle", (defaultToggles ? 1 : 0));
+            }
 
-        if (PlayerPrefs.HasKey("grainToggle"))
-        {
-            grainToggle.isOn = PlayerPrefs.GetInt("grainToggle") != 0;
-        }
-        else
-        {
-            grainToggle.isOn = true;
-            PlayerPrefs.SetInt("grainToggle", (true ? 1 : 0));
-        }
+            if (PlayerPrefs.HasKey("cgToggle"))
+            {
+                cGToggle.isOn = PlayerPrefs.GetInt("cgToggle") != 0;
+            }
+            else
+            {
+                cGToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("cgToggle", (defaultToggles ? 1 : 0));
+            }
 
-        if (PlayerPrefs.HasKey("lensDistToggle"))
-        {
-            lensDistToggle.isOn = PlayerPrefs.GetInt("lensDistToggle") != 0;
-        }
-        else
-        {
-            lensDistToggle.isOn = true;
-            PlayerPrefs.SetInt("lensDistToggle", (true ? 1 : 0));
-        }
+            if (PlayerPrefs.HasKey("chrAToggle"))
+            {
+                chrAToggle.isOn = PlayerPrefs.GetInt("chrAToggle") != 0;
+            }
+            else
+            {
+                chrAToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("chrAToggle", (defaultToggles ? 1 : 0));
+            }
 
-        if (PlayerPrefs.HasKey("motBlurToggle"))
-        {
-            motBlurToggle.isOn = PlayerPrefs.GetInt("motBlurToggle") != 0;
-        }
-        else
-        {
-            motBlurToggle.isOn = true;
-            PlayerPrefs.SetInt("motBlurToggle", (true ? 1 : 0));
-        }
+            if (PlayerPrefs.HasKey("dofToggle"))
+            {
+                dOFToggle.isOn = PlayerPrefs.GetInt("dofToggle") != 0;
+            }
+            else
+            {
+                dOFToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("dofToggle", (defaultToggles ? 1 : 0));
+            }
 
-        if (PlayerPrefs.HasKey("ssrToggle"))
-        {
-            sSRTogle.isOn = PlayerPrefs.GetInt("ssrToggle") != 0;
-        }
-        else
-        {
-            sSRTogle.isOn = true;
-            PlayerPrefs.SetInt("ssrToggle", (true ? 1 : 0));
-        }
+            if (PlayerPrefs.HasKey("grainToggle"))
+            {
+                grainToggle.isOn = PlayerPrefs.GetInt("grainToggle") != 0;
+            }
+            else
+            {
+                grainToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("grainToggle", (defaultToggles ? 1 : 0));
+            }
 
-        if (PlayerPrefs.HasKey("vinToggle"))
-        {
-            vinToggle.isOn = PlayerPrefs.GetInt("vinToggle") != 0;
-        }
-        else
-        {
-            vinToggle.isOn = true;
-            PlayerPrefs.SetInt("vinToggle", (true ? 1 : 0));
+            if (PlayerPrefs.HasKey("lensDistToggle"))
+            {
+                lensDistToggle.isOn = PlayerPrefs.GetInt("lensDistToggle") != 0;
+            }
+            else
+            {
+                lensDistToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("lensDistToggle", (defaultToggles ? 1 : 0));
+            }
+
+            if (PlayerPrefs.HasKey("motBlurToggle"))
+            {
+                motBlurToggle.isOn = PlayerPrefs.GetInt("motBlurToggle") != 0;
+            }
+            else
+            {
+                motBlurToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("motBlurToggle", (defaultToggles ? 1 : 0));
+            }
+
+            if (PlayerPrefs.HasKey("ssrToggle"))
+            {
+                sSRTogle.isOn = PlayerPrefs.GetInt("ssrToggle") != 0;
+            }
+            else
+            {
+                sSRTogle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("ssrToggle", (defaultToggles ? 1 : 0));
+            }
+
+            if (PlayerPrefs.HasKey("vinToggle"))
+            {
+                vinToggle.isOn = PlayerPrefs.GetInt("vinToggle") != 0;
+            }
+            else
+            {
+                vinToggle.isOn = defaultToggles;
+                PlayerPrefs.SetInt("vinToggle", (defaultToggles ? 1 : 0));
+            }
         }
 
         // END OF POST PROCESSING
@@ -358,6 +423,9 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetInt("maxRenderDistance", ((int)maxRenderDistSlider.value));
 
         PlayerPrefs.SetInt("mouseParallax", ((int)mouseParallaxSlider.value) * 5);
+
+        PlayerPrefs.SetInt("fpsToggle", (fPSToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetFloat("fpsRefreshRate", refreshRateSec);
 
         PlayerPrefs.SetInt("aoToggle", (aOToggle.isOn ? 1 : 0));
         PlayerPrefs.SetInt("bloomToggle", (bloomToggle.isOn ? 1 : 0));
@@ -377,6 +445,9 @@ public class Settings : MonoBehaviour
         PlayerPrefs.DeleteKey("qualitySetting");
         PlayerPrefs.DeleteKey("maxRenderDistance");
         PlayerPrefs.DeleteKey("mouseParallax");
+        PlayerPrefs.DeleteKey("audioVolume");
+        PlayerPrefs.DeleteKey("fpsToggle");
+        PlayerPrefs.DeleteKey("fpsRefreshRate");
 
         PlayerPrefs.DeleteKey("aoToggle");
         PlayerPrefs.DeleteKey("bloomToggle");
@@ -451,6 +522,8 @@ public class Settings : MonoBehaviour
     {
         if (isActive)
         {
+            Debug.Log("--- GENERAL SETTINGS LOADED ---");
+
             Debug.Log(SceneManager.GetActiveScene().name);
             Debug.Log($"First time?: {PlayerPrefs.GetString("isFirstRun")}");
             Debug.Log($"Quality: {QualitySettings.names[PlayerPrefs.GetInt("qualitySetting")]}");
@@ -482,6 +555,11 @@ public class Settings : MonoBehaviour
             }
 
             Debug.Log($"Mouse Parallax: {tempStr}");
+            Debug.Log($"Audio Volume: {PlayerPrefs.GetFloat("audioVolume")}%");
+            Debug.Log($"FPS Display: {PlayerPrefs.GetInt("fpsToggle") != 0}");
+            Debug.Log($"FPS Refresh Rate: {PlayerPrefs.GetFloat("fpsRefreshRate")} second(s)");
+
+            Debug.Log("--- POST PROCESSING SETTINGS LOADED ---");
 
             Debug.Log($"AO: {PlayerPrefs.GetInt("aoToggle") != 0}");
             Debug.Log($"Bloom: {PlayerPrefs.GetInt("bloomToggle") != 0}");
