@@ -21,6 +21,7 @@ TagManager:
   - MaxRenderDistanceSetting
   - Virtual Camera
   - MouseParallaxSetting
+  - Post Processing
   layers:
   - Default
   - TransparentFX
