@@ -128,13 +128,13 @@ MonoBehaviour:
   rightKeys: {fileID: 21300000, guid: d5b5ad2a3965a4105bf09c12e04457f0, type: 3}
   leftKeys: {fileID: 21300000, guid: ca36b00fa4f8645829914ed34088694f, type: 3}
   boostAvailable: {fileID: 21300000, guid: 52550530c2f6e4f429ea99a2288b89c4, type: 3}
-  boostActive: {fileID: 21300000, guid: e74dcebc18f6e4320ab788fa9d42e876, type: 3}
+  boostActive: {fileID: 21300000, guid: e6f6915e845c547d685bf60568bab45d, type: 3}
   boostCooldown: {fileID: 21300000, guid: 5321c0eb233964f61befecedcf3f4be9, type: 3}
   jumpAvailable: {fileID: 21300000, guid: 7e5a72b91dd2948108b3ecaf293d368e, type: 3}
   jumpActive: {fileID: 21300000, guid: f189dddc2c588498ca808c1987bceb3f, type: 3}
   jumpCooldown: {fileID: 21300000, guid: bb7250076d92a4adca4847c7b63c0293, type: 3}
   freezeAvailable: {fileID: 21300000, guid: cb4b2566ce70247b0818fbf221dadb15, type: 3}
-  freezeActive: {fileID: 21300000, guid: 8a547cb4172d5491b9e70f4d88571b09, type: 3}
+  freezeActive: {fileID: 21300000, guid: 967f2c11c2dde412cac0fe161859a7cb, type: 3}
   freezeCooldown: {fileID: 21300000, guid: c9dbe55f662ef4c629ef1c5ab4b9a825, type: 3}
   rect: {fileID: 8774796509766942742}
   rotateSquare: 0
