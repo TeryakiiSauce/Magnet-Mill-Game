@@ -7,9 +7,16 @@ using TMPro;
 public class FPSCounter : MonoBehaviour
 {
     //[SerializeField] private Text fPSLabel;
-    [SerializeField] private float refreshRateInSeconds = 1f;
+    /*[SerializeField]*/
+    private float refreshRateInSeconds;
 
     private float timer;
+
+    private void Start()
+    {
+        gameObject.SetActive(PlayerPrefs.GetInt("fpsToggle") != 0);
+        refreshRateInSeconds = PlayerPrefs.GetFloat("fpsRefreshRate");
+    }
 
     private void Update()
     {

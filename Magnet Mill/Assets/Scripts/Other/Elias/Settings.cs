@@ -27,7 +27,7 @@ public class Settings : MonoBehaviour
 
 
     // Game objects for current level [used to get required current level game objects] 
-    public TextMeshProUGUI fPSCounterLabel;
+    //public TextMeshProUGUI fPSCounterLabel;
     private GameObject[] virtualCamerasGO;
     private GameObject postProcessingGO; private PostProcessVolume ppVolume;
 

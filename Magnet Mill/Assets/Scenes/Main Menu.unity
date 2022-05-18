@@ -1006,7 +1006,6 @@ MonoBehaviour:
   sSRTogle: {fileID: 0}
   vinToggle: {fileID: 0}
   fPSToggle: {fileID: 0}
-  fPSCounterLabel: {fileID: 0}
 --- !u!1 &27114083
 GameObject:
   m_ObjectHideFlags: 0
@@ -12968,7 +12967,6 @@ MonoBehaviour:
   sSRTogle: {fileID: 958027438}
   vinToggle: {fileID: 440701035}
   fPSToggle: {fileID: 582302453}
-  fPSCounterLabel: {fileID: 0}
 --- !u!1 &1349692049
 GameObject:
   m_ObjectHideFlags: 0
