@@ -56,7 +56,7 @@ public class Settings : MonoBehaviour
     {
         settingsCanvas = new GameObject();
 
-        Debugging(true);
+        Debugging(false);
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
