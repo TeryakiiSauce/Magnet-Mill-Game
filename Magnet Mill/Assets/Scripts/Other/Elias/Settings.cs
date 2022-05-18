@@ -5,47 +5,58 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cinemachine;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Settings : MonoBehaviour
 {
     public GameObject settingsCanvas;
     public TextMeshProUGUI qualitySelectedLabel, renderDistSelectedLabel, mouseParallaxSelectedLabel;
-
-    private GameObject[] virtualCamerasGO;
+    public Toggle aOToggle, bloomToggle, cGToggle, chrAToggle, dOFToggle, grainToggle, lensDistToggle, motBlurToggle, sSRTogle, vinToggle;
 
     // Default values
-    private int defaultQuality, defaultRenderDistance = 110, defaultMouseParallax = 4;
+    private int defaultQuality, defaultRenderDistance = 110, defaultMouseParallax = 4; private bool defaultToggles = true;
 
-    // Game objects & their slider component
+    // --- --- --- ---
+
+    // Game objects & their slider component [used in settings menu]
     private GameObject qualitySliderGO; private Slider qualitySlider;
     private GameObject maxRenderDistSliderGO; private Slider maxRenderDistSlider;
     private GameObject mouseParallaxSliderGO; private Slider mouseParallaxSlider;
 
-    // private void Awake()
-    // {
-    //     settingsCanvas = new GameObject();
 
-    //     Debugging(true);
+    // Game objects for current level [used to get required current level game objects] 
+    private GameObject[] virtualCamerasGO;
+    private GameObject postProcessingGO; private PostProcessVolume ppVolume;
 
-    //     if (SceneManager.GetActiveScene().name == "Main Menu")
-    //     {
-    //         if (!PlayerPrefs.HasKey("isFirstRun"))
-    //         {
-    //             InitializeUserSettings();
-    //         }
-    //     }
-    //     else
-    //     {
-    //         LoadLevelSettings();
-    //     }
-    // }
+    // --- --- --- ---
+
+    // ----------------------------------\\
+    // --- POST PROCESSING VARIABLES --- \\
+    // ----------------------------------\\
+
+    private AmbientOcclusion _ao;
+    private Bloom _bloom;
+    private ChromaticAberration _chrA;
+    private Grain _grain;
+    private Vignette _vin;
+    private ScreenSpaceReflections _ssr;
+    private MotionBlur _motBlur;
+    private LensDistortion _lensDist;
+    private DepthOfField _dof;
+    private ColorGrading _cg;
+
+    // --------------------------------------\\
+    // --- END POST PROCESSING VARIABLES --- \\
+    // --------------------------------------\\
+
+    // --- --- --- ---
 
     // Start is called before the first frame update
     void Start()
     {
         settingsCanvas = new GameObject();
 
-        Debugging(false);
+        Debugging(true);
 
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
@@ -60,15 +71,11 @@ public class Settings : MonoBehaviour
         }
     }
 
-    private void InitializeUserSettings()
-    {
-        defaultQuality = QualitySettings.GetQualityLevel();
-        PlayerPrefs.SetInt("qualitySetting", defaultQuality);
-        PlayerPrefs.SetInt("maxRenderDistance", defaultRenderDistance);
-        PlayerPrefs.SetInt("mouseParallax", defaultMouseParallax * 5);
+    // --- --- --- ---
 
-        PlayerPrefs.SetString("isFirstRun", "false");
-    }
+    // ----------------------\\
+    // --- BUTTON EVENTS --- \\
+    // ----------------------\\
 
     // When button is pressed from the main menu or pause menu
     public void SettingsButtonClicked()
@@ -105,6 +112,62 @@ public class Settings : MonoBehaviour
         GoBack();
     }
 
+    public void SelectAllPostProcessing()
+    {
+        aOToggle.isOn = true;
+        bloomToggle.isOn = true;
+        cGToggle.isOn = true;
+        chrAToggle.isOn = true;
+        dOFToggle.isOn = true;
+        grainToggle.isOn = true;
+        lensDistToggle.isOn = true;
+        motBlurToggle.isOn = true;
+        sSRTogle.isOn = true;
+        vinToggle.isOn = true;
+    }
+
+    public void DeselectAllPostProcessing()
+    {
+        aOToggle.isOn = false;
+        bloomToggle.isOn = false;
+        cGToggle.isOn = false;
+        chrAToggle.isOn = false;
+        dOFToggle.isOn = false;
+        grainToggle.isOn = false;
+        lensDistToggle.isOn = false;
+        motBlurToggle.isOn = false;
+        sSRTogle.isOn = false;
+        vinToggle.isOn = false;
+    }
+
+    // --------------------------\\
+    // --- END BUTTON EVENTS --- \\
+    // --------------------------\\
+
+    // --- --- --- ---
+
+    // To set the default values during first run or when resetting to defaults
+    private void InitializeUserSettings()
+    {
+        defaultQuality = QualitySettings.GetQualityLevel();
+        PlayerPrefs.SetInt("qualitySetting", defaultQuality);
+        PlayerPrefs.SetInt("maxRenderDistance", defaultRenderDistance);
+        PlayerPrefs.SetInt("mouseParallax", defaultMouseParallax * 5);
+
+        PlayerPrefs.SetInt("aoToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("bloomToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("cgToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("chrAToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("dofToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("grainToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("lensDistToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("motBlurToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("ssrToggle", (defaultToggles ? 1 : 0));
+        PlayerPrefs.SetInt("vinToggle", (defaultToggles ? 1 : 0));
+
+        PlayerPrefs.SetString("isFirstRun", "false");
+    }
+
     // Loads settings for the current level
     private void LoadLevelSettings()
     {
@@ -114,6 +177,32 @@ public class Settings : MonoBehaviour
         {
             virtualCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FarClipPlane = PlayerPrefs.GetInt("maxRenderDistance");
         }
+
+        postProcessingGO = GameObject.FindGameObjectWithTag("Post Processing");
+        ppVolume = postProcessingGO.GetComponent<PostProcessVolume>();
+
+        ppVolume.profile.TryGetSettings(out _ao);
+        ppVolume.profile.TryGetSettings(out _bloom);
+        ppVolume.profile.TryGetSettings(out _cg);
+        ppVolume.profile.TryGetSettings(out _chrA);
+        ppVolume.profile.TryGetSettings(out _dof);
+        ppVolume.profile.TryGetSettings(out _grain);
+        ppVolume.profile.TryGetSettings(out _lensDist);
+        ppVolume.profile.TryGetSettings(out _motBlur);
+        ppVolume.profile.TryGetSettings(out _ssr);
+        ppVolume.profile.TryGetSettings(out _vin);
+
+        // Converts the int value passed to boolean to be able to activate or deactivate the toggles
+        _ao.active = PlayerPrefs.GetInt("aoToggle") != 0;
+        _bloom.active = PlayerPrefs.GetInt("bloomToggle") != 0;
+        _cg.active = PlayerPrefs.GetInt("cgToggle") != 0;
+        _chrA.active = PlayerPrefs.GetInt("chrAToggle") != 0;
+        _dof.active = PlayerPrefs.GetInt("dofToggle") != 0;
+        _grain.active = PlayerPrefs.GetInt("grainToggle") != 0;
+        _lensDist.active = PlayerPrefs.GetInt("lensDistToggle") != 0;
+        _motBlur.active = PlayerPrefs.GetInt("motBlurToggle") != 0;
+        _ssr.active = PlayerPrefs.GetInt("ssrToggle") != 0;
+        _vin.active = PlayerPrefs.GetInt("vinToggle") != 0;
     }
 
     // Loads settings for user to change when paused or in main menu
@@ -156,7 +245,109 @@ public class Settings : MonoBehaviour
         }
         RefreshLabel("mouse parallax");
 
+        // POST PROCESSING SECTION
 
+        if (PlayerPrefs.HasKey("aoToggle"))
+        {
+            aOToggle.isOn = PlayerPrefs.GetInt("aoToggle") != 0;
+        }
+        else
+        {
+            aOToggle.isOn = true;
+            PlayerPrefs.SetInt("aoToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("bloomToggle"))
+        {
+            bloomToggle.isOn = PlayerPrefs.GetInt("bloomToggle") != 0;
+        }
+        else
+        {
+            bloomToggle.isOn = true;
+            PlayerPrefs.SetInt("bloomToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("cgToggle"))
+        {
+            cGToggle.isOn = PlayerPrefs.GetInt("cgToggle") != 0;
+        }
+        else
+        {
+            cGToggle.isOn = true;
+            PlayerPrefs.SetInt("cgToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("chrAToggle"))
+        {
+            chrAToggle.isOn = PlayerPrefs.GetInt("chrAToggle") != 0;
+        }
+        else
+        {
+            chrAToggle.isOn = true;
+            PlayerPrefs.SetInt("chrAToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("dofToggle"))
+        {
+            dOFToggle.isOn = PlayerPrefs.GetInt("dofToggle") != 0;
+        }
+        else
+        {
+            dOFToggle.isOn = true;
+            PlayerPrefs.SetInt("dofToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("grainToggle"))
+        {
+            grainToggle.isOn = PlayerPrefs.GetInt("grainToggle") != 0;
+        }
+        else
+        {
+            grainToggle.isOn = true;
+            PlayerPrefs.SetInt("grainToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("lensDistToggle"))
+        {
+            lensDistToggle.isOn = PlayerPrefs.GetInt("lensDistToggle") != 0;
+        }
+        else
+        {
+            lensDistToggle.isOn = true;
+            PlayerPrefs.SetInt("lensDistToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("motBlurToggle"))
+        {
+            motBlurToggle.isOn = PlayerPrefs.GetInt("motBlurToggle") != 0;
+        }
+        else
+        {
+            motBlurToggle.isOn = true;
+            PlayerPrefs.SetInt("motBlurToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("ssrToggle"))
+        {
+            sSRTogle.isOn = PlayerPrefs.GetInt("ssrToggle") != 0;
+        }
+        else
+        {
+            sSRTogle.isOn = true;
+            PlayerPrefs.SetInt("ssrToggle", (true ? 1 : 0));
+        }
+
+        if (PlayerPrefs.HasKey("vinToggle"))
+        {
+            vinToggle.isOn = PlayerPrefs.GetInt("vinToggle") != 0;
+        }
+        else
+        {
+            vinToggle.isOn = true;
+            PlayerPrefs.SetInt("vinToggle", (true ? 1 : 0));
+        }
+
+        // END OF POST PROCESSING
     }
 
     private void SaveSettings()
@@ -167,6 +358,17 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetInt("maxRenderDistance", ((int)maxRenderDistSlider.value));
 
         PlayerPrefs.SetInt("mouseParallax", ((int)mouseParallaxSlider.value) * 5);
+
+        PlayerPrefs.SetInt("aoToggle", (aOToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("bloomToggle", (bloomToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("cgToggle", (cGToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("chrAToggle", (chrAToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("dofToggle", (dOFToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("grainToggle", (grainToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("lensDistToggle", (lensDistToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("motBlurToggle", (motBlurToggle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("ssrToggle", (sSRTogle.isOn ? 1 : 0));
+        PlayerPrefs.SetInt("vinToggle", (vinToggle.isOn ? 1 : 0));
     }
 
     private void ResetSettings()
@@ -175,6 +377,17 @@ public class Settings : MonoBehaviour
         PlayerPrefs.DeleteKey("qualitySetting");
         PlayerPrefs.DeleteKey("maxRenderDistance");
         PlayerPrefs.DeleteKey("mouseParallax");
+
+        PlayerPrefs.DeleteKey("aoToggle");
+        PlayerPrefs.DeleteKey("bloomToggle");
+        PlayerPrefs.DeleteKey("cgToggle");
+        PlayerPrefs.DeleteKey("chrAToggle");
+        PlayerPrefs.DeleteKey("dofToggle");
+        PlayerPrefs.DeleteKey("grainToggle");
+        PlayerPrefs.DeleteKey("lensDistToggle");
+        PlayerPrefs.DeleteKey("motBlurToggle");
+        PlayerPrefs.DeleteKey("ssrToggle");
+        PlayerPrefs.DeleteKey("vinToggle");
 
         InitializeUserSettings();
     }
@@ -269,6 +482,17 @@ public class Settings : MonoBehaviour
             }
 
             Debug.Log($"Mouse Parallax: {tempStr}");
+
+            Debug.Log($"AO: {PlayerPrefs.GetInt("aoToggle") != 0}");
+            Debug.Log($"Bloom: {PlayerPrefs.GetInt("bloomToggle") != 0}");
+            Debug.Log($"Color Grading: {PlayerPrefs.GetInt("cgToggle") != 0}");
+            Debug.Log($"Chromatic Aberration: {PlayerPrefs.GetInt("chrAToggle") != 0}");
+            Debug.Log($"Depth of Field: {PlayerPrefs.GetInt("dofToggle") != 0}");
+            Debug.Log($"Grain: {PlayerPrefs.GetInt("grainToggle") != 0}");
+            Debug.Log($"Lens Distortion: {PlayerPrefs.GetInt("lensDistToggle") != 0}");
+            Debug.Log($"Motion Blur: {PlayerPrefs.GetInt("motBlurToggle") != 0}");
+            Debug.Log($"Screen Space Reflections: {PlayerPrefs.GetInt("ssrToggle") != 0}");
+            Debug.Log($"Vignette: {PlayerPrefs.GetInt("vinToggle") != 0}");
         }
     }
 }
