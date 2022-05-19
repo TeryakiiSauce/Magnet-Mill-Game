@@ -3,15 +3,17 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
     public Sound[] sounds;
     private float[] volumes;
     public static AudioManager instance;
     private bool Muted = false;
 
     // Use this for initialization
-	void Awake () {
-        if(instance == null)    //checking if instance is null or not becuase we only need one instance of this class
+    void Awake()
+    {
+        if (instance == null)    //checking if instance is null or not becuase we only need one instance of this class
         {
             instance = this;
         }
@@ -21,6 +23,7 @@ public class AudioManager : MonoBehaviour {
             return;
         }
         DontDestroyOnLoad(gameObject);  //this will make the gameobject to move to all scenes not only main menu
+
         volumes = new float[sounds.Length];
         int IND = 0;
         foreach (Sound s in sounds)
@@ -34,25 +37,35 @@ public class AudioManager : MonoBehaviour {
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-        if (UserData.GetBool(UserData.isMuted))
+
+        if (PlayerPrefs.GetFloat("audioVolume") == 0f)
         {
+            Muted = true;
             MuteAll();
         }
+
+        //SetAudioVolumeLevel();
+
+        // Removed this method because the audio settings should be received from the settings menu values
+        /*if (UserData.GetBool(UserData.isMuted))
+        {
+            MuteAll();
+        }*/
     }
 
-    void Start ()
+    void Start()
     {
-        
+
     }
 
-    public void Play (string name)  //this function will play any sound by its name, usage: AudioManager.instance.Play("soundName");
+    public void Play(string name)  //this function will play any sound by its name, usage: AudioManager.instance.Play("soundName");
     {
-        if(Muted)
+        if (Muted)
         {
             return;
         }
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if(s == null)
+        if (s == null)
         {
             Debug.LogWarning("Sound " + name + " not found!");
             return;
@@ -91,7 +104,7 @@ public class AudioManager : MonoBehaviour {
             s.volume = 1f;
             s.source.volume = 1f;
         }
-        else if(s.volume + amount <= 0f)
+        else if (s.volume + amount <= 0f)
         {
             s.volume = 0f;
             s.source.volume = 0f;
@@ -114,7 +127,7 @@ public class AudioManager : MonoBehaviour {
             Debug.LogWarning("Sound " + name + " not found!");
             return false;
         }
-        if(s.volume >= 1f)
+        if (s.volume >= 1f)
         {
             return true;
         }
@@ -171,6 +184,42 @@ public class AudioManager : MonoBehaviour {
             IND++;
         }
 
+    }
+
+    public void SetAudioVolumeLevel(string args)
+    {
+        float[] tempVolumes = new float[sounds.Length];
+        int IND = 0;
+
+        switch (args)
+        {
+            case "verbose-only":
+                foreach (Sound s in sounds)
+                {
+                    tempVolumes[IND] = GetVolume(s.name);
+
+                    Debug.Log($"The sound's ({s.name}) volume has been changed from {tempVolumes[IND]} ({tempVolumes[IND] * 100}%) --> TO --> {(s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100} ({((s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100) * 100}%)");
+
+                    IND++;
+                }
+                break;
+
+            default:
+                foreach (Sound s in sounds)
+                {
+                    tempVolumes[IND] = GetVolume(s.name);
+                    s.volume = (s.volume * PlayerPrefs.GetFloat("audioVolume")) / 100;
+                    s.source.volume = (s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100;
+
+                    //Debug.Log($"The sound's ({s.name}) volume has been changed from {tempVolumes[IND]} ({tempVolumes[IND] * 100}%) --> TO --> {s.volume} ({s.volume * 100}%)"); // don't use this one; saved just in case.
+
+                    // Use the following debug code instead
+                    //Debug.Log($"The sound's ({s.name}) volume has been changed from {tempVolumes[IND]} ({tempVolumes[IND] * 100}%) --> TO --> {s.source.volume} ({s.source.volume * 100}%)");
+
+                    IND++;
+                }
+                break;
+        }
     }
 
     public bool IsMuted()

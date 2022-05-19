@@ -23,6 +23,7 @@ public class Settings : MonoBehaviour
     private GameObject qualitySliderGO; private Slider qualitySlider;
     private GameObject maxRenderDistSliderGO; private Slider maxRenderDistSlider;
     private GameObject mouseParallaxSliderGO; private Slider mouseParallaxSlider;
+    private GameObject audioVolSliderGO; private Slider audioVolSlider;
     private float refreshRateSec;
 
 
@@ -94,6 +95,9 @@ public class Settings : MonoBehaviour
 
         mouseParallaxSliderGO = GameObject.FindGameObjectWithTag("MouseParallaxSetting");
         mouseParallaxSlider = mouseParallaxSliderGO.GetComponent<Slider>();
+
+        audioVolSliderGO = GameObject.FindGameObjectWithTag("VolumeSetting");
+        audioVolSlider = audioVolSliderGO.GetComponent<Slider>();
 
         LoadSettings();
     }
@@ -284,6 +288,16 @@ public class Settings : MonoBehaviour
         }
         RefreshLabel("mouse parallax");
 
+        if (PlayerPrefs.HasKey("audioVolume"))
+        {
+            audioVolSlider.value = PlayerPrefs.GetFloat("audioVolume");
+        }
+        else
+        {
+            audioVolSlider.value = defaultAudioVol;
+            PlayerPrefs.SetFloat("audioVolume", defaultAudioVol);
+        }
+        RefreshLabel("volume");
 
         if (PlayerPrefs.HasKey("fpsToggle"))
         {
@@ -424,6 +438,8 @@ public class Settings : MonoBehaviour
 
         PlayerPrefs.SetInt("mouseParallax", ((int)mouseParallaxSlider.value) * 5);
 
+        PlayerPrefs.SetFloat("audioVolume", audioVolSlider.value);
+
         PlayerPrefs.SetInt("fpsToggle", (fPSToggle.isOn ? 1 : 0));
         PlayerPrefs.SetFloat("fpsRefreshRate", refreshRateSec);
 
@@ -437,6 +453,8 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetInt("motBlurToggle", (motBlurToggle.isOn ? 1 : 0));
         PlayerPrefs.SetInt("ssrToggle", (sSRTogle.isOn ? 1 : 0));
         PlayerPrefs.SetInt("vinToggle", (vinToggle.isOn ? 1 : 0));
+
+        AudioManager.instance.SetAudioVolumeLevel("default");
     }
 
     private void ResetSettings()
@@ -474,11 +492,45 @@ public class Settings : MonoBehaviour
         switch (forWhat)
         {
             case "quality":
-                qualitySelectedLabel.text = QualitySettings.names[((int)qualitySlider.value)];
+                string tempQuality = QualitySettings.names[((int)qualitySlider.value)];
+                qualitySelectedLabel.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                switch (tempQuality)
+                {
+                    case "Very Low":
+                        string[] randomStrs = { "Ultra Budget!", "Junky!", "Trashy!", "Upgrade PC!", "Throw PC!", "Sorry, I guess?", "Have Fun LOL!" };
+                        qualitySelectedLabel.text = randomStrs[Random.Range(0, randomStrs.Length)];
+                        break;
+                    case "Ultra":
+                        qualitySelectedLabel.text = $"Plus {tempQuality}!";
+                        qualitySelectedLabel.transform.Rotate(0, 0, 4, Space.World);
+                        break;
+                    default:
+                        qualitySelectedLabel.text = tempQuality;
+                        break;
+                }
+
                 break;
 
             case "render distance":
-                renderDistSelectedLabel.text = maxRenderDistSlider.value.ToString() + " meters";
+                float tempRenderDist = maxRenderDistSlider.value;
+                renderDistSelectedLabel.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                switch (tempRenderDist)
+                {
+                    case 30f:
+                        string[] randomStrs = { "Ultra Budget!", "Junky!", "Trashy!", "Upgrade PC!", "Throw PC!", "Sorry, I guess?", "Have Fun LOL!" };
+                        renderDistSelectedLabel.text = randomStrs[Random.Range(0, randomStrs.Length)];
+                        break;
+                    case 200f:
+                        renderDistSelectedLabel.text = "MAX!";
+                        renderDistSelectedLabel.transform.Rotate(0, 0, 4, Space.World);
+                        break;
+                    default:
+                        renderDistSelectedLabel.text = maxRenderDistSlider.value.ToString() + " meters";
+                        break;
+                }
+
                 break;
 
             case "mouse parallax":
@@ -489,7 +541,7 @@ public class Settings : MonoBehaviour
                 switch (tempMouseParallaxSetting)
                 {
                     case 0:
-                        tempStr = "Off";
+                        tempStr = "OFF";
                         break;
                     case 1:
                         tempStr = "Low";
@@ -501,7 +553,7 @@ public class Settings : MonoBehaviour
                         tempStr = "High";
                         break;
                     case 4:
-                        tempStr = "Shake that mouse!";
+                        tempStr = "Shake That Mouse!";
                         mouseParallaxSelectedLabel.transform.Rotate(0, 0, 4, Space.World);
                         break;
                     default:
@@ -510,6 +562,26 @@ public class Settings : MonoBehaviour
                 }
 
                 mouseParallaxSelectedLabel.text = tempStr;
+                break;
+
+            case "volume":
+                float tempVol = audioVolSlider.value;
+                volumeSelectedLabel.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                switch (tempVol)
+                {
+                    case 0f:
+                        volumeSelectedLabel.text = "OFF";
+                        break;
+                    case 100f:
+                        volumeSelectedLabel.text = "MAX!";
+                        volumeSelectedLabel.transform.Rotate(0, 0, 4, Space.World);
+                        break;
+                    default:
+                        volumeSelectedLabel.text = tempVol + "%";
+                        break;
+                }
+
                 break;
 
             default:
