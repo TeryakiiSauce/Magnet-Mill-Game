@@ -16,21 +16,24 @@ public class MuteButton : MonoBehaviour
         thisBtn = GetComponent<Button>();
         onSprite = thisImg.sprite;
 
-        if (PlayerPrefs.GetFloat("audioVolume") == 0f)
-        {
-            AudioManager.instance.MuteAll();
-            //AudioManager.instance.SetAudioVolumeLevel("verbose-only"); // For debugging
-        }
-        else if (PlayerPrefs.GetFloat("audioVolume") == 100f)
-        {
-            AudioManager.instance.UnMuteAll();
-            //AudioManager.instance.SetAudioVolumeLevel("verbose-only"); // For debugging
-        }
-        else
-        {
-            AudioManager.instance.SetAudioVolumeLevel("default");
-        }
+        // Note: if no bugs are found anymore, remove this commented code.
+        // if (PlayerPrefs.GetFloat("audioVolume") == 0f)
+        // {
+        //     AudioManager.instance.MuteAll();
+        //     //AudioManager.instance.SetAudioVolumeLevel("verbose-only"); // For debugging
+        // }
+        // else if (PlayerPrefs.GetFloat("audioVolume") == 100f)
+        // {
+        //     AudioManager.instance.UnMuteAll();
+        //     //AudioManager.instance.SetAudioVolumeLevel("verbose-only"); // For debugging
+        // }
+        // else
+        // {
+        //     AudioManager.instance.UnMuteAll();
+        //     AudioManager.instance.SetAudioVolumeLevel("default");
+        // }
 
+        AudioManager.instance.SetAudioVolumeLevel("default");
         SetSprite();
     }
 

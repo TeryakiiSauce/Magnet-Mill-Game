@@ -188,6 +188,19 @@ public class AudioManager : MonoBehaviour
 
     public void SetAudioVolumeLevel(string args)
     {
+        if (PlayerPrefs.GetFloat("audioVolume") == 0f)
+        {
+            MuteAll();
+            return;
+        }
+        else if (PlayerPrefs.GetFloat("audioVolume") == 100f)
+        {
+            UnMuteAll();
+            return;
+        }
+
+        UnMuteAll(); // So that the mute icon refreshes
+        
         float[] tempVolumes = new float[sounds.Length];
         int IND = 0;
 
