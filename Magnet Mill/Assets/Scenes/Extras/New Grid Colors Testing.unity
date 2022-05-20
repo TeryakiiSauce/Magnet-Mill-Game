@@ -130,9 +130,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3058337604095373779, guid: 9f5d2f902111bbe418a8a331f04be5f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d43fb1091c6e174992f6a21378efd7b, type: 2}
     - target: {fileID: 3562797730986020870, guid: 9f5d2f902111bbe418a8a331f04be5f1, type: 3}
       propertyPath: m_Name
-      value: Ground Grid (white)
+      value: Ground Grid
       objectReference: {fileID: 0}
     - target: {fileID: 4195746286312164028, guid: 9f5d2f902111bbe418a8a331f04be5f1, type: 3}
       propertyPath: m_RootOrder
