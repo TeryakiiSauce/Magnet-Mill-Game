@@ -9,7 +9,7 @@ public class WinningGrids : MonoBehaviour
     public GameObject scoreboard;
     public GameObject completedText;
     public GameObject nextBtn;
-
+    [SerializeField] ParticleSystem finishParticle = null;
     void Update()
     {
         //if(Input.GetKey(KeyCode.T))
@@ -19,6 +19,7 @@ public class WinningGrids : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
+        finishParticle.Play();
         if (GameController.instance.IsLevelFinshed() || other.tag != "PlayerCube") return; //Check if collided object is not cube
         GameController.instance.LevelFinished();                                           //and level not finished, then return
         stageFinishedCanvas.SetActive(true);

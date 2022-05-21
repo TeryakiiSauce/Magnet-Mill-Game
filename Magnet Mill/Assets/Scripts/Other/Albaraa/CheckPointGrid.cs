@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class CheckPointGrid : MonoBehaviour
 {
+    [SerializeField] ParticleSystem particle = null;
     private CheckPointGrid previousCheckPointScript;
     private MeshRenderer thisMRenderer;
     private bool isChecked;
     void Start()
     {
-        if(gameObject.name[gameObject.name.Length - 1] != '0')  //check if this point is not the spawning point
+        particle.Play();
+        if (gameObject.name[gameObject.name.Length - 1] != '0')  //check if this point is not the spawning point
         {
             int prevIND = Convert.ToInt32(char.GetNumericValue(gameObject.name[gameObject.name.Length - 1]));   //take current index by char and convert it to int
             prevIND--;      //current index - 1 to get the previous grid
@@ -30,6 +32,7 @@ public class CheckPointGrid : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        particle.Stop();
         if (isChecked || other.tag != "PlayerCube") return;     //Check if collided object is not playercube or the check point is already active, if yes return
         thisMRenderer.material = GameController.instance.checkPointOnMaterial;  //Taking "ON" material from game controller object
         GameController.instance.SetCheckPoint(gameObject.tag);  //Set checkpoint as a current checkpoint
