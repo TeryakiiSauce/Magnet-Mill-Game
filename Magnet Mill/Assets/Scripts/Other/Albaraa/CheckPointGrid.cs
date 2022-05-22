@@ -32,8 +32,8 @@ public class CheckPointGrid : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        particle.Stop();
         if (isChecked || other.tag != "PlayerCube") return;     //Check if collided object is not playercube or the check point is already active, if yes return
+        particle.Stop();
         thisMRenderer.material = GameController.instance.checkPointOnMaterial;  //Taking "ON" material from game controller object
         GameController.instance.SetCheckPoint(gameObject.tag);  //Set checkpoint as a current checkpoint
         isChecked = true;       //Set to true, so the cube when moved aver this grid again will ignore this function by "return"
@@ -47,6 +47,7 @@ public class CheckPointGrid : MonoBehaviour
     public void Deactivate()    //this function to deactivate the checkpoint if it is still not colided and the user took another
     {                           //checkpoint and that checkpoint is closer to the finish line than this checkpoint
         if (isChecked) return;
+        particle.Stop();
         thisMRenderer.material = GameController.instance.checkPointOnMaterial;
         isChecked = true;
         previousCheckPointScript.Deactivate();  //call the previous, to create recursion that will deactivate all previous points

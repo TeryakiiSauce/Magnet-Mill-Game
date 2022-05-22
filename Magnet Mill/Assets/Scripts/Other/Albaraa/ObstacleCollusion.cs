@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleCollusion : MonoBehaviour
 {
+    public bool disableWhenFar;
     private Collider thisCol;
 
     void Start()
@@ -13,6 +14,7 @@ public class ObstacleCollusion : MonoBehaviour
 
     void Update()   //in update we will check if the obstacle is near the user, if yes we will turn on the collider,
     {               //if no we will turn off the collider, this will save memory
+        if (!disableWhenFar) return;
         if(!thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) <= 3)
         {
             thisCol.enabled = true;
@@ -26,6 +28,14 @@ public class ObstacleCollusion : MonoBehaviour
     private void OnTriggerEnter(Collider other) //Check if the obstacle hit the cube, if yes send a message to the game controller
     {
         if(other.tag == "PlayerCube")
+        {
+            GameController.instance.OutOfMap();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlayerCube")
         {
             GameController.instance.OutOfMap();
         }
