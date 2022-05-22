@@ -8,44 +8,19 @@ using UnityEditor;
 
 public class MovingObstacle : MonoBehaviour
 {
-    public enum MovingType {MoveToPosition, MoveBy}
     public enum AfterAction { MoveBackward, MoveToFirstPoint, InstantlyTransformToFirstPoint };
-    public MovingType movingMethod;
     public AfterAction AfterReachedLast;
     public float movingSpeed;
-    public bool RotateWithDirection;
     public bool waitBetweenPoints;
     [HideInInspector] [SerializeField] Vector3[] points;
     [HideInInspector] [SerializeField] float seconds;
-    private Vector3[] calculatedPoints;
     private int IND;
     private bool increasing;
     private bool positionReached;
     private float timer;
     void Start()
     {
-        if(movingMethod == MovingType.MoveToPosition)
-        {
-            transform.position = points[0];
-            calculatedPoints = points;
-        }
-        else
-        {
-            calculatedPoints = new Vector3[points.Length];
-            for(int i = 0; i < points.Length; i++)
-            {
-                if(i == 0)
-                {
-                    calculatedPoints[i] = new Vector3(transform.position.x + points[i].x, transform.position.y + points[i].y
-                    + transform.position.z + points[i].z);
-                }
-                else
-                {
-                    calculatedPoints[i] = new Vector3(calculatedPoints[i -1].x + points[i].x,
-                        calculatedPoints[i - 1].y + points[i].y, calculatedPoints[i - 1].z + points[i].z);
-                }            
-            }
-        }
+        transform.localPosition = points[0];
     }
 
     // Update is called once per frame
@@ -83,22 +58,18 @@ public class MovingObstacle : MonoBehaviour
     private void MoveObj()
     {
         float step = movingSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, calculatedPoints[IND], step);
-        if(Mathf.Approximately(Vector3.Distance(transform.position, calculatedPoints[IND]),0))
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, points[IND], step);
+        if(Mathf.Approximately(Vector3.Distance(transform.localPosition, points[IND]),0))
         {
-            transform.position = calculatedPoints[IND];
+            transform.localPosition = points[IND];
             positionReached = true;
-        }
-        else if(RotateWithDirection)
-        {
-            transform.LookAt(calculatedPoints[IND]);
         }
     }
     private void MoveBackwardAfterFinish()
     {
         if (increasing)
         {
-            if (IND != calculatedPoints.Length - 1)
+            if (IND != points.Length - 1)
             {
                 IND++;
             }
@@ -123,7 +94,7 @@ public class MovingObstacle : MonoBehaviour
     }
     private void MoveToFirstPointAfterFinish()
     {
-        if(IND < calculatedPoints.Length - 1)
+        if(IND < points.Length - 1)
         {
             IND++;
         }
@@ -134,14 +105,14 @@ public class MovingObstacle : MonoBehaviour
     }
     private void TransformToFirstPointAfterFinsh()
     {
-        if (IND < calculatedPoints.Length - 1)
+        if (IND < points.Length - 1)
         {
             IND++;
         }
         else
         {
             IND = 0;
-            transform.position = calculatedPoints[0];
+            transform.localPosition = points[0];
         }
     }
 #if UNITY_EDITOR
@@ -155,7 +126,7 @@ public class MovingObstacle : MonoBehaviour
 
             base.OnInspectorGUI();      //call the base function to draw MovingObstacle script variables in the inspector
 
-            DrawDetails(MovingSC);
+            DrawSeconds(MovingSC);
 
             DrawPointsArray(MovingSC);
 
@@ -163,7 +134,7 @@ public class MovingObstacle : MonoBehaviour
                                                 //inspector when switching scenes
         }
 
-        static void DrawDetails(MovingObstacle MovingSC)
+        static void DrawSeconds(MovingObstacle MovingSC)
         {
             if (!MovingSC.waitBetweenPoints)  
             {
