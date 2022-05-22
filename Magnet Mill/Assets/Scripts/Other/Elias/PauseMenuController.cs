@@ -22,28 +22,66 @@ public class PauseMenuController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             && !pauseMenu.isActiveAndEnabled && !GameController.instance.IsLevelFinshed())
         {
-            //print("menu opened");
-            pauseMenu.gameObject.SetActive(true);
-            isMenuOpened = true;
-            Time.timeScale = 0;
-
-            //pause timer
-            TimerController.instance.PauseTimer();
+            OpenMenu();
         }
         else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && pauseMenu.isActiveAndEnabled)
         {
-            //print("menu closed");
-            pauseMenu.gameObject.SetActive(false);
-            isMenuOpened = false;
-            Time.timeScale = 1;
-
-            //start timer
-            TimerController.instance.PlayTimer();
+            CloseMenu();
         }
     }
 
     public static bool IsPauseMenuOpened()
     {
         return isMenuOpened;
+    }
+
+    public void OpenMenu()
+    {
+        //print("menu opened");
+        pauseMenu.gameObject.SetActive(true);
+        isMenuOpened = true;
+        Time.timeScale = 0;
+
+        //pause timer
+        TimerController.instance.PauseTimer();
+    }
+
+    public void CloseMenu()
+    {
+        //print("menu closed");
+        pauseMenu.gameObject.SetActive(false);
+        isMenuOpened = false;
+        Time.timeScale = 1;
+
+        //start timer
+        TimerController.instance.PlayTimer();
+    }
+
+    public void ResumeButtonOnClick()
+    {
+        CloseMenu();
+    }
+
+    public void ReloadButtonOnClick()
+    {
+        CloseMenu();
+        GameController.instance.OutOfMap();
+    }
+
+    public void RestartButtonOnClick()
+    {
+        CloseMenu();
+        ScenesLoader.instance.ReloadScene();
+    }
+
+    public void MainMenuButtonOnClick()
+    {
+        CloseMenu();
+        ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.MainMenu);
+    }
+
+    public void ExitButtonOnClick()
+    {
+        Application.Quit();
     }
 }
