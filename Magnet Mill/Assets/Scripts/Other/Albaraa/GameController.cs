@@ -42,7 +42,34 @@ public class GameController : MonoBehaviour
     {
         if (AudioManager.instance != null)        //Checking if audiomanager is null, if yes it means that the scene not started from
         {                                       //main menu, then the audio will not play since its object is null
-            if(!AudioManager.instance.IsPlaying("BackGroundMusic")) AudioManager.instance.Play("BackGroundMusic");  //play sound by its name that given in the main menu in audio manager
+            if(currentLevel == "Level0")
+            {
+                if (AudioManager.instance.GetVolume("MainMenuTheme") > 0.2) AudioManager.instance.AddVolume("MainMenuTheme", -0.2f);
+            }
+            else if(currentLevel == "Level1")
+            {
+                AudioManager.instance.Stop("MainMenuTheme");
+            }
+            else if (currentLevel == "Level2")
+            {
+                AudioManager.instance.Stop("MainMenuTheme");
+                AudioManager.instance.Stop("Level1Theme");
+            }
+            else if (currentLevel == "Level3")
+            {
+                AudioManager.instance.Stop("MainMenuTheme");
+                AudioManager.instance.Stop("Level2Theme");
+            }
+            else if (currentLevel == "Level4")
+            {
+                AudioManager.instance.Stop("MainMenuTheme");
+                AudioManager.instance.Stop("Level3Theme");
+            }
+
+            if(currentLevel != "Level0")
+            { 
+                if (!AudioManager.instance.IsPlaying(currentLevel+"Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
+            }
         }
         UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }

@@ -54,9 +54,6 @@ public class CubeController : MonoBehaviour
     //a method that checks the tag of the touched wall and updates the code accordingly 
     private void OnTriggerEnter(Collider other)
     {
-
-       
-
         cubeRigidBody.velocity = Vector3.zero;
         cubeRigidBody.angularVelocity = Vector3.zero;
         if (flipinggravity)
@@ -342,6 +339,14 @@ public class CubeController : MonoBehaviour
     //method to snap the cube to the grid
     private void snapToGrid()
     {
+        if(AbilityController.instance.IsSpeedActive())
+        {
+            AudioManager.instance.Play("FastCubeRolled");
+        }
+        else
+        {
+            AudioManager.instance.Play("CubeRolled");
+        }
         UserData.IncrementInt(UserData.numOfCubeRolled);
         GameController.instance.rollsCount++;
         //checks if the cube is on the gound or roof

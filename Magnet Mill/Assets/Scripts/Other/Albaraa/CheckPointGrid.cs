@@ -39,6 +39,7 @@ public class CheckPointGrid : MonoBehaviour
         isChecked = true;       //Set to true, so the cube when moved aver this grid again will ignore this function by "return"
         if(previousCheckPointScript != null)    //if the previous grid script is null it means that this grid is the spawning point
         {
+            AudioManager.instance.Play("Checkpoint");
             UserData.IncrementInt(UserData.numOfCheckpointsActivated);
             previousCheckPointScript.Deactivate();
         }

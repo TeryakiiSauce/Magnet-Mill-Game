@@ -28,7 +28,12 @@ public class MainController : MonoBehaviour
     }
     void Start()
     {
-        AudioManager.instance.Stop("BackGroundMusic");
+        AudioManager.instance.Stop("Level1Theme");
+        AudioManager.instance.Stop("Level2Theme");
+        AudioManager.instance.Stop("Level3Theme");
+        AudioManager.instance.Stop("Level4Theme");
+        if(!AudioManager.instance.IsPlaying("MainMenuTheme")) AudioManager.instance.Play("MainMenuTheme");
+        if (AudioManager.instance.GetVolume("MainMenuTheme") == 0.2f) AudioManager.instance.AddVolume("MainMenuTheme", 0.2f);
         if (resetAbilities)
         {
             UserData.SetBool(UserData.speedCollected, false);
