@@ -32,15 +32,10 @@ public class Scoreboard : MonoBehaviour
         }
         if (ScoreTotal < GameController.instance.levelMaxScore / 2)
         {
-            AudioManager.instance.Play("Failed");
             nextBtn.SetActive(false);
             mainMenuBtnRect.anchoredPosition= new Vector3(-15f, -53.5f, 1);
             restartBtnRect.anchoredPosition = new Vector3(15f, -53.5f, 1);
             belowHalfScore = true;
-        }
-        else
-        {
-            AudioManager.instance.Play("Winning");
         }
     }
 

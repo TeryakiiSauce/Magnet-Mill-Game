@@ -35,7 +35,7 @@ public class MovementAudio : MonoBehaviour
                 int tempCRange = Random.Range(3, 4); // Edit the range whenever needed
                 int tempCounter = Random.Range(1, 6); // Edit the range whenever needed
 
-                //AudioManager.instance.Play($"C{tempCRange}.{tempCounter}");
+                AudioManager.instance.Play($"C{tempCRange}.{tempCounter}");
             }
         }
 

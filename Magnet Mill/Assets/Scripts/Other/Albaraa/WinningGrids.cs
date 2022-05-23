@@ -19,9 +19,9 @@ public class WinningGrids : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
+        finishParticle.Play();
         if (GameController.instance.IsLevelFinshed() || other.tag != "PlayerCube") return; //Check if collided object is not cube
-        finishParticle.Play();                                                             //and level not finished, then return
-        GameController.instance.LevelFinished();                                          
+        GameController.instance.LevelFinished();                                           //and level not finished, then return
         stageFinishedCanvas.SetActive(true);
         if(GameController.instance.currentLevel != "Level0")
         {
@@ -29,7 +29,6 @@ public class WinningGrids : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.Play("Winning");
             Image pnlImg = completedText.transform.parent.GetComponent<Image>();
             pnlImg.color = new Color(pnlImg.color.r, pnlImg.color.g, pnlImg.color.b, 0.3f);
             completedText.SetActive(true);
