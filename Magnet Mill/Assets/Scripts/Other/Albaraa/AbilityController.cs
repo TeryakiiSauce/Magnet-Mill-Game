@@ -27,11 +27,11 @@ public class AbilityController : MonoBehaviour
     private Terrain levelTerrain;
 
     const float speedTimeLimit = 4f;
-    const float speedCoolDownTimeLimit = 14f;
+    const float speedCoolDownTimeLimit = 12f;
     const float jumpTimeLimit = 3f;
-    const float jumpCoolDownTimeLimit = 10f;
+    const float jumpCoolDownTimeLimit = 8f;
     const float freezeTimeLimit = 5f;
-    const float freezeCoolDownTimeLimit = 20f;
+    const float freezeCoolDownTimeLimit = 18f;
 
 
     void Awake()
