@@ -22,7 +22,6 @@ public class StatisticsDisplayer : MonoBehaviour
     void Start()
     {
         SetValue(UserData.numOfLevelsFinished, levelsFinishedValue);
-        SetValue(UserData.numOfCubeRolled, cubeRolledValue);
         SetValue(UserData.numOfGravitySwitched, gravitySwitValue);
         SetValue(UserData.numOfCheckpointsActivated, checkpointActValue);
         SetValue(UserData.numOfAbilitiesUsed, abilitiesValue);
@@ -31,6 +30,15 @@ public class StatisticsDisplayer : MonoBehaviour
         SetValue(UserData.level2HighScore, level2HighScoreValue);
         SetValue(UserData.level3HighScore, level3HighScoreValue);
         SetValue(UserData.level4HighScore, level4HighScoreValue);
+
+        if(UserData.GetInt(UserData.numOfCubeRolled) < 1000000)
+        {
+            cubeRolledValue.text = UserData.GetInt(UserData.numOfCubeRolled).ToString();
+        }
+        else
+        {
+            cubeRolledValue.text = "999999+";
+        }
 
         if (UserData.GetInt(UserData.numOfTotalScore) < 1000000)
         {
