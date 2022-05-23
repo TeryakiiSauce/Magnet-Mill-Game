@@ -128,7 +128,7 @@ MonoBehaviour:
   scoreboard: {fileID: 0}
   completedText: {fileID: 0}
   nextBtn: {fileID: 0}
-  finishParticle: {fileID: 0}
+  finishParticle: {fileID: 8513075681540724306}
 --- !u!1 &6705614725625343899
 GameObject:
   m_ObjectHideFlags: 0
