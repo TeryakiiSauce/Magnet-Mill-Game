@@ -23,7 +23,7 @@ public class Scoreboard : MonoBehaviour
         timerValue.text = TimerController.instance.GetTimeInString();
         deathsValue.text = GameController.instance.deathCount.ToString();
         rolledValue.text = GameController.instance.rollsCount.ToString();
-        int decrement = (int)TimerController.instance.GetTimeInFloat() + (GameController.instance.deathCount * 10)
+        int decrement = (int)TimerController.instance.GetTimeInFloat() + (GameController.instance.deathCount * 20)
             + GameController.instance.rollsCount;
         ScoreTotal = GameController.instance.levelMaxScore - decrement;
         if(ScoreTotal < 0)
