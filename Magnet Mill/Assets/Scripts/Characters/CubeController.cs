@@ -37,7 +37,7 @@ public class CubeController : MonoBehaviour
     {
         OTBhandler.setTimer();
 
-        if (isMoving || flipinggravity || !isTouchingGround ||GameController.instance.IsDead() || GameController.instance.IsLevelFinshed()) return; // to prevent rolling when we are in the middle of a roll or when clicking space
+        if (isMoving || flipinggravity || !isTouchingGround || GameController.instance.IsDead() || GameController.instance.IsLevelFinshed()) return; // to prevent rolling when we are in the middle of a roll or when clicking space
         userInput();
         checkSpeedAbility();
 
@@ -45,7 +45,7 @@ public class CubeController : MonoBehaviour
 
     //fixed update is used to controll the constant force of gravity   
     void FixedUpdate()
-    { 
+    {
         changeGravity();
         checkMovement();
     }
@@ -56,7 +56,7 @@ public class CubeController : MonoBehaviour
     {
         cubeRigidBody.velocity = Vector3.zero;
         cubeRigidBody.angularVelocity = Vector3.zero;
-        if(flipinggravity)
+        if (flipinggravity)
         {
             AudioManager.instance.Play("AfterGravityHit");
             flipinggravity = false;
@@ -109,7 +109,7 @@ public class CubeController : MonoBehaviour
             {
 
             }
-            else 
+            else
             {
                 GameController.instance.PlayerDead();
             }
@@ -118,9 +118,9 @@ public class CubeController : MonoBehaviour
 
 
     //method that calls different methods depending on what the user inputs on his keyboard
-    private void userInput() 
+    private void userInput()
     {
-        
+
         //if statment to check which platform the cube is sitting on 
         if (GameController.instance.IsInGround())//onGround
         {
@@ -159,6 +159,15 @@ public class CubeController : MonoBehaviour
     //a method that is used to move and rotate the cube on all 4 surfaces 
     IEnumerator Roll(Vector3 direction)
     {
+        if (AbilityController.instance.IsSpeedActive())
+        {
+            AudioManager.instance.Play("FastCubeRolled");
+        }
+        else
+        {
+            AudioManager.instance.Play("CubeRolled");
+        }
+
         //disabling movment for the user 
         isMoving = true;
         remainingAngle = 90;
@@ -173,9 +182,9 @@ public class CubeController : MonoBehaviour
             // rotate the cube around its edge
             transform.RotateAround(rotationCenter, rotationAxis, rotatingAngle);
             remainingAngle -= rotatingAngle;
-            yield return null; 
+            yield return null;
         }
-        
+
         //snaping the angle to the grid and enabling it to move when the remaining angle of thew rotation is less then 5
         if (remainingAngle < 5)
         {
@@ -184,18 +193,18 @@ public class CubeController : MonoBehaviour
             {
                 isMoving = false;
             }
-            else 
+            else
             {
                 OTBhandler.isoutOfBounds = true;
                 isMoving = false;
             }
-            
+
         }
     }
 
 
     //method that flips the gravity for the cube depending on which wall is it on 
-    private void flipCube() 
+    private void flipCube()
     {
         flipinggravity = true;
         UserData.IncrementInt(UserData.numOfGravitySwitched);
@@ -221,18 +230,18 @@ public class CubeController : MonoBehaviour
         }
         if (OTBhandler.checkOutOfBounds(this.transform.position))
         {
-            
+
         }
         else
         {
             OTBhandler.isoutOfBounds = true;
-            
+
         }
     }
 
 
     //a method that changed the constant force that is applied on the cube (gravity)
-    private void changeGravity() 
+    private void changeGravity()
     {
         //if statment that changes the force(gravity) depending on where the cube is touching 
         if (GameController.instance.IsInGround())
@@ -254,7 +263,7 @@ public class CubeController : MonoBehaviour
     }
 
     //a method that sets the appropriate direction of the rotation/angle the cube will be moving on 
-    private void setRotation(Vector3 direction) 
+    private void setRotation(Vector3 direction)
     {
         //checking if the jump ability is activited 
         if (AbilityController.instance.IsJumpActive() && !onCorner)
@@ -310,7 +319,7 @@ public class CubeController : MonoBehaviour
         //print("center "+rotationCenter);
     }
 
-    private void checkSpeedAbility() 
+    private void checkSpeedAbility()
     {
         if (AbilityController.instance.IsSpeedActive())
         {
@@ -320,7 +329,7 @@ public class CubeController : MonoBehaviour
         {
             speed = 350;
         }
-        else 
+        else
         {
             speed = 300;
         }
@@ -330,14 +339,6 @@ public class CubeController : MonoBehaviour
     //method to snap the cube to the grid
     private void snapToGrid()
     {
-        if(AbilityController.instance.IsSpeedActive())
-        {
-            AudioManager.instance.Play("FastCubeRolled");
-        }
-        else
-        {
-            AudioManager.instance.Play("CubeRolled");
-        }
         UserData.IncrementInt(UserData.numOfCubeRolled);
         GameController.instance.rollsCount++;
         //checks if the cube is on the gound or roof
@@ -372,9 +373,9 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    private void  checkMovement() 
+    private void checkMovement()
     {
-        if (AbilityController.instance.IsJumpActive() && remainingAngle>10)
+        if (AbilityController.instance.IsJumpActive() && remainingAngle > 10)
         {
             if (onCorner)
             {
