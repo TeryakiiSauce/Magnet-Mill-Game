@@ -339,14 +339,6 @@ public class CubeController : MonoBehaviour
     //method to snap the cube to the grid
     private void snapToGrid()
     {
-        if(AbilityController.instance.IsSpeedActive())
-        {
-            AudioManager.instance.Play("FastCubeRolled");
-        }
-        else
-        {
-            AudioManager.instance.Play("CubeRolled");
-        }
         UserData.IncrementInt(UserData.numOfCubeRolled);
         GameController.instance.rollsCount++;
         //checks if the cube is on the gound or roof
