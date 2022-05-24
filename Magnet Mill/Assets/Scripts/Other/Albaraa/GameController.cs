@@ -74,31 +74,31 @@ public class GameController : MonoBehaviour
         UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }
 
-    public void SetCheckPoint(string gridTag)
+    public void SetCheckPoint(GameObject grid)
     {
-        if (gridTag == "Ground" || gridTag == "GroundCorner")   //check the checkpoint tag
+        if (grid.tag == "Ground" || grid.tag == "GroundCorner")   //check the checkpoint tag
         {
             checkPointCurrentDirection = CheckDirection.Ground;
-            currentCheckPointPos = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
-                cube.transform.position.y + 0.4f, Mathf.RoundToInt(cube.transform.position.z));     //save spawning position
+            currentCheckPointPos = new Vector3(Mathf.RoundToInt(grid.transform.position.x),
+                grid.transform.position.y + 0.5f, Mathf.RoundToInt(grid.transform.position.z));     //save spawning position
         }
-        else if(gridTag == "Right wall" || gridTag == "RightWallCorner")
+        else if(grid.tag == "Right wall" || grid.tag == "RightWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Right;
-            currentCheckPointPos = new Vector3(cube.transform.position.x - 0.4f,
-                Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
+            currentCheckPointPos = new Vector3(grid.transform.position.x - 0.5f,
+                Mathf.RoundToInt(grid.transform.position.y), Mathf.RoundToInt(grid.transform.position.z));
         }
-        else if(gridTag == "Roof" || gridTag == "RoofCorner")
+        else if(grid.tag == "Roof" || grid.tag == "RoofCorner")
         {
             checkPointCurrentDirection = CheckDirection.Roof;
-            currentCheckPointPos = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
-                cube.transform.position.y - 0.4f, Mathf.RoundToInt(cube.transform.position.z));
+            currentCheckPointPos = new Vector3(Mathf.RoundToInt(grid.transform.position.x),
+                grid.transform.position.y - 0.5f, Mathf.RoundToInt(grid.transform.position.z));
         }
-        else if(gridTag == "Left wall" || gridTag == "leftWallCorner")
+        else if(grid.tag == "Left wall" || grid.tag == "leftWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Left;
-            currentCheckPointPos = new Vector3(cube.transform.position.x + 0.4f,
-                Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
+            currentCheckPointPos = new Vector3(grid.transform.position.x + 0.5f,
+                Mathf.RoundToInt(grid.transform.position.y), Mathf.RoundToInt(grid.transform.position.z));
         }
     }
 
