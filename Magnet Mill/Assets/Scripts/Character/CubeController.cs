@@ -12,13 +12,13 @@ public class CubeController : MonoBehaviour
     public static bool isMoving = false;
     public static bool checkmovement = false;
     public static bool flipinggravity = false;
+    public static float remainingAngle;
     //public static bool outOfBounds = false;
     private Vector3 rotationCenter;
     private Vector3 rotationAxis;
     public float jumpHeight = 0.8f;
     public float jumpLenght = 1.2f;
     private bool onCorner = false;
-    float remainingAngle;
     private Time timer;
     OutOffBoundHandler OTBhandler;
     // Added public static getters so that they can be called from different scripts such as "CameraController.cs" and Ali's script for the HUD
@@ -159,15 +159,7 @@ public class CubeController : MonoBehaviour
     //a method that is used to move and rotate the cube on all 4 surfaces 
     IEnumerator Roll(Vector3 direction)
     {
-        if (AbilityController.instance.IsSpeedActive())
-        {
-            AudioManager.instance.Play("FastCubeRolled");
-        }
-        else
-        {
-            AudioManager.instance.Play("CubeRolled");
-        }
-
+     
         //disabling movment for the user 
         isMoving = true;
         remainingAngle = 90;
@@ -188,6 +180,14 @@ public class CubeController : MonoBehaviour
         //snaping the angle to the grid and enabling it to move when the remaining angle of thew rotation is less then 5
         if (remainingAngle < 5)
         {
+            if (AbilityController.instance.IsSpeedActive())
+            {
+                AudioManager.instance.Play("FastCubeRolled");
+            }
+            else
+            {
+                AudioManager.instance.Play("CubeRolled");
+            }
             snapToGrid();
             if (OTBhandler.checkOutOfBounds(this.transform.position))
             {

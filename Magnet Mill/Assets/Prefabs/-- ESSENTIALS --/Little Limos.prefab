@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 4914100708822351979}
   - component: {fileID: 6406359496880171564}
   - component: {fileID: 4488330657353827534}
+  - component: {fileID: 3045431461672768832}
   m_Layer: 0
   m_Name: Death Counter Text
   m_TagString: Untagged
@@ -466,7 +467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0001
+  m_text: 0000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -475,8 +476,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1644167168
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0.38431373}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -566,6 +567,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3045431461672768832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452942250034744802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4b3e4f44bd4ebe922830e441b4392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1458132902111104589
 GameObject:
   m_ObjectHideFlags: 0
