@@ -216,9 +216,21 @@ public class Settings : MonoBehaviour
     {
         virtualCamerasGO = GameObject.FindGameObjectsWithTag("Virtual Camera");
 
-        foreach (var virtualCam in virtualCamerasGO)
+        if (GameController.instance.currentLevel == "Level4")
         {
-            virtualCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FarClipPlane = PlayerPrefs.GetInt("maxRenderDistance");
+            foreach (var virtualCam in virtualCamerasGO)
+            {
+
+                virtualCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FarClipPlane = defaultRenderDistance;
+            }
+        }
+        else
+        {
+            foreach (var virtualCam in virtualCamerasGO)
+            {
+
+                virtualCam.GetComponent<CinemachineVirtualCamera>().m_Lens.FarClipPlane = PlayerPrefs.GetInt("maxRenderDistance");
+            }
         }
 
         postProcessingGO = GameObject.FindGameObjectWithTag("Post Processing");
