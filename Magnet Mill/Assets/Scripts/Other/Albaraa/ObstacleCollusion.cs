@@ -6,7 +6,8 @@ public class ObstacleCollusion : MonoBehaviour
 {
     public bool disableWhenFar;
     private Collider thisCol;
-
+    private bool collidedWithPlayer;
+    private float timer;
     void Start()
     {
         thisCol = GetComponent<Collider>();
@@ -14,12 +15,25 @@ public class ObstacleCollusion : MonoBehaviour
 
     void Update()   //in update we will check if the obstacle is near the user, if yes we will turn on the collider,
     {               //if no we will turn off the collider, this will save memory
+        if(collidedWithPlayer)
+        {
+            if(timer<1.5f)
+            {
+                timer += Time.deltaTime;
+            }
+            else
+            {
+                timer = 0f;
+                GameController.instance.OutOfMap();
+                collidedWithPlayer = false;
+            }
+        }
         if (!disableWhenFar) return;
-        if(!thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) <= 3)
+        if(!thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) <= 5)
         {
             thisCol.enabled = true;
         }
-        else if(thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) > 3)
+        else if(thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) > 5)
         {
             thisCol.enabled = false;
         }
@@ -27,17 +41,23 @@ public class ObstacleCollusion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //Check if the obstacle hit the cube, if yes send a message to the game controller
     {
-        if(other.tag == "PlayerCube")
+        if(other.tag == "PlayerCube" && !collidedWithPlayer)
         {
-            GameController.instance.OutOfMap();
+            PlayerHitten();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "PlayerCube")
+        if (collision.gameObject.tag == "PlayerCube" && !collidedWithPlayer)
         {
-            GameController.instance.OutOfMap();
+            PlayerHitten();
         }
+    }
+
+    private void PlayerHitten()
+    {
+        GameController.instance.PlayerDead();
+        collidedWithPlayer = true;
     }
 }

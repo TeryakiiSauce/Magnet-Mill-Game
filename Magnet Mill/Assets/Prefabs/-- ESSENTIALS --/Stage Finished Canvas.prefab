@@ -685,7 +685,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 845249685548672849}
         m_TargetAssemblyTypeName: Scoreboard, Assembly-CSharp
         m_MethodName: ShowScoreInstantly
         m_Mode: 1
