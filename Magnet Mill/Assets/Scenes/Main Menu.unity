@@ -17683,19 +17683,19 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 1
   - name: CubeRolled
-    clip: {fileID: 8300000, guid: 734f5983c4ea94f8a964977583a6251e, type: 3}
+    clip: {fileID: 8300000, guid: fb2bcaaacbc294e4ebdf0639f0af5caf, type: 3}
     volume: 1
     pitch: 1.2
     source: {fileID: 0}
     loop: 0
   - name: FastCubeRolled
-    clip: {fileID: 8300000, guid: 734f5983c4ea94f8a964977583a6251e, type: 3}
+    clip: {fileID: 8300000, guid: fb2bcaaacbc294e4ebdf0639f0af5caf, type: 3}
     volume: 1
     pitch: 2.5
     source: {fileID: 0}
     loop: 0
   - name: AfterGravityHit
-    clip: {fileID: 8300000, guid: 734f5983c4ea94f8a964977583a6251e, type: 3}
+    clip: {fileID: 8300000, guid: fb2bcaaacbc294e4ebdf0639f0af5caf, type: 3}
     volume: 1
     pitch: 0.8
     source: {fileID: 0}
@@ -17730,6 +17730,13 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  audioMixerGroups:
+  - {fileID: -1923501322153441541, guid: 2ed1ba53926c0204496b79e15cc4f539, type: 2}
+  - {fileID: -397673164344803940, guid: 2ed1ba53926c0204496b79e15cc4f539, type: 2}
+  - {fileID: 4223138813035938522, guid: 2ed1ba53926c0204496b79e15cc4f539, type: 2}
+  - {fileID: 8900778099114190569, guid: 2ed1ba53926c0204496b79e15cc4f539, type: 2}
+  - {fileID: 1306394232746338410, guid: 2ed1ba53926c0204496b79e15cc4f539, type: 2}
+  - {fileID: -7710031152825898352, guid: 2ed1ba53926c0204496b79e15cc4f539, type: 2}
 --- !u!4 &1894539398
 Transform:
   m_ObjectHideFlags: 0
