@@ -31,7 +31,7 @@ public class WinningGrids : MonoBehaviour
         {
             AudioManager.instance.Play("Winning");
             Image pnlImg = completedText.transform.parent.GetComponent<Image>();
-            pnlImg.color = new Color(pnlImg.color.r, pnlImg.color.g, pnlImg.color.b, 0.3f);
+            pnlImg.color = new Color(pnlImg.color.r, pnlImg.color.g, pnlImg.color.b, 0.75f);
             completedText.SetActive(true);
             nextBtn.SetActive(true);
         }
