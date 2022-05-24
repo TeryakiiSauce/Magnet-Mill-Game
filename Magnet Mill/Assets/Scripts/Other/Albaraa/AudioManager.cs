@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    public AudioMixerGroup[] audioMixerGroups;
     private float[] volumes;
     public static AudioManager instance;
     private bool Muted = false;
@@ -25,17 +26,18 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //this will make the gameobject to move to all scenes not only main menu
 
         volumes = new float[sounds.Length];
+
         int IND = 0;
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-
             s.source.volume = s.volume;
             volumes[IND] = s.volume;
-            IND++;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            SetAudioOutputMixerGroup(IND); // Function uses hard-coded method of adding audio mixer groups to sounds because I couldn't find another way to make them displayed in the inspector menu
+            IND++;
         }
 
         if (PlayerPrefs.GetFloat("audioVolume") == 0f)
@@ -200,7 +202,7 @@ public class AudioManager : MonoBehaviour
         }
 
         UnMuteAll(); // So that the mute icon refreshes
-        
+
         float[] tempVolumes = new float[sounds.Length];
         int IND = 0;
 
@@ -235,6 +237,61 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void SetAudioOutputMixerGroup(int index)
+    {
+        /*
+        Audio Mixer Groups keys codes:
+        0 = Background
+        1 = Cube Movement
+        2 = Cube Flipped
+        3 = Win / Fail
+        4 = Checkpoint
+        5 = Misc
+        */
+
+        switch (index)
+        {
+            case 0:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+                break;
+            case 1:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+                break;
+            case 2:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+                break;
+            case 3:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+                break;
+            case 4:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+                break;
+            case 5:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
+                break;
+            case 6:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
+                break;
+            case 7:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[2];
+                break;
+            case 8:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
+                break;
+            case 9:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
+                break;
+            case 10:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
+                break;
+            case 11:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
+                break;
+            case 12:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[4];
+                break;
+        }
+    }
     public bool IsMuted()
     {
         return Muted;
