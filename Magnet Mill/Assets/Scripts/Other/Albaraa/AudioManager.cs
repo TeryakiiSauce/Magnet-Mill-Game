@@ -117,6 +117,30 @@ public class AudioManager : MonoBehaviour
             s.source.volume += amount;
         }
     }
+
+    public void SetVolume(string name, float volumeLevel)
+    {
+        if(Muted)
+        {
+            return;
+        }
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        if(volumeLevel < 0)
+        {
+            volumeLevel = 0;
+        }
+        else if(volumeLevel > 1)
+        {
+            volumeLevel = 1;
+        }
+        s.volume = volumeLevel;
+        s.source.volume = volumeLevel;
+    }
     public bool IsVolumeMax(string name)    //used to check the volume of a sound if it is max
     {
         if (Muted)
