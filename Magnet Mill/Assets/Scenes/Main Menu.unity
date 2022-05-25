@@ -17970,6 +17970,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Level0Theme
+    clip: {fileID: 8300000, guid: 6d38bcd2ea6064d7d98a13f0ec75f641, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   - name: Level1Theme
     clip: {fileID: 8300000, guid: efff562f57bfd4c9587fa3aea5cb99c1, type: 3}
     volume: 0.6

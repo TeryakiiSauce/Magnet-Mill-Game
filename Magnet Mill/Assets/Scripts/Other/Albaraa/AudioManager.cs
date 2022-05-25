@@ -118,29 +118,29 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SetVolume(string name, float volumeLevel)
-    {
-        if(Muted)
-        {
-            return;
-        }
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
-        {
-            Debug.LogWarning("Sound " + name + " not found!");
-            return;
-        }
-        if(volumeLevel < 0)
-        {
-            volumeLevel = 0;
-        }
-        else if(volumeLevel > 1)
-        {
-            volumeLevel = 1;
-        }
-        s.volume = volumeLevel;
-        s.source.volume = volumeLevel;
-    }
+    // public void SetVolume(string name, float volumeLevel)
+    // {
+    //     if (Muted)
+    //     {
+    //         return;
+    //     }
+    //     Sound s = Array.Find(sounds, sound => sound.name == name);
+    //     if (s == null)
+    //     {
+    //         Debug.LogWarning("Sound " + name + " not found!");
+    //         return;
+    //     }
+    //     if (volumeLevel < 0)
+    //     {
+    //         volumeLevel = 0;
+    //     }
+    //     else if (volumeLevel > 1)
+    //     {
+    //         volumeLevel = 1;
+    //     }
+    //     s.volume = volumeLevel;
+    //     s.source.volume = volumeLevel;
+    // }
     public bool IsVolumeMax(string name)    //used to check the volume of a sound if it is max
     {
         if (Muted)
@@ -291,27 +291,30 @@ public class AudioManager : MonoBehaviour
                 sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
                 break;
             case 5:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
                 break;
             case 6:
                 sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
                 break;
             case 7:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[2];
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
                 break;
             case 8:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[2];
                 break;
             case 9:
                 sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
                 break;
             case 10:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
                 break;
             case 11:
                 sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
                 break;
             case 12:
+                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
+                break;
+            case 13:
                 sounds[index].source.outputAudioMixerGroup = audioMixerGroups[4];
                 break;
         }

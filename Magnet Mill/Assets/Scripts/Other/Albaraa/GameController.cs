@@ -43,11 +43,12 @@ public class GameController : MonoBehaviour
         cubeBody = cube.GetComponent<Rigidbody>();
         if (AudioManager.instance != null)        //Checking if audiomanager is null, if yes it means that the scene not started from
         {                                       //main menu, then the audio will not play since its object is null
-            if(currentLevel == "Level0")
+            if (currentLevel == "Level0")
             {
-                AudioManager.instance.SetVolume("MainMenuTheme", 0.2f);
+                // AudioManager.instance.SetVolume("MainMenuTheme", 0.2f);
+                AudioManager.instance.Stop("MainMenuTheme");
             }
-            else if(currentLevel == "Level1")
+            else if (currentLevel == "Level1")
             {
                 AudioManager.instance.Stop("MainMenuTheme");
             }
@@ -67,10 +68,12 @@ public class GameController : MonoBehaviour
                 AudioManager.instance.Stop("Level3Theme");
             }
 
-            if(currentLevel != "Level0")
-            { 
-                if (!AudioManager.instance.IsPlaying(currentLevel+"Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
-            }
+            // if (currentLevel != "Level0")
+            // {
+            //     if (!AudioManager.instance.IsPlaying(currentLevel + "Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
+            // }
+
+            if (!AudioManager.instance.IsPlaying(currentLevel + "Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
         }
         UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }
@@ -83,19 +86,19 @@ public class GameController : MonoBehaviour
             currentCheckPointPos = new Vector3(Mathf.RoundToInt(grid.transform.position.x),
                 grid.transform.position.y + 0.55f, Mathf.RoundToInt(grid.transform.position.z));     //save spawning position
         }
-        else if(grid.tag == "Right wall" || grid.tag == "RightWallCorner")
+        else if (grid.tag == "Right wall" || grid.tag == "RightWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Right;
             currentCheckPointPos = new Vector3(grid.transform.position.x - 0.55f,
                 Mathf.RoundToInt(grid.transform.position.y), Mathf.RoundToInt(grid.transform.position.z));
         }
-        else if(grid.tag == "Roof" || grid.tag == "RoofCorner")
+        else if (grid.tag == "Roof" || grid.tag == "RoofCorner")
         {
             checkPointCurrentDirection = CheckDirection.Roof;
             currentCheckPointPos = new Vector3(Mathf.RoundToInt(grid.transform.position.x),
                 grid.transform.position.y - 0.55f, Mathf.RoundToInt(grid.transform.position.z));
         }
-        else if(grid.tag == "Left wall" || grid.tag == "leftWallCorner")
+        else if (grid.tag == "Left wall" || grid.tag == "leftWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Left;
             currentCheckPointPos = new Vector3(grid.transform.position.x + 0.55f,
@@ -112,15 +115,15 @@ public class GameController : MonoBehaviour
         {
             InGround();     //change magnet direction to ground if the checkpoint is in the ground
         }
-        else if(checkPointCurrentDirection == CheckDirection.Right)
+        else if (checkPointCurrentDirection == CheckDirection.Right)
         {
-            InRight();        
+            InRight();
         }
-        else if(checkPointCurrentDirection == CheckDirection.Roof)
+        else if (checkPointCurrentDirection == CheckDirection.Roof)
         {
             InRoof();
         }
-        else if(checkPointCurrentDirection == CheckDirection.Left)
+        else if (checkPointCurrentDirection == CheckDirection.Left)
         {
             InLeft();
         }
