@@ -58,7 +58,7 @@ public class CubeController : MonoBehaviour
         cubeRigidBody.angularVelocity = Vector3.zero;
         if (flipinggravity)
         {
-            AudioManager.instance.Play("AfterGravityHit");
+            //AudioManager.instance.Play("AfterGravityHit");
             flipinggravity = false;
         }
         //Check to see if the tag on the collider is equal to Enemy
@@ -159,7 +159,7 @@ public class CubeController : MonoBehaviour
     //a method that is used to move and rotate the cube on all 4 surfaces 
     IEnumerator Roll(Vector3 direction)
     {
-        if (PlayerPrefs.GetInt("audioSyncToggle") != 0)
+        if (!true && PlayerPrefs.GetInt("audioSyncToggle") != 0)
         {
             if (AbilityController.instance.IsSpeedActive())
             {
