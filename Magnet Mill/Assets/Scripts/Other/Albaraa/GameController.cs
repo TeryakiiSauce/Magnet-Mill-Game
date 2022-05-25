@@ -45,12 +45,12 @@ public class GameController : MonoBehaviour
         {                                       //main menu, then the audio will not play since its object is null
             if (currentLevel == "Level0")
             {
-                // AudioManager.instance.SetVolume("MainMenuTheme", 0.2f);
                 AudioManager.instance.Stop("MainMenuTheme");
             }
             else if (currentLevel == "Level1")
             {
                 AudioManager.instance.Stop("MainMenuTheme");
+                AudioManager.instance.Stop("Level0Theme");
             }
             else if (currentLevel == "Level2")
             {
@@ -67,12 +67,6 @@ public class GameController : MonoBehaviour
                 AudioManager.instance.Stop("MainMenuTheme");
                 AudioManager.instance.Stop("Level3Theme");
             }
-
-            // if (currentLevel != "Level0")
-            // {
-            //     if (!AudioManager.instance.IsPlaying(currentLevel + "Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
-            // }
-
             if (!AudioManager.instance.IsPlaying(currentLevel + "Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
         }
         UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene

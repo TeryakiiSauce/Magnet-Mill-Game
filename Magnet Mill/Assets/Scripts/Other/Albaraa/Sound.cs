@@ -15,4 +15,5 @@ public class Sound {    //this class will be used to control sounds in the Audio
     [HideInInspector]
     public AudioSource source;
     public bool loop;
+    public bool playFromObj;
 }
