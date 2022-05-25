@@ -25,6 +25,8 @@ public class AbilityController : MonoBehaviour
     private float terrainDefaultWindSpeed;
     private float terrianDefaultBending;
     private Terrain levelTerrain;
+    private ParticleSystem[] particles;
+    private float[] particlesSpeed;
 
     const float speedTimeLimit = 4f;
     const float speedCoolDownTimeLimit = 12f;
@@ -50,6 +52,16 @@ public class AbilityController : MonoBehaviour
     void Start()
     {
         levelTerrain = FindObjectOfType<Terrain>();
+        particles = FindObjectsOfType<ParticleSystem>();
+        if(particles != null)
+        {
+            particlesSpeed = new float[particles.Length];
+            for (int i = 0; i < particles.Length; i++)
+            {
+                particlesSpeed[i] = particles[i].main.simulationSpeed;
+            }
+        }
+        
         if (levelTerrain != null)
         {
             terrainDefaultWindSpeed = levelTerrain.terrainData.wavingGrassSpeed;
@@ -217,6 +229,7 @@ public class AbilityController : MonoBehaviour
             levelTerrain.terrainData.wavingGrassSpeed = 0f;
             levelTerrain.terrainData.wavingGrassStrength = 0f;
         }
+        FreezeParticles();
         UserData.IncrementInt(UserData.numOfAbilitiesUsed);
     }
 
@@ -246,6 +259,7 @@ public class AbilityController : MonoBehaviour
                         levelTerrain.terrainData.wavingGrassSpeed = terrainDefaultWindSpeed;
                         levelTerrain.terrainData.wavingGrassStrength = terrianDefaultBending;
                     }
+                    ResumeParticles();
                     break;
                 }
             default: break;
@@ -297,6 +311,26 @@ public class AbilityController : MonoBehaviour
                 isFreezeCoolingDown = false;
                 freezeCoolDownTimer = 0;
             }
+        }
+    }
+
+    private void FreezeParticles()
+    {
+        if (particles == null) return;
+        for (int i = 0; i< particles.Length; i++)
+        {
+            ParticleSystem.MainModule tempMain = particles[i].main;
+            tempMain.simulationSpeed = 0;
+        }
+    }
+
+    private void ResumeParticles()
+    {
+        if (particles == null) return;
+        for (int i = 0; i < particles.Length; i++)
+        {
+            ParticleSystem.MainModule tempMain = particles[i].main;
+            tempMain.simulationSpeed = particlesSpeed[i];
         }
     }
 }
