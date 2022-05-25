@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         int IND = 0;
         foreach (Sound s in sounds)
         {
-            if(!s.playFromObj)
+            if (!s.playFromObj)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
@@ -236,7 +236,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-        
+
     }
 
 
@@ -263,8 +263,12 @@ public class AudioManager : MonoBehaviour
             case "verbose-only":
                 foreach (Sound s in sounds)
                 {
-                    tempVolumes[IND] = GetVolume(s.name);
+                    if (s.source == null)
+                    {
+                        return;
+                    }
 
+                    tempVolumes[IND] = GetVolume(s.name);
                     Debug.Log($"The sound's ({s.name}) volume has been changed from {tempVolumes[IND]} ({tempVolumes[IND] * 100}%) --> TO --> {(s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100} ({((s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100) * 100}%)");
 
                     IND++;
@@ -274,6 +278,11 @@ public class AudioManager : MonoBehaviour
             default:
                 foreach (Sound s in sounds)
                 {
+                    if (s.source == null)
+                    {
+                        return;
+                    }
+
                     tempVolumes[IND] = GetVolume(s.name);
                     s.volume = (s.volume * PlayerPrefs.GetFloat("audioVolume")) / 100;
                     s.source.volume = (s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100;
