@@ -28,9 +28,9 @@ public class AudioManager : MonoBehaviour
         volumes = new float[sounds.Length];
 
         int IND = 0;
-        foreach (Sound s in sounds)
+        foreach (Sound s in sounds)     //adding audio sources to audioManager object
         {
-            if (!s.playFromObj)
+            if (!s.playFromObj) //if sound not meant to play outside the audioManager object
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
@@ -121,29 +121,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //public void SetVolume(string name, float volumeLevel)
-    //{
-    //    if (Muted)
-    //    {
-    //        return;
-    //    }
-    //    Sound s = Array.Find(sounds, sound => sound.name == name);
-    //    if (s == null)
-    //    {
-    //        Debug.LogWarning("Sound " + name + " not found!");
-    //        return;
-    //    }
-    //    if (volumeLevel < 0)
-    //    {
-    //        volumeLevel = 0;
-    //    }
-    //    else if (volumeLevel > 1)
-    //    {
-    //        volumeLevel = 1;
-    //    }
-    //    s.volume = volumeLevel;
-    //    s.source.volume = volumeLevel;
-    //}
     public bool IsVolumeMax(string name)    //used to check the volume of a sound if it is max
     {
         if (Muted)
@@ -220,8 +197,8 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-    public void GetAudio(GameObject addAudioTo, string name)
-    {
+    public void GetAudio(GameObject addAudioTo, string name)    //Assign audio to specefic gameobject instead of playing them from
+    {                                                          //AudioManager object (for 3d sounds)
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {

@@ -17,7 +17,7 @@ public class ObstacleCollusion : MonoBehaviour
     {               //if no we will turn off the collider, this will save memory
         if(collidedWithPlayer)
         {
-            if(timer<1.5f)
+            if(timer<2f)
             {
                 timer += Time.deltaTime;
             }
