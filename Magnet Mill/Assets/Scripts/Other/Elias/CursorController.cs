@@ -16,7 +16,7 @@ public class CursorController : MonoBehaviour
         //}
         SwitchCursor(mainCursor);
 
-        Cursor.lockState = CursorLockMode.Confined; // keeps the cursor within game window
+        Cursor.lockState = CursorLockMode.None; // removed: keeps the cursor within game window
         Cursor.visible = true;
     }
 
@@ -27,14 +27,14 @@ public class CursorController : MonoBehaviour
         {
             if (menu.isActiveAndEnabled)
             {
-                Cursor.lockState = CursorLockMode.Confined; // keeps the cursor within game window
+                Cursor.lockState = CursorLockMode.None; // removed: keeps the cursor within game window
                 Cursor.visible = true;
             }
             else
             {
                 if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.LeftControl))
                 {
-                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.lockState = CursorLockMode.None; // removed: keeps the cursor within game window
                     Cursor.visible = true;
                 }
                 else
@@ -44,10 +44,10 @@ public class CursorController : MonoBehaviour
                     return;
                 }
             }
-        } 
+        }
         else
         {
-            Cursor.lockState = CursorLockMode.None; // [IGNORE] ~~keeps the cursor within game window~~
+            Cursor.lockState = CursorLockMode.None; // removed: keeps the cursor within game window~
             Cursor.visible = true;
         }
 
