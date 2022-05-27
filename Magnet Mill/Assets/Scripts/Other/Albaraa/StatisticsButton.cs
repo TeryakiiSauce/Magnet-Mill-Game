@@ -17,7 +17,7 @@ public class StatisticsButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isClicked && thisBtn.enabled)
+        if(isClicked && thisBtn.enabled)    //Disable button if it is clicked
         {
             thisBtn.enabled = false;
         }
@@ -27,10 +27,10 @@ public class StatisticsButton : MonoBehaviour
         }
     }
 
-    public void ButtonClicked()
+    public void ButtonClicked() //Will be called when the statistics button clicked
     {
-        statisticsBoard.SetActive(true);
-        MainMenuBtn.BtnClicked = true;
+        statisticsBoard.SetActive(true);    //Activate statistics board
+        MainMenuBtn.BtnClicked = true;  //Preventing main menu buttons to be clicked
         isClicked = true;
     }
 }

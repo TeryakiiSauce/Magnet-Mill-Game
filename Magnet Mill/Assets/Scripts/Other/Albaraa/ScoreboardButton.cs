@@ -20,16 +20,16 @@ public class ScoreboardButton : MonoBehaviour
 
     public void ButtonClicked()
     {
-        if (btnClicked || !Scoreboard.ScoreCalculated) return;
+        if (btnClicked || !Scoreboard.ScoreCalculated) return;  //if any of the scoreboard buttons clicked or the score not yet calculated return
         if(currentBtn == WhichButton.MainMenu)
         {
-            ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.MainMenu);
+            ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.MainMenu);    //move to main menu since the current button is main menu button
         }
         else if(currentBtn == WhichButton.Restart)
         {
-            ScenesLoader.instance.ReloadScene();
+            ScenesLoader.instance.ReloadScene();    //Restart level
         }
-        else
+        else         //Next button clicked
         {
             if(GameController.instance.currentLevel == "Level1")
             {

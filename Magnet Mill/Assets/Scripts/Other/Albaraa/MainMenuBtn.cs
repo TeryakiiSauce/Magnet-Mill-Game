@@ -8,7 +8,7 @@ using UnityEditor;
 
 public class MainMenuBtn : MonoBehaviour
 {
-    public enum MenuBtn { play, tutorial, instruction, /*settings,*/ credits, exit };   //we will use this enum in the editor to choose which button is this
+    public enum MenuBtn { play, tutorial, instruction, credits, exit };   //we will use this enum in the editor to choose which button is this
     public MenuBtn whichButton;
     public GameObject activateGameobject;
     public static bool BtnClicked;
@@ -29,41 +29,32 @@ public class MainMenuBtn : MonoBehaviour
     {
         if (ScenesLoader.instance.IsTransitioning() || BtnClicked) return;  //checking first if any button is clicked
 
-        if (whichButton == MenuBtn.play)
+        if (whichButton == MenuBtn.play)    //Check which button is clicked
         {
             if (!forTesting)
             {
-                //ScenesLoader.instance.MoveToLastUnlockedScene();
-                if (UserData.GetBool(UserData.finishedTutorial))
+                if (UserData.GetBool(UserData.finishedTutorial))    //if user finished the tutorial activate the level selection menu
                 {
                     activateGameobject.SetActive(true);
                 }
-                else
+                else                                              //if not load the tutorial scene
                 {
                     ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0);
                 }
             }
             else if (testSceneName != null && testSceneName != "")
             {
-                ScenesLoader.instance.TestingScene(testSceneName);
+                ScenesLoader.instance.TestingScene(testSceneName);      //load specific scene (for debuging)
             }
         }
         else if (whichButton == MenuBtn.tutorial)
         {
             ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.Level0); //moving to scene "Level0"
         }
-        else if (whichButton == MenuBtn.instruction)
+        else if (whichButton == MenuBtn.instruction || whichButton == MenuBtn.credits)
         {
-            activateGameobject.SetActive(true);     //enable instructions
+            activateGameobject.SetActive(true);     //enable instructions or credits
         }
-        else if (whichButton == MenuBtn.credits)
-        {
-            activateGameobject.SetActive(true);     //enable credits         
-        }
-        /*else if (whichButton == MenuBtn.settings)
-        {
-            activateGameobject.SetActive(true);     // settings
-        }*/
         else
         {
             Application.Quit();     //quit game

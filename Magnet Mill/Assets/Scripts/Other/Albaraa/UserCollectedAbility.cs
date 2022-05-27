@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UserCollectedAbility : MonoBehaviour
 {
-    void Start()
+    void Start()    //This script will be assigned to the abilities collectible 
     {
         AbilityCollectible abilitySC = GetComponentInChildren<AbilityCollectible>();
         if (abilitySC.currentAbility == AbilityCollectible.Ability.Jump
-            && UserData.GetBool(UserData.jumpCollected))
+            && UserData.GetBool(UserData.jumpCollected))    //If the current ability is unlocked destroy the collectible
         {
             Destroy(gameObject);
         }
