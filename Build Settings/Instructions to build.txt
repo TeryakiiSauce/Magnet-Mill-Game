@@ -1,0 +1,10 @@
+On Windows
+
+Watch: https://youtu.be/WaC42I_409I
+
+1. Build game from Unity
+2. Go to the build folder
+3. Create Subfolders for all folders in the build directory and name them the same as the parent folder. Eg: Game_name_date/*unity stuff* --> Game_name_date/Game_name_date/*unity stuff*
+1. Install Inno Setup and load the script "buildSettings.iss"
+2. Update all required info if needed and then compile
+3. Upload the output .exe to GitHub/ Itch.io
