@@ -33,8 +33,7 @@ public class MainController : MonoBehaviour
         AudioManager.instance.Stop("Level3Theme");
         AudioManager.instance.Stop("Level4Theme");
         if (!AudioManager.instance.IsPlaying("MainMenuTheme")) AudioManager.instance.Play("MainMenuTheme");
-        // AudioManager.instance.SetVolume("MainMenuTheme", 0.4f);
-        if (resetAbilities)
+        if (resetAbilities)             //is used for debuging to reset abilities
         {
             UserData.SetBool(UserData.speedCollected, false);
             UserData.SetBool(UserData.jumpCollected, false);

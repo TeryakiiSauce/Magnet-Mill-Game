@@ -69,10 +69,9 @@ public class GameController : MonoBehaviour
             }
             if (!AudioManager.instance.IsPlaying(currentLevel + "Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
         }
-        UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }
 
-    public void SetCheckPoint(GameObject grid)
+    public void SetCheckPoint(GameObject grid)  //Will be called when the cube walk over the checkpoint
     {
         if (grid.tag == "Ground" || grid.tag == "GroundCorner")   //check the checkpoint tag
         {
@@ -102,8 +101,8 @@ public class GameController : MonoBehaviour
 
     public void OutOfMap()     //this function will be called if the user is out of map (dead)
     {
-        UserData.IncrementInt(UserData.numOfDeaths);
-        deathCount++;
+        UserData.IncrementInt(UserData.numOfDeaths);    //increment total number of death, to display it in the statistics dialog
+        deathCount++;   //increase death count for current game
         cubeBody.velocity = Vector3.zero;       //stop cube velocity to handle instant changing of magnet direction
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
@@ -210,17 +209,17 @@ public class GameController : MonoBehaviour
         isDead = true;
     }
 
-    public void LevelFinished()
+    public void LevelFinished()     //will be called when the player walk over the winning grid
     {
         isLevelFinished = true;
-        if (currentLevel != "Level0")
+        if (currentLevel != "Level0")   //checking of level 0, because we don't have score for level 0 (tutorial)
         {
             UserData.IncrementInt(UserData.numOfLevelsFinished);
             UserData.IncrementInt(UserData.numOfTotalScore, score);
         }
         else
         {
-            UserData.SetBool(UserData.finishedTutorial, true);
+            UserData.SetBool(UserData.finishedTutorial, true);  //player finished the tutorial
         }
         UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetSceneTimer());
         TimerController.instance.PauseTimer();

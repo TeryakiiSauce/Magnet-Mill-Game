@@ -17,7 +17,7 @@ public class ObstacleCollusion : MonoBehaviour
     {               //if no we will turn off the collider, this will save memory
         if(collidedWithPlayer)
         {
-            if(timer<2f)
+            if(timer<2f)    //wait for two seconds after collision then move to the last checkpoint
             {
                 timer += Time.deltaTime;
             }
@@ -28,12 +28,12 @@ public class ObstacleCollusion : MonoBehaviour
                 collidedWithPlayer = false;
             }
         }
-        if (!disableWhenFar) return;
-        if(!thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) <= 5)
+        if (!disableWhenFar) return;    //if the collider is not meant be disables if it was far from player then return
+        if(!thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) <= 5)   //if collider close to player enable it
         {
             thisCol.enabled = true;
         }
-        else if(thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) > 5)
+        else if(thisCol.enabled && Vector3.Distance(transform.position, GameController.instance.CubePosition()) > 5) //if collider fat from player disable it
         {
             thisCol.enabled = false;
         }
@@ -47,7 +47,7 @@ public class ObstacleCollusion : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)  //used both events so it is working for any type of colliders, whether trigger or not 
     {
         if (collision.gameObject.tag == "PlayerCube" && !collidedWithPlayer)
         {
@@ -57,7 +57,7 @@ public class ObstacleCollusion : MonoBehaviour
 
     private void PlayerHitten()
     {
-        GameController.instance.PlayerDead();
+        GameController.instance.PlayerDead();   //lock controls
         collidedWithPlayer = true;
     }
 }
