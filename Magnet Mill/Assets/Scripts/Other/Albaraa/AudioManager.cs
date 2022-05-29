@@ -205,6 +205,11 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound " + name + " not found!");
             return;
         }
+        if (!s.playFromObj)
+        {
+            Debug.LogWarning("Sound " + name + " is not meant to play outside the audio manager!");
+            return;
+        }
         if (s.source == null)
         {
             s.source = addAudioTo.AddComponent<AudioSource>();
@@ -212,6 +217,8 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.spatialBlend = 1.0f;
+            s.source.spread = 360;
         }
 
     }

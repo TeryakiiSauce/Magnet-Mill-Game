@@ -8,5 +8,6 @@ public class GetAudio : MonoBehaviour
     void Start()
     {
         AudioManager.instance.GetAudio(gameObject, soundName);  //get audio source from audio manager
+        AudioManager.instance.Play(soundName);
     }
 }
