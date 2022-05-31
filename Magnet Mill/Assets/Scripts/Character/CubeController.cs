@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class CubeController : MonoBehaviour
 {
+
     public int speed = 300;
     private Rigidbody cubeRigidBody;
     public bool normalMovement = true;
@@ -16,6 +17,7 @@ public class CubeController : MonoBehaviour
     //public static bool outOfBounds = false;
     private Vector3 rotationCenter;
     private Vector3 rotationAxis;
+    private RaycastHit groundHit;
     public float jumpHeight = 0.8f;
     public float jumpLenght = 1.2f;
     private bool onCorner = false;
@@ -277,11 +279,25 @@ public class CubeController : MonoBehaviour
         }
     }
 
+    private bool checkJumpSpace(Vector3 direction) 
+    {
+        Ray surfaceOnRay = new Ray(transform.position, direction);
+        if (Physics.Raycast(surfaceOnRay,out groundHit,1f))
+        {
+            if (IsGridTag(groundHit.transform.tag)) 
+            {
+                return true; 
+            }
+
+        }
+        return false;
+    }
+
     //a method that sets the appropriate direction of the rotation/angle the cube will be moving on 
     private void setRotation(Vector3 direction)
     {
         //checking if the jump ability is activited 
-        if (AbilityController.instance.IsJumpActive() && !onCorner)
+        if (AbilityController.instance.IsJumpActive() && !checkJumpSpace(direction))
         {
             normalMovement = false;
             if (GameController.instance.IsInRoof())
@@ -386,6 +402,13 @@ public class CubeController : MonoBehaviour
             //settting the postion to a new rounded postion
             this.transform.position = position;
         }
+    }
+
+    private bool IsGridTag(string tag)
+    {
+        return tag == "GroundCorner" || tag == "Ground" || tag == "RightWallCorner"
+            || tag == "Right wall" || tag == "RoofCorner" || tag == "Roof" || tag == "leftWallCorner"
+            || tag == "Left wall";
     }
 
     private void checkMovement()
