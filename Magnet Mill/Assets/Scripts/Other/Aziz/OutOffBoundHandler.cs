@@ -64,7 +64,6 @@ public class OutOffBoundHandler : MonoBehaviour
             {
                 timer += Time.deltaTime;
             }
-
             else
             {
                 GameController.instance.OutOfMap();
