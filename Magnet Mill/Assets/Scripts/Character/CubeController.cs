@@ -28,6 +28,10 @@ public class CubeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isTouchingGround = true;
+        isMoving = false;
+        checkmovement = false;
+        flipinggravity = false;
         OTBhandler = GetComponent<OutOffBoundHandler>();
         // Choose one depending on needs
         cubeRigidBody = GetComponent<Rigidbody>();
