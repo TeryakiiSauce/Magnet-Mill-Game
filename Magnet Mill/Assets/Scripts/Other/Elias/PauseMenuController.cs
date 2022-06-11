@@ -62,12 +62,6 @@ public class PauseMenuController : MonoBehaviour
         CloseMenu();
     }
 
-    public void ReloadButtonOnClick()
-    {
-        CloseMenu();
-        GameController.instance.OutOfMap();
-    }
-
     public void RestartButtonOnClick()
     {
         CloseMenu();
