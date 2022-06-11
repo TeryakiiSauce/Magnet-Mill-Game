@@ -1,3 +1,5 @@
+#if (UNITY_EDITOR) 
+
 using UnityEditor;
 using UnityEngine;
 
@@ -10,16 +12,18 @@ namespace com.hololabs.editor
         {
             TextInputDialog.Prompt("GUID", "Find asset by Guid:", FindAssetByGuid);
         }
-        
+
         static void FindAssetByGuid(string searchGuid)
         {
             string path = AssetDatabase.GUIDToAssetPath(searchGuid);
             if (string.IsNullOrEmpty(path)) return;
             var obj = AssetDatabase.LoadAssetAtPath<Object>(path);
             if (obj == null) return;
-            
+
             Selection.activeObject = obj;
             EditorGUIUtility.PingObject(obj);
         }
     }
 }
+
+#endif

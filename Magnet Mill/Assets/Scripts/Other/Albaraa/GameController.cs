@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     private CheckDirection currentMagnetPosition;
     private CheckDirection checkPointCurrentDirection;
     private Vector3 currentCheckPointPos;
+    private Rigidbody cubeBody;
 
     void Awake()
     {
@@ -37,18 +38,19 @@ public class GameController : MonoBehaviour
             return;
         }
     }
-
     void Start()
     {
+        cubeBody = cube.GetComponent<Rigidbody>();
         if (AudioManager.instance != null)        //Checking if audiomanager is null, if yes it means that the scene not started from
         {                                       //main menu, then the audio will not play since its object is null
-            if(currentLevel == "Level0")
-            {
-                if (AudioManager.instance.GetVolume("MainMenuTheme") > 0.2) AudioManager.instance.AddVolume("MainMenuTheme", -0.2f);
-            }
-            else if(currentLevel == "Level1")
+            if (currentLevel == "Level0")
             {
                 AudioManager.instance.Stop("MainMenuTheme");
+            }
+            else if (currentLevel == "Level1")
+            {
+                AudioManager.instance.Stop("MainMenuTheme");
+                AudioManager.instance.Stop("Level0Theme");
             }
             else if (currentLevel == "Level2")
             {
@@ -65,66 +67,61 @@ public class GameController : MonoBehaviour
                 AudioManager.instance.Stop("MainMenuTheme");
                 AudioManager.instance.Stop("Level3Theme");
             }
-
-            if(currentLevel != "Level0")
-            { 
-                if (!AudioManager.instance.IsPlaying(currentLevel+"Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
-            }
+            if (!AudioManager.instance.IsPlaying(currentLevel + "Theme")) AudioManager.instance.Play(currentLevel + "Theme");  //play current level theme sound
         }
-        UserData.SetString(UserData.currentLevel, currentLevel);    //assign current level local storage variable with this scene
     }
 
-    public void SetCheckPoint(string gridTag)
+    public void SetCheckPoint(GameObject grid)  //Will be called when the cube walk over the checkpoint
     {
-        if (gridTag == "Ground" || gridTag == "GroundCorner")   //check the checkpoint tag
+        if (grid.tag == "Ground" || grid.tag == "GroundCorner")   //check the checkpoint tag
         {
             checkPointCurrentDirection = CheckDirection.Ground;
-            currentCheckPointPos = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
-                cube.transform.position.y + 0.4f, Mathf.RoundToInt(cube.transform.position.z));     //save spawning position
+            currentCheckPointPos = new Vector3(Mathf.RoundToInt(grid.transform.position.x),
+                grid.transform.position.y + 0.55f, Mathf.RoundToInt(grid.transform.position.z));     //save spawning position
         }
-        else if(gridTag == "Right wall" || gridTag == "RightWallCorner")
+        else if (grid.tag == "Right wall" || grid.tag == "RightWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Right;
-            currentCheckPointPos = new Vector3(cube.transform.position.x - 0.4f,
-                Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
+            currentCheckPointPos = new Vector3(grid.transform.position.x - 0.55f,
+                Mathf.RoundToInt(grid.transform.position.y), Mathf.RoundToInt(grid.transform.position.z));
         }
-        else if(gridTag == "Roof" || gridTag == "RoofCorner")
+        else if (grid.tag == "Roof" || grid.tag == "RoofCorner")
         {
             checkPointCurrentDirection = CheckDirection.Roof;
-            currentCheckPointPos = new Vector3(Mathf.RoundToInt(cube.transform.position.x),
-                cube.transform.position.y - 0.4f, Mathf.RoundToInt(cube.transform.position.z));
+            currentCheckPointPos = new Vector3(Mathf.RoundToInt(grid.transform.position.x),
+                grid.transform.position.y - 0.55f, Mathf.RoundToInt(grid.transform.position.z));
         }
-        else if(gridTag == "Left wall" || gridTag == "leftWallCorner")
+        else if (grid.tag == "Left wall" || grid.tag == "leftWallCorner")
         {
             checkPointCurrentDirection = CheckDirection.Left;
-            currentCheckPointPos = new Vector3(cube.transform.position.x + 0.4f,
-                Mathf.RoundToInt(cube.transform.position.y), Mathf.RoundToInt(cube.transform.position.z));
+            currentCheckPointPos = new Vector3(grid.transform.position.x + 0.55f,
+                Mathf.RoundToInt(grid.transform.position.y), Mathf.RoundToInt(grid.transform.position.z));
         }
     }
 
     public void OutOfMap()     //this function will be called if the user is out of map (dead)
     {
-        UserData.IncrementInt(UserData.numOfDeaths);
-        deathCount++;
-        Rigidbody cubeBody = cube.GetComponent<Rigidbody>();
+        UserData.IncrementInt(UserData.numOfDeaths);    //increment total number of death, to display it in the statistics dialog
+        deathCount++;   //increase death count for current game
+        cubeBody.velocity = Vector3.zero;       //stop cube velocity to handle instant changing of magnet direction
         if (checkPointCurrentDirection == CheckDirection.Ground)
         {
             InGround();     //change magnet direction to ground if the checkpoint is in the ground
         }
-        else if(checkPointCurrentDirection == CheckDirection.Right)
+        else if (checkPointCurrentDirection == CheckDirection.Right)
         {
-            InRight();        
+            InRight();
         }
-        else if(checkPointCurrentDirection == CheckDirection.Roof)
+        else if (checkPointCurrentDirection == CheckDirection.Roof)
         {
             InRoof();
         }
-        else if(checkPointCurrentDirection == CheckDirection.Left)
+        else if (checkPointCurrentDirection == CheckDirection.Left)
         {
             InLeft();
         }
-        cubeBody.velocity = Vector3.zero;       //stop cube velocity to handle constant changing of magnet direction
         cube.transform.position = currentCheckPointPos;    //change cube position to checkpoint position
+        CubeController.flipinggravity = false;
         isDead = false;     // switch isDead back to false since the player respawned
     }
 
@@ -212,17 +209,17 @@ public class GameController : MonoBehaviour
         isDead = true;
     }
 
-    public void LevelFinished()
+    public void LevelFinished()     //will be called when the player walk over the winning grid
     {
         isLevelFinished = true;
-        if (currentLevel != "Level0")
+        if (currentLevel != "Level0")   //checking of level 0, because we don't have score for level 0 (tutorial)
         {
             UserData.IncrementInt(UserData.numOfLevelsFinished);
             UserData.IncrementInt(UserData.numOfTotalScore, score);
         }
         else
         {
-            UserData.SetBool(UserData.finishedTutorial, true);
+            UserData.SetBool(UserData.finishedTutorial, true);  //player finished the tutorial
         }
         UserData.IncrementFloat(UserData.totalTimePlayed, TimerController.instance.GetSceneTimer());
         TimerController.instance.PauseTimer();

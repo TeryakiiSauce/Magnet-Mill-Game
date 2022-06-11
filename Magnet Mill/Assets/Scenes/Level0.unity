@@ -19684,6 +19684,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407776157755417863, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407776157755417863, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407776157755417863, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407776157755417863, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 407776158132382672, guid: a0510cb33a5e0464b96d4448354b9c38, type: 3}
       propertyPath: m_Name
       value: Stage Finished Canvas
@@ -23972,6 +23988,10 @@ PrefabInstance:
     - target: {fileID: 4919788557552656290, guid: c89ced8de87e4ff42964f2d4767a216a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059024279565044907, guid: c89ced8de87e4ff42964f2d4767a216a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5696289423411725592, guid: c89ced8de87e4ff42964f2d4767a216a, type: 3}
       propertyPath: m_RootOrder
@@ -57245,9 +57265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'now that you have used all the controlls,complete this puzzle
-
-'
+  m_text: Now that you have learnt the controls, try to complete this short puzzle.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -57310,7 +57328,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 1.4623241, z: 8.122089, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -57368,7 +57386,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350418332251726084}
   m_LocalRotation: {x: 0.45167097, y: -0, z: -0, w: 0.8921846}
-  m_LocalPosition: {x: 0, y: 0, z: 18.532}
+  m_LocalPosition: {x: 0, y: 0, z: 18.747}
   m_LocalScale: {x: 0.036863, y: 0.036863, z: 0.036863}
   m_Children: []
   m_Father: {fileID: 1350418332843395028}
@@ -57376,7 +57394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 53.702, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.524, y: -4.257}
+  m_AnchoredPosition: {x: 1.707, y: -4.091}
   m_SizeDelta: {x: 53.2129, y: 13.9051}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1350418332361894579
@@ -57417,7 +57435,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press Space to switch gravity
+  m_text: 'Press Tab to view the opposite side.
+
+    Press Space to flip to the opposite
+    side.
 
 '
   m_isRightToLeft: 0
@@ -57446,8 +57467,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18.33
+  m_fontSizeBase: 18.33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -57806,7 +57827,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350418333658348454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.4461613}
+  m_LocalPosition: {x: 0, y: 0, z: 3.717}
   m_LocalScale: {x: 0.050610814, y: 0.050610814, z: 0.050610814}
   m_Children: []
   m_Father: {fileID: 1350418332843395028}
@@ -57814,7 +57835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00562191, y: -3.653915}
+  m_AnchoredPosition: {x: 0.00562191, y: -4.117}
   m_SizeDelta: {x: 29.0726, y: 1.5393}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1350418333658348454
@@ -57984,7 +58005,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press D on the wall to climb
+  m_text: Press D on the wall to climb. Beware! Little Limos cannot jump when on
+    a corner.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -58011,8 +58033,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20.03
+  m_fontSizeBase: 20.03
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -59397,15 +59419,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089081008123196038, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.14521314
+      value: -0.14521313
       objectReference: {fileID: 0}
     - target: {fileID: 5089081008123196038, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.6271901e-15
+      value: -0.000000032966824
       objectReference: {fileID: 0}
     - target: {fileID: 5089081008123196038, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.6894993e-16
+      value: -0.000000004838501
       objectReference: {fileID: 0}
     - target: {fileID: 5089081008123196039, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_Follow
@@ -59485,15 +59507,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5277328487130003371, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.098537624
+      value: 0.09853762
       objectReference: {fileID: 0}
     - target: {fileID: 5277328487130003371, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042806607
+      value: -0.000000004280661
       objectReference: {fileID: 0}
     - target: {fileID: 5277328487130003371, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.238689e-10
+      value: 4.238689e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5317498446926947694, guid: 06626c6912ffce34aa7bc065302298fb, type: 3}
       propertyPath: m_LocalPosition.x

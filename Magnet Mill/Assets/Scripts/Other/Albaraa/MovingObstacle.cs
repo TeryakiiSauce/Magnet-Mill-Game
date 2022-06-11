@@ -20,27 +20,27 @@ public class MovingObstacle : MonoBehaviour
     private float timer;
     void Start()
     {
-        transform.localPosition = points[0];
+        transform.localPosition = points[0];    //starting position should match the first element in points array
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(AbilityController.instance.IsFreezeActive())
+        if(AbilityController.instance.IsFreezeActive()) //if freeze ability is active the obstacle will not move
         {
             return;
         }
-        if(!positionReached)
+        if(!positionReached)    //if obstacle still not reached to the next point keep moving
         {
             MoveObj();
             return;
         }
-        if(timer < seconds)
+        if(timer < seconds) //if the obstacle reached to the next point wait for time amount of seconds (specified in the inspector)
         {
             timer += Time.deltaTime;
             return;
         }
-        if(AfterReachedLast == AfterAction.MoveBackward)
+        if(AfterReachedLast == AfterAction.MoveBackward)    //after obtacle reached to the last point what should it do
         {
             MoveBackwardAfterFinish();
         }
@@ -55,13 +55,13 @@ public class MovingObstacle : MonoBehaviour
         timer = 0f;
         positionReached = false;
     }
-    private void MoveObj()
+    private void MoveObj()      //move the obstacle
     {
         float step = movingSpeed * Time.deltaTime;
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, points[IND], step);
-        if(Mathf.Approximately(Vector3.Distance(transform.localPosition, points[IND]),0))
+        if(Mathf.Approximately(Vector3.Distance(transform.localPosition, points[IND]),0))   //if obstacle reached to the next point
         {
-            transform.localPosition = points[IND];
+            transform.localPosition = points[IND];  //make sure that the obstacle position is equal the point
             positionReached = true;
         }
     }

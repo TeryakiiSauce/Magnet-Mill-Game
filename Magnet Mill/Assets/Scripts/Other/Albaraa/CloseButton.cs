@@ -6,7 +6,7 @@ public class CloseButton : MonoBehaviour
 {
     public enum TargetMenu {LevelSelection, Statistics};
     public TargetMenu whichMenu;
-    public void ButtonClicked()
+    public void ButtonClicked()     //will be called when close button clicked
     {
         if (whichMenu == TargetMenu.LevelSelection)
         {

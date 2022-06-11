@@ -20,23 +20,24 @@ public class Scoreboard : MonoBehaviour
     void Start()
     {
         ScoreCalculated = false;
-        timerValue.text = TimerController.instance.GetTimeInString();
+        //get time, deaths and number of cube rolled in order to display them in the scoreboard
+        timerValue.text = TimerController.instance.GetTimeInString();   
         deathsValue.text = GameController.instance.deathCount.ToString();
         rolledValue.text = GameController.instance.rollsCount.ToString();
         int decrement = (int)TimerController.instance.GetTimeInFloat() + (GameController.instance.deathCount * 20)
-            + GameController.instance.rollsCount;
-        ScoreTotal = GameController.instance.levelMaxScore - decrement;
-        if(ScoreTotal < 0)
+            + GameController.instance.rollsCount;   //Counting the final score
+        ScoreTotal = GameController.instance.levelMaxScore - decrement; //levelMaxScore will be different for each level that's why we are taking it from the game controller
+        if(ScoreTotal < 0)  //handling if the total score is less than zero
         {
             ScoreTotal = 0;
         }
-        if (ScoreTotal < GameController.instance.levelMaxScore / 2)
-        {
+        if (ScoreTotal < GameController.instance.levelMaxScore / 2) //if total score is less than the half of the max score it means
+        {                                                           //the user lost, so we will hide the next button
             AudioManager.instance.Play("Failed");
             nextBtn.SetActive(false);
-            mainMenuBtnRect.anchoredPosition= new Vector3(-15f, -53.5f, 1);
-            restartBtnRect.anchoredPosition = new Vector3(15f, -53.5f, 1);
-            belowHalfScore = true;
+            mainMenuBtnRect.anchoredPosition= new Vector3(-15f, -53.5f, 1); //Reposition main menu button
+            restartBtnRect.anchoredPosition = new Vector3(15f, -53.5f, 1);  //Reposition restart button
+            belowHalfScore = true;  //Prevent next level to be unlocked
         }
         else
         {
@@ -47,7 +48,7 @@ public class Scoreboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ScoreCount < ScoreTotal)
+        if(ScoreCount < ScoreTotal) //increase scorecoiunter if it is less than the actual score
         {
 
             ScoreCount+=5;
@@ -59,7 +60,7 @@ public class Scoreboard : MonoBehaviour
         }
     }
 
-    public void ShowScoreInstantly()
+    public void ShowScoreInstantly()    //Will be called if the user clicked the scoreboard (skip counting)
     {
         SetToFinalScore();
     }
@@ -69,15 +70,15 @@ public class Scoreboard : MonoBehaviour
         GetComponent<Button>().enabled = false;
         ScoreCount = ScoreTotal;
         scoreValue.text = ScoreCount.ToString();
-        UserData.IncrementInt(UserData.numOfTotalScore, ScoreCount);
+        UserData.IncrementInt(UserData.numOfTotalScore, ScoreCount);    //increment the total score of all games
         if(belowHalfScore)
         {
-            scoreValue.color = new Color(0.8f, 0.27f, 0.27f, 1);
+            scoreValue.color = new Color(0.8f, 0.27f, 0.27f, 1);    //changing score color to red (player lost)
         }
         if(GameController.instance.currentLevel == "Level1")
         {
             if (UserData.GetInt(UserData.level1HighScore) < ScoreCount) UserData.SetInt(UserData.level1HighScore, ScoreCount);
-            if(!belowHalfScore) UserData.SetBool(UserData.finishedLevel1, true);
+            if(!belowHalfScore) UserData.SetBool(UserData.finishedLevel1, true);    //unlock next level if the player won
         }
         else if (GameController.instance.currentLevel == "Level2")
         {
@@ -94,7 +95,6 @@ public class Scoreboard : MonoBehaviour
             if (UserData.GetInt(UserData.level4HighScore) < ScoreCount) UserData.SetInt(UserData.level4HighScore, ScoreCount);
             if (!belowHalfScore) UserData.SetBool(UserData.finishedLevel4, true);
         }
-        //Display grade
         ScoreCalculated = true;
         enabled = false;
     }

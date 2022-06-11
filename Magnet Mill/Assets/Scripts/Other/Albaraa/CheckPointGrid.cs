@@ -35,7 +35,7 @@ public class CheckPointGrid : MonoBehaviour
         if (isChecked || other.tag != "PlayerCube") return;     //Check if collided object is not playercube or the check point is already active, if yes return
         particle.Stop();
         thisMRenderer.material = GameController.instance.checkPointOnMaterial;  //Taking "ON" material from game controller object
-        GameController.instance.SetCheckPoint(gameObject.tag);  //Set checkpoint as a current checkpoint
+        GameController.instance.SetCheckPoint(gameObject);  //Set checkpoint as a current checkpoint
         isChecked = true;       //Set to true, so the cube when moved aver this grid again will ignore this function by "return"
         if(previousCheckPointScript != null)    //if the previous grid script is null it means that this grid is the spawning point
         {

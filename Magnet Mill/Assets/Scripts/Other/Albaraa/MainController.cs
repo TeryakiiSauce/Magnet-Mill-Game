@@ -13,12 +13,12 @@ public class MainController : MonoBehaviour
     public bool resetAbilities;
     public bool resetLevels;
     public bool resetStatistics;
-    private float[] yPositions = {270, 90, -90, -270};  //these variables will be used to place the buttons if the tutorial button is not active
+    private float[] yPositions = { 270, 90, -90, -270 };  //these variables will be used to place the buttons if the tutorial button is not active
     void Awake()
     {
         if (instance == null)   //checking if instance is null or not because we only need one instance of this class
         {
-            instance = this;    
+            instance = this;
         }
         else if (instance != this)
         {
@@ -32,15 +32,14 @@ public class MainController : MonoBehaviour
         AudioManager.instance.Stop("Level2Theme");
         AudioManager.instance.Stop("Level3Theme");
         AudioManager.instance.Stop("Level4Theme");
-        if(!AudioManager.instance.IsPlaying("MainMenuTheme")) AudioManager.instance.Play("MainMenuTheme");
-        if (AudioManager.instance.GetVolume("MainMenuTheme") == 0.2f) AudioManager.instance.AddVolume("MainMenuTheme", 0.2f);
-        if (resetAbilities)
+        if (!AudioManager.instance.IsPlaying("MainMenuTheme")) AudioManager.instance.Play("MainMenuTheme");
+        if (resetAbilities)             //is used for debuging to reset abilities
         {
             UserData.SetBool(UserData.speedCollected, false);
             UserData.SetBool(UserData.jumpCollected, false);
             UserData.SetBool(UserData.freezeCollected, false);
         }
-        if(resetLevels)
+        if (resetLevels)
         {
             UserData.SetBool(UserData.finishedTutorial, false);
             UserData.SetBool(UserData.finishedLevel1, false);
@@ -48,11 +47,11 @@ public class MainController : MonoBehaviour
             UserData.SetBool(UserData.finishedLevel3, false);
             UserData.SetBool(UserData.finishedLevel4, false);
         }
-        if(resetStatistics)
+        if (resetStatistics)
         {
             UserData.ResetStatistics();
         }
-        if(!UserData.GetBool(UserData.finishedTutorial))    //Checking if the user finished the tutorial, if not then deactivate the                                                       
+        if (!UserData.GetBool(UserData.finishedTutorial))    //Checking if the user finished the tutorial, if not then deactivate the                                                       
         {                                                   //tutorial button, because the play button will redirect him to the tutorial
             tutorialBtn.SetActive(false);
 

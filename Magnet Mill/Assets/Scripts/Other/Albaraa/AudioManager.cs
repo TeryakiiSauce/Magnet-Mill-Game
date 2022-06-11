@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-    public AudioMixerGroup[] audioMixerGroups;
+    //public AudioMixerGroup[] audioMixerGroups;
     private float[] volumes;
     public static AudioManager instance;
     private bool Muted = false;
@@ -28,15 +28,18 @@ public class AudioManager : MonoBehaviour
         volumes = new float[sounds.Length];
 
         int IND = 0;
-        foreach (Sound s in sounds)
+        foreach (Sound s in sounds)     //adding audio sources to audioManager object
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
+            if (!s.playFromObj) //if sound not meant to play outside the audioManager object
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+                s.source.loop = s.loop;
+            }
             volumes[IND] = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-            SetAudioOutputMixerGroup(IND); // Function uses hard-coded method of adding audio mixer groups to sounds because I couldn't find another way to make them displayed in the inspector menu
+            //SetAudioOutputMixerGroup(IND); // Function uses hard-coded method of adding audio mixer groups to sounds because I couldn't find another way to make them displayed in the inspector menu
             IND++;
         }
 
@@ -117,6 +120,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume += amount;
         }
     }
+
     public bool IsVolumeMax(string name)    //used to check the volume of a sound if it is max
     {
         if (Muted)
@@ -169,8 +173,11 @@ public class AudioManager : MonoBehaviour
         UserData.SetBool(UserData.isMuted, true);
         foreach (Sound s in sounds)
         {
-            s.volume = 0f;
-            s.source.volume = 0f;
+            if (s.source != null)
+            {
+                s.volume = 0f;
+                s.source.volume = 0f;
+            }
         }
     }
 
@@ -181,12 +188,41 @@ public class AudioManager : MonoBehaviour
         int IND = 0;
         foreach (Sound s in sounds)
         {
-            s.volume = volumes[IND];
-            s.source.volume = volumes[IND];
+            if (s.source != null)
+            {
+                s.volume = volumes[IND];
+                s.source.volume = volumes[IND];
+            }
             IND++;
         }
 
     }
+    public void GetAudio(GameObject addAudioTo, string name)    //Assign audio to specefic gameobject instead of playing them from
+    {                                                          //AudioManager object (for 3d sounds)
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        if (!s.playFromObj)
+        {
+            Debug.LogWarning("Sound " + name + " is not meant to play outside the audio manager!");
+            return;
+        }
+        if (s.source == null)
+        {
+            s.source = addAudioTo.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.spatialBlend = 1.0f;
+            s.source.spread = 360;
+        }
+
+    }
+
 
     public void SetAudioVolumeLevel(string args)
     {
@@ -211,8 +247,12 @@ public class AudioManager : MonoBehaviour
             case "verbose-only":
                 foreach (Sound s in sounds)
                 {
-                    tempVolumes[IND] = GetVolume(s.name);
+                    if (s.source == null)
+                    {
+                        return;
+                    }
 
+                    tempVolumes[IND] = GetVolume(s.name);
                     Debug.Log($"The sound's ({s.name}) volume has been changed from {tempVolumes[IND]} ({tempVolumes[IND] * 100}%) --> TO --> {(s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100} ({((s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100) * 100}%)");
 
                     IND++;
@@ -222,6 +262,11 @@ public class AudioManager : MonoBehaviour
             default:
                 foreach (Sound s in sounds)
                 {
+                    if (s.source == null)
+                    {
+                        return;
+                    }
+
                     tempVolumes[IND] = GetVolume(s.name);
                     s.volume = (s.volume * PlayerPrefs.GetFloat("audioVolume")) / 100;
                     s.source.volume = (s.source.volume * PlayerPrefs.GetFloat("audioVolume")) / 100;
@@ -237,61 +282,64 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void SetAudioOutputMixerGroup(int index)
-    {
-        /*
-        Audio Mixer Groups keys codes:
-        0 = Background
-        1 = Cube Movement
-        2 = Cube Flipped
-        3 = Win / Fail
-        4 = Checkpoint
-        5 = Misc
-        */
+    //private void SetAudioOutputMixerGroup(int index)
+    //{
+    //    /*
+    //    Audio Mixer Groups keys codes:
+    //    0 = Background
+    //    1 = Cube Movement
+    //    2 = Cube Flipped
+    //    3 = Win / Fail
+    //    4 = Checkpoint
+    //    5 = Misc
+    //    */
 
-        switch (index)
-        {
-            case 0:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
-                break;
-            case 1:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
-                break;
-            case 2:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
-                break;
-            case 3:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
-                break;
-            case 4:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
-                break;
-            case 5:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
-                break;
-            case 6:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
-                break;
-            case 7:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[2];
-                break;
-            case 8:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
-                break;
-            case 9:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
-                break;
-            case 10:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
-                break;
-            case 11:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
-                break;
-            case 12:
-                sounds[index].source.outputAudioMixerGroup = audioMixerGroups[4];
-                break;
-        }
-    }
+    //    switch (index)
+    //    {
+    //        case 0:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+    //            break;
+    //        case 1:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+    //            break;
+    //        case 2:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+    //            break;
+    //        case 3:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+    //            break;
+    //        case 4:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+    //            break;
+    //        case 5:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[0];
+    //            break;
+    //        case 6:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
+    //            break;
+    //        case 7:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[1];
+    //            break;
+    //        case 8:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[2];
+    //            break;
+    //        case 9:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
+    //            break;
+    //        case 10:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[3];
+    //            break;
+    //        case 11:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
+    //            break;
+    //        case 12:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[5];
+    //            break;
+    //        case 13:
+    //            sounds[index].source.outputAudioMixerGroup = audioMixerGroups[4];
+    //            break;
+    //    }
+    //}
     public bool IsMuted()
     {
         return Muted;

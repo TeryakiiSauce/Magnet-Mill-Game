@@ -21,6 +21,7 @@ public class StatisticsDisplayer : MonoBehaviour
 
     void Start()
     {
+        //taking values from Userdata class and display them in textmesh pro 
         SetValue(UserData.numOfLevelsFinished, levelsFinishedValue);
         SetValue(UserData.numOfGravitySwitched, gravitySwitValue);
         SetValue(UserData.numOfCheckpointsActivated, checkpointActValue);
@@ -31,6 +32,7 @@ public class StatisticsDisplayer : MonoBehaviour
         SetValue(UserData.level3HighScore, level3HighScoreValue);
         SetValue(UserData.level4HighScore, level4HighScoreValue);
 
+        //cube rolled and number of total score can be displayed up to one million
         if(UserData.GetInt(UserData.numOfCubeRolled) < 1000000)
         {
             cubeRolledValue.text = UserData.GetInt(UserData.numOfCubeRolled).ToString();
@@ -49,8 +51,8 @@ public class StatisticsDisplayer : MonoBehaviour
             totalScoreValue.text = "999999+";
         }
 
-        TimeSpan timePlayed = TimeSpan.FromSeconds(UserData.GetFloat(UserData.totalTimePlayed));
-        timePlayedValue.text = timePlayed.ToString("hh':'mm':'ss");
+        TimeSpan timePlayed = TimeSpan.FromSeconds(UserData.GetFloat(UserData.totalTimePlayed)); //taking time and convert it from float to timestamp
+        timePlayedValue.text = timePlayed.ToString("hh':'mm':'ss");  //set the right format
     }
 
     private void SetValue(string key, TextMeshProUGUI txtObj)

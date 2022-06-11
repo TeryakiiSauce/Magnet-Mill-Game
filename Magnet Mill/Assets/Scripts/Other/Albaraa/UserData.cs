@@ -13,7 +13,6 @@ public static class UserData
     public const string jumpCollected = "jumpCollected"; //boolean
     public const string speedCollected = "speedCollected"; //boolean
     public const string freezeCollected = "freezeCollected"; //boolean
-    public const string currentLevel = "currentLevel"; //string
 
 
     //-------------------User statistics Keys-------------------

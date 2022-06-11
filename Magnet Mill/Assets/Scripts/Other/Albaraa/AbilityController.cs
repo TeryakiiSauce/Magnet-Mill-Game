@@ -25,6 +25,8 @@ public class AbilityController : MonoBehaviour
     private float terrainDefaultWindSpeed;
     private float terrianDefaultBending;
     private Terrain levelTerrain;
+    private ParticleSystem[] particles;
+    private float[] particlesSpeed;
 
     const float speedTimeLimit = 4f;
     const float speedCoolDownTimeLimit = 12f;
@@ -49,17 +51,27 @@ public class AbilityController : MonoBehaviour
 
     void Start()
     {
-        levelTerrain = FindObjectOfType<Terrain>();
-        if (levelTerrain != null)
+        levelTerrain = FindObjectOfType<Terrain>();         //get terrian component in order to freeze moving grass,trees etc.. during freeze ability
+        particles = FindObjectsOfType<ParticleSystem>();    //get all particles of the level to freeze them during the freeze ability
+        if(particles != null)
+        {
+            particlesSpeed = new float[particles.Length];
+            for (int i = 0; i < particles.Length; i++)  //getting all defalut simulation speed of all particels (will be used when freeze ability finished)
+            {
+                particlesSpeed[i] = particles[i].main.simulationSpeed;
+            }
+        }
+        
+        if (levelTerrain != null)   
         {
             terrainDefaultWindSpeed = levelTerrain.terrainData.wavingGrassSpeed;
             terrianDefaultBending = levelTerrain.terrainData.wavingGrassStrength;
         }
-        if (UserData.GetBool(UserData.speedCollected)) isSpeedCollected = true;
+        if (UserData.GetBool(UserData.speedCollected)) isSpeedCollected = true; //checking from userdata if already collected the abilites
         if (UserData.GetBool(UserData.jumpCollected)) isJumpCollected = true;
         if (UserData.GetBool(UserData.freezeCollected)) isFreezeCollected = true;
 
-        if(isSpeedCollected)
+        if(isSpeedCollected)    //make ability available since the user already collected it
         {
             HUDController.instance.SetBoostAbilityAvailable();
             isSpeedAvailable = true;
@@ -97,9 +109,9 @@ public class AbilityController : MonoBehaviour
     void Update()
     {
         CoolingDownAbilites();
-        if(currentActiveAbility != Ability.None)
+        if(currentActiveAbility != Ability.None)    //means that there is an ability active currently
         {
-            if(activeAbilitytimer < currentAbilityTimeLimit)
+            if(activeAbilitytimer < currentAbilityTimeLimit)    //check if ability time finished
             {
                 activeAbilitytimer += Time.deltaTime;
             }
@@ -110,9 +122,9 @@ public class AbilityController : MonoBehaviour
             return;
         }
 
-        if(isSpeedCollected)
+        if(isSpeedCollected)    //is speed ability already unlocked?
         {
-            if(isSpeedAvailable)
+            if(isSpeedAvailable) //is ability is cooleddown?
             {
                 if(Input.GetKey(KeyCode.LeftShift))
                 {
@@ -145,7 +157,7 @@ public class AbilityController : MonoBehaviour
         }
     }
 
-    public void SpeedCollected()
+    public void SpeedCollected()    //will be called when the user first time collect the ability
     {
         isSpeedCollected = true;
         isSpeedAvailable = true;
@@ -172,7 +184,7 @@ public class AbilityController : MonoBehaviour
         HUDController.instance.SetFreezeAbilityAvailable();
     }
 
-    public bool IsSpeedActive()
+    public bool IsSpeedActive()     //will be used by other classes to check if the ability is active
     {
         return currentActiveAbility == Ability.Speed;
     }
@@ -187,13 +199,13 @@ public class AbilityController : MonoBehaviour
         return currentActiveAbility == Ability.Freeze;
     }
 
-    private void SetSpeed()
+    private void SetSpeed()     //user activated speed ability be clicking ability key "SHIFT"
     {
         currentActiveAbility = Ability.Speed;
         currentAbilityTimeLimit = speedTimeLimit;
         HUDController.instance.SetBoostAbilityActive();
         isSpeedAvailable = false;
-        UserData.IncrementInt(UserData.numOfAbilitiesUsed);
+        UserData.IncrementInt(UserData.numOfAbilitiesUsed);     //increase the ability used number, will be used in statistics
     }
 
     private void SetJump()
@@ -212,15 +224,17 @@ public class AbilityController : MonoBehaviour
         HUDController.instance.SetFreezeAbilityActive();
         TimerController.instance.SetFreezeColor();
         isFreezeAvailable = false;
-        if (levelTerrain != null)
+        if (levelTerrain != null)   //freeze terrain
         {
             levelTerrain.terrainData.wavingGrassSpeed = 0f;
             levelTerrain.terrainData.wavingGrassStrength = 0f;
         }
+        AudioManager.instance.Stop(GameController.instance.currentLevel + "Theme"); //stop background theme sound
+        FreezeParticles();  
         UserData.IncrementInt(UserData.numOfAbilitiesUsed);
     }
 
-    private void ResetAbility()
+    private void ResetAbility()     //after the ability time finished, this function will be called
     {
         switch (currentActiveAbility)
         {
@@ -243,9 +257,11 @@ public class AbilityController : MonoBehaviour
                     TimerController.instance.SetNormalColor();
                     if (levelTerrain != null)
                     {
-                        levelTerrain.terrainData.wavingGrassSpeed = terrainDefaultWindSpeed;
+                        levelTerrain.terrainData.wavingGrassSpeed = terrainDefaultWindSpeed;    //resume the terrain
                         levelTerrain.terrainData.wavingGrassStrength = terrianDefaultBending;
                     }
+                    AudioManager.instance.Play(GameController.instance.currentLevel + "Theme");     //resume the theme sound
+                    ResumeParticles();
                     break;
                 }
             default: break;
@@ -254,7 +270,7 @@ public class AbilityController : MonoBehaviour
         activeAbilitytimer = 0f;
     }
 
-    private void CoolingDownAbilites()
+    private void CoolingDownAbilites()      //will be called in update to check which abilities need to cooldown
     {
         if(isSpeedCoolingDown)
         {
@@ -297,6 +313,26 @@ public class AbilityController : MonoBehaviour
                 isFreezeCoolingDown = false;
                 freezeCoolDownTimer = 0;
             }
+        }
+    }
+
+    private void FreezeParticles()  // freeze all particles, will be called when freeze ability activated 
+    {
+        if (particles == null) return;
+        for (int i = 0; i< particles.Length; i++)
+        {
+            ParticleSystem.MainModule tempMain = particles[i].main;
+            tempMain.simulationSpeed = 0;
+        }
+    }
+
+    private void ResumeParticles()  // resume all particles, will be called when freeze ability activated
+    {
+        if (particles == null) return;
+        for (int i = 0; i < particles.Length; i++)
+        {
+            ParticleSystem.MainModule tempMain = particles[i].main;
+            tempMain.simulationSpeed = particlesSpeed[i];
         }
     }
 }

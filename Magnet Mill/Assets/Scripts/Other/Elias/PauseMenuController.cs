@@ -71,6 +71,12 @@ public class PauseMenuController : MonoBehaviour
     public void MainMenuButtonOnClick()
     {
         CloseMenu();
+        AudioManager.instance.Stop("MainMenuTheme");
+        AudioManager.instance.Stop("Level0Theme");
+        AudioManager.instance.Stop("Level1Theme");
+        AudioManager.instance.Stop("Level2Theme");
+        AudioManager.instance.Stop("Level3Theme");
+        AudioManager.instance.Stop("Level4Theme");
         ScenesLoader.instance.MoveToScene(ScenesLoader.WhichScene.MainMenu);
     }
 

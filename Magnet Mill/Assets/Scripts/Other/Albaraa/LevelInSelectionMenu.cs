@@ -15,7 +15,7 @@ public class LevelInSelectionMenu : MonoBehaviour
     {
         if(currentLevel == WhichLevel.Level1)
         {
-            if (UserData.GetBool(UserData.finishedTutorial)) SetEnabled();
+            if (UserData.GetBool(UserData.finishedTutorial)) SetEnabled();  //enable level 1 if the tutorial is finshed
         }
         else if(currentLevel == WhichLevel.Level2)
         {
@@ -33,8 +33,8 @@ public class LevelInSelectionMenu : MonoBehaviour
 
     private void SetEnabled()
     {
-        levelLock.SetActive(false);
-        GetComponent<Image>().sprite = onSprite;
+        levelLock.SetActive(false);  //deactivate the level lock because the level is unlocked
+        GetComponent<Image>().sprite = onSprite;    //change level sprite from black and white to normal colors
         levelBtn.SetActive(true);
     }
 }
